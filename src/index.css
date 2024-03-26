@@ -1,3 +1,87 @@
-h1 {
-  color: blue;
+.footer-container {
+  background-color: #c79263;
+  color:accent;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
 }
+.footer-content {
+  display: flex;
+  align-items: center;
+}
+
+.footer-title {
+  margin: 12px 99px;
+  size: 4px;
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-nav {
+  display: flex;
+  text-decoration: underline;
+}
+
+.footer-nav a {
+  color: white;
+
+  margin-right: 20px;
+}
+
+.media-icons {
+  display: flex;
+  align-items: flex-end;
+}
+
+.media-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+.navbar{
+  display: flex;
+  justify-content: space-between;
+  align-items: right;
+  padding: 20px;
+  background-color: #c79263;
+  color: white;
+}
+
+
+
+
+
+
+.navbar-right a {
+  color: white; /* Set link text color to white */
+  padding: 10px 20px; /* Add padding for better appearance */
+  text-decoration: none; /* Remove default underline */
+}
+
+
+.container {
+  display: flex;
+  justify-content: flex-end; /* Align items to the right */
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center; /* Align items vertically in the navbar */
+}
+
+.top-right-links {
+  margin-left: auto; /* Push links to the right */
+}
+
+.navbar-right a {
+  color: white; /* Set link text color to white */
+  margin-left: 20px; /* Add spacing between links */
+  text-decoration: none; /* Remove default underline */
+}
+
+
