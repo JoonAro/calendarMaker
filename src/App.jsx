@@ -1,10 +1,44 @@
-import React from "react"
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import Collection from './routes/Collection'
+import Home from "./routes/Home";
+import Root from "./routes/Root";
+import Login from "./routes/Login";
+import Register from "./routes/Register";
+import EditorPage from "./routes/EditorPage";
+import Calendar from "./routes/Calendar";
+import "bootstrap/dist/css/bootstrap.min.css";
 function App() {
 
   return (
-    <div>
-      <h1>Calendar Maker</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Root />}>
+          <Route index element={<Home />} />
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+
+          <Route
+            path="/collection"
+
+            element={<Collection />
+            }
+          />
+          <Route
+            path="/editorPage"
+            element={
+              <EditorPage />
+            }
+          />
+          <Route
+            path="/calendar"
+            element={
+              <Calendar />
+            }
+          />
+
+        </Route>
+      </Routes>
+    </Router>
   )
 }
 
