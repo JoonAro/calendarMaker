@@ -8,16 +8,17 @@ const Header = () => {
 
   return (
     <header>
-      <nav className="navbar">
+      
         <div className="container">
-          <div className="navbar-right">
-            
+        <nav className="navbar">
+        
+            <Link to="/">Home</Link>
               <Link to="/register">Register</Link>
               <Link to="/login">Login</Link>
             
-          </div>
+              </nav> 
         </div>
-      </nav>
+     
     </header>
   );
 };

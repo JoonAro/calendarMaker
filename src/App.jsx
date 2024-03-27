@@ -7,8 +7,7 @@ import Register from "./routes/Register";
 import EditorPage from "./routes/EditorPage";
 import Calendar from "./routes/Calendar";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer"; 
+
 function App() {
 
   return (
@@ -18,8 +17,8 @@ function App() {
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="header" element={<Header />} />
-          <Route path="footer" element={<Footer />} />
+        
+          
 
           <Route
             path="/collection"
