@@ -16,8 +16,8 @@ const EditorPage = () => {
     const [bool, setBool] = useState(false);
     const [showContent, setShowContent] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
-    const [radioValue, setRadioValue] = useState(null);
-    const [hatchSide, setHatchSide] = useState('right');
+    const [radioValue, setRadioValue] = useState('hatch');
+    const [hatchSide, setHatchSide] = useState('left');
     const searchInput = useRef(null);
     let alternate = false;
     let counter = 0;
@@ -64,8 +64,9 @@ const EditorPage = () => {
                     handleSearch={handleSearch}
                     searchInput={searchInput}
                     handleSelection={handleSelection}
-                    handleRadioChange={handleRadioChange}
                     radioValue={radioValue}
+                    setRadioValue={setRadioValue}
+                    hatchSide={hatchSide}
                     setHatchSide={setHatchSide} />
                 <div className="content">
                     <div className="gridHolder" style={{

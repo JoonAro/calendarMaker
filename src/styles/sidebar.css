@@ -24,9 +24,9 @@ p {
 
 .filters {
     padding: 20px;
-    margin: 20px;
+    margin: 20px 0;
     width: 220px;
-    border-bottom: 1px solid gray;
+    border-bottom: 1px solid black;
 }
 
 .themeHolder {

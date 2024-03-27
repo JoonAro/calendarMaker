@@ -1,6 +1,6 @@
 import '../styles/sidebar.css'
 import { Form } from 'react-bootstrap';
-const Sidebar = ({ handleSearch, searchInput, handleSelection, handleRadioChange, radioValue, setHatchSide }) => {
+const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRadioValue, hatchSide, setHatchSide }) => {
     return (
         <div className="sidebar">
             <p>Choose a theme</p>
@@ -38,7 +38,8 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, handleRadioChange
                         type="radio"
                         name="hatchType"
                         value="hatch"
-                        onChange={handleRadioChange}
+                        checked={radioValue === 'hatch'}
+                        onChange={(e) => setRadioValue(e.target.value)}
                     />
                     Single
                 </label>
@@ -47,7 +48,8 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, handleRadioChange
                         type="radio"
                         name="hatchType"
                         value="double hatch"
-                        onChange={handleRadioChange}
+                        checked={radioValue === 'double hatch'}
+                        onChange={(e) => setRadioValue(e.target.value)}
                     />
                     Double
                 </label>
@@ -57,6 +59,7 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, handleRadioChange
                             type="radio"
                             name="hatchSide"
                             value="left"
+                            checked={hatchSide === 'left'}
                             onChange={(e) => setHatchSide(e.target.value)}
                         />
                         Left
@@ -66,6 +69,7 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, handleRadioChange
                             type="radio"
                             name="hatchSide"
                             value="right"
+                            checked={hatchSide === 'right'}
                             onChange={(e) => setHatchSide(e.target.value)}
                         />
                         Right
