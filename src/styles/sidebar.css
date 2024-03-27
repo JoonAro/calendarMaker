@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: large;
+}
+
+p {
+    font-size: x-large;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(232, 180, 184, 1);
+    padding-top: 20px;
+}
+
+.filters {
+    padding: 20px;
+    margin: 20px;
+    width: 220px;
+    border-bottom: 1px solid gray;
+}
+
+.themeHolder {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+.themeSelection {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    margin: 5px;
+    padding: 5px;
+    background-color: salmon;
+}
+
+label {
+    margin: 5px;
+}
