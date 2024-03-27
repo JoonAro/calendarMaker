@@ -11,18 +11,16 @@ const Login = () => {
       <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
         <div className="flex flex-col justify-center p-8 md:p-14">
           <span className="mb-3 text-4xl font-bold text-center">Log in</span>
-          <div className="py-4">
-            <span className="mb-2 text-md">Email</span>
+          <div className="py-3">
             <input
-              className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              className="w-full p-2 md:w-64 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               type="email"
-              placeholder="Enter email"
+              placeholder="Enter your email"
             />
           </div>
-          <div className="py-4">
-            <span className="mb-2 text-md">Password</span>
+          <div className="py-3">
             <input
-              className="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              className="w-full p-2 md:w-64 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               type="password"
               placeholder="Enter password"
             />
