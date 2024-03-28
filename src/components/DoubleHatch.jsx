@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import '../styles/editorStyles.css';
 const DoubleHatch = ({ pic }) => {
     const [clicked, setClicked] = useState(false);
     const [showImage, setShowImage] = useState(false);
