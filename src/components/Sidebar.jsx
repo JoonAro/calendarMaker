@@ -24,8 +24,8 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRa
                 <div className='themeHolder'>
 
                     <div className='themeSelection' onClick={() => handleSelection('nature')}>Nature</div>
-                    <div className='themeSelection' onClick={() => handleSelection('birds')}>Birds</div>
-                    <div className='themeSelection' onClick={() => handleSelection('cats')}>Cats</div>
+                    <div className='themeSelection' onClick={() => handleSelection('bird')}>Bird</div>
+                    <div className='themeSelection' onClick={() => handleSelection('cat')}>Cat</div>
                     <div className='themeSelection' onClick={() => handleSelection('shoes')}>Shoes</div>
                     <div className='themeSelection' onClick={() => handleSelection('space')}>Space</div>
                     <div className='themeSelection' onClick={() => handleSelection('diving')}>Diving</div>
