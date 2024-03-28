@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useRef, useState } from "react";
-import { Form } from "react-bootstrap";
 import Hatch from "../components/Hatch";
 import DoubleHatch from "../components/DoubleHatch";
 import '../styles/editorStyles.css';
@@ -12,18 +11,14 @@ const IMAGES_PER_PAGE = 25;
 
 const EditorPage = () => {
     const [images, setImages] = useState([]);
-    const [calendarImage, setCalendarImage] = useState("https://images.unsplash.com/photo-1605197161470-d0261cac6767?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c21hbGwlMjBkb2d8ZW58MHx8MHx8fDA%3D");
+    const [calendarImage, setCalendarImage] = useState("https://images.unsplash.com/photo-1556888335-23631cd2801a?q=80&w=2053&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     const [bool, setBool] = useState(false);
     const [showContent, setShowContent] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const [radioValue, setRadioValue] = useState('hatch');
     const [hatchSide, setHatchSide] = useState('left');
     const searchInput = useRef(null);
-    let alternate = false;
-    let counter = 0;
 
-    //Setup options to change where the hatch opens atleast be able to change it from left to right
-    //we need a usestate with left or right
     const handleSearch = (event) => {
         event.preventDefault();
         console.log(searchInput.current.value);
@@ -32,9 +27,6 @@ const EditorPage = () => {
     const handleSelection = (selection) => {
         searchInput.current.value = selection
     }
-    const handleRadioChange = (event) => {
-        setRadioValue(event.target.value);
-    };
 
     const handleClick = () => {
         setShowContent(!showContent)
@@ -47,7 +39,7 @@ const EditorPage = () => {
             console.log('result', data.results, 'length', data.results.length);
             const calendarBackground = data.results[data.results.length - 1].urls.full;
             setCalendarImage(calendarBackground);
-            let result = data.results.pop();
+            data.results.pop();
             setImages(data.results);
             setTotalPages(data.total_pages);
             setBool(true);
@@ -69,16 +61,19 @@ const EditorPage = () => {
                     hatchSide={hatchSide}
                     setHatchSide={setHatchSide} />
                 <div className="content">
+
                     <div className="gridHolder" style={{
                         backgroundImage: `url(${calendarImage})`,
-                        backgroundSize: 'cover',
-                        display: bool ? 'grid' : 'none'
                     }}>
-
+                        {!bool &&
+                            <div className="welcomeText">
+                                <h1>Welcome to the calendar editor!</h1>
+                                <p>Start Creating your calendar by searching a theme</p>
+                            </div>
+                        }
                         {images.map(pic => {
                             return radioValue === 'hatch' ? <Hatch key={pic.id} pic={pic} handleClick={handleClick} hatchSide={hatchSide} /> : <DoubleHatch key={pic.id} pic={pic} />
                         })}
-
                     </div>
                 </div>
             </div>

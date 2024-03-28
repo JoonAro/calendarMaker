@@ -44,9 +44,15 @@ p {
     width: 60px;
     margin: 5px;
     padding: 5px;
-    background-color: salmon;
+    border-radius: 10px;
+}
+
+.themeSelection:hover {
+
+    color: whitesmoke;
 }
 
 label {
-    margin: 5px;
+    margin: 0px 0 5px 12px;
+    width: 70.2px;
 }
