@@ -4,15 +4,17 @@
 
 .content {
     margin-left: 250px;
+    background-color: rgba(103, 89, 94, 1);
 }
 
 .gridHolder {
     margin: 30px;
     padding: 50px 30px 50px 50px;
     max-width: 1100px;
+    min-height: 90vh;
     position: relative;
     display: grid;
-    background-color: #ffffff;
+    background-color: rgba(103, 89, 94, 1);
     background-position: center;
     background-size: cover;
     grid-template-columns: repeat(4, 180px);
@@ -20,6 +22,26 @@
     grid-gap: 80px;
     margin: 0 auto;
     border-radius: 30px;
+}
+
+.welcomeText {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 40%;
+    left: 0;
+    width: 100%;
+    font-size: xx-large;
+    color: white;
+    z-index: 9;
+}
+
+.welcomeText p h1 {
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
 }
 
 .calendarImage {
