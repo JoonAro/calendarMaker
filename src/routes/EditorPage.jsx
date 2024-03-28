@@ -4,6 +4,7 @@ import { Form } from "react-bootstrap";
 import Hatch from "../components/Hatch";
 import DoubleHatch from "../components/DoubleHatch";
 import '../styles/editorStyles.css';
+import Sidebar from "../components/Sidebar";
 
 const API_KEY = import.meta.env.VITE_UNSPLASH_API;
 const API_URL = "https://api.unsplash.com/search/photos";
@@ -15,7 +16,8 @@ const EditorPage = () => {
     const [bool, setBool] = useState(false);
     const [showContent, setShowContent] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
-    const [hatchSide, setHatchSide] = useState('right');
+    const [radioValue, setRadioValue] = useState('hatch');
+    const [hatchSide, setHatchSide] = useState('left');
     const searchInput = useRef(null);
     let alternate = false;
     let counter = 0;
@@ -30,6 +32,9 @@ const EditorPage = () => {
     const handleSelection = (selection) => {
         searchInput.current.value = selection
     }
+    const handleRadioChange = (event) => {
+        setRadioValue(event.target.value);
+    };
 
     const handleClick = () => {
         setShowContent(!showContent)
@@ -54,39 +59,28 @@ const EditorPage = () => {
 
     return (
         <>
-            <Form onSubmit={handleSearch}>
-                <Form.Control
-                    style={{ width: "18rem", margin: "0", padding: "0" }}
-                    type="search"
-                    className="me-2 "
-                    placeholder="Search for countries"
-                    aria-label="Search"
-                    ref={searchInput}
-                />
-            </Form>
-            <div className="filters">
-                <div onClick={() => handleSelection('nature')}>Nature</div>
-                <div onClick={() => handleSelection('birds')}>Birds</div>
-                <div onClick={() => handleSelection('cats')}>Cats</div>
-                <div onClick={() => handleSelection('shoes')}>Shoes</div>
-            </div>
-            <div className="gridHolder" style={{
-                backgroundImage: `url(${calendarImage})`,
-                backgroundSize: 'cover',
-                display: bool ? 'grid' : 'none'
-            }}>
+            <div className="EditorHolder">
+                <Sidebar
+                    handleSearch={handleSearch}
+                    searchInput={searchInput}
+                    handleSelection={handleSelection}
+                    radioValue={radioValue}
+                    setRadioValue={setRadioValue}
+                    hatchSide={hatchSide}
+                    setHatchSide={setHatchSide} />
+                <div className="content">
+                    <div className="gridHolder" style={{
+                        backgroundImage: `url(${calendarImage})`,
+                        backgroundSize: 'cover',
+                        display: bool ? 'grid' : 'none'
+                    }}>
 
-                {images.map(pic => {
-                    counter++;
-                    if (counter === 5) {
-                        alternate = !alternate;
-                        counter = 1;
-                    }
-                    alternate = !alternate;
-                    return alternate ? <Hatch key={pic.id} pic={pic} handleClick={handleClick} hatchSide={hatchSide} /> : <DoubleHatch key={pic.id} pic={pic} />
+                        {images.map(pic => {
+                            return radioValue === 'hatch' ? <Hatch key={pic.id} pic={pic} handleClick={handleClick} hatchSide={hatchSide} /> : <DoubleHatch key={pic.id} pic={pic} />
+                        })}
 
-                })}
-
+                    </div>
+                </div>
             </div>
         </>
     )
