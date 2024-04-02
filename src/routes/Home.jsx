@@ -8,19 +8,23 @@ const Home = () => {
       <div className="text-center mt-5">
         <h1 style={{ fontSize: "2rem", fontWeight: "bold", color: "whitesmoke" }}>Virtual Calendar</h1>
       </div>
+
+      <Container className="flex flex-col justify-center">
       <Row className="mt-5">
-        <Col md={6}>
-          <div style={{ marginLeft: '5rem' }}>
+        <Col md={7}>
+          <div style={{ marginLeft: '1rem' }}>
             <Carousel />
           </div>
         </Col>
-        <Col style={{ justifyContent: "center" }} md={6}>
+        <Col style={{ justifyContent: "center" }} md={5}>
           <div className="text-center mt-5" style={{ margin: "0 auto", maxWidth: "fit-content", textAlign: "justify" }}>
             <h1 style={{ fontSize: "1rem", fontWeight: "bold", color: "whitesmoke" }}>Countdown to Joy: Unlock the Magic Daily!</h1>
             <h2>Embark on a digital journey of anticipation and delight with our Digital Advent Calendar, where each day unveils a new virtual window, brimming with surprises, joy, and festive cheer.</h2>
           </div>
         </Col>
       </Row>
+      </Container>
+
       <Row className="mt-5" style={{ padding: "5rem" }}>
         <Col md={6} className="d-flex justify-content-center">
           <Card style={{ padding: "2rem", width: '25rem', height: '25rem' }}>
