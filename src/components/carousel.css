@@ -91,8 +91,7 @@
   #r5:checked ~ .s1 {
     margin-left: -80%;
   }
-  @media (max-width: 600px) {
-  
+  @media (max-width: 768px) {
     .bar{
       width:30px;
     }
