@@ -1,4 +1,4 @@
-import "../components/footerHeader.css";
+import "../styles/footerHeader.css";
 import { Link } from 'react-router-dom';
 
 const Header = () => {
