@@ -6,7 +6,7 @@ const Header = () => {
     return (
 
 
-        <div className="Header-container">
+        <div className="Header-container fixed top-0 w-full z-10">
             <div className='Header-content'>
                 <nav className="navbar">
 

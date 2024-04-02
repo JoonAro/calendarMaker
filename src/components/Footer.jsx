@@ -20,7 +20,11 @@ const Footer = () => {
   ];
 
   return (
-    <div className="footer-container">
+    
+
+
+
+    <div className="footer-container ">
       <div className="footer-content">
         <h className="footer-title">© 2023 All rights reserved</h>
         <nav className="footer-nav">
@@ -37,6 +41,7 @@ const Footer = () => {
         ))}
       </div>
     </div>
+    
   );
 }
 
