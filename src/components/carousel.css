@@ -18,6 +18,7 @@
     bottom: 20px;
     left: 50%;
     transform: translateX(-50%);
+    display: flex;
   }
   
   .bar {
@@ -65,6 +66,11 @@
     font-size: 25px;
     color: white;
   }
+  .radio-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
   
   #r1:checked ~ .s1 {
     margin-left: 0;
@@ -84,4 +90,14 @@
   
   #r5:checked ~ .s1 {
     margin-left: -80%;
+  }
+  @media (max-width: 600px) {
+  
+    .bar{
+      width:30px;
+    }
+    .navigation {
+      justify-content: flex-start;
+    }
+   
   }
