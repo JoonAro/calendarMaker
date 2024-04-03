@@ -25,23 +25,32 @@ const Home = () => {
         </Col>
       </Row>
 
+
     <div className='flex flex-col justify-center items-center mt-20'>
 <h2 className="text-3xl">Customize your calendar</h2>
-<div className="h-32 px-52 py-32 sm:px-80 rounded-md mt-3 sm:w-auto bg-whiteReplacement border relative">
-<div className="absolute top-0 left-0 m-2.5 flex flex-col items-center">
+<div className="w-screen py-40 rounded-md mt-3 bg-whiteReplacement border relative">
+<div className=" absolute top-0 left-0 mt-2.5 ml-5 sm:ml-40 items-start flex flex-col sm:items-center">
   <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon1} alt="icon1"/>
-  <span className='text-xs sm:text-sm mt-3 text-fontDark'>Choose a name of a calendar</span>
+  <span className='text-xs sm:text-base mt-3 text-fontDark'>Choose a name of a calendar</span>
+  <span className='text-zinc-400 text-xs'>What is the main idea of your calendar?</span>
   </div>
-  <div className="absolute top-20 left-1/2 transform -translate-x-1/2 m-2.5 flex flex-col items-center">
+
+  <div className="absolute top-20 left-1/2 transform -translate-x-1/2 mb-2 items-left-1/4 flex flex-col sm:items-center">
   <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon2} alt="icon2"/>
-  <span className='text-xs sm:text-sm mt-3 text-fontDark'>Change style, upload images</span>
+  <span className='text-xs sm:text-base mt-3 text-fontDark'>Change style, upload images</span>
+  <span className='text-zinc-400 text-xs'>Choose images and style of the hatches, theme
+  </span>
   </div>
-  <div className="absolute top-0 right-0 m-2.5 flex flex-col items-center">
+
+  <div className="absolute top-0 right-0 mt-2.5 mr-5 sm:mr-40 items-end flex flex-col sm:items-center">
         <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon3} alt="icon3"/>
-        <span className='text-xs sm:text-sm mt-3 text-fontDark'>Share your calendar</span>
+        <span className='text-xs sm:text-base mt-3 text-fontDark'>Share your calendar</span>
+        <span className='text-zinc-400 text-xs'>Whould you like to share your calendar? Sure, do it!
+  </span>
         </div>
 </div>
     </div>
+
 
       <Row className="mt-5" style={{ padding: "5rem" }}>
         <Col md={6} className="d-flex justify-content-center">
