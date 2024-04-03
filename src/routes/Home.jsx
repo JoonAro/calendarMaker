@@ -29,7 +29,7 @@ const Home = () => {
     <div className='flex flex-col justify-center items-center mt-20'>
 <h2 className="text-3xl mb-4">Customize your calendar</h2>
 <div className="w-screen py-40 rounded-md mt-4 bg-smallBackground border relative">
-<div className=" w-16 md:w-32 lg:w-60 absolute top-0 left-0 mt-2.5 ml-5 sm:ml-40 items-start flex flex-col sm:items-center">
+<div className=" w-16 md:w-32 lg:w-60 absolute top-0 left-0 mt-2.5 ml-14 sm:ml-40 items-start flex flex-col sm:items-center">
   <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon1} alt="icon1"/>
   <span className='text-xs sm:text-base mt-3 text-fontDark'>Choose a name of a calendar</span>
   <span className='text-zinc-400 text-xs'>What is the main idea of your calendar?</span>
@@ -42,7 +42,7 @@ const Home = () => {
   </span>
   </div>
 
-  <div className="w-16 md:w-32 lg:w-72 absolute top-0 right-0 mt-2.5 mr-5 sm:mr-40 items-end flex flex-col sm:items-center">
+  <div className="w-16 md:w-32 lg:w-72 absolute top-0 right-0 mt-2.5 mr-14 sm:mr-40 items-end flex flex-col sm:items-center">
         <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon3} alt="icon3"/>
         <span className='text-xs sm:text-base mt-3 text-fontDark'>Share your calendar</span>
         <span className='text-zinc-400 text-xs'>Whould you like to share your calendar? Sure, do it!
