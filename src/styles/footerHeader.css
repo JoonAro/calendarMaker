@@ -1,98 +1,112 @@
-.footer-container {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.Header-container {
     background-color: #c79263;
-    color:accent;
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height:60px;
-  }
-  .footer-content {
-    display: flex;
-    align-items: center;
-  }
-  
-  .footer-title {
-    margin: 12px 99px;
-    size: 4px;
     color: white;
-    text-decoration: underline;
-  }
-  
-  .footer-nav {
-    display: flex;
-    text-decoration: underline;
-  }
-  
-  .footer-nav a {
-    color: white;
-  
-    margin-right: 20px;
-  }
-  
-  .media-icons {
-    display: flex;
-    align-items: flex-end;
-  }
-  
-  .media-icon {
-    width: 40px;
-    height: 40px;
-    margin-right: 10px;
-  }
-  
-    .Header-container {
-    background-color: #c79263;
-    color:white;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     height: 60px;
     width: 100%;
-    justify-content: flex-end;
+    w-full: 100%;
     
-  }
-  .Header-content{
+}
+
+.Header-content {
     display: flex;
-    align-items: right;
-    padding: 20px;
+    justify-end: right; /* Not a valid Tailwind class, you can use justify-end */
+    justify-content: flex-end; /* Align to the right */
     width: 100%;
-    color: white;
-  }
-  .navbar{
+    margin-left: 60%; /* Push to the right */
+    margin-right: 6%; /* Adjust margin */
+}
+
+.navbar {
     display: flex;
-    align-items: right;
- 
+    align-items: right; /* Not a valid Tailwind class, you can use justify-end */
+    justify-content: flex-end; /* Align to the right */
     width: 100%;
-    
-    padding-left: 60%;
-    
-  }
-  .container-collection {
-    background-color: #c79263;
-    color:accent;
-    padding: 20px;
-    display: fixed;
-    justify-content: space-between;
-    align-items: center;
-     left: 0;
-    right:0;
-    width: 100%;
-  }
- 
-  .container-edit {
-    background-color: #c79263;
-    color:accent;
-    padding: 20px;
-    display: fixed;
-    justify-content: space-between;
-    align-items: center;
-     left: 0;
-    right:0;
-    width: 100%;
-  }
+}
+.footer-container {
+  background-color: #c79263;
+  color: white; /* Assuming white is the accent color */
+  padding: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
   
   
+  width: 100%;
+  height: 60px;
+  /* Not a valid Tailwind class, you can use w-full */
+  
+  inset: 0;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 10%;
+  inset:0;
+}
+
+.footer-title {
+  margin: 12px 99px; /* Not sure about this, Tailwind doesn't have size property */
+  font-size: 16px; /* Assuming you want to set font size */
+  color: white;
+  text-decoration: underline;
+}
+
+.footer-nav {
+  display: flex;
+  text-decoration: underline;
+}
+
+.footer-nav a {
+  color: white;
+  margin-right: 20px;
+}
+
+.media-icons {
+  display: flex;
+  align-items: flex-end;
+}
+
+.media-icon {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+
+.container-collection {
+    background-color: #c79263;
+    color: white; /* Assuming white is the accent color */
+    padding: 20px;
+    /* inset-0; Fill the viewport */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.container-edit {
+    background-color: #c79263;
+    color: white; /* Assuming white is the accent color */
+    padding: 20px;
+   /*   inset-0;Fill the viewport */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar {
+    color: white; /* Set link text color to white */
+     /* ml-4Add spacing between links */
+    text-decoration: none; 
+}
