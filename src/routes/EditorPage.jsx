@@ -61,20 +61,23 @@ const EditorPage = () => {
                     hatchSide={hatchSide}
                     setHatchSide={setHatchSide} />
                 <div className="content">
-
+                    <div className="spaceHolder"></div>
                     <div className="gridHolder" style={{
                         backgroundImage: `url(${calendarImage})`,
                     }}>
                         {!bool &&
-                            <div className="welcomeText">
+                            <div className="welcomeText flexColumnCentered">
                                 <h1>Welcome to the calendar editor!</h1>
-                                <p>Start Creating your calendar by searching a theme</p>
+                                <div className="textHolder flexColumnCentered">
+                                    <p>Start creating your calendar by searching for a theme or try one of our example themes & click submit!</p>
+                                </div>
                             </div>
                         }
                         {images.map(pic => {
                             return radioValue === 'hatch' ? <Hatch key={pic.id} pic={pic} handleClick={handleClick} hatchSide={hatchSide} /> : <DoubleHatch key={pic.id} pic={pic} />
                         })}
                     </div>
+                    <div className="spaceHolder"></div>
                 </div>
             </div>
         </>
