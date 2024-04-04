@@ -16,10 +16,10 @@ p {
     height: 100%;
     width: 250px;
     position: fixed;
-    top: 0;
+    top: 60px;
     left: 0;
-    background-color: rgba(232, 180, 184, 1);
-    padding-top: 20px;
+    background-color: rgba(238, 214, 211, 1);
+    padding-top: 30px;
 }
 
 .filters {
@@ -55,4 +55,11 @@ p {
 label {
     margin: 0px 0 5px 12px;
     width: 70.2px;
+}
+
+.fullWidth {
+    display: flex;
+    width: 200px;
+    justify-content: center;
+    margin-bottom: 40px;
 }

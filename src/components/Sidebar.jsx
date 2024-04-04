@@ -22,7 +22,11 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRa
                     />
                 </Form>
                 <div className='themeHolder'>
-
+                    <div className='filters'>
+                    </div>
+                    <div className='fullWidth'>
+                        <p>Examples</p>
+                    </div>
                     <div className='themeSelection' onClick={() => handleSelection('nature')}>Nature</div>
                     <div className='themeSelection' onClick={() => handleSelection('bird')}>Bird</div>
                     <div className='themeSelection' onClick={() => handleSelection('cat')}>Cat</div>
