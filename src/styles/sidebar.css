@@ -16,15 +16,14 @@ p {
     height: 100%;
     width: 250px;
     position: fixed;
-    top: 0;
+    top: 60px;
     left: 0;
-    background-color: rgba(232, 180, 184, 1);
-    padding-top: 20px;
+    background-color: rgba(238, 214, 211, 1);
 }
 
 .filters {
     padding: 20px;
-    margin: 20px 0;
+    /*  margin: 0 0 20px 0; */
     width: 220px;
     border-bottom: 1px solid black;
 }
@@ -34,7 +33,6 @@ p {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding: 20px 0;
 }
 
 .themeSelection {
@@ -55,4 +53,11 @@ p {
 label {
     margin: 0px 0 5px 12px;
     width: 70.2px;
+}
+
+.fullWidth {
+    display: flex;
+    width: 175px;
+    justify-content: center;
+    margin-bottom: 20px;
 }
