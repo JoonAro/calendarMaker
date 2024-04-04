@@ -1,16 +1,19 @@
 import '../styles/sidebar.css'
 import { Form } from 'react-bootstrap';
+import ButtonComponent from './ButtonComponent';
 const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRadioValue, hatchSide, setHatchSide }) => {
     return (
         <div className="sidebar">
-            <p>Choose a theme</p>
             <div className="filters">
+                <div className='fullWidth'>
+                    <p>Choose a theme</p>
+                </div>
                 <Form style={{
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    margin: '0, 8px',
+                    margin: '0, 8px, 30px, 8px',
                     borderBottom: '1px solid #ccc'
                 }} onSubmit={handleSearch}>
                     <Form.Control
@@ -20,23 +23,30 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRa
                         aria-label="Search"
                         ref={searchInput}
                     />
-                </Form>
-                <div className='themeHolder'>
-                    <div className='filters'>
+                    <div className='h-16 mt-6 flex items-end justify-end'>
+
+                        <ButtonComponent />
                     </div>
+                </Form>
+            </div>
+            <div className='filters'>
+                <div className='themeHolder'>
                     <div className='fullWidth'>
                         <p>Examples</p>
                     </div>
-                    <div className='themeSelection' onClick={() => handleSelection('nature')}>Nature</div>
-                    <div className='themeSelection' onClick={() => handleSelection('bird')}>Bird</div>
+                    <div className='themeSelection' onClick={() => handleSelection('wildlife')}>Wildlife</div>
+                    <div className='themeSelection' onClick={() => handleSelection('macro')}>Macro</div>
                     <div className='themeSelection' onClick={() => handleSelection('cat')}>Cat</div>
-                    <div className='themeSelection' onClick={() => handleSelection('shoes')}>Shoes</div>
-                    <div className='themeSelection' onClick={() => handleSelection('space')}>Space</div>
+                    <div className='themeSelection' onClick={() => handleSelection('easter')}>Easter</div>
+                    <div className='themeSelection' onClick={() => handleSelection('xmas')}>Xmas</div>
                     <div className='themeSelection' onClick={() => handleSelection('diving')}>Diving</div>
                 </div>
             </div>
-            <p>Hatches</p>
             <div className='filters'>
+                <div className='fullWidth'>
+
+                    <p>Hatches</p>
+                </div>
                 <label>
                     <input
                         type="radio"
