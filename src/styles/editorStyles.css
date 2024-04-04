@@ -7,10 +7,15 @@
     background-color: rgba(103, 89, 94, 1);
 }
 
+.spaceHolder {
+    padding: 1.5vw;
+}
+
 .gridHolder {
     margin: 30px;
-    padding: 50px 30px 50px 50px;
-    max-width: 1100px;
+    padding: 50px;
+    max-width: 1060px;
+    min-width: 1060px;
     min-height: 90vh;
     position: relative;
     display: grid;
@@ -24,11 +29,14 @@
     border-radius: 30px;
 }
 
-.welcomeText {
+.flexColumnCentered {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.welcomeText {
     position: absolute;
     top: 40%;
     left: 0;
@@ -38,7 +46,13 @@
     z-index: 9;
 }
 
-.welcomeText p h1 {
+.textHolder {
+    margin: 20px 0;
+    width: 600px;
+    text-align: center;
+}
+
+.welcomeText h1 {
     position: relative;
     margin: 0 auto;
     text-align: center;
