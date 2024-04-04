@@ -13,6 +13,10 @@ export default {
         "whiteReplacement": "#FDFBFA",
         "fontDark": "#272144",
       },
+      fontFamily: {
+        sans: ['Nunito Sans', 'ui-sans-serif', 'system-ui'],
+        body: ['Nunito Sans'],
+      }
     },
   },
   plugins: [],
