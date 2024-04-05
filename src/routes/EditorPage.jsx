@@ -32,6 +32,15 @@ const EditorPage = () => {
         setShowContent(!showContent)
     }
 
+    //Date
+    // const hatchEnable = () => {
+    //     if (year > 2023) return true;
+    //     if (index <= day) return true;
+    //     //if (month === 11 && index <= day) return true; December
+    //     return false;
+    
+    // }
+
     const fetchImages = async () => {
         try {
 
@@ -73,8 +82,21 @@ const EditorPage = () => {
                                 </div>
                             </div>
                         }
-                        {images.map(pic => {
-                            return radioValue === 'hatch' ? <Hatch key={pic.id} pic={pic} handleClick={handleClick} hatchSide={hatchSide} /> : <DoubleHatch key={pic.id} pic={pic} />
+                        {images.map((pic, index) => {
+                            const startDate = new Date();
+                            const daysToAdd = 1;
+                        const date = new Date(startDate);
+                        date.setDate(date.getDate() + daysToAdd * index);
+                           console.log("DATE", date)
+
+                           const formattedDate = date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
+
+                            return radioValue === 'hatch' ? <Hatch key={`${pic.id}_${index}`} 
+                             pic={pic} 
+                             handleClick={handleClick} 
+                             hatchSide={hatchSide} 
+                             date={formattedDate}/> : 
+                             <DoubleHatch key={`${pic.id}_${index}`} pic={pic} date={formattedDate}/>
                         })}
                     </div>
                     <div className="spaceHolder"></div>
