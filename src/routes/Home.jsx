@@ -1,22 +1,25 @@
 import Carousel from '../components/Carousel';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Carousel as CarouselBS } from 'react-bootstrap';
 import icon1 from '../assets/icon1.svg';
 import icon2 from '../assets/icon2.svg';
 import icon3 from '../assets/icon3.svg';
 
 const Home = () => {
   return (
-    <Container fluid style={{ color: "whitesmoke", backgroundColor: "#67595E", padding: "5rem" }}>
-      <div className="text-center mt-5">
-        <h1 style={{ fontSize: "2rem", fontWeight: "bold", color: "whitesmoke" }}>Online Calendar</h1>
-      </div>
+    <Container fluid style={{ maxWidth: "100vw", color: "whitesmoke", backgroundColor: "#67595E" }}>
+      <Carousel />
 
-      <Row className="mt-5">
-        <Col md={7}>
-          <div style={{ marginLeft: '1rem' }}>
-            <Carousel />
+
+      {/*
+      <Col md={7}>
+        <div >
+          <div className="text-center mt-5">
+            <h1 style={{ fontSize: "2rem", fontWeight: "bold", color: "whitesmoke" }}>Online Calendar</h1>
           </div>
-        </Col>
+        </div>
+      </Col>
+      <Row className="mt-5">
         <Col style={{ justifyContent: "center" }} md={5}>
           <div className="text-center mt-5" style={{ margin: "0 auto", maxWidth: "fit-content", textAlign: "justify" }}>
             <h1 style={{ fontSize: "1.5rem", fontWeight: "bold", color: "whitesmoke", marginBottom: "2rem" }}>Advent Calendar<br />Create your style and share with friends!</h1>
@@ -25,7 +28,7 @@ const Home = () => {
         </Col>
       </Row>
 
-
+*/}
       <div className='flex flex-col justify-center items-center mt-20'>
         <h2 className="text-3xl mb-4">Customize your calendar</h2>
         <div className="w-screen py-40 rounded-md mt-4 bg-smallBackground border relative">
@@ -50,8 +53,53 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Row className="mt-5" style={{ padding: "5rem" }}>
+        <CarouselBS>
+          <CarouselBS.Item>
+            <Col className="d-flex justify-content-center">
+              <Card style={{ padding: "1rem", width: '20rem', height: "20rem" }}>
+                <Card.Body>
+                  <Card.Title>Free Plan</Card.Title>
+                  <Card.Text style={{ fontSize: '2rem' }}>
+                    €0/mo
+                  </Card.Text>
+                  <hr />
+                  <Card.Text>Includes:</Card.Text>
+                  <ul style={{ listStyleType: 'none' }}>
+                    <li style={{ padding: "0.5rem" }}>&#10003; 4 calendars</li>
+                    <li style={{ padding: "0.5rem" }}>&#10003; Feature text goes here</li>
+                    <li style={{ padding: "0.5rem" }}>&#10003; Feature text goes here</li>
+                  </ul>
+                  <Button style={{ backgroundColor: "#67595E", borderColor: "#67595E" }} onClick={() => window.location.href = '/register'}>Register</Button>
+                </Card.Body>
+              </Card>
+            </Col>
 
-      <Row className="mt-5" style={{ padding: "1rem" }}>
+          </CarouselBS.Item>
+          <CarouselBS.Item>
+            <Col className="d-flex justify-content-center mt-5 mt-md-0">
+              <Card style={{ padding: "1rem", width: '20rem', height: "20rem" }}>
+                <Card.Body>
+                  <Card.Title>Free Plan</Card.Title>
+                  <Card.Text style={{ fontSize: '2rem' }}>
+                    €5/mo
+                  </Card.Text>
+                  <hr />
+                  <Card.Text>Includes:</Card.Text>
+                  <ul >
+                    <li style={{ padding: "0.5rem" }}>&#10003; 4 calendars</li>
+                    <li style={{ padding: "0.5rem" }}>&#10003; Feature text goes here</li>
+                    <li style={{ padding: "0.5rem" }}>&#10003; Feature text goes here</li>
+                  </ul>
+                  <Button style={{ backgroundColor: "#67595E", borderColor: "#67595E" }}>Get Started</Button>
+                </Card.Body>
+              </Card>
+            </Col>
+
+          </CarouselBS.Item>
+        </CarouselBS>
+      </Row>
+      {/*    <Row className="mt-5" style={{ padding: "1rem" }}>
         <Col md={7} xs={12} className="d-flex justify-content-center ">
           <Card style={{ padding: "1rem", width: '20rem', height: "20rem" }}>
             <Card.Body>
@@ -88,8 +136,8 @@ const Home = () => {
             </Card.Body>
           </Card>
         </Col>
-      </Row>
-    </Container>
+      </Row> */}
+    </Container >
 
   );
 };

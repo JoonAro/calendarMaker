@@ -1,53 +1,38 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
 .Header-container {
-    background-color: #c79263;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 60px;
-    width: 100%;
-    w-full: 100%;
-    
+  background-color: #EED6D3;
+  color: #272144;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 60px;
+  max-width: 100vw;
 }
 
 .Header-content {
-    display: flex;
-    justify-end: right; /* Not a valid Tailwind class, you can use justify-end */
-    justify-content: flex-end; /* Align to the right */
-    width: 100%;
-    margin-left: 60%; /* Push to the right */
-    margin-right: 6%; /* Adjust margin */
+  display: flex;
+  justify-content: flex-end; /* Align to the right */
+  width: 100%;
+  margin-left: 60%; /* Push to the right */
+  margin-right: 6%; /* Adjust margin */
 }
+ 
 
 .navbar {
-    display: flex;
-    align-items: right; /* Not a valid Tailwind class, you can use justify-end */
-    justify-content: flex-end; /* Align to the right */
-    width: 100%;
+  display: flex;
+  align-items: flex-end; /* Align to the right */
+  justify-content: flex-end; /* Align to the right */
+  width: 100%;
 }
+
 .footer-container {
-  background-color: #c79263;
-  color: white; /* Assuming white is the accent color */
+  background-color: #EED6D3;
+  color: #272144; /* Assuming white is the accent color */
   padding: 20px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  
-  
   width: 100%;
   height: 60px;
-  /* Not a valid Tailwind class, you can use w-full */
-  
-  inset: 0;
 }
 
 .footer-content {
@@ -55,13 +40,12 @@
   align-items: center;
   justify-content: flex-end;
   padding-right: 10%;
-  inset:0;
 }
 
 .footer-title {
-  margin: 12px 99px; /* Not sure about this, Tailwind doesn't have size property */
+  margin: 12px 99px; /* Assuming you want some specific margin */
   font-size: 16px; /* Assuming you want to set font size */
-  color: white;
+  color: white; /* Assuming you want white color */
   text-decoration: underline;
 }
 
@@ -71,7 +55,7 @@
 }
 
 .footer-nav a {
-  color: white;
+  color: #272144;
   margin-right: 20px;
 }
 
@@ -86,27 +70,11 @@
   margin-right: 10px;
 }
 
-
-.container-collection {
-    background-color: #c79263;
-    color: white; /* Assuming white is the accent color */
-    padding: 20px;
-    /* inset-0; Fill the viewport */
-    justify-content: space-between;
-    align-items: center;
-}
-
+.container-collection,
 .container-edit {
-    background-color: #c79263;
-    color: white; /* Assuming white is the accent color */
-    padding: 20px;
-   /*   inset-0;Fill the viewport */
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar {
-    color: white; /* Set link text color to white */
-     /* ml-4Add spacing between links */
-    text-decoration: none; 
+  background-color: #c79263;
+  color: #272144; /* Assuming white is the accent color */
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
 }
