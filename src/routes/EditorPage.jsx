@@ -7,7 +7,7 @@ import Sidebar from "../components/Sidebar";
 
 const API_KEY = import.meta.env.VITE_UNSPLASH_API;
 const API_URL = "https://api.unsplash.com/search/photos";
-const IMAGES_PER_PAGE = 25;
+const IMAGES_PER_PAGE = 30;
 
 const EditorPage = () => {
     const [images, setImages] = useState([]);
@@ -41,6 +41,26 @@ const EditorPage = () => {
     
     // }
 
+    let datesArray = [];
+    const daysToAdd = 1;
+     const startDate = new Date();
+
+startDate.setDate(1);
+
+   const currentMonth = startDate.getMonth();
+   const daysInMonth = new Date(startDate.getFullYear(), currentMonth + 1, 0).getDate();
+
+   for (let i = 0; i < daysInMonth; i++) {
+    const date = new Date(startDate);
+    date.setDate(date.getDate() + daysToAdd * i);
+    datesArray.push(date);
+}
+
+for (let i = datesArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [datesArray[i], datesArray[j]] = [datesArray[j], datesArray[i]];
+}
+
     const fetchImages = async () => {
         try {
 
@@ -60,6 +80,7 @@ const EditorPage = () => {
 
     return (
         <>
+
             <div className="EditorHolder">
                 <Sidebar
                     handleSearch={handleSearch}
@@ -70,36 +91,33 @@ const EditorPage = () => {
                     hatchSide={hatchSide}
                     setHatchSide={setHatchSide} />
                 <div className="content">
-                    <div className="spaceHolder"></div>
+
                     <div className="gridHolder" style={{
                         backgroundImage: `url(${calendarImage})`,
                     }}>
                         {!bool &&
-                            <div className="welcomeText flexColumnCentered">
+                            <div className="welcomeText">
                                 <h1>Welcome to the calendar editor!</h1>
-                                <div className="textHolder flexColumnCentered">
-                                    <p>Start creating your calendar by searching for a theme or try one of our example themes & click submit!</p>
-                                </div>
+                                <p>Start Creating your calendar by searching a theme</p>
                             </div>
                         }
-                        {images.map((pic, index) => {
-                            const startDate = new Date();
-                            const daysToAdd = 1;
-                        const date = new Date(startDate);
-                        date.setDate(date.getDate() + daysToAdd * index);
-                           console.log("DATE", date)
+                        {images.map((pic, index )=> {
+                            
 
-                           const formattedDate = date.toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
+                            const formattedDate = datesArray[index].toLocaleDateString('en-US', { day: 'numeric', month: 'short', year: 'numeric' });
 
-                            return radioValue === 'hatch' ? <Hatch key={`${pic.id}_${index}`} 
-                             pic={pic} 
-                             handleClick={handleClick} 
-                             hatchSide={hatchSide} 
-                             date={formattedDate}/> : 
-                             <DoubleHatch key={`${pic.id}_${index}`} pic={pic} date={formattedDate}/>
+                            return radioValue === 'hatch' ? 
+                            <Hatch key={`${pic.id}_${index}`} 
+                            pic={pic} 
+                            handleClick={handleClick} 
+                            hatchSide={hatchSide} 
+                            date={formattedDate}/> : 
+                            <DoubleHatch key={`${pic.id}_${index}`} 
+                            pic={pic} 
+                            />
                         })}
+                     
                     </div>
-                    <div className="spaceHolder"></div>
                 </div>
             </div>
         </>
