@@ -11,7 +11,7 @@ const Header = () => {
     };
 
     return (
-        <div className="Header-container fixed top-0 w-full z-10 bg-smallBackground text-black flex justify-between items-center h-16 px-4">
+        <div className="Header-container fixed top-0 w-full  bg-smallBackground text-black flex justify-between items-center h-16 px-4">
             <div className='Header-content flex items-center'>
                 <img src={calendar} alt="Calendar" className="h-8 mr-2" /> {/* Using the calendar image */}
                 <span className="text-sm">Dream Calendar</span> {/* Adding the logo name */}
