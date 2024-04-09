@@ -25,7 +25,7 @@ const Footer = () => {
       <div className="media-icons flex ml-auto mr-4">
         {mediaData.map((item, index) => (
           <a href={item.href} target="_blank" rel="noopener noreferrer" key={index}>
-            <img src={item.img} alt={item.title} className="w-10 h-10 mr-2" />
+            <img src={item.img} alt={item.title} className="w-6 h-6 mr-2" />
           </a>
         ))}
       </div>
