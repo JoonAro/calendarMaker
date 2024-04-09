@@ -7,6 +7,7 @@ import Register from "./routes/Register";
 import EditorPage from "./routes/EditorPage";
 import Calendar from "./routes/Calendar";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Dashboard from "./routes/Dashboard";
 function App() {
 
   return (
@@ -33,6 +34,12 @@ function App() {
             path="/calendar"
             element={
               <Calendar />
+            }
+          />
+          <Route
+            path="/dashboard"
+            element={
+              <Dashboard/>
             }
           />
 
