@@ -13,7 +13,7 @@ const Hatch = ({ pic, handleClick, hatchSide }) => {
     }
     return (
         <div style={{
-            backgroundImage: showImage ? `url("${pic.urls.small}")` : 'url("")'
+            backgroundImage: showImage ? `url("${hatch.hatchImg}")` : 'url("")'
         }} className={`calendarImage `} onClick={handleClick}>
             <div onClick={openHatch} className={`hatch ${hatchSide} ${clicked ? 'openStyle' : 'closedStyle'}`}>
             </div>

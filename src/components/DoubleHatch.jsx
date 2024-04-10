@@ -1,6 +1,6 @@
 import { useState } from "react";
 import '../styles/editorStyles.css';
-const DoubleHatch = ({ pic }) => {
+const DoubleHatch = ({ hatch }) => {
     const [clicked, setClicked] = useState(false);
     const [showImage, setShowImage] = useState(false);
     const openHatch = () => {
@@ -13,7 +13,7 @@ const DoubleHatch = ({ pic }) => {
     }
     return (
         <div style={{
-            backgroundImage: showImage ? `url("${pic.urls.small}")` : 'url("")'
+            backgroundImage: showImage ? `url("${hatch.hatchImg}")` : 'url("")'
         }} className={`calendarImage `}>
             <div onClick={openHatch} className={`hatch left ${clicked ? 'openStyle' : 'closedStyle'}`}>
             </div>
