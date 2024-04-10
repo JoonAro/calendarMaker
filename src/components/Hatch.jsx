@@ -1,6 +1,6 @@
 import { useState } from "react";
 import '../styles/editorStyles.css';
-const Hatch = ({ pic, handleClick, hatchSide }) => {
+const Hatch = ({ hatch, handleClick, hatchSide }) => {
     const [clicked, setClicked] = useState(false);
     const [showImage, setShowImage] = useState(false);
     const openHatch = () => {
