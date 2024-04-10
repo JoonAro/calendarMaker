@@ -4,24 +4,28 @@ import Hatch from "../components/Hatch";
 import DoubleHatch from "../components/DoubleHatch";
 import '../styles/editorStyles.css';
 import Sidebar from "../components/Sidebar";
+import { CalendarClass, HatchClass } from "../../classes/classes";
 
 const API_KEY = import.meta.env.VITE_UNSPLASH_API;
 const API_URL = "https://api.unsplash.com/search/photos";
-const IMAGES_PER_PAGE = 25;
+const IMAGES_PER_PAGE = 30;
 
 const EditorPage = () => {
     const [images, setImages] = useState([]);
+    const [bgImages, setBgImages] = useState([]);
     const [calendarImage, setCalendarImage] = useState("https://images.unsplash.com/photo-1556888335-23631cd2801a?q=80&w=2053&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     const [bool, setBool] = useState(false);
     const [showContent, setShowContent] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
+    const [pageNr, setPageNr] = useState(2);
     const [radioValue, setRadioValue] = useState('hatch');
     const [hatchSide, setHatchSide] = useState('left');
     const searchInput = useRef(null);
-
+    const [calendar, setCalendar] = useState(null);
+    // Clean up unnecessary usestates above
     const handleSearch = (event) => {
         event.preventDefault();
-        console.log(searchInput.current.value);
+        // console.log(searchInput.current.value);
         fetchImages();
     }
     const handleSelection = (selection) => {
@@ -37,17 +41,63 @@ const EditorPage = () => {
 
             const { data } = await axios.get(`${API_URL}?query=${searchInput.current.value}&page=1&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
             console.log('result', data.results, 'length', data.results.length);
-            const calendarBackground = data.results[data.results.length - 1].urls.full;
-            setCalendarImage(calendarBackground);
-            data.results.pop();
+            const result = data.results;
             setImages(data.results);
             setTotalPages(data.total_pages);
-            setBool(true);
+            /* setBool(true); */
+            createCalendar(result);
+        }
+        catch (error) {
+            console.log(error)
+        }
+        fetchBgImage();
+    };
+
+    const fetchBgImage = async () => {
+        try {
+            const { data } = await axios.get(`${API_URL}?query=${searchInput.current.value}&page=${pageNr}&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
+            setBgImages(data.results);
+            setCalendarImage(data.results[0].urls.full);
         }
         catch (error) {
             console.log(error)
         }
     };
+
+    const createCalendar = (result) => {
+        const calendarObj = createObject(result);
+        setCalendar(calendarObj);
+        setTimeout(() => setBool(true), 1000);
+        console.log(calendar);
+    }
+    const createObject = (result) => {
+        let startDate = new Date(2024, 11, 1);
+        let hatches = [];
+        let numbOfHatches = 0;
+        let date;
+        for (let i = 0; i < result.length; i++) {
+            date = new Date(startDate);
+            date.setDate(startDate.getDate() + i);
+            let hatchImg = result[i].urls.small;
+            let status = false;
+            let hatch;
+            let hatchNr = i + 1;
+            if (i === 5) {
+                hatch = new HatchClass(date, hatchNr, hatchImg, status, 'double', 'left');
+            }
+            else if (i === 3 || i === 7 || i === 11 || i === 15) {
+                hatch = new HatchClass(date, hatchNr, hatchImg, status, 'single', 'right');
+            }
+            else {
+                hatch = new HatchClass(date, hatchNr, hatchImg, status);
+            }
+            console.log("hatchNr", hatchNr)
+            hatches.push(hatch);
+            numbOfHatches++;
+        }
+        let calendar = new CalendarClass(startDate, date, calendarImage, hatches, numbOfHatches, false);
+        return calendar;
+    }
 
     return (
         <>
@@ -73,8 +123,15 @@ const EditorPage = () => {
                                 </div>
                             </div>
                         }
-                        {images.map(pic => {
-                            return radioValue === 'hatch' ? <Hatch key={pic.id} pic={pic} handleClick={handleClick} hatchSide={hatchSide} /> : <DoubleHatch key={pic.id} pic={pic} />
+
+                        {bool && calendar.hatches.map(hatch => {
+                            let hatchKey = hatch.date.getDate();
+                            let hatchSide = hatch.hatchSide;
+                            /*    console.log('hatch', hatch);
+                               console.log('hatch date.getDate()', hatch.date.getDate());
+                               console.log('hatchSide', hatchSide); */
+                            let hatchType = hatch.hatchType;
+                            return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} handleClick={handleClick} hatchSide={hatchSide} /> : <DoubleHatch key={hatchKey} hatch={hatch} />
                         })}
                     </div>
                     <div className="spaceHolder"></div>
