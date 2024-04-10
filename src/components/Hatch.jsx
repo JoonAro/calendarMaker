@@ -16,6 +16,9 @@ const Hatch = ({ hatch, handleClick, hatchSide }) => {
             backgroundImage: showImage ? `url("${hatch.hatchImg}")` : 'url("")'
         }} className={`calendarImage `} onClick={handleClick}>
             <div onClick={openHatch} className={`hatch ${hatchSide} ${clicked ? 'openStyle' : 'closedStyle'}`}>
+                <p style={{
+                    color: 'whitesmoke'
+                }}>{hatch.hatchNr}</p>
             </div>
         </div>
     )
