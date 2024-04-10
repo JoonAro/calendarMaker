@@ -5,7 +5,8 @@
   flex-wrap: wrap;
 }
  .showCard {
-  width: 100vw;
+  margin-left: -8px;
+  width: 99vw;
   height: 80vh;
   overflow: hidden;
   position: relative;
