@@ -86,6 +86,10 @@
     transform-origin: var(--i);
 }
 
+.hatchNumber {
+    color: rgb(179, 58, 58);
+}
+
 .right {
     --i: right center;
     --y: -1;
