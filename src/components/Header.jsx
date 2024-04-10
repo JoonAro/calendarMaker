@@ -1,42 +1,52 @@
+import { Button, Container, Nav, Navbar, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 import calendar from '../assets/media/calendar.svg';
-import menuIcon from '../assets/media/menu.svg'; // Importing the menu icon
 
 const Header = () => {
-    const [menuOpen, setMenuOpen] = useState(false); // State to manage menu visibility
-
-    const closeMenu = () => {
-        setMenuOpen(false); // Function to close the menu
-    };
 
     return (
-        <div className="Header-container fixed top-0 w-full  bg-smallBackground text-black flex justify-between items-center h-16 px-4">
-            <div className='Header-content flex items-center'>
-                <img src={calendar} alt="Calendar" className="h-8 mr-2" /> {/* Using the calendar image */}
-                <span className="text-sm">Dream Calendar</span> {/* Adding the logo name */}
-            </div>
-            <nav className="navbar sm:flex justify-end">
-                <button onClick={() => setMenuOpen(!menuOpen)} className="sm:hidden block">
-                    {/* Menu button with the menu icon */}
-                    <img src={menuIcon} alt="Menu" className="h-6 w-6" />
-                </button>
-                <div className={`sm:hidden absolute top-16 right-0 bg-white border border-gray-200 mt-2 w-48 rounded-md shadow-lg ${menuOpen ? 'block' : 'hidden'}`}>
-                    <Link to="/" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={closeMenu}>Home</Link>
-                    <Link to="/register" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={closeMenu}>Register</Link>
-                    <Link to="/login" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={closeMenu}>Login</Link>
-                    <Link to="/calendar" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={closeMenu}>Calendar</Link>
-                    <Link to="/editorPage" className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" onClick={closeMenu}>Edit</Link>
-                </div>
-                <div className="hidden sm:flex">
-                    <Link to="/" className="mx-4">Home</Link>
-                    <Link to="/register" className="mx-4">Register</Link>
-                    <Link to="/login" className="mx-4">Login</Link>
-                    <Link to="/calendar" className="mx-4">Calendar</Link>
-                    <Link to="/editorPage" className="mx-4">Edit</Link>
-                </div>
-            </nav>
-        </div>
+        <Container fluid>
+
+            <Row>
+                <Navbar
+                    style={{ backgroundColor: '#EED6D3' }}
+                    expand="md"
+                >
+                    <img
+                        className="img-thumbnail mx-auto d-block mb-2"
+                        style={{ width: "40%", maxWidth: "5rem", height: "5rem", backgroundColor: '#EED6D3', borderColor: '#EED6D3' }}
+                        src={calendar}
+                        alt="calendar"
+                    />
+
+                    <Container className="justify-content-end">
+                        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav">
+                            <Nav className="ml-auto">
+                                <Link to="/">
+                                    <Button variant="contained" style={{ color: '#ffffff' }}>Home</Button>
+                                </Link>
+                                <Link to="/register">
+                                    <Button variant="contained" style={{ color: '#ffffff' }}>Register</Button>
+                                </Link>
+                                <Link to="/login">
+                                    <Button variant="contained" style={{ color: '#ffffff' }}>Login</Button>
+                                </Link>
+                                <Link to="/editorPage">
+                                    <Button variant="contained" style={{ color: '#ffffff' }}>Edit</Button>
+                                </Link>
+                                <Link to="/dashboard">
+                                    <Button variant="contained" style={{ color: '#ffffff' }}>Dashboard</Button>
+                                </Link>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Container>
+
+                </Navbar>
+            </Row>
+        </Container >
+
+
     );
 };
 

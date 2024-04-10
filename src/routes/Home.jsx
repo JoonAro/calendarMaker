@@ -10,9 +10,10 @@ const Home = () => {
   return (
     <Container fluid style={{ maxWidth: "100vw", color: "whitesmoke", backgroundColor: "#67595E" }}>
       <Carousel />
+
       <div className='flex flex-col justify-center items-center mt-20'>
         <h2 className="text-3xl mb-4">Customize your calendar</h2>
-        <div className="w-screen py-40 rounded-md mt-4 bg-smallBackground border relative">
+        <div className="w-full py-40 rounded-md mt-4 bg-smallBackground border relative">
           <div className=" w-16 md:w-32 lg:w-60 absolute top-0 left-0 mt-2.5 ml-14 sm:ml-40 items-start flex flex-col sm:items-center">
             <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon1} alt="icon1" />
             <span className='text-xs sm:text-base mt-3 text-fontDark'>Choose a name of a calendar</span>
@@ -61,7 +62,7 @@ const Home = () => {
 
           </CarouselBS.Item>
           <CarouselBS.Item>
-            <Col className="d-flex justify-content-center mt-5 mt-md-0">
+            <Col className="d-flex justify-content-center">
               <Card style={{ padding: "1rem", width: '20rem', height: "20rem" }}>
                 <Card.Body>
                   <Card.Title>Free Plan</Card.Title>
@@ -79,7 +80,6 @@ const Home = () => {
                 </Card.Body>
               </Card>
             </Col>
-
 
           </CarouselBS.Item>
         </CarouselBS>

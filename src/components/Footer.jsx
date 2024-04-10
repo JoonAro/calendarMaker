@@ -1,36 +1,26 @@
-import { Link } from 'react-router-dom';
-import facebook from '../assets/media/facebook.png';
-import linkedin from '../assets/media/linkedin.png';
-import instagram from '../assets/media/instagram.png';
-import youtube from '../assets/media/youtube.png';
 
-const Footer = () => {
-  const mediaData = [
-    { href: "https://www.facebook.com", img: facebook },
-    { href: "https://www.instagram.com", img: instagram },
-    { href: "https://www.linkedin.com", img: linkedin },
-    { href: "https://www.youtube.com/@gooddomicroprojects/", img: youtube },
-  ];
+const Footer = () =>
 
-  return (
-    <div className="footer-container bg-accentColor text-white flex items-center h-20 ml-30">
-      <div className="footer-content flex justify-start pl-20 space-x-10"> {/* Adjusted pl-20 */}
-        <h2 className="footer-title">© 2023 All rights reserved</h2>
-        <nav className="footer-nav flex space-x-4">
-          <Link to="/privacy" className="text-white underline">Privacy Policy</Link>
-          <Link to="/terms" className="text-white underline">Terms of Service</Link>
-        </nav>
-        <h2 className="footer-title">Cookies Setting</h2>
+  <footer className="bg-accentColor rounded-lg  ">
+    <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+      <div className="sm:flex sm:items-center sm:justify-between">
+        <ul className="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 ">
+          <li>
+            <a href="#" className="hover:underline me-4 md:me-6">About</a>
+          </li>
+          <li>
+            <a href="#" className="hover:underline me-4 md:me-6">Privacy Policy</a>
+          </li>
+          <li>
+            <a href="#" className="hover:underline me-4 md:me-6">Licensing</a>
+          </li>
+          <li>
+            <a href="#" className="hover:underline">Contact</a>
+          </li>
+        </ul>
       </div>
-      <div className="media-icons flex ml-auto mr-4">
-        {mediaData.map((item, index) => (
-          <a href={item.href} target="_blank" rel="noopener noreferrer" key={index}>
-            <img src={item.img} alt={item.title} className="w-6 h-6 mr-2" />
-          </a>
-        ))}
-      </div>
+
     </div>
-  );
-}
+  </footer>
 
-export default Footer;
+export default Footer
