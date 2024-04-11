@@ -55,9 +55,9 @@ const EditorPage = () => {
         }
     };
 
-    const handleBgSelection = (test) => {
+    const handleBgSelection = (hatchImg) => {
         //create next phaze
-        console.log(test)
+        setCalendarImage(hatchImg.urls.full)
     }
 
     const createCalendar = (result) => {
@@ -120,10 +120,9 @@ const EditorPage = () => {
                             </div>
                         }
                         {bool && images.map(hatchImg => {
-                            return <div className="calendarImage" key={hatchImg.id} style={{
-                                backgroundImage: `url(${hatchImg.urls.full})`
+                            return <div className="calendarImage" key={hatchImg.id} onClick={() => handleBgSelection(hatchImg)} style={{
+                                backgroundImage: `url(${hatchImg.urls.small})`
                             }}></div>
-                            // To add: onclick it updates background image with that image!
 
                         })}
                     </div>
