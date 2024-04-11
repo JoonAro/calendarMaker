@@ -5,6 +5,7 @@ import DoubleHatch from "../components/DoubleHatch";
 import '../styles/editorStyles.css';
 import Sidebar from "../components/Sidebar";
 import { CalendarClass, HatchClass } from "../../classes/classes";
+import ImageCatalogue from "../components/ImageCatalogue";
 
 const API_KEY = import.meta.env.VITE_UNSPLASH_API;
 const API_URL = "https://api.unsplash.com/search/photos";
@@ -15,6 +16,7 @@ const EditorPage = () => {
     const [bgImages, setBgImages] = useState([]);
     const [calendarImage, setCalendarImage] = useState("https://images.unsplash.com/photo-1556888335-23631cd2801a?q=80&w=2053&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     const [bool, setBool] = useState(false);
+    const [bool2, setBool2] = useState(false);
     const [showContent, setShowContent] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const [pageNr, setPageNr] = useState(1);
@@ -65,7 +67,8 @@ const EditorPage = () => {
     const createCalendar = (result, bgImgId) => {
         const calendarObj = createObject(result, bgImgId);
         setCalendar(calendarObj);
-        setTimeout(() => setBool(true), 1000);
+        // bool2 was not used anywhere yet. You changed this setBool to setBool2
+        setTimeout(() => setBool2(true), 1000);
         console.log(calendar);
     }
     const createObject = (result, bgImgId) => {
@@ -122,19 +125,15 @@ const EditorPage = () => {
                     <div className="gridHolder" style={{
                         backgroundImage: `url(${calendarImage})`,
                     }}>
-                        {!bool &&
-                            <div className="welcomeText flexColumnCentered">
-                                <h1>Welcome to the calendar editor!</h1>
-                                <div className="textHolder flexColumnCentered">
-                                    <p>Start creating your calendar by searching for a theme.</p>
-                                </div>
-                            </div>
-                        }
-                        {bool && images.map(hatchImg => {
-                            return <div className="calendarImage" key={hatchImg.id} onClick={() => handleBgSelection(hatchImg)} style={{
-                                backgroundImage: `url(${hatchImg.urls.small})`
-                            }}></div>
-
+                        {!bool2 && <ImageCatalogue bool={bool} images={images} handleBgSelection={handleBgSelection} />}
+                        {bool2 && calendar.hatches.map(hatch => {
+                            let hatchKey = hatch.date.getDate();
+                            let hatchSide = hatch.hatchSide;
+                            /*    console.log('hatch', hatch);
+                               console.log('hatch date.getDate()', hatch.date.getDate());
+                               console.log('hatchSide', hatchSide); */
+                            let hatchType = hatch.hatchType;
+                            return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} handleClick={handleClick} hatchSide={hatchSide} /> : <DoubleHatch key={hatchKey} hatch={hatch} />
                         })}
                     </div>
                     <div className="spaceHolder"></div>
