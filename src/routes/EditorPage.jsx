@@ -17,7 +17,7 @@ const EditorPage = () => {
     const [bool, setBool] = useState(false);
     const [showContent, setShowContent] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
-    const [pageNr, setPageNr] = useState(2);
+    const [pageNr, setPageNr] = useState(1);
     const [radioValue, setRadioValue] = useState('hatch');
     const [hatchSide, setHatchSide] = useState('left');
     const searchInput = useRef(null);
@@ -26,7 +26,7 @@ const EditorPage = () => {
     const handleSearch = (event) => {
         event.preventDefault();
         // console.log(searchInput.current.value);
-        fetchImages();
+        handleFetch();
     }
     const handleSelection = (selection) => {
         searchInput.current.value = selection
@@ -35,34 +35,30 @@ const EditorPage = () => {
     const handleClick = () => {
         setShowContent(!showContent)
     }
+    const handleFetch = () => {
+        const result = fetchImages();
+        setBool(true);
 
+    }
     const fetchImages = async () => {
         try {
-
-            const { data } = await axios.get(`${API_URL}?query=${searchInput.current.value}&page=1&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
+            const { data } = await axios.get(`${API_URL}?query=${searchInput.current.value}&page=${pageNr}&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
             console.log('result', data.results, 'length', data.results.length);
             const result = data.results;
             setImages(data.results);
             setTotalPages(data.total_pages);
-            /* setBool(true); */
-            createCalendar(result);
+            //setCatalogue(result);
+            return result
         }
         catch (error) {
             console.log(error)
         }
-        fetchBgImage();
     };
 
-    const fetchBgImage = async () => {
-        try {
-            const { data } = await axios.get(`${API_URL}?query=${searchInput.current.value}&page=${pageNr}&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
-            setBgImages(data.results);
-            setCalendarImage(data.results[0].urls.full);
-        }
-        catch (error) {
-            console.log(error)
-        }
-    };
+    const handleBgSelection = (test) => {
+        //create next phaze
+        console.log(test)
+    }
 
     const createCalendar = (result) => {
         const calendarObj = createObject(result);
@@ -119,19 +115,16 @@ const EditorPage = () => {
                             <div className="welcomeText flexColumnCentered">
                                 <h1>Welcome to the calendar editor!</h1>
                                 <div className="textHolder flexColumnCentered">
-                                    <p>Start creating your calendar by searching for a theme or try one of our example themes & click submit!</p>
+                                    <p>Start creating your calendar by searching for a theme.</p>
                                 </div>
                             </div>
                         }
+                        {bool && images.map(hatchImg => {
+                            return <div className="calendarImage" key={hatchImg.id} style={{
+                                backgroundImage: `url(${hatchImg.urls.full})`
+                            }}></div>
+                            // To add: onclick it updates background image with that image!
 
-                        {bool && calendar.hatches.map(hatch => {
-                            let hatchKey = hatch.date.getDate();
-                            let hatchSide = hatch.hatchSide;
-                            /*    console.log('hatch', hatch);
-                               console.log('hatch date.getDate()', hatch.date.getDate());
-                               console.log('hatchSide', hatchSide); */
-                            let hatchType = hatch.hatchType;
-                            return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} handleClick={handleClick} hatchSide={hatchSide} /> : <DoubleHatch key={hatchKey} hatch={hatch} />
                         })}
                     </div>
                     <div className="spaceHolder"></div>
