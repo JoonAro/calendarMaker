@@ -73,13 +73,15 @@ const EditorPage = () => {
         let hatches = [];
         let numbOfHatches = 0;
         let date;
+        let hatchModifier = 1;
+
         for (let i = 0; i < result.length; i++) {
             date = new Date(startDate);
             date.setDate(startDate.getDate() + i);
             let hatchImg = result[i].urls.small;
             let status = false;
             let hatch;
-            let hatchNr = i + 1;
+            let hatchNr = i + hatchModifier;
             /*             if (i === 5) {
                             hatch = new HatchClass(date, hatchNr, hatchImg, status, 'double', 'left');
                         }
@@ -91,7 +93,7 @@ const EditorPage = () => {
                         } */
             if (result[i].id === bgImgId) {
                 console.log('found match with bg id & stopped creating the hatch');
-                i--;
+                hatchModifier--;
             }
             else {
                 hatch = new HatchClass(date, hatchNr, hatchImg, status);
