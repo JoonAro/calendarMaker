@@ -58,15 +58,17 @@ const EditorPage = () => {
     const handleBgSelection = (hatchImg) => {
         //create next phaze
         setCalendarImage(hatchImg.urls.full)
+        // create calendar and pass to it also the hatchImg.id to get rid of the backgroundImg from the hatches
+        createCalendar(images, hatchImg.id);
     }
-
-    const createCalendar = (result) => {
-        const calendarObj = createObject(result);
+    // Idea! Let the user lock images the user likes and throw to bin the ones he doesn't like and then load new 30 image set and let the user flip through those and previously rejected pictures inside the hatches.
+    const createCalendar = (result, bgImgId) => {
+        const calendarObj = createObject(result, bgImgId);
         setCalendar(calendarObj);
         setTimeout(() => setBool(true), 1000);
         console.log(calendar);
     }
-    const createObject = (result) => {
+    const createObject = (result, bgImgId) => {
         let startDate = new Date(2024, 11, 1);
         let hatches = [];
         let numbOfHatches = 0;
@@ -78,18 +80,25 @@ const EditorPage = () => {
             let status = false;
             let hatch;
             let hatchNr = i + 1;
-            if (i === 5) {
-                hatch = new HatchClass(date, hatchNr, hatchImg, status, 'double', 'left');
-            }
-            else if (i === 3 || i === 7 || i === 11 || i === 15) {
-                hatch = new HatchClass(date, hatchNr, hatchImg, status, 'single', 'right');
+            /*             if (i === 5) {
+                            hatch = new HatchClass(date, hatchNr, hatchImg, status, 'double', 'left');
+                        }
+                        else if (i === 3 || i === 7 || i === 11 || i === 15) {
+                            hatch = new HatchClass(date, hatchNr, hatchImg, status, 'single', 'right');
+                        }
+                        else {
+                            hatch = new HatchClass(date, hatchNr, hatchImg, status);
+                        } */
+            if (result[i].id === bgImgId) {
+                console.log('found match with bg id & stopped creating the hatch');
+                i--;
             }
             else {
                 hatch = new HatchClass(date, hatchNr, hatchImg, status);
+                console.log("hatchNr", hatchNr)
+                hatches.push(hatch);
+                numbOfHatches++;
             }
-            console.log("hatchNr", hatchNr)
-            hatches.push(hatch);
-            numbOfHatches++;
         }
         let calendar = new CalendarClass(startDate, date, calendarImage, hatches, numbOfHatches, false);
         return calendar;
