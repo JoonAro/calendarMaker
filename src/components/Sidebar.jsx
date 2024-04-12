@@ -1,9 +1,16 @@
 import '../styles/sidebar.css'
 import { Form } from 'react-bootstrap';
 import ButtonComponent from './ButtonComponent';
+import calendarSvg from '../assets/media/calendar.svg'
 const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRadioValue, hatchSide, setHatchSide }) => {
     return (
         <div className="sidebar">
+            <img
+                className="img-thumbnail mx-auto d-block mb-2"
+                style={{ width: "40%", maxWidth: "5rem", height: "5rem", backgroundColor: '#EED6D3', borderColor: '#EED6D3' }}
+                src={calendarSvg}
+                alt="calendarSvg"
+            />
             <div className="filters">
                 <div className='fullWidth'>
                     <p>Choose a theme</p>
