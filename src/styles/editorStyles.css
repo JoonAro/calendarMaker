@@ -37,13 +37,18 @@
 }
 
 .welcomeText {
+
+    background-color: rgba(0, 0, 0, 0.395);
     position: absolute;
-    top: 40%;
-    left: 0;
-    width: 100%;
+    top: 220px;
+    left: 20%;
+    width: 650px;
     font-size: xx-large;
     color: white;
     z-index: 9;
+    border-radius: 20px;
+    padding: 20px 0;
+
 }
 
 .textHolder {

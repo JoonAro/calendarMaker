@@ -6,6 +6,7 @@ import '../styles/editorStyles.css';
 import Sidebar from "../components/Sidebar";
 import { CalendarClass, HatchClass } from "../../classes/classes";
 import ImageCatalogue from "../components/ImageCatalogue";
+import TextComponent from "../components/TextComponent";
 
 const API_KEY = import.meta.env.VITE_UNSPLASH_API;
 const API_URL = "https://api.unsplash.com/search/photos";
@@ -24,11 +25,10 @@ const EditorPage = () => {
     const [hatchSide, setHatchSide] = useState('left');
     const searchInput = useRef(null);
     const [calendar, setCalendar] = useState(null);
-    const [guideText, setGuideText] = useState("");
-    // Clean up unnecessary usestates above
+    const [guideH, setGuideH] = useState("Welcome to the calendar editor!")
+    const [guideText, setGuideText] = useState("Start creating your calendar by searching for a theme.");
     const handleSearch = (event) => {
         event.preventDefault();
-        // console.log(searchInput.current.value);
         handleFetch();
     }
     const handleSelection = (selection) => {
@@ -41,8 +41,8 @@ const EditorPage = () => {
     const handleFetch = () => {
         const result = fetchImages();
         setBool(true);
-        setGuideText("Choose a background image by clicking the image.")
-
+        setGuideH("Choose a background image by clicking the image.");
+        setGuideText("loremipsum");
     }
     const fetchImages = async () => {
         try {
@@ -60,18 +60,16 @@ const EditorPage = () => {
     };
 
     const handleBgSelection = (hatchImg) => {
-        //create next phaze
         setCalendarImage(hatchImg.urls.full)
         // create calendar and pass to it also the hatchImg.id to get rid of the backgroundImg from the hatches
         createCalendar(images, hatchImg.id);
     }
-    // Idea! Let the user lock images the user likes and throw to bin the ones he doesn't like and then load new 30 image set and let the user flip through those and previously rejected pictures inside the hatches.
     const createCalendar = (result, bgImgId) => {
         const calendarObj = createObject(result, bgImgId);
         setCalendar(calendarObj);
-        // bool2 was not used anywhere yet. You changed this setBool to setBool2
         setTimeout(() => setBool2(true), 1000);
-        setGuideText("Are you happy with the background? Click yes to continue to edit hatches or no to find a new background image")
+        setGuideH("Are you happy with the background?");
+        setGuideText("Click no to find a new background image.")
         console.log(calendar);
     }
 
@@ -90,15 +88,6 @@ const EditorPage = () => {
             let status = false;
             let hatch;
             let hatchNr = i + hatchModifier;
-            /*             if (i === 5) {
-                            hatch = new HatchClass(date, hatchNr, hatchImg, status, 'double', 'left');
-                        }
-                        else if (i === 3 || i === 7 || i === 11 || i === 15) {
-                            hatch = new HatchClass(date, hatchNr, hatchImg, status, 'single', 'right');
-                        }
-                        else {
-                            hatch = new HatchClass(date, hatchNr, hatchImg, status);
-                        } */
             if (result[i].id === bgImgId) {
                 console.log('found match with bg id & stopped creating the hatch');
                 hatchModifier--;
@@ -126,21 +115,16 @@ const EditorPage = () => {
                     hatchSide={hatchSide}
                     setHatchSide={setHatchSide} />
                 <div className="content">
-                    <div className="spaceHolder">
-                        <p style={{
-                            color: "white"
-                        }}>{guideText}</p>
-                    </div>
+                    <div className="spaceHolder"></div>
                     <div className="gridHolder" style={{
                         backgroundImage: `url(${calendarImage})`,
                     }}>
-                        {!bool2 && <ImageCatalogue bool={bool} images={images} handleBgSelection={handleBgSelection} />}
+                        {!bool2 && <ImageCatalogue bool={bool} images={images} handleBgSelection={handleBgSelection} guideH={guideH} guideText={guideText} />
+                        }
+                        {bool2 && <TextComponent guideH={guideH} guideText={guideText} />}
                         {bool2 && calendar.hatches.map(hatch => {
                             let hatchKey = hatch.date.getDate();
                             let hatchSide = hatch.hatchSide;
-                            /*    console.log('hatch', hatch);
-                               console.log('hatch date.getDate()', hatch.date.getDate());
-                               console.log('hatchSide', hatchSide); */
                             let hatchType = hatch.hatchType;
                             return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} handleClick={handleClick} hatchSide={hatchSide} /> : <DoubleHatch key={hatchKey} hatch={hatch} />
                         })}
