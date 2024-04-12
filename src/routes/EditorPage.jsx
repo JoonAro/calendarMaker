@@ -71,6 +71,8 @@ const EditorPage = () => {
         setTimeout(() => setBool2(true), 1000);
         console.log(calendar);
     }
+
+    // Idea for createObject. Add array of numbers etc. When user edits te calendar and chooses a hatch give him option to choose double hatch. If he chooses it then handleClick to add the hatch number to array and in createcalendar if number is this then hatchtype is that.
     const createObject = (result, bgImgId) => {
         let startDate = new Date(2024, 11, 1);
         let hatches = [];
