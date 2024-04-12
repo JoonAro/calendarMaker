@@ -1,10 +1,28 @@
+import { useState } from "react";
 import { Button } from "react-bootstrap";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from "react-router-dom";
+import { auth, loginWithEmailAndPassword } from "../auth/firebase";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [user, loading, error] = useAuthState(auth);
+  const navigate = useNavigate();
+
   const login = () => {
-    return alert("Will be soon implemented");
-  };
+    loginWithEmailAndPassword(email, password)
+      .then(() => {
+        setEmail('');
+        setPassword('');
+        navigate('/');
+      })
+      .catch((error) => {
+        console.error("Login failed:", error);
+        alert("Login failed. Please try again.");
+      });
+  }
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-mainBackground">
@@ -15,7 +33,9 @@ const Login = () => {
             <input
               className="w-full p-2 md:w-64 bg-whiteReplacement border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               type="email"
+              value={email}
               placeholder="Enter your email"
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
           <div className="py-3">
@@ -23,6 +43,8 @@ const Login = () => {
               className="w-full p-2 md:w-64 bg-whiteReplacement border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               type="password"
               placeholder="Enter password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
           <Button
@@ -31,16 +53,11 @@ const Login = () => {
           >
             Login
           </Button>
-          <div className="text-center text-gray-400">
-            Don't have an account?
-            <span className="cursor-pointer font-bold text-fontDark">
-              {" "}
-              Sign up
-            </span>
-          </div>
+          <span className="cursor-pointer font-bold text-black"><Link to={"/register"}> Sign up here</Link></span>
         </div>
       </div>
     </div>
+
   );
 };
 
