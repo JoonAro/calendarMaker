@@ -1,14 +1,10 @@
+import TextComponent from "./TextComponent"
 
 const ImageCatalogue = ({ bool, images, handleBgSelection }) => {
     return (
         <>
             {!bool &&
-                <div className="welcomeText flexColumnCentered">
-                    <h1>Welcome to the calendar editor!</h1>
-                    <div className="textHolder flexColumnCentered">
-                        <p>Start creating your calendar by searching for a theme.</p>
-                    </div>
-                </div>
+                <TextComponent />
             }
             {bool && images.map(hatchImg => {
                 return <div className="calendarImage" key={hatchImg.id} onClick={() => handleBgSelection(hatchImg)} style={{
