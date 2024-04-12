@@ -24,6 +24,7 @@ const EditorPage = () => {
     const [hatchSide, setHatchSide] = useState('left');
     const searchInput = useRef(null);
     const [calendar, setCalendar] = useState(null);
+    const [guideText, setGuideText] = useState("");
     // Clean up unnecessary usestates above
     const handleSearch = (event) => {
         event.preventDefault();
@@ -40,6 +41,7 @@ const EditorPage = () => {
     const handleFetch = () => {
         const result = fetchImages();
         setBool(true);
+        setGuideText("Choose a background image by clicking the image.")
 
     }
     const fetchImages = async () => {
@@ -69,6 +71,7 @@ const EditorPage = () => {
         setCalendar(calendarObj);
         // bool2 was not used anywhere yet. You changed this setBool to setBool2
         setTimeout(() => setBool2(true), 1000);
+        setGuideText("Are you happy with the background? Click yes to continue to edit hatches or no to find a new background image")
         console.log(calendar);
     }
 
@@ -123,7 +126,11 @@ const EditorPage = () => {
                     hatchSide={hatchSide}
                     setHatchSide={setHatchSide} />
                 <div className="content">
-                    <div className="spaceHolder"></div>
+                    <div className="spaceHolder">
+                        <p style={{
+                            color: "white"
+                        }}>{guideText}</p>
+                    </div>
                     <div className="gridHolder" style={{
                         backgroundImage: `url(${calendarImage})`,
                     }}>
