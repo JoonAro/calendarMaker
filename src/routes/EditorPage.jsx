@@ -30,6 +30,7 @@ const EditorPage = () => {
     const handleSearch = (event) => {
         event.preventDefault();
         handleFetch();
+        if (bool2 === true) setBool2(!bool2);
     }
     const handleSelection = (selection) => {
         searchInput.current.value = selection
