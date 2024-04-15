@@ -44,7 +44,7 @@ const EditorPage = () => {
         const result = fetchImages();
         setBool(true);
         setGuideH("Choose a background image by clicking the image.");
-        setGuideText("loremipsum");
+        setGuideText("");
     }
     const fetchImages = async () => {
         try {
