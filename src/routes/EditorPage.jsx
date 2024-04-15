@@ -7,6 +7,7 @@ import Sidebar from "../components/Sidebar";
 import { CalendarClass, HatchClass } from "../../classes/classes";
 import ImageCatalogue from "../components/ImageCatalogue";
 import TextComponent from "../components/TextComponent";
+import CalendarComponent from "../components/CalendarComponent";
 
 const API_KEY = import.meta.env.VITE_UNSPLASH_API;
 const API_URL = "https://api.unsplash.com/search/photos";
@@ -43,7 +44,7 @@ const EditorPage = () => {
         const result = fetchImages();
         setBool(true);
         setGuideH("Choose a background image by clicking the image.");
-        setGuideText("loremipsum");
+        setGuideText("");
     }
     const fetchImages = async () => {
         try {
@@ -117,19 +118,10 @@ const EditorPage = () => {
                     setHatchSide={setHatchSide} />
                 <div className="content">
                     <div className="spaceHolder"></div>
-                    <div className="gridHolder" style={{
-                        backgroundImage: `url(${calendarImage})`,
-                    }}>
-                        {!bool2 && <ImageCatalogue bool={bool} images={images} handleBgSelection={handleBgSelection} guideH={guideH} guideText={guideText} />
-                        }
-                        {bool2 && <TextComponent guideH={guideH} guideText={guideText} />}
-                        {bool2 && calendar.hatches.map(hatch => {
-                            let hatchKey = hatch.date.getDate();
-                            let hatchSide = hatch.hatchSide;
-                            let hatchType = hatch.hatchType;
-                            return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} handleClick={handleClick} hatchSide={hatchSide} /> : <DoubleHatch key={hatchKey} hatch={hatch} />
-                        })}
-                    </div>
+                    {!bool2 && <ImageCatalogue bool={bool} images={images} handleBgSelection={handleBgSelection} guideH={guideH} guideText={guideText} calendarImage={calendarImage} />
+                    }
+                    {bool2 && <TextComponent guideH={guideH} guideText={guideText} />}
+                    {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} />}
                     <div className="spaceHolder"></div>
                 </div>
             </div>
