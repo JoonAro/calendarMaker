@@ -29,6 +29,28 @@
     border-radius: 30px;
 }
 
+.calendarContent {
+    background-color: rgba(103, 89, 94, 1);
+}
+
+.calendarGridHolder {
+    margin: 30px;
+    padding: 50px;
+    max-width: 1060px;
+    min-width: 1060px;
+    min-height: 90vh;
+    position: relative;
+    display: grid;
+    background-color: rgba(103, 89, 94, 1);
+    background-position: center;
+    background-size: cover;
+    grid-template-columns: repeat(4, 180px);
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 80px;
+    margin: 0 auto;
+    border-radius: 30px;
+}
+
 .flexColumnCentered {
     display: flex;
     flex-direction: column;
