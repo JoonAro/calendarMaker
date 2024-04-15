@@ -12,12 +12,14 @@ export default {
         "accentColor": "#E8B4B8",
         "whiteReplacement": "#FDFBFA",
         "fontDark": "#272144",
+        "formText": "rgb(107 114 128)",
       },
       fontFamily: {
         sans: ['Nunito Sans', 'ui-sans-serif', 'system-ui'],
         body: ['Nunito Sans'],
-      }
+      },
     },
+
   },
   plugins: [],
 }
