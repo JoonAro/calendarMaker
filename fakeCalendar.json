@@ -104,7 +104,7 @@
             "hatchNr": 13,
             "hatchImg": "https://images.unsplash.com/photo-1603483080228-04f2313d9f10?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1ODE2Mzl8MHwxfHNlYXJjaHwxNHx8d2lsZGxpZmV8ZW58MHx8fHwxNzEzMDg4MDIxfDA&ixlib=rb-4.0.3&q=80&w=400",
             "status": false,
-            "hatchType": "single",
+            "hatchType": "double",
             "hatchSide": "left"
         },
         {
