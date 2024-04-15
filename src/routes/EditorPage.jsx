@@ -49,7 +49,7 @@ const EditorPage = () => {
     const fetchImages = async () => {
         try {
             const { data } = await axios.get(`${API_URL}?query=${searchInput.current.value}&page=${pageNr}&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
-            console.log('result', data.results, 'length', data.results.length);
+            // console.log('result', data.results, 'length', data.results.length);
             const result = data.results;
             setImages(data.results);
             setTotalPages(data.total_pages);
@@ -64,20 +64,20 @@ const EditorPage = () => {
     const handleBgSelection = (hatchImg) => {
         setCalendarImage(hatchImg.urls.full)
         // create calendar and pass to it also the hatchImg.id to get rid of the backgroundImg from the hatches
-        createCalendar(images, hatchImg.id);
+        createCalendar(images, hatchImg);
     }
     const createCalendar = (result, bgImgId) => {
         const calendarObj = createObject(result, bgImgId);
+        console.log(calendarObj);
         setCalendar(calendarObj);
         setTimeout(() => setBool2(true), 1000);
         setGuideH("Are you happy with the background?");
         setGuideText("Click no to find a new background image.")
-        console.log(calendar);
     }
 
     // Idea for createObject. Add array of numbers etc. When user edits te calendar and chooses a hatch give him option to choose double hatch. If he chooses it then handleClick to add the hatch number to array and in createcalendar if number is this then hatchtype is that.
-    const createObject = (result, bgImgId) => {
-        let startDate = new Date(2024, 11, 1);
+    const createObject = (result, bgImg) => {
+        let startDate = new Date(2024, 3, 10);
         let hatches = [];
         let numbOfHatches = 0;
         let date;
@@ -90,18 +90,18 @@ const EditorPage = () => {
             let status = false;
             let hatch;
             let hatchNr = i + hatchModifier;
-            if (result[i].id === bgImgId) {
-                console.log('found match with bg id & stopped creating the hatch');
+            if (result[i].id === bgImg.id) {
+                //  console.log('found match with bg id & stopped creating the hatch');
                 hatchModifier--;
             }
             else {
                 hatch = new HatchClass(date, hatchNr, hatchImg, status);
-                console.log("hatchNr", hatchNr)
+                // console.log("hatchNr", hatchNr)
                 hatches.push(hatch);
                 numbOfHatches++;
             }
         }
-        let calendar = new CalendarClass(startDate, date, calendarImage, hatches, numbOfHatches, false);
+        let calendar = new CalendarClass(startDate, date, bgImg.urls.full, hatches, numbOfHatches, false);
         return calendar;
     }
 
