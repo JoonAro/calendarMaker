@@ -2,7 +2,7 @@ import DoubleHatch from "./DoubleHatch";
 import Hatch from "./Hatch";
 
 
-const CalendarComponent = ({ calendar, calendarImage, handleClick }) => {
+const CalendarComponent = ({ calendar, calendarImage }) => {
     return (
         <div className="gridHolder" style={{
             backgroundImage: `url(${calendarImage})`,
@@ -11,7 +11,7 @@ const CalendarComponent = ({ calendar, calendarImage, handleClick }) => {
                 let hatchKey = hatch.date.getDate();
                 let hatchSide = hatch.hatchSide;
                 let hatchType = hatch.hatchType;
-                return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} handleClick={handleClick} hatchSide={hatchSide} /> : <DoubleHatch key={hatchKey} hatch={hatch} />
+                return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} hatchSide={hatchSide} /> : <DoubleHatch key={hatchKey} hatch={hatch} />
             })}
         </div>
     )

@@ -19,17 +19,13 @@ const Calendar = () => {
     const [bgImages, setBgImages] = useState([]);
     const [calendarImage, setCalendarImage] = useState("https://images.unsplash.com/photo-1556888335-23631cd2801a?q=80&w=2053&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     const [bool, setBool] = useState(false);
-    const [showContent, setShowContent] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const [pageNr, setPageNr] = useState(1);
     const [radioValue, setRadioValue] = useState('hatch');
     const [hatchSide, setHatchSide] = useState('left');
     const searchInput = useRef(null);
     const [calendar, setCalendar] = useState(fakeCalendar);
-
-    const handleClick = () => {
-        setShowContent(!showContent)
-    }
+    // Create a date checking function when hatch is clicked check if date is smaller than today. if so open hatch 
 
     const handleBgSelection = (hatchImg) => {
         if (!bool) {
@@ -53,7 +49,7 @@ const Calendar = () => {
                             let hatchKey = hatch.hatchNr;
                             let hatchSide = hatch.hatchSide;
                             let hatchType = hatch.hatchType;
-                            return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} handleClick={handleClick} hatchSide={hatchSide} /> : <DoubleHatch key={hatchKey} hatch={hatch} />
+                            return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} hatchSide={hatchSide} /> : <DoubleHatch key={hatchKey} hatch={hatch} />
                         })}
                     </div>
                     <div className="spaceHolder"></div>
