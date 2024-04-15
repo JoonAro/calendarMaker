@@ -2,6 +2,8 @@ import fakeCalendar from '../../fakeCalendar.json';
 import { useState } from "react";
 import Hatch from "../components/Hatch";
 import DoubleHatch from "../components/DoubleHatch";
+import FakeSHatch from '../components/FakeSHatch';
+import FakeDblHatch from '../components/FakeDblHatch';
 import '../styles/editorStyles.css';
 
 // Todo: Make sure you check the date of the hatch before user is able to open the hatch
@@ -31,7 +33,7 @@ const Calendar = () => {
                         {calendar.hatches.map(hatch => {
                             let hatchKey = hatch.hatchNr;
                             let hatchType = hatch.hatchType;
-                            return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} /> : <DoubleHatch key={hatchKey} hatch={hatch} />
+                            return hatchType === 'single' ? <FakeSHatch key={hatchKey} hatch={hatch} accessKey={false} /> : <FakeDblHatch key={hatchKey} hatch={hatch} accessKey={false} />
                         })}
                     </div>
                     <div className="spaceHolder"></div>
