@@ -2,8 +2,47 @@ import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
 import PieChartIcon from '@mui/icons-material/PieChart';
 import coffee from "../assets/coffee.jpg";
+import { useEffect } from 'react';
+import { db } from "../auth/firebase";
+import { query, where, collection, getDocs } from 'firebase/firestore';
+import { useState } from 'react';
+import UserData from '../components/UserData';
 
 const Dashboard = () => {
+    const [amount, setAmount] = useState(null);
+    const [difference, setDifference] = useState(null);
+    let data;
+
+    useEffect(()=>{
+        const fetchData = async () =>{
+            const today = new Date();
+            const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
+            const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
+            console.log(lastMonth)
+
+            const lastMonthQuery = query(collection(db,"users"), where("timeStamp", "<=", today), where("timeStamp", ">", lastMonth));
+
+            const prevMonthQuery = query(collection(db,"users"), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
+
+            const lastMonthData = await getDocs(lastMonthQuery);
+            const prevMonthData = await getDocs(prevMonthQuery);
+
+            setAmount(lastMonthData.docs.length);
+
+            if(prevMonthData.docs.length !== 0){
+                setDifference(
+                    ((lastMonthData.docs.length - prevMonthData.docs.length) / prevMonthData.docs.length) * 100);
+            }
+           else {
+            setDifference(100);
+           }
+        }
+        fetchData();
+    }, []
+)
+
+
+
   return (
     <div className='p-4'>
     <div className='flex gap-4'>
@@ -16,8 +55,8 @@ const Dashboard = () => {
     <div className="pl-4">
         <span className="text-sm text-gray-500 font-light">Users</span>
         <div className="flex items-center">
-            <strong className="text-xl text-gray-700 font-semibold">20</strong>
-            <span className="text-sm text-green-500 pl-2">+23</span>
+            <strong className="text-xl text-gray-700 font-semibold">{amount}</strong>
+            <span className="text-sm text-green-500 pl-2">{difference}%</span>
         </div>
     </div>
         </div>
@@ -53,54 +92,11 @@ const Dashboard = () => {
 
         <div className='flex flex-row gap-4 w-full mt-7 bg'>
            <div className='px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'>
-            <strong className='font-medium text-gray-700'>Customers</strong>
-            <div className=" border-gray-200 rounded-sm mt-3">
-<table className='w-full text-gray-700 border-separate border-spacing-5 border border-slate-400'>
-    <thead className=' border border-slate-300 text-transform: uppercase bg-accentColor'>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Status</th>
-            <th>Email address</th>
-            <th>Date of registration</th> 
-        </tr>
-    </thead>
-    <tbody >
-    <tr className=' border border-slate-300'>
-            <td className='border border-slate-300'>1</td>
-            <td className='border border-slate-300'>Name</td>
-            <td className='border border-slate-300'>Status</td>
-            <td className='border border-slate-300'>Email address</td>
-            <td className='border border-slate-300'>Date of registration</td>
-        </tr>
-        <tr className=' border border-slate-300'>
-            <td className='border border-slate-300'>1</td>
-            <td className='border border-slate-300'>Name</td>
-            <td className='border border-slate-300'>Status</td>
-            <td className='border border-slate-300'>Email address</td>
-            <td className='border border-slate-300'>Date of registration</td>
-        </tr>
-        <tr className=' border border-slate-300'>
-            <td className='border border-slate-300'>1</td>
-            <td className='border border-slate-300'>Name</td>
-            <td className='border border-slate-300'>Status</td>
-            <td className='border border-slate-300'>Email address</td>
-            <td className='border border-slate-300'>Date of registration</td>
-        </tr>
-        <tr className=' border border-slate-300'>
-            <td className='border border-slate-300'>1</td>
-            <td className='border border-slate-300'>Name</td>
-            <td className='border border-slate-300'>Status</td>
-            <td className='border border-slate-300'>Email address</td>
-            <td className='border border-slate-300'>Date of registration</td>
-        </tr>
-    </tbody>
-</table>
-           </div>
-           </div> 
+            
            
+       <UserData/>
 
-
+              </div>
             <div className="w-[20rem] px-4 pt-3 pb-4 rounded-sm border border-gray-200">
 			<strong className="text-gray-700 font-medium">Saved Calendars</strong>
 			<div className="mt-4 flex justify-between gap-3">
@@ -158,9 +154,9 @@ const Dashboard = () => {
             </div>
         </div>
         </div>
+        
       
   )
 }
 
 export default Dashboard
-
