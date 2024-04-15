@@ -1,7 +1,5 @@
 import axios from "axios";
 import { useRef, useState } from "react";
-import Hatch from "../components/Hatch";
-import DoubleHatch from "../components/DoubleHatch";
 import '../styles/editorStyles.css';
 import Sidebar from "../components/Sidebar";
 import { CalendarClass, HatchClass } from "../../classes/classes";

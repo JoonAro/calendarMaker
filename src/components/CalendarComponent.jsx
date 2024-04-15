@@ -9,9 +9,8 @@ const CalendarComponent = ({ calendar, calendarImage }) => {
         }}>
             {calendar.hatches.map(hatch => {
                 let hatchKey = hatch.date.getDate();
-                let hatchSide = hatch.hatchSide;
                 let hatchType = hatch.hatchType;
-                return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} hatchSide={hatchSide} /> : <DoubleHatch key={hatchKey} hatch={hatch} />
+                return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} /> : <DoubleHatch key={hatchKey} hatch={hatch} />
             })}
         </div>
     )
