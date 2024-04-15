@@ -33,7 +33,7 @@ const Header = () => {
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Login</Button>
                                 </Link>
                                 <Link to="/calendar">
-                                    <Button variant="contained" style={{ color: '#ffffff' }}>Calendar</Button>
+                                    <Button variant="contained" className="text-whiteReplacement text-xl">Calendar</Button>
                                 </Link>
                                 <Link to="/editorPage">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Edit</Button>
