@@ -28,7 +28,7 @@ export const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
-const registerWithEmailAndPassword = async (name, email, password) => {
+const registerWithEmailAndPassword = async (name, email, password, avatar) => {
     try {
         const res = await createUserWithEmailAndPassword(auth, email, password);
         const user = res.user;
@@ -38,6 +38,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
             authProvider: "local",
             email,
             timeStamp: serverTimestamp(),
+            avatar,
         });
     } catch (error) {
         console.log(error);
