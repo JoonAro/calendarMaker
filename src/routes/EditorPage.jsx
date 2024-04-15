@@ -115,7 +115,7 @@ const EditorPage = () => {
                     {!bool2 && <ImageCatalogue bool={bool} images={images} handleBgSelection={handleBgSelection} guideH={guideH} guideText={guideText} calendarImage={calendarImage} />
                     }
                     {bool2 && <TextComponent guideH={guideH} guideText={guideText} />}
-                    {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} />}
+                    {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} />}
                     <div className="spaceHolder"></div>
                 </div>
             </div>
