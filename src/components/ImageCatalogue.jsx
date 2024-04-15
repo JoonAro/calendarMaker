@@ -4,7 +4,7 @@ import TextComponent from "./TextComponent"
 const ImageCatalogue = ({ bool, images, handleBgSelection, guideH, guideText, calendarImage }) => {
     return (
         <div className="catalogueHolder" style={{
-            backgroundImage: bool ? `url(${calendarImage})` : `url(${calendarImage})`,
+            backgroundImage: bool ? `url(${""})` : `url(${calendarImage})`,
         }}>
             {bool && <TextComponent guideH={guideH} guideText={guideText} />}
             {!bool &&
