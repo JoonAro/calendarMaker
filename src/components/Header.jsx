@@ -32,6 +32,9 @@ const Header = () => {
                                 <Link to="/login">
                                     <Button variant="contained" style={{ color: '#ffffff' }}>Login</Button>
                                 </Link>
+                                <Link to="/calendar">
+                                    <Button variant="contained" style={{ color: '#ffffff' }}>Calendar</Button>
+                                </Link>
                                 <Link to="/editorPage">
                                     <Button variant="contained" style={{ color: '#ffffff' }}>Edit</Button>
                                 </Link>

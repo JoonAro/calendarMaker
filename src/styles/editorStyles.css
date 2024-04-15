@@ -36,15 +36,15 @@
 .calendarGridHolder {
     margin: 30px;
     padding: 50px;
-    max-width: 1060px;
-    min-width: 1060px;
+    max-width: 1320px;
+    min-width: 1320px;
     min-height: 90vh;
     position: relative;
     display: grid;
     background-color: rgba(103, 89, 94, 1);
     background-position: center;
     background-size: cover;
-    grid-template-columns: repeat(4, 180px);
+    grid-template-columns: repeat(5, 180px);
     grid-template-rows: repeat(6, 1fr);
     grid-gap: 80px;
     margin: 0 auto;
@@ -159,7 +159,7 @@
 }
 
 .closedStyle {
-    border: 1px dashed white;
+    border: 1px dashed rgba(255, 255, 255, 0.377);
     animation-name: closeIt;
     animation-duration: 2s;
     animation-delay: 0;
