@@ -29,6 +29,35 @@
     border-radius: 30px;
 }
 
+.catalogueHolder {
+    margin: 30px;
+    padding: 50px;
+    max-width: 1500px;
+    min-width: 1200px;
+    min-height: 90vh;
+    position: relative;
+    display: grid;
+    background-color: rgba(103, 89, 94, 1);
+    background-position: center;
+    background-size: cover;
+    grid-template-columns: repeat(3, 25vw);
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 0px;
+    margin: 0 auto;
+    border-radius: 30px;
+}
+
+.catalogueImage {
+    display: flex;
+    perspective: 900px;
+    position: relative;
+    background-color: rgba(127, 255, 212, 0);
+    height: 566px;
+    width: 415px;
+    background-size: cover;
+    background-position: center;
+}
+
 .flexColumnCentered {
     display: flex;
     flex-direction: column;
