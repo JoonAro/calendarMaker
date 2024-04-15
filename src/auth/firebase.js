@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { serverTimestamp } from "firebase/firestore";
 
 import {
     createUserWithEmailAndPassword,
@@ -24,7 +25,6 @@ const firebaseConfig = {
     measurementId: "G-J61THVH573"
 };
 export const app = initializeApp(firebaseConfig);
-
 const auth = getAuth(app);
 const db = getFirestore(app);
 
@@ -37,6 +37,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
             name,
             authProvider: "local",
             email,
+            timeStamp: serverTimestamp(),
         });
     } catch (error) {
         console.log(error);
