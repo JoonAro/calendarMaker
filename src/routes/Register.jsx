@@ -31,11 +31,12 @@ const Register = () => {
         <div className="flex flex-col justify-center p-8 md:p-14">
           <span className="mb-3 text-4xl font-bold text-center text-fontDark">Sign up</span>
           <Avatar avatarValue={selectedAvatar} />
-          <Form.Group className="py-3">
+          <Form.Group className="py-3" >
             <Form.Select
-              className="w-full p-2 md:w-64 border border-gray-300 rounded-md"
+              className="w-full md:w-64 p-2 bg-whiteReplacement border border-gray-300 rounded-md text-formText"
               value={selectedAvatar}
               onChange={(e) => setSelectedAvatar(e.target.value)}
+
             >
               <option value="">Select an avatar</option>
               <option value="avatar1">Avatar 1</option>
