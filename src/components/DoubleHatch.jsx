@@ -4,14 +4,13 @@ import '../styles/editorStyles.css';
 const today = new Date();
 const todayISO = today.toISOString();
 
-const DoubleHatch = ({ hatch }) => {
+const DoubleHatch = ({ hatch, accessKey }) => {
     const [clicked, setClicked] = useState(false);
     const [showImage, setShowImage] = useState(false);
+
     const openHatch = (hatch) => {
         const dateCheck = handleTime(hatch);
-        if (dateCheck === true) {
-
-
+        if (dateCheck === true || accessKey) {
             setClicked(!clicked);
             if (!clicked) {
                 setShowImage(!showImage);
@@ -23,6 +22,7 @@ const DoubleHatch = ({ hatch }) => {
             alert("Naughty!");
         }
     }
+
     const handleTime = (hatch) => {
         console.log(hatch);
         const hatchDate = hatch.date;
@@ -36,6 +36,7 @@ const DoubleHatch = ({ hatch }) => {
             return true;
         }
     }
+
     return (
         <div style={{
             backgroundImage: showImage ? `url("${hatch.hatchImg}")` : 'url("")'

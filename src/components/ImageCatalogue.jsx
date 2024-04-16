@@ -1,6 +1,5 @@
 import TextComponent from "./TextComponent"
 
-// Idea! If image is width is bigger than length then make the image spread to two columns
 const ImageCatalogue = ({ bool, images, handleBgSelection, guideH, guideText, calendarImage }) => {
     return (
         <div className="catalogueHolder" style={{
