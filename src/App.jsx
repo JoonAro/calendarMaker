@@ -8,6 +8,13 @@ import EditorPage from "./routes/EditorPage";
 import Calendar from "./routes/Calendar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./routes/Dashboard";
+import About from "./components/footercomponent/About";
+import Contact from "./components/footercomponent/Contact";
+import Licensing from "./components/footercomponent/Licensing";
+import Privacy from "./components/footercomponent/Privacy";
+import Premium from "./components/Premium";
+
+
 function App() {
 
   return (
@@ -40,6 +47,36 @@ function App() {
             path="/dashboard"
             element={
               <Dashboard/>
+            }
+          />
+          <Route
+            path="/about"
+            element={
+              <About/>
+            }
+          />
+          <Route
+            path="/contact"
+            element={
+              <Contact/>
+            }
+          />
+          <Route
+            path="/licensing"
+            element={
+              <Licensing/>
+            }
+          />
+          <Route
+            path="/privacy"
+            element={
+              <Privacy/>
+            }
+          />
+          <Route
+            path="/premium"
+            element={
+              <Premium/>
             }
           />
 

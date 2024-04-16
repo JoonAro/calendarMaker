@@ -38,6 +38,9 @@ const Header = () => {
                                 <Link to="/dashboard">
                                     <Button variant="contained" style={{ color: '#ffffff' }}>Dashboard</Button>
                                 </Link>
+                                <Link to="/premium">
+                                    <Button variant="contained" style={{ color: '#ffffff' }}>Premium</Button>
+                                </Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
