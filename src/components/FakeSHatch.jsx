@@ -7,7 +7,8 @@ const todayISO = today.toISOString();
 const FakeSHatch = ({ hatch, accessKey }) => {
     const [clicked, setClicked] = useState(false);
     const [showImage, setShowImage] = useState(false);
-    const openHatch = (hatch) => {
+
+    const openHatch = (hatch, accessKey) => {
         const dateCheck = handleTime(hatch);
         if (dateCheck === true || accessKey) {
             setClicked(!clicked);
@@ -21,6 +22,7 @@ const FakeSHatch = ({ hatch, accessKey }) => {
             alert("Naughty!");
         }
     }
+
     const handleTime = (hatch) => {
         // console.log(hatch);
         const hatchDate = hatch.date
@@ -34,11 +36,12 @@ const FakeSHatch = ({ hatch, accessKey }) => {
             return true;
         }
     }
+
     return (
         <div style={{
             backgroundImage: showImage ? `url("${hatch.hatchImg}")` : 'url("")'
         }} className={`calendarImage `}>
-            <div onClick={() => openHatch(hatch)} className={`hatch ${hatch.hatchSide} ${clicked ? 'openStyle' : 'closedStyle'}`}>
+            <div onClick={() => openHatch(hatch, accessKey)} className={`hatch ${hatch.hatchSide} ${clicked ? 'openStyle' : 'closedStyle'}`}>
                 <p className="hatchNumber">{hatch.hatchNr}</p>
             </div>
         </div>
