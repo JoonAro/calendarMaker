@@ -1,7 +1,5 @@
 import axios from "axios";
 import { useRef, useState } from "react";
-import Hatch from "../components/Hatch";
-import DoubleHatch from "../components/DoubleHatch";
 import '../styles/editorStyles.css';
 import Sidebar from "../components/Sidebar";
 import { CalendarClass, HatchClass } from "../../classes/classes";
@@ -19,7 +17,6 @@ const EditorPage = () => {
     const [calendarImage, setCalendarImage] = useState("https://images.unsplash.com/photo-1556888335-23631cd2801a?q=80&w=2053&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     const [bool, setBool] = useState(false);
     const [bool2, setBool2] = useState(false);
-    const [showContent, setShowContent] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const [pageNr, setPageNr] = useState(1);
     const [radioValue, setRadioValue] = useState('hatch');
@@ -37,9 +34,6 @@ const EditorPage = () => {
         searchInput.current.value = selection
     }
 
-    const handleClick = () => {
-        setShowContent(!showContent)
-    }
     const handleFetch = () => {
         const result = fetchImages();
         setBool(true);
@@ -121,7 +115,7 @@ const EditorPage = () => {
                     {!bool2 && <ImageCatalogue bool={bool} images={images} handleBgSelection={handleBgSelection} guideH={guideH} guideText={guideText} calendarImage={calendarImage} />
                     }
                     {bool2 && <TextComponent guideH={guideH} guideText={guideText} />}
-                    {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} />}
+                    {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} />}
                     <div className="spaceHolder"></div>
                 </div>
             </div>
