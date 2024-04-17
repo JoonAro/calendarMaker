@@ -8,6 +8,7 @@ import EditorPage from "./routes/EditorPage";
 import Calendar from "./routes/Calendar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./routes/Dashboard";
+import EditorPageV2 from "./routes/EditorPageV2";
 function App() {
 
   return (
@@ -31,6 +32,12 @@ function App() {
             }
           />
           <Route
+            path="/editorPageV2"
+            element={
+              <EditorPageV2 />
+            }
+          />
+          <Route
             path="/calendar"
             element={
               <Calendar />
@@ -39,7 +46,7 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <Dashboard/>
+              <Dashboard />
             }
           />
 
