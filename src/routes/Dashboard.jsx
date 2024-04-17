@@ -90,8 +90,8 @@ const Dashboard = () => {
         </div>
 
 
-        <div className='flex flex-row gap-4 w-full mt-7 bg'>
-           <div className='px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'>
+        <div className='flex flex-wrap flex-col gap-4 md:flex-row w-full mt-7'>
+           <div className='flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'>
             
            
        <UserData/>
