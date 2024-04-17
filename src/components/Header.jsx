@@ -38,6 +38,9 @@ const Header = () => {
                                 <Link to="/editorPage">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Edit</Button>
                                 </Link>
+                                <Link to="/editorPageV2">
+                                    <Button variant="contained" className="text-whiteReplacement text-xl">EditV2</Button>
+                                </Link>
                                 <Link to="/dashboard">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Dashboard</Button>
                                 </Link>
