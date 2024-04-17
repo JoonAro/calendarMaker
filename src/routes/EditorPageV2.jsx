@@ -71,6 +71,8 @@ const EditorPageV2 = () => {
         console.log(userReply)
         if (userReply === "yes") {
             createCalendar(images, bgObject);
+            setGuideH("Great!");
+            setGuideText("Now you can start editing hatches. Have fun!")
         }
         else if (userReply === "no") {
             console.log("Go back to imageCatalogue");
