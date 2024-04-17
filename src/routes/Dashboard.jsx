@@ -45,8 +45,8 @@ const Dashboard = () => {
 
   return (
     <div className='p-4'>
-    <div className='flex gap-4'>
-        <div className='smallBackground rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
+    <div className='flex gap-4 w-full flex-wrap'>
+        <div className=' rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
 
         <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
             <SupervisedUserCircleIcon style={{ fontSize: '3rem'}} />
@@ -62,7 +62,7 @@ const Dashboard = () => {
         </div>
 
 
-        <div className='smallBackground rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
+        <div className='rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
         <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
             <AccessTimeFilledIcon style={{ fontSize: '3rem'}} />
             </div>
@@ -75,7 +75,7 @@ const Dashboard = () => {
     </div>
         </div>
 
-        <div className='smallBackground rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
+        <div className='rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
         <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
             <PieChartIcon style={{ fontSize: '3rem'}} />
             </div>
