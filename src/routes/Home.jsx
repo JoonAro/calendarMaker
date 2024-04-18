@@ -13,15 +13,15 @@ const Home = () => {
 
       <div className='flex flex-col justify-center items-center mt-20'>
         <h2 className="text-3xl mb-4">Customize your calendar</h2>
-        <div className="w-full py-40 rounded-md mt-4 bg-smallBackground border relative">
-          <div className=" w-16 md:w-32 lg:w-60 absolute top-0 left-0 mt-2.5 ml-14 sm:ml-40 items-start flex flex-col sm:items-center">
+        <div className="w-full py-48 rounded-md mt-4 bg-smallBackground border relative">
+          <div className=" w-16 md:w-32 lg:w-60 absolute top-0 left-0 mt-7 ml-14 md:ml-40 items-start flex flex-col sm:items-center">
             <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon1} alt="icon1" />
             <span className='text-sm md:text-2xl mt-3 text-fontDark text-center'>Choose a name of a calendar</span>
             <span className='text-zinc-400 text-xs sm:text-sm md:text-base mt-1 text-center'>What is the main idea of your calendar?</span>
           </div>
 
 
-          <div className="w-16 md:w-32 lg:w-72 absolute top-20 left-1/2 transform -translate-x-1/2 mb-2 items-left-1/4 flex flex-col sm:items-center">
+          <div className="w-16 md:w-32 lg:w-72 absolute top-24 left-1/2 transform -translate-x-1/2 mb-2 items-left-1/4 flex flex-col sm:items-center">
             <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon2} alt="icon2" />
             <span className='text-sm md:text-2xl mt-3 text-fontDark text-center'>Change style, upload images</span>
             <span className='text-zinc-400 text-xs sm:text-sm md:text-base mt-1 text-center'>Choose images and style of the hatches, theme
@@ -29,7 +29,7 @@ const Home = () => {
           </div>
 
 
-          <div className="w-16 md:w-32 lg:w-72 absolute top-0 right-0 mt-2.5 mr-14 sm:mr-40 items-end flex flex-col sm:items-center">
+          <div className="w-16 md:w-32 lg:w-72 absolute top-0 right-0 mt-7 mr-14 md:mr-40 items-end flex flex-col sm:items-center">
             <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon3} alt="icon3" />
             <span className='text-sm md:text-2xl mt-3 text-fontDark text-center'>Share your calendar</span>
             <span className='text-zinc-400 text-xs sm:text-sm md:text-base mt-1 text-center'>Whould you like to share your calendar? Sure, do it!
