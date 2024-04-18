@@ -36,16 +36,13 @@ const Header = () => {
                                 <Link to="/calendar">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Calendar</Button>
                                 </Link>
-                                <Link to="/editorPage">
-                                    <Button variant="contained" className="text-whiteReplacement text-xl">Edit</Button>
-                                </Link>
                                 <Link to="/editorPageV2">
-                                    <Button variant="contained" className="text-whiteReplacement text-xl">EditV2</Button>
+                                    <Button variant="contained" className="text-whiteReplacement text-xl">Edit</Button>
                                 </Link>
                                 <Link to="/dashboard">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Dashboard</Button>
                                 </Link>
-                                <Link to="/permium">
+                                <Link to="/premium">
                                     <Button variant="contained" className="text-whiteReplacement 
                                     text-xl">Premium</Button>
                                 </Link>
