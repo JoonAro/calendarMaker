@@ -11,6 +11,12 @@ const API_KEY = import.meta.env.VITE_UNSPLASH_API;
 const API_URL = "https://api.unsplash.com/search/photos";
 const IMAGES_PER_PAGE = 30;
 
+// Before friday: 
+//  -Change the alert
+//      -The one in countries will do for now
+//  -Fix css on TextComponent Make it present in the same way on each component
+//      -Copy what is in the other components and it will work
+//  -Optional Date Picker
 const EditorPageV2 = () => {
     const [images, setImages] = useState([]);
     const [bgObject, setBgObject] = useState({});
@@ -38,6 +44,8 @@ const EditorPageV2 = () => {
     const handleFetch = () => {
         const result = fetchImages();
         setBool(true);
+        setBool2(false);
+        setBool3(false);
         console.log(bool, "bool");
         setGuideH("Choose a background image by clicking the image.");
         setGuideText("");
@@ -64,7 +72,7 @@ const EditorPageV2 = () => {
         setBool2(true);
         console.log("bool2", bool2)
         setGuideH("Are you happy with the background?");
-        setGuideText("Click no to find a new background image.")
+        setGuideText("");
         // create calendar and pass to it also the hatchImg.id to get rid of the backgroundImg from the hatches
     }
     const handleUserReply = (userReply) => {
@@ -75,7 +83,8 @@ const EditorPageV2 = () => {
             setGuideText("Now you can start editing hatches. Have fun!")
         }
         else if (userReply === "no") {
-            console.log("Go back to imageCatalogue");
+            setGuideH("Choose a background image by clicking the image.");
+            setGuideText("");
             setBool2(false);
             // Todo: FIX guidetext!
         }
@@ -88,8 +97,6 @@ const EditorPageV2 = () => {
         // console.log(calendarObj);
         setCalendar(calendarObj);
         setTimeout(() => setBool3(true), 1000);
-        setGuideH("Are you happy with the background?");
-        setGuideText("Click no to find a new background image.")
     }
 
     // Idea for createObject. Add array of numbers etc. When user edits te calendar and chooses a hatch give him option to choose double hatch. If he chooses it then handleClick to add the hatch number to array and in createcalendar if number is this then hatchtype is that.
@@ -141,7 +148,7 @@ const EditorPageV2 = () => {
                 <div className="content">
                     {!bool2 && <ImageCatalogue bool={bool} images={images} handleBgSelection={handleBgSelection} guideH={guideH} guideText={guideText} calendarImage={calendarImage} />
                     }
-                    {bool2 && <TextComponent guideH={guideH} guideText={guideText} yes={"Yes"} no={"No"} handleUserReply={handleUserReply} />}
+                    {bool2 && !bool3 && <TextComponent guideH={guideH} guideText={guideText} yes={"Yes"} no={"No"} handleUserReply={handleUserReply} />}
                     {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} />}
                 </div>
             </div>
