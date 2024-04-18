@@ -53,7 +53,10 @@ const Login = () => {
           >
             Login
           </Button>
+          <div className="text-center text-gray-400">
+            Don't have an account?
           <span className="cursor-pointer font-bold text-black"><Link to={"/register"}> Sign up here</Link></span>
+          </div>
         </div>
       </div>
     </div>

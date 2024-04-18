@@ -44,9 +44,9 @@ const Dashboard = () => {
 
 
   return (
-    <div className='p-4'>
-    <div className='flex gap-4'>
-        <div className='smallBackground rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
+    <div className='p-4 font-sans'>
+    <div className='flex gap-4 w-full flex-wrap'>
+        <div className=' rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
 
         <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
             <SupervisedUserCircleIcon style={{ fontSize: '3rem'}} />
@@ -62,7 +62,7 @@ const Dashboard = () => {
         </div>
 
 
-        <div className='smallBackground rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
+        <div className='rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
         <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
             <AccessTimeFilledIcon style={{ fontSize: '3rem'}} />
             </div>
@@ -75,12 +75,12 @@ const Dashboard = () => {
     </div>
         </div>
 
-        <div className='smallBackground rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
+        <div className='rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
         <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
             <PieChartIcon style={{ fontSize: '3rem'}} />
             </div>
     <div className="pl-4">
-        <span className="text-sm text-gray-500 font-light">Transactions</span>
+        <span className="text-sm text-gray-500 font-light">Messages</span>
         <div className="flex items-center">
             <strong className="text-xl text-gray-700 font-semibold">20</strong>
             <span className="text-sm text-green-500 pl-2">+23</span>
@@ -90,8 +90,8 @@ const Dashboard = () => {
         </div>
 
 
-        <div className='flex flex-row gap-4 w-full mt-7 bg'>
-           <div className='px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'>
+        <div className='flex flex-wrap flex-col gap-4 md:flex-row w-full mt-7'>
+           <div className='flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'>
             
            
        <UserData/>
