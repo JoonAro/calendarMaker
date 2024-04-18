@@ -48,13 +48,13 @@ const EditorPageV2 = () => {
         if (nameOfInput === 'hatchType') {
             setHatchType(e.target.value);
             if (bool4) {
-                createCalendar(images, bgObject);
+                createCalendar(images, bgObject, e);
             }
         }
         if (nameOfInput === 'hatchSide') {
             setHatchSide(e.target.value);
             if (bool4) {
-                createCalendar(images, bgObject);
+                createCalendar(images, bgObject, e);
             }
         }
 
@@ -113,8 +113,8 @@ const EditorPageV2 = () => {
             console.log("handleUserReply Error. Check your code!");
         }
     }
-    const createCalendar = (result, bgImg) => {
-        const calendarObj = createObject(result, bgImg);
+    const createCalendar = (result, bgImg, e) => {
+        const calendarObj = createObject(result, bgImg, e);
         // console.log(calendarObj);
         setCalendar(calendarObj);
         setTimeout(() => setBool3(true), 2500);
@@ -123,7 +123,7 @@ const EditorPageV2 = () => {
     // Idea for createObject. Add array of numbers etc. When user edits te calendar and chooses a hatch give him option to choose double hatch. If he chooses it then handleClick to add the hatch number to array and in createcalendar if number is this then hatchtype is that.
 
     //unsplash api has blur hash where you can first have a blurred image loaded on the page before the real thing loads.
-    const createObject = (result, bgImg) => {
+    const createObject = (result, bgImg, e) => {
         let startDate = new Date(2024, 3, 10);
         let hatches = [];
         let numbOfHatches = 0;
@@ -137,8 +137,23 @@ const EditorPageV2 = () => {
             let status = false;
             let hatch;
             let hatchNr = i + hatchModifier;
-            let typeOfHatch = hatchType;
-            let sideOfHatch = hatchSide;
+            let typeOfHatch;
+            let sideOfHatch;
+            if (!e) {
+                typeOfHatch = hatchType;
+                sideOfHatch = hatchSide;
+            }
+            else {
+                console.log(e.target.name)
+                if (e.target.name === "hatchType") {
+                    typeOfHatch = e.target.value;
+                    sideOfHatch = hatchSide;
+                }
+                else if (e.target.name === "hatchSide") {
+                    sideOfHatch = e.target.value;
+                    typeOfHatch = hatchType;
+                }
+            }
             if (result[i].id === bgImg.id) {
                 //  console.log('found match with bg id & stopped creating the hatch');
                 hatchModifier--;
@@ -171,7 +186,6 @@ const EditorPageV2 = () => {
                 <div className="content">
                     {!bool2 && <ImageCatalogue bool={bool} images={images} handleBgSelection={handleBgSelection} guideH={guideH} guideText={guideText} calendarImage={calendarImage} />
                     }
-                    {/*   {bool2 && !bool3 && <TextComponent guideH={guideH} guideText={guideText} yes={"Yes"} no={"No"} handleUserReply={handleUserReply} />} */}
                     {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} />}
                 </div>
             </div>
