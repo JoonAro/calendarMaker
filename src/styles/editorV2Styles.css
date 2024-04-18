@@ -34,15 +34,15 @@
 .gridHolder {
     margin: 30px;
     padding: 50px;
-    max-width: 1060px;
-    min-width: 1060px;
+    max-width: 1320px;
+    min-width: 1320px;
     min-height: 1200px;
     position: relative;
     display: grid;
     background-color: rgba(103, 89, 94, 0);
     background-position: center;
     background-size: cover;
-    grid-template-columns: repeat(4, 180px);
+    grid-template-columns: repeat(5, 180px);
     grid-template-rows: repeat(6, 1fr);
     grid-gap: 80px;
     margin: 0 auto;
@@ -113,7 +113,7 @@
 
     background-color: rgba(0, 0, 0, 0.395);
     position: absolute;
-    top: 10vw;
+    top: 20vw;
     left: 20vw;
     width: 650px;
     font-size: xx-large;
@@ -167,7 +167,11 @@
 }
 
 .hatchNumber {
-    color: rgb(179, 58, 58);
+    width: fit-content;
+    height: fit-content;
+    color: rgba(0, 0, 0, 0.609);
+    background-color: rgba(245, 245, 245, 0.341);
+    border-bottom-right-radius: 5px;
 }
 
 .right {
@@ -206,7 +210,7 @@
 
     100% {
         background-color: rgb(224, 199, 170);
-        transform: rotateY(calc(var(--y) * -110deg));
+        transform: rotateY(calc(var(--y) * -100deg));
 
     }
 }
@@ -225,7 +229,7 @@
 @keyframes closeIt {
     0% {
         background-color: rgb(224, 199, 170);
-        transform: rotateY(calc(var(--y) * -110deg))
+        transform: rotateY(calc(var(--y) * -100deg))
     }
 
     33% {

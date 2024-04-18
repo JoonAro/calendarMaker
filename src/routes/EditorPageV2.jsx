@@ -5,6 +5,7 @@ import Sidebar from "../components/Sidebar";
 import { CalendarClass, HatchClass } from "../../classes/classes";
 import ImageCatalogue from "../components/ImageCatalogue";
 import CalendarComponent from "../components/CalendarComponent";
+import BackToTop from "../components/BackToTop";
 
 const API_KEY = import.meta.env.VITE_UNSPLASH_API;
 const API_URL = "https://api.unsplash.com/search/photos";
@@ -13,8 +14,6 @@ const IMAGES_PER_PAGE = 30;
 // Before friday: 
 //  -Change the alert
 //      -The one in countries will do for now
-//  -Fix css on TextComponent Make it present in the same way on each component
-//      -Copy what is in the other components and it will work
 //  -Optional Date Picker
 const EditorPageV2 = () => {
     const [images, setImages] = useState([]);
@@ -171,6 +170,7 @@ const EditorPageV2 = () => {
 
     return (
         <>
+            <BackToTop />
             <div className="editorHolder">
                 <div className="sideColumn">
 
