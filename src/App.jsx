@@ -13,7 +13,7 @@ import Contact from "./components/footercomponent/Contact";
 import Licensing from "./components/footercomponent/Licensing";
 import Privacy from "./components/footercomponent/Privacy";
 import Premium from "./components/Premium";
-
+import EditorPageV2 from "./routes/EditorPageV2";
 
 function App() {
 
@@ -38,6 +38,12 @@ function App() {
             }
           />
           <Route
+            path="/editorPageV2"
+            element={
+              <EditorPageV2 />
+            }
+          />
+          <Route
             path="/calendar"
             element={
               <Calendar />
@@ -46,40 +52,39 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <Dashboard/>
+              <Dashboard />
             }
           />
           <Route
             path="/about"
             element={
-              <About/>
+              <About />
             }
           />
           <Route
             path="/contact"
             element={
-              <Contact/>
+              <Contact />
             }
           />
           <Route
             path="/licensing"
             element={
-              <Licensing/>
+              <Licensing />
             }
           />
           <Route
             path="/privacy"
             element={
-              <Privacy/>
+              <Privacy />
             }
           />
           <Route
             path="/premium"
             element={
-              <Premium/>
+              <Premium />
             }
           />
-
         </Route>
       </Routes>
     </Router>
