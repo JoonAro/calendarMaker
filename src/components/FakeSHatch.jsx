@@ -4,7 +4,7 @@ import '../styles/editorStyles.css';
 const today = new Date();
 const todayISO = today.toISOString();
 
-const Hatch = ({ hatch, accessKey }) => {
+const FakeSHatch = ({ hatch, accessKey }) => {
     const [clicked, setClicked] = useState(false);
     const [showImage, setShowImage] = useState(false);
 
@@ -25,7 +25,7 @@ const Hatch = ({ hatch, accessKey }) => {
 
     const handleTime = (hatch) => {
         // console.log(hatch);
-        const hatchDate = hatch.date.toISOString();
+        const hatchDate = hatch.date
         // console.log("todayISO", todayISO, "hatchDate", hatchDate);
         if (todayISO < hatchDate) {
             console.log('Access denied')
@@ -47,5 +47,4 @@ const Hatch = ({ hatch, accessKey }) => {
         </div>
     )
 }
-
-export default Hatch
+export default FakeSHatch
