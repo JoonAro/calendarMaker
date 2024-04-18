@@ -1,3 +1,7 @@
+//import About from "./footercomponent/Contact"
+//import Licensing from "./footercomponent/Licensing"
+//import PrivacyPolicy from "./footercomponent/PrivacyPolicy"
+//import Contact from "./footercomponent/Contact"
 
 const Footer = () =>
 
@@ -6,16 +10,16 @@ const Footer = () =>
       <div className="sm:flex sm:items-center sm:justify-between">
         <ul className="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 ">
           <li>
-            <a href="#" className="hover:underline me-4 md:me-6">About</a>
+            <a href="About" className="hover:underline me-4 md:me-6">About</a>
           </li>
           <li>
-            <a href="#" className="hover:underline me-4 md:me-6">Privacy Policy</a>
+            <a href="Privacy" className="hover:underline me-4 md:me-6">Privacy Policy</a>
           </li>
           <li>
-            <a href="#" className="hover:underline me-4 md:me-6">Licensing</a>
+            <a href="Licensing" className="hover:underline me-4 md:me-6">Licensing</a>
           </li>
           <li>
-            <a href="#" className="hover:underline">Contact</a>
+            <a href="Contact" className="hover:underline">Contact</a>
           </li>
         </ul>
       </div>

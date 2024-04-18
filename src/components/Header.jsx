@@ -2,6 +2,7 @@ import { Button, Container, Nav, Navbar, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import calendar from '../assets/media/calendar.svg';
 
+
 const Header = () => {
 
     return (
@@ -43,6 +44,10 @@ const Header = () => {
                                 </Link>
                                 <Link to="/dashboard">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Dashboard</Button>
+                                </Link>
+                                <Link to="/permium">
+                                    <Button variant="contained" className="text-whiteReplacement 
+                                    text-xl">Premium</Button>
                                 </Link>
                             </Nav>
                         </Navbar.Collapse>
