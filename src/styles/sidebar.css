@@ -47,6 +47,21 @@ p {
     color: whitesmoke;
 }
 
+.themeSelDouble {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 135px;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.themeSelDouble:hover {
+
+    color: whitesmoke;
+}
+
 label {
     margin: 0px 0 5px 12px;
     width: 70.2px;

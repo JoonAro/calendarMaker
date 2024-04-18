@@ -39,8 +39,9 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchS
                     <div className='themeSelection' onClick={() => handleSelection('macro')}>Macro</div>
                     <div className='themeSelection' onClick={() => handleSelection('cat')}>Cat</div>
                     <div className='themeSelection' onClick={() => handleSelection('easter')}>Easter</div>
-                    <div className='themeSelection' onClick={() => handleSelection('xmas')}>Xmas</div>
-                    <div className='themeSelection' onClick={() => handleSelection('diving')}>Diving</div>
+                    <div className='themeSelection' onClick={() => handleSelection('santa')}>Santa</div>
+                    <div className='themeSelection' onClick={() => handleSelection('butterfly')}>Butterfly</div>
+                    <div className='themeSelDouble' onClick={() => handleSelection('northern lights')}>Northern lights</div>
                 </div>
             </div>
             <div className='filters'>
