@@ -5,6 +5,7 @@ import DoubleHatch from "../components/DoubleHatch";
 import FakeSHatch from '../components/FakeSHatch';
 import FakeDblHatch from '../components/FakeDblHatch';
 import '../styles/editorStyles.css';
+import TextComponent from '../components/TextComponent';
 
 // Todo: Make sure you check the date of the hatch before user is able to open the hatch
 const Calendar = () => {
