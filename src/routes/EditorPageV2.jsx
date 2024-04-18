@@ -4,7 +4,6 @@ import '../styles/editorV2Styles.css';
 import Sidebar from "../components/Sidebar";
 import { CalendarClass, HatchClass } from "../../classes/classes";
 import ImageCatalogue from "../components/ImageCatalogue";
-import TextComponent from "../components/TextComponent";
 import CalendarComponent from "../components/CalendarComponent";
 
 const API_KEY = import.meta.env.VITE_UNSPLASH_API;
@@ -24,9 +23,10 @@ const EditorPageV2 = () => {
     const [bool, setBool] = useState(false);
     const [bool2, setBool2] = useState(false);
     const [bool3, setBool3] = useState(false);
+    const [bool4, setBool4] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const [pageNr, setPageNr] = useState(1);
-    const [radioValue, setRadioValue] = useState('hatch');
+    const [hatchType, setHatchType] = useState('single');
     const [hatchSide, setHatchSide] = useState('left');
     const searchInput = useRef(null);
     const [calendar, setCalendar] = useState(null);
@@ -41,11 +41,31 @@ const EditorPageV2 = () => {
         searchInput.current.value = selection
     }
 
+    const radioHandler = (e) => {
+        console.log(e.target.name);
+        console.log(e.target.value);
+        const nameOfInput = e.target.name
+        if (nameOfInput === 'hatchType') {
+            setHatchType(e.target.value);
+            if (bool4) {
+                createCalendar(images, bgObject);
+            }
+        }
+        if (nameOfInput === 'hatchSide') {
+            setHatchSide(e.target.value);
+            if (bool4) {
+                createCalendar(images, bgObject);
+            }
+        }
+
+    }
+
     const handleFetch = () => {
         const result = fetchImages();
         setBool(true);
         setBool2(false);
         setBool3(false);
+        setBool4(false);
         console.log(bool, "bool");
         setGuideH("Choose a background image by clicking the image.");
         setGuideText("");
@@ -81,6 +101,7 @@ const EditorPageV2 = () => {
             createCalendar(images, bgObject);
             setGuideH("Great!");
             setGuideText("Now you can start editing hatches. Have fun!")
+            setBool4(true);
         }
         else if (userReply === "no") {
             setGuideH("Choose a background image by clicking the image.");
@@ -96,7 +117,7 @@ const EditorPageV2 = () => {
         const calendarObj = createObject(result, bgImg);
         // console.log(calendarObj);
         setCalendar(calendarObj);
-        setTimeout(() => setBool3(true), 1000);
+        setTimeout(() => setBool3(true), 2500);
     }
 
     // Idea for createObject. Add array of numbers etc. When user edits te calendar and chooses a hatch give him option to choose double hatch. If he chooses it then handleClick to add the hatch number to array and in createcalendar if number is this then hatchtype is that.
@@ -116,12 +137,14 @@ const EditorPageV2 = () => {
             let status = false;
             let hatch;
             let hatchNr = i + hatchModifier;
+            let typeOfHatch = hatchType;
+            let sideOfHatch = hatchSide;
             if (result[i].id === bgImg.id) {
                 //  console.log('found match with bg id & stopped creating the hatch');
                 hatchModifier--;
             }
             else {
-                hatch = new HatchClass(date, hatchNr, hatchImg, status);
+                hatch = new HatchClass(date, hatchNr, hatchImg, status, typeOfHatch, sideOfHatch);
                 // console.log("hatchNr", hatchNr)
                 hatches.push(hatch);
                 numbOfHatches++;
@@ -140,16 +163,16 @@ const EditorPageV2 = () => {
                         handleSearch={handleSearch}
                         searchInput={searchInput}
                         handleSelection={handleSelection}
-                        radioValue={radioValue}
-                        setRadioValue={setRadioValue}
+                        hatchType={hatchType}
                         hatchSide={hatchSide}
-                        setHatchSide={setHatchSide} />
+                        radioHandler={radioHandler}
+                    />
                 </div>
                 <div className="content">
                     {!bool2 && <ImageCatalogue bool={bool} images={images} handleBgSelection={handleBgSelection} guideH={guideH} guideText={guideText} calendarImage={calendarImage} />
                     }
-                    {bool2 && !bool3 && <TextComponent guideH={guideH} guideText={guideText} yes={"Yes"} no={"No"} handleUserReply={handleUserReply} />}
-                    {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} />}
+                    {/*   {bool2 && !bool3 && <TextComponent guideH={guideH} guideText={guideText} yes={"Yes"} no={"No"} handleUserReply={handleUserReply} />} */}
+                    {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} />}
                 </div>
             </div>
         </>
