@@ -8,7 +8,7 @@ import icon3 from '../assets/icon3.svg';
 
 const Home = () => {
   return (
-    <Container fluid style={{ maxWidth: "100vw", color: "whitesmoke", backgroundColor: "#67595E" }}>
+    <Container fluid style={{ maxWidth: "100vw", color: "whitesmoke", backgroundColor: "#67595E" }} className='font-sans'>
       <Carousel />
 
       <div className='flex flex-col justify-center items-center mt-20'>
