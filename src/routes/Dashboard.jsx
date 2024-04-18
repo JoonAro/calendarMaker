@@ -80,7 +80,7 @@ const Dashboard = () => {
             <PieChartIcon style={{ fontSize: '3rem'}} />
             </div>
     <div className="pl-4">
-        <span className="text-sm text-gray-500 font-light">Actions</span>
+        <span className="text-sm text-gray-500 font-light">Messages</span>
         <div className="flex items-center">
             <strong className="text-xl text-gray-700 font-semibold">20</strong>
             <span className="text-sm text-green-500 pl-2">+23</span>
