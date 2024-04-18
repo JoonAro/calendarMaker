@@ -3,7 +3,7 @@
 }
 
 .content {
-    margin: 60px 0 0 250px;
+    margin: 0 0 0 250px;
     background-color: rgba(103, 89, 94, 1);
 }
 
@@ -29,6 +29,57 @@
     border-radius: 30px;
 }
 
+.catalogueHolder {
+    margin: 30px;
+    padding: 50px;
+    max-width: 1500px;
+    min-width: 1200px;
+    min-height: 90vh;
+    position: relative;
+    display: grid;
+    background-color: rgba(103, 89, 94, 1);
+    background-position: center;
+    background-size: cover;
+    grid-template-columns: repeat(3, 25vw);
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 0px;
+    margin: 0 auto;
+    border-radius: 30px;
+}
+
+.catalogueImage {
+    display: flex;
+    perspective: 900px;
+    position: relative;
+    background-color: rgba(127, 255, 212, 0);
+    height: 566px;
+    width: 415px;
+    background-size: cover;
+    background-position: center;
+}
+
+.calendarContent {
+    background-color: rgba(103, 89, 94, 1);
+}
+
+.calendarGridHolder {
+    margin: 30px;
+    padding: 50px;
+    max-width: 1320px;
+    min-width: 1320px;
+    min-height: 90vh;
+    position: relative;
+    display: grid;
+    background-color: rgba(103, 89, 94, 1);
+    background-position: center;
+    background-size: cover;
+    grid-template-columns: repeat(5, 180px);
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 80px;
+    margin: 0 auto;
+    border-radius: 30px;
+}
+
 .flexColumnCentered {
     display: flex;
     flex-direction: column;
@@ -37,13 +88,18 @@
 }
 
 .welcomeText {
+
+    background-color: rgba(0, 0, 0, 0.395);
     position: absolute;
-    top: 40%;
-    left: 0;
-    width: 100%;
+    top: 220px;
+    left: 20%;
+    width: 650px;
     font-size: xx-large;
     color: white;
     z-index: 9;
+    border-radius: 20px;
+    padding: 20px 0;
+
 }
 
 .textHolder {
@@ -69,6 +125,8 @@
     background-position: center;
 }
 
+
+
 .showIt {
     background-image: url("https://images.unsplash.com/photo-1605197161470-d0261cac6767?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8c21hbGwlMjBkb2d8ZW58MHx8MHx8fDA%3D")
 }
@@ -84,6 +142,10 @@
     display: grid;
     background-color: rgba(127, 255, 212, 0);
     transform-origin: var(--i);
+}
+
+.hatchNumber {
+    color: rgb(179, 58, 58);
 }
 
 .right {
@@ -128,7 +190,7 @@
 }
 
 .closedStyle {
-    border: 1px dashed white;
+    border: 1px dashed rgba(255, 255, 255, 0.377);
     animation-name: closeIt;
     animation-duration: 2s;
     animation-delay: 0;
