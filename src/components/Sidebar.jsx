@@ -2,7 +2,7 @@ import '../styles/sidebar.css'
 import { Form } from 'react-bootstrap';
 import ButtonComponent from './ButtonComponent';
 import calendarSvg from '../assets/media/calendar.svg'
-const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRadioValue, hatchSide, setHatchSide }) => {
+const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchSide, radioHandler }) => {
     return (
         <div className="sidebar">
             <div className="filters">
@@ -52,9 +52,9 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRa
                     <input
                         type="radio"
                         name="hatchType"
-                        value="hatch"
-                        checked={radioValue === 'hatch'}
-                        onChange={(e) => setRadioValue(e.target.value)}
+                        value="single"
+                        checked={hatchType === 'single'}
+                        onChange={(e) => radioHandler(e)}
                     />
                     Single
                 </label>
@@ -62,9 +62,9 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRa
                     <input
                         type="radio"
                         name="hatchType"
-                        value="double hatch"
-                        checked={radioValue === 'double hatch'}
-                        onChange={(e) => setRadioValue(e.target.value)}
+                        value="double"
+                        checked={hatchType === 'double'}
+                        onChange={(e) => radioHandler(e)}
                     />
                     Double
                 </label>
@@ -75,7 +75,7 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRa
                             name="hatchSide"
                             value="left"
                             checked={hatchSide === 'left'}
-                            onChange={(e) => setHatchSide(e.target.value)}
+                            onChange={(e) => radioHandler(e)}
                         />
                         Left
                     </label>
@@ -85,7 +85,7 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRa
                             name="hatchSide"
                             value="right"
                             checked={hatchSide === 'right'}
-                            onChange={(e) => setHatchSide(e.target.value)}
+                            onChange={(e) => radioHandler(e)}
                         />
                         Right
                     </label>

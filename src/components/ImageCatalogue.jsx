@@ -13,7 +13,7 @@ const ImageCatalogue = ({ bool, images, handleBgSelection, guideH, guideText, ca
                 }
                 {bool && images.map(hatchImg => {
                     return <div className="catalogueImage" key={hatchImg.id} onClick={() => handleBgSelection(hatchImg)} style={{
-                        backgroundImage: `url(${hatchImg.urls.small})`
+                        backgroundImage: `url(${hatchImg.urls.regular})`
                     }}></div>
                 })}
             </div>
