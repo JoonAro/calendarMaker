@@ -22,7 +22,7 @@ export default function Carousel() {
             <h2>Beach Calendar</h2>
           </div>
           <div className="absolute top-10 left-1/2 transform -translate-x-1/2 z-20 text-fontDark text-5xl text-center">
-            <h2>Calendar</h2>
+            <h3>CALENDAR</h3>
           </div>
         </div>
         <div className="slide two">
