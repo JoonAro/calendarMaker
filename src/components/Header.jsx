@@ -41,6 +41,9 @@ const Header = () => {
                                 <Link to="/dashboard">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Dashboard</Button>
                                 </Link>
+                                <Link to="/premium">
+                                    <Button variant="contained" style={{ color: '#ffffff' }}>Premium</Button>
+                                </Link>
                             </Nav>
                         </Navbar.Collapse>
                     </Container>
