@@ -15,7 +15,7 @@ const CalendarComponent = ({ calendar, calendarImage, accessKey, bool3, bool4, h
     }
     return (
         <div className="calendarHolder">
-            <HatchContent />
+            {showContent && <HatchContent />}
             <div className="gridHolder" style={{
                 backgroundImage: `url(${calendarImage})`,
             }}>
