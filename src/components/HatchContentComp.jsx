@@ -27,7 +27,7 @@ const HatchContent = () => {
                 <h2>HatchContentComp</h2>
                 <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro consectetur dicta magnam. Rerum reiciendis eum facere quae maiores ad? Beatae similique fugiat dolorum dignissimos? Magnam tempore earum laboriosam possimus doloribus!</p>
 
-                <iframe width="350" height="315" src="https://www.youtube.com/embed/73DvTWzdt2Y?si=QUSigTjAyaptmod0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <iframe width="350" height="315" src="https://www.youtube.com/embed/73DvTWzdt2Y?si=QUSigTjAyaptmod0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
             </div>
         </div>
     )

@@ -4,12 +4,17 @@ import Hatch from "./Hatch";
 import TextComponent from "./TextComponent";
 import HatchContent from "./HatchContentComp";
 
-
+// Todo: recreate hatch to take orders from calendarComponent.
+//       -Make the hatch open when you click the outer calendarImage div 
+//       -Then when hatch is open when you click on the calendarImage again it will give you the hatchContentComp
+//        with the calendarImage displayed on it
+//       -Clicking X or outside the hatchContentComp will close the component.
+//       -When you click on the hatch div it only closes the door. You may have to block the first click with a boolean to block it from closing it straight away.
 const CalendarComponent = ({ calendar, calendarImage, accessKey, bool3, bool4, handleUserReply, guideH, guideText }) => {
     const [showContent, setShowContent] = useState(false);
     const handleContent = (hatchNr, showImage, showContent, clicked) => {
         console.log("clicked", clicked, "showImage", showImage, "showContent", showContent, "hatchNr", hatchNr)
-        if (showImage) {
+        if (showImage === true) {
             setShowContent(!showContent)
         }
     }
