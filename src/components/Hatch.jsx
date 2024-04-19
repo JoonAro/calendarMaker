@@ -4,9 +4,11 @@ import '../styles/editorStyles.css';
 const today = new Date();
 const todayISO = today.toISOString();
 
-const Hatch = ({ hatch, accessKey }) => {
+const Hatch = ({ hatch, accessKey, handleContent }) => {
     const [clicked, setClicked] = useState(false);
     const [showImage, setShowImage] = useState(false);
+    const [showContent, setShowContent] = useState(false);
+
 
     const openHatch = (hatch, accessKey) => {
         const dateCheck = handleTime(hatch);
@@ -38,7 +40,7 @@ const Hatch = ({ hatch, accessKey }) => {
     }
 
     return (
-        <div style={{
+        <div onClick={() => handleContent(hatch.hatchNr, showImage, showContent, clicked)} style={{
             backgroundImage: showImage ? `url("${hatch.hatchImg}")` : 'url("")'
         }} className={`calendarImage `}>
             <div onClick={() => openHatch(hatch, accessKey)} className={`hatch ${hatch.hatchSide} ${clicked ? 'openStyle' : 'closedStyle'}`}>
