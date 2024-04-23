@@ -6,6 +6,8 @@ import { CalendarClass, HatchClass } from "../../classes/classes";
 import ImageCatalogue from "../components/ImageCatalogue";
 import CalendarComponent from "../components/CalendarComponent";
 import BackToTop from "../components/BackToTop";
+import { useDispatch, useSelector } from 'react-redux';
+import { setCalendar } from "../store/calendarSlice";
 
 const API_KEY = import.meta.env.VITE_UNSPLASH_API;
 const API_URL = "https://api.unsplash.com/search/photos";
@@ -16,6 +18,8 @@ const IMAGES_PER_PAGE = 30;
 //      -The one in countries will do for now
 //  -Optional Date Picker
 const EditorPageV2 = () => {
+    const dispatch = useDispatch();
+    const calendar = useSelector(state => state.calendar.calendar);
     const [images, setImages] = useState([]);
     const [bgObject, setBgObject] = useState({});
     const [calendarImage, setCalendarImage] = useState("https://images.unsplash.com/photo-1556888335-23631cd2801a?q=80&w=2053&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
@@ -28,7 +32,6 @@ const EditorPageV2 = () => {
     const [hatchType, setHatchType] = useState('single');
     const [hatchSide, setHatchSide] = useState('left');
     const searchInput = useRef(null);
-    const [calendar, setCalendar] = useState(null);
     const [guideH, setGuideH] = useState("Welcome to the calendar editor!")
     const [guideText, setGuideText] = useState("Start creating your calendar by searching for a theme.");
     const handleSearch = (event) => {
@@ -115,7 +118,7 @@ const EditorPageV2 = () => {
     const createCalendar = (result, bgImg, e) => {
         const calendarObj = createObject(result, bgImg, e);
         // console.log(calendarObj);
-        setCalendar(calendarObj);
+        dispatch(setCalendar(calendarObj));
         setTimeout(() => setBool3(true), 2500);
     }
 
@@ -164,7 +167,7 @@ const EditorPageV2 = () => {
                 numbOfHatches++;
             }
         }
-        let calendar = new CalendarClass(startDate, date, bgImg.urls.full, hatches, numbOfHatches, false);
+        const calendar = new CalendarClass(startDate, date, bgImg.urls.full, hatches, numbOfHatches, false);
         return calendar;
     }
 
