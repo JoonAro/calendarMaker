@@ -14,10 +14,13 @@ import Licensing from "./components/footercomponent/Licensing";
 import Privacy from "./components/footercomponent/Privacy";
 import Premium from "./components/Premium";
 import EditorPageV2 from "./routes/EditorPageV2";
+import { Provider } from 'react-redux';
+import store from './store/store';
 
 function App() {
 
   return (
+    <Provider store={store}>
     <Router>
       <Routes>
         <Route path="/" element={<Root />}>
@@ -88,6 +91,7 @@ function App() {
         </Route>
       </Routes>
     </Router>
+    </Provider>
   )
 }
 
