@@ -6,32 +6,42 @@ import FakeSHatch from '../components/FakeSHatch';
 import FakeDblHatch from '../components/FakeDblHatch';
 import '../styles/editorStyles.css';
 import TextComponent from '../components/TextComponent';
+import { useDispatch, useSelector } from 'react-redux';
+import { Button } from 'react-bootstrap';
+import { addDataToFirestore } from '../auth/firebase';
 
-// Todo: Make sure you check the date of the hatch before user is able to open the hatch
 const Calendar = () => {
-    const [calendar, setCalendar] = useState(fakeCalendar);
+    const calendar = useSelector(state => state.calendar.calendar);
     const [calendarImage, setCalendarImage] = useState(calendar.bgImage);
-    // Create a date checking function when hatch is clicked check if date is smaller than today. if so open hatch 
+    const dispatch = useDispatch();
 
-    /* const handleBgSelection = (hatchImg) => {
-        if (!bool) {
-            setCalendarImage(hatchImg);
-            setBool(true);
-        }
-    } */
+    const saveCalendarFirestore = (calendar) => {
+        return async (dispatch) => {
+            const calendarData = JSON.parse(JSON.stringify(calendar));
 
-    // Idea for createObject. Add array of numbers etc. When user edits te calendar and chooses a hatch give him option to choose double hatch. If he chooses it then handleClick to add the hatch number to array and in createcalendar if number is this then hatchtype is that.
-    //handleBgSelection(calendar.bgImage)
+            await addDataToFirestore("calendar", calendarData);
+
+            dispatch({ type: "saveCalendarFirestore", payload: calendarData });
+        };
+    };
+
     return (
         <>
             <div className="EditorHolder">
                 <div className="calendarContent">
-                    <div className="spaceHolder"></div>
+                    <div className="spaceHolder">
+                        <Button onClick={() => {
+                            dispatch(saveCalendarFirestore(calendar));
+                            console.log("Calendar saved");
+                        }}>
+                            Save
+                        </Button>
+                    </div>
                     <div className="calendarGridHolder" style={{
                         backgroundImage: `url(${calendarImage})`,
                     }}>
 
-                        {calendar.hatches.map(hatch => {
+                        {calendar?.hatches?.map(hatch => {
                             let hatchKey = hatch.hatchNr;
                             let hatchType = hatch.hatchType;
                             return hatchType === 'single' ? <FakeSHatch key={hatchKey} hatch={hatch} accessKey={false} /> : <FakeDblHatch key={hatchKey} hatch={hatch} accessKey={false} />
