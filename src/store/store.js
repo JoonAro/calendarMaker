@@ -1,10 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
-import calendarReducer from './calendarSlice';
+import dataSlice from './dataSlice';
+import calendarSlice from './calendarSlice';
 
 const store = configureStore({
     reducer: {
-        calendar: calendarReducer,
-    },
+        data: dataSlice,
+        calendar: calendarSlice,
+
+    }
+
 
 });
 
