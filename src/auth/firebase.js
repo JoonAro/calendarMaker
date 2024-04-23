@@ -21,12 +21,11 @@ import {
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API,
-    authDomain: "countries-f2546.firebaseapp.com",
-    projectId: "countries-f2546",
-    storageBucket: "countries-f2546.appspot.com",
-    messagingSenderId: "345028026141",
-    appId: "1:345028026141:web:b80a8e04e2b49787f9cbf4",
-    measurementId: "G-QFMMC3190L"
+    authDomain: "countries-6a68c.firebaseapp.com",
+    projectId: "countries-6a68c",
+    storageBucket: "countries-6a68c.appspot.com",
+    messagingSenderId: "596975822467",
+    appId: "1:596975822467:web:b7e7d28b7e738ef6b2ddb6"
 };
 export const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
@@ -64,7 +63,7 @@ export const logout = () => {
 };
 export const addDataToFirestore = async (uid, name) => {
     try {
-        await addDoc(collection(db, "users"), {
+        await addDoc(collection(db, "calendars"), {
             uid: uid,
             name,
             timeStamp: serverTimestamp(),
@@ -77,15 +76,36 @@ export const addDataToFirestore = async (uid, name) => {
 const calendarsRef = collection(db, "calendar");
 
 const calendarsSnapshot = await getDocs(calendarsRef);
-const fetchCalendar = async (calendarId) => {
+export const fetchCalendar = (calendarId) => {
     try {
-        const calendarDoc = await db.collection('calendars').doc(calendarId).get();
-        if (calendarDoc.exists) {
-            return calendarDoc.data();
+        // const calendarDoc = await db.collection('calendars').doc(calendarId).get();
+        const q = getDocs(collection(db, "calendars"))
+            .then((snapShot) => {
+                //console.log(snapShot.docs)
+                let calendars = []
+                snapShot.docs.forEach((doc) => {
+                    calendars.push({ ...doc.data(), id: doc.id })
+                })
+                console.log("calendars", calendars)
+            })
+        if (q) {
+            console.log("q calendar", q)
+            return calendars;
         } else {
             console.log('No such calendar document found');
             return null;
         }
+        //const name = getDocs(q);
+        // const name = q._snapshot.docChanges[4].value
+        /* const name = docData.value.mapValue.fields.name.stringValue; */
+        //console.log(name);
+        /*         const query = await getDocs(collection(db, "users", "vpuzBDN069UhgmJ9KRAU", "name", "hatches"));
+                if (query) {
+                    console.log("query", query)
+                }
+                else {
+                    console.log("query failed")
+                } */
     } catch (error) {
         console.error('Error fetching calendar document:', error);
         return null;
