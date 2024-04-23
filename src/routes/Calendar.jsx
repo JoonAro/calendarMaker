@@ -1,46 +1,48 @@
-import fakeCalendar from '../../fakeCalendar.json';
-import { useState } from "react";
-import Hatch from "../components/Hatch";
-import DoubleHatch from "../components/DoubleHatch";
-import FakeSHatch from '../components/FakeSHatch';
-import FakeDblHatch from '../components/FakeDblHatch';
-import '../styles/editorStyles.css';
-import TextComponent from '../components/TextComponent';
+import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux'
+import { db } from '../auth/firebase'
+import FakeSHatch from '../components/FakeSHatch'
+import FakeDblHatch from '../components/FakeDblHatch'
+import '../styles/editorStyles.css'
 
-// Todo: Make sure you check the date of the hatch before user is able to open the hatch
 const Calendar = () => {
-    const [calendar, setCalendar] = useState(fakeCalendar);
-    const [calendarImage, setCalendarImage] = useState(calendar.bgImage);
-    // Create a date checking function when hatch is clicked check if date is smaller than today. if so open hatch 
+    const [calendar, setCalendar] = useState(null)
+    const { calendar: calendarState } = useSelector(state => state)
 
-    /* const handleBgSelection = (hatchImg) => {
-        if (!bool) {
-            setCalendarImage(hatchImg);
-            setBool(true);
+    useEffect(() => {
+        const fetchCalendar = async () => {
+            const calendarRef = db.collection('calendars').doc(calendarState.id)
+            const calendarDoc = await calendarRef.get()
+
+            if (calendarDoc.exists) {
+                setCalendar(calendarDoc.data())
+            }
         }
-    } */
 
-    // Idea for createObject. Add array of numbers etc. When user edits te calendar and chooses a hatch give him option to choose double hatch. If he chooses it then handleClick to add the hatch number to array and in createcalendar if number is this then hatchtype is that.
-    //handleBgSelection(calendar.bgImage)
+        fetchCalendar()
+    }, [calendarState.id])
+
+    if (!calendar) {
+        return <div>Loading...</div>
+    }
+
     return (
-        <>
-            <div className="EditorHolder">
-                <div className="calendarContent">
-                    <div className="spaceHolder"></div>
-                    <div className="calendarGridHolder" style={{
-                        backgroundImage: `url(${calendarImage})`,
-                    }}>
+        <div className="EditorHolder">
+            <div className="calendarContent">
+                <div className="spaceHolder"></div>
+                <div className="calendarGridHolder" style={{
+                    backgroundImage: `url(${calendar.bgImage})`,
+                }}>
 
-                        {calendar.hatches.map(hatch => {
-                            let hatchKey = hatch.hatchNr;
-                            let hatchType = hatch.hatchType;
-                            return hatchType === 'single' ? <FakeSHatch key={hatchKey} hatch={hatch} accessKey={false} /> : <FakeDblHatch key={hatchKey} hatch={hatch} accessKey={false} />
-                        })}
-                    </div>
-                    <div className="spaceHolder"></div>
+                    {calendar.hatches?.map(hatch => {
+                        let hatchKey = hatch.hatchNr;
+                        let hatchType = hatch.hatchType;
+                        return hatchType === 'single' ? <FakeSHatch key={hatchKey} hatch={hatch} accessKey={false} /> : <FakeDblHatch key={hatchKey} hatch={hatch} accessKey={false} />
+                    })}
                 </div>
+                <div className="spaceHolder"></div>
             </div>
-        </>
+        </div>
     )
 }
 
