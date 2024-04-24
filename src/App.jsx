@@ -8,6 +8,7 @@ import EditorPage from "./routes/EditorPage";
 import Calendar from "./routes/Calendar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./routes/Dashboard";
+import Favourites from "./routes/Favourites";
 import About from "./components/footercomponent/About";
 import Contact from "./components/footercomponent/Contact";
 import Licensing from "./components/footercomponent/Licensing";
@@ -16,6 +17,7 @@ import Premium from "./components/Premium";
 import EditorPageV2 from "./routes/EditorPageV2";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import ProtectedRoute from "./auth/ProtectedRoute";
 
 function App() {
 
@@ -42,9 +44,7 @@ function App() {
             />
             <Route
               path="/editorPageV2"
-              element={
-                <EditorPageV2 />
-              }
+              element={<ProtectedRoute component={EditorPageV2} />}
             />
             <Route
               path="/calendar"
@@ -53,9 +53,15 @@ function App() {
               }
             />
             <Route
+              path="/favourites"
+              element={
+                <Favourites />
+              }
+            />
+            <Route
               path="/dashboard"
               element={
-                <Dashboard />
+                <ProtectedRoute component={Dashboard} />
               }
             />
             <Route
