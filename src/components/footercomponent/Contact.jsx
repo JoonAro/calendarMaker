@@ -1,13 +1,57 @@
+
+import { useState } from 'react';
+
+
 const Contact = () => {
-    return (
-      <div className="flex items-center justify-center min-h-screen bg-mainBackground">
-        <div className="md-6 space-y-10">
-          <h1 className="text-4xl font-bold text-left text-black">About</h1>
-          <p className="mt-10">This is a calendar maker app. Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe rem necessitatibus sint explicabo eius quaerat earum, autem sit temporibus. Ratione, quasi earum quis quas minus nostrum ipsa dolorum veritatis deserunt. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus in iure qui ab laboriosam enim repellendus voluptatem iusto consectetur earum aliquid, modi distinctio ipsam recusandae ea? Voluptates sed ea neque!l Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fugiat tenetur accusantium consectetur debitis quae dolores neque cum facere et, dolor non amet tempora id? Vel laboriosam ut inventore reprehenderit.</p>
-        </div>
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    
+
+    setName('');
+    setEmail('');
+    setMessage('');
+  };
+
+  return (
+    <form className="form relative flex flex-col p-8 md:p-14 items-center justify-start min-h-screen bg-mainBackground" onSubmit={handleSubmit}>
+     <div className='header'>
+      <h1 className="text-4xl font-bold text-black mt-32 mr-28">Contact us</h1>
+     </div>
+     <div className="font-bold items-center pt-16 pb-4 mr-32">
+      <label htmlFor="name">Name</label>
+      <input
+        type="text"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
       </div>
-    );
-  }
-  
-  export default Contact;
-  
+      <div className="font-bold items-center pb-4 mr-32">
+      <label htmlFor="email">Email</label>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+      />
+      </div>
+
+     <div className='font-bold items-center pb-4 mr-32'>
+      <label htmlFor="message">Message</label>
+      <textarea
+        id="message"
+        value={message}
+        onChange={(e) => setMessage(e.target.value)}
+      />
+      </div>
+
+      <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 mt-4 mr-28 w-24 h-10">Submit</button>
+
+    </form>
+  );
+};
+
+export default Contact;
