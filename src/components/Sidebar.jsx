@@ -2,6 +2,7 @@ import '../styles/sidebar.css'
 import { Form } from 'react-bootstrap';
 import ButtonComponent from './ButtonComponent';
 import calendarSvg from '../assets/media/calendar.svg'
+import SaveButton from './SaveButton';
 const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchSide, radioHandler }) => {
     return (
         <div className="sidebar">
@@ -90,6 +91,7 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchS
                         />
                         Right
                     </label>
+                    <SaveButton />
                 </div>
             </div>
         </div>
