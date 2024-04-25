@@ -25,8 +25,9 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchS
                         ref={searchInput}
                     />
                     <div className='h-16 mt-6 flex items-end justify-end'>
-
-                        <ButtonComponent />
+                        <ButtonComponent >
+                            <h1>Submit</h1>
+                        </ButtonComponent>
                     </div>
                 </Form>
             </div>
@@ -46,7 +47,6 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchS
             </div>
             <div className='filters'>
                 <div className='fullWidth'>
-
                     <p>Hatches</p>
                 </div>
                 <label>
