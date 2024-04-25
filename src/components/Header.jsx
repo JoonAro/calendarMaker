@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../auth/firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import {logout} from '../auth/firebase';
+import { logout } from '../auth/firebase';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -20,15 +20,15 @@ const Header = () => {
     useEffect(() => {
         const getUserData = async () => {
             const q = query(collection(db, "users"),
-            where("uid", "==", user?.uid));
+                where("uid", "==", user?.uid));
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach(
-                (doc)=>{
+                (doc) => {
                     const name = doc.data().name;
                     setNameUser(name);
                 });
         };
-        if(user){
+        if (user) {
             getUserData();
         }
     }, [user]
@@ -52,13 +52,13 @@ const Header = () => {
                     <Container className="justify-content-end font-sans">
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
-                       
+
                             <Nav className="ml-auto">
                                 <Link to="/">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Home</Button>
                                 </Link>
-                                
-                                
+
+
                                 <Link to="/calendar">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Calendar</Button>
                                 </Link>
@@ -77,24 +77,25 @@ const Header = () => {
                                 </Link>
                                 {!user && (<Link to="/register">
                                     <Button variant="contained" className="text-whiteReplacement text-xl" >Register</Button>
-                                </Link>)   
+                                </Link>)
                                 }
-                                
+
                                 {!user && (<Link to="/login">
                                     <Button variant="contained" className="text-whiteReplacement text-xl bg-accentColor">Login</Button>
                                 </Link>)}
-                                {user && (<Button variant="contained" className="text-whiteReplacement text-xl bg-accentColor" onClick={()=>{
-                  logout();
-                navigate("/login")}} >Logout
-                                    </Button>)}
+                                {user && (<Button variant="contained" className="text-whiteReplacement text-xl bg-accentColor" onClick={() => {
+                                    logout();
+                                    navigate("/login")
+                                }} >Logout
+                                </Button>)}
 
                             </Nav>
                             {user && (
                                 <Button className='text-fontDark text-xl uppercase' variant='contained'>
-                                {nameUser && (<span><Face4Icon/>{nameUser}</span>)}
-                            </Button>
+                                    {nameUser && (<span><Face4Icon />{nameUser}</span>)}
+                                </Button>
                             )}
-                           
+
                         </Navbar.Collapse>
                     </Container>
 
