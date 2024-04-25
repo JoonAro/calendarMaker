@@ -6,9 +6,10 @@ import FakeSHatch from '../components/FakeSHatch';
 import FakeDblHatch from '../components/FakeDblHatch';
 import '../styles/editorStyles.css';
 import TextComponent from '../components/TextComponent';
-import { useDispatch, useSelector } from 'react-redux';
-import { Button, Col, Container, Row, Spinner } from 'react-bootstrap';
+import { useSelector } from 'react-redux';
+import { Col, Container, Row, Spinner } from 'react-bootstrap';
 import ButtonComponent from '../components/ButtonComponent';
+import { Link } from 'react-router-dom';
 
 const Calendar = () => {
     const calendar = useSelector(state => state.calendar.calendar);
@@ -22,7 +23,7 @@ const Calendar = () => {
                         <Col xs={6} md={1} className="d-flex flex-column align-items-center">
                             <Spinner animation="border" role="status" style={{ width: "15rem", height: "15rem", margin: "2rem" }} />
                             <div className="EditorHolder">
-                                <ButtonComponent onClick={() => window.location.href = '/editorPageV2'}>Go back to editor</ButtonComponent>
+                                <Link to='/editorPageV2'><ButtonComponent>Go back to editor</ButtonComponent></Link>
                             </div>
                         </Col>
                     </Row>
