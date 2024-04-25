@@ -8,24 +8,12 @@ import '../styles/editorStyles.css';
 import TextComponent from '../components/TextComponent';
 import { useDispatch, useSelector } from 'react-redux';
 import { Button, Col, Container, Row, Spinner } from 'react-bootstrap';
-import { addDataToFirestore, auth } from '../auth/firebase';
 import ButtonComponent from '../components/ButtonComponent';
 
 const Calendar = () => {
     const calendar = useSelector(state => state.calendar.calendar);
     const [calendarImage, setCalendarImage] = useState(calendar?.bgImage || 'default-image.jpg');
-    const dispatch = useDispatch();
 
-    const saveCalendarFirestore = async () => {
-        const calendarData = JSON.parse(JSON.stringify(calendar));
-
-        const user = auth.currentUser;
-        if (user) {
-            await addDataToFirestore(user.uid, calendarData);
-
-            dispatch({ type: "saveCalendarFirestore", payload: calendarData });
-        }
-    };
     return (
         <>
             {!calendar ? (
@@ -44,9 +32,7 @@ const Calendar = () => {
                 <div className="EditorHolder">
                     <div className="calendarContent">
                         <div className="spaceHolder">
-                            <Button onClick={saveCalendarFirestore}>
-                                Save
-                            </Button>
+
                         </div>
                         <div className="calendarGridHolder" style={{
                             backgroundImage: `url(${calendarImage})`,
