@@ -4,6 +4,9 @@ import { Carousel as CarouselBS } from 'react-bootstrap';
 import icon1 from '../assets/icon1.svg';
 import icon2 from '../assets/icon2.svg';
 import icon3 from '../assets/icon3.svg';
+import icon4 from '../assets/icon4.svg';
+import ButtonComponent from '../components/ButtonComponent';
+import { Link } from 'react-router-dom';
 
 
 const Home = () => {
@@ -84,7 +87,21 @@ const Home = () => {
           </CarouselBS.Item>
         </CarouselBS>
       </Row>
+
+     <div className='flex flex-col justify-center items-center mt-20 w-full py-20 rounded-md bg-whiteReplacement'>
+    
+      <div className='flex flex-col justify-center items-center'>
+     <h1 className='text-fontDark text-sm md:text-2xl lg:text-3xl '>We appreciate your feedback❤️</h1>
+     <p className='text-fontDark text-sm md:text-lg lg:text-xl opacity-75 mt-7'>Thank you for taking the time to share your feedback with us!</p> 
+      <p className='text-fontDark text-xs md:text-sm lg:text-lg opacity-75'>Your input helps us improve our service.</p>
+      </div>
+      <Link to='/contact'>
+      <Button className='button mt-7'>Contact us</Button>
+      </Link>
+      <img className='h-16 hover:-translate-y-1 hover:scale-125' src={icon4} alt="icon4" />
+    </div>
     </Container >
+
 
 
   );
