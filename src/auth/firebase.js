@@ -59,6 +59,17 @@ export const loginWithEmailAndPassword = async (email, password) => {
 export const logout = () => {
     auth.signOut();
 };
+export const addDataToFirestore = async (uid, name) => {
+    try {
+        await addDoc(collection(db, "users"), {
+            uid: uid,
+            name,
+            timeStamp: serverTimestamp(),
+        });
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 console.log(initializeApp(firebaseConfig));
 // Initialize Firebase

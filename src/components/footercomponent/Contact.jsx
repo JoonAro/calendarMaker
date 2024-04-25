@@ -1,57 +1,47 @@
-
-import { useState } from 'react';
-
-
-const Contact = () => {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    
-
-    setName('');
-    setEmail('');
-    setMessage('');
-  };
-
+const ContactForm = () => {
   return (
-    <form className="form relative flex flex-col p-8 md:p-14 items-center justify-start min-h-screen bg-mainBackground" onSubmit={handleSubmit}>
-     <div className='header'>
-      <h1 className="text-4xl font-bold text-black mt-32 mr-28">Contact us</h1>
-     </div>
-     <div className="font-bold items-center pt-16 pb-4 mr-32">
-      <label htmlFor="name">Name</label>
-      <input
-        type="text"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
-      </div>
-      <div className="font-bold items-center pb-4 mr-32">
-      <label htmlFor="email">Email</label>
-      <input
-        type="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      </div>
-
-     <div className='font-bold items-center pb-4 mr-32'>
-      <label htmlFor="message">Message</label>
-      <textarea
-        id="message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      </div>
-
-      <button type="submit" className="bg-blue-500 text-white p-2 rounded hover:bg-blue-600 mt-4 mr-28 w-24 h-10">Submit</button>
-
-    </form>
+    <div className="flex items-center justify-center min-h-screen bg-mainBackground">
+    <div className=" h- [100%] justify-center items-center w- [100% ] max-w-md w-full mx-auto p-6 bg-white rounded-lg shadow-md  ">
+      <h2 className="text-3xl text-center text-fontDark font-bold mb-6">Contact Us</h2>
+      <form action="">
+        <div className="mb-4">
+          <label className="block text-white text-sm font-semibold mb-2" htmlFor="name">Your Name</label>
+          <input 
+            id="name" 
+            placeholder="Your name" 
+            className="w-full px-3 py-2 border rounded-lg bg-whiteReplacment focus:border-blue-500" 
+            required 
+            type="text" 
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-white text-sm font-semibold mb-2" htmlFor="email">Your Email</label>
+          <input 
+            id="email" 
+            placeholder="Your email" 
+            className="w-full px-3 py-2 border rounded-lg bg-whiteReplacement  " 
+            required 
+            type="email" 
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-white text-sm font-semibold mb-2" htmlFor="message">Your Message</label>
+          <textarea 
+            id="message" 
+            placeholder="Your message" 
+            className="w-full px-3 py-2 border rounded-lg bg-whiteReplacement  " 
+            required
+          />
+        </div>
+        <div className="flex justify-center">
+          <button type="submit" className="bg-mainBackground text-white font-semibold px-4 py-2 rounded-lg  hover:bg-smallBackground focus:outline-none">
+            Send Message
+          </button>
+        </div>
+      </form>
+    </div>
+    </div>
   );
-};
+}
 
-export default Contact;
+export default ContactForm;

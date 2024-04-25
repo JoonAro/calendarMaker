@@ -2,15 +2,9 @@ import '../styles/sidebar.css'
 import { Form } from 'react-bootstrap';
 import ButtonComponent from './ButtonComponent';
 import calendarSvg from '../assets/media/calendar.svg'
-const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRadioValue, hatchSide, setHatchSide }) => {
+const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchSide, radioHandler }) => {
     return (
         <div className="sidebar">
-            <img
-                className="img-thumbnail mx-auto d-block mb-2"
-                style={{ width: "40%", maxWidth: "5rem", height: "5rem", backgroundColor: '#EED6D3', borderColor: '#EED6D3' }}
-                src={calendarSvg}
-                alt="calendarSvg"
-            />
             <div className="filters">
                 <div className='fullWidth'>
                     <p>Choose a theme</p>
@@ -45,8 +39,9 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRa
                     <div className='themeSelection' onClick={() => handleSelection('macro')}>Macro</div>
                     <div className='themeSelection' onClick={() => handleSelection('cat')}>Cat</div>
                     <div className='themeSelection' onClick={() => handleSelection('easter')}>Easter</div>
-                    <div className='themeSelection' onClick={() => handleSelection('xmas')}>Xmas</div>
-                    <div className='themeSelection' onClick={() => handleSelection('diving')}>Diving</div>
+                    <div className='themeSelection' onClick={() => handleSelection('santa')}>Santa</div>
+                    <div className='themeSelection' onClick={() => handleSelection('butterfly')}>Butterfly</div>
+                    <div className='themeSelDouble' onClick={() => handleSelection('northern lights')}>Northern lights</div>
                 </div>
             </div>
             <div className='filters'>
@@ -58,9 +53,9 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRa
                     <input
                         type="radio"
                         name="hatchType"
-                        value="hatch"
-                        checked={radioValue === 'hatch'}
-                        onChange={(e) => setRadioValue(e.target.value)}
+                        value="single"
+                        checked={hatchType === 'single'}
+                        onChange={(e) => radioHandler(e)}
                     />
                     Single
                 </label>
@@ -68,9 +63,9 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRa
                     <input
                         type="radio"
                         name="hatchType"
-                        value="double hatch"
-                        checked={radioValue === 'double hatch'}
-                        onChange={(e) => setRadioValue(e.target.value)}
+                        value="double"
+                        checked={hatchType === 'double'}
+                        onChange={(e) => radioHandler(e)}
                     />
                     Double
                 </label>
@@ -81,7 +76,7 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRa
                             name="hatchSide"
                             value="left"
                             checked={hatchSide === 'left'}
-                            onChange={(e) => setHatchSide(e.target.value)}
+                            onChange={(e) => radioHandler(e)}
                         />
                         Left
                     </label>
@@ -91,7 +86,7 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, radioValue, setRa
                             name="hatchSide"
                             value="right"
                             checked={hatchSide === 'right'}
-                            onChange={(e) => setHatchSide(e.target.value)}
+                            onChange={(e) => radioHandler(e)}
                         />
                         Right
                     </label>

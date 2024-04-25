@@ -24,8 +24,8 @@ function BackToTop() {
     return (
         <div>
             {backToTop && (
-                <button onClick={scrollUp} className="fixed w-28 bottom-20 right-20 p-2.5 text-2xl rounded-lg bg-mainBackground border-none cursor-pointer z-50 hover:bg-accentColor text-fontDark hover:text-white">
-                   ⇧
+                <button onClick={scrollUp} className="fixed w-16 bottom-20 right-0 p-2.5 text-2xl rounded-lg bg-mainBackground border-none cursor-pointer z-50 hover:bg-accentColor text-fontDark hover:text-white">
+                    ⇧
                 </button>
             )
             }
