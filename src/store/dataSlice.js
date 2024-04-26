@@ -1,33 +1,33 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { addDataToFirestore, auth } from '../auth/firebase';
 
-const initialState = {
-    calendar: undefined,
-};
-
-const calendarSlice = createSlice({
-    name: 'calendar',
-    initialState,
+export const dataSlice = createSlice({
+    name: 'calendar-data',
+    initialState: {
+        data: {},
+        loading: false,
+        error: null,
+    },
     reducers: {
-        setCalendar: (state, action) => {
-            state.calendar = action.payload;
+        saveCalendarFirestore(state, action) {
+            const calendarJson = action.payload;
+            const calendarObj = JSON.parse(calendarJson);
+            state.data = calendarObj;
         },
-        fetchCalendarStart(state) {
+        setData: (state, action) => {
+            state.data = action.payload;
+        },
+        startLoading: (state) => {
             state.loading = true;
-            state.error = null;
         },
-        fetchCalendarSuccess(state, action) {
-            state.calendar = action.payload;
+        hasError: (state, action) => {
             state.loading = false;
-        },
-        fetchCalendarFailure(state, action) {
             state.error = action.payload;
-            state.loading = false;
         },
     },
 });
 
-export const { setCalendar, fetchCalendarStart, fetchCalendarSuccess, fetchCalendarFailure } = calendarSlice.actions;
+export const { setData, startLoading, hasError } = dataSlice.actions;
 
-export const selectCalendar = state => state.calendar.calendar;
 
-export default calendarSlice.reducer;
+export default dataSlice.reducer;

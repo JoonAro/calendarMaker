@@ -103,6 +103,12 @@ function App() {
                 <Premium />
               }
             />
+            <Route
+              path="/favourites"
+              element={
+                <Favourites />
+              }
+            />
           </Route>
         </Routes>
       </Router>
