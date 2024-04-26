@@ -1,4 +1,12 @@
+import { useState } from "react";
+
+
 const ContactForm = () => {
+  const [name , setName] = useState('');  
+  const [email , setEmail] = useState('');
+ 
+
+  const [message , setMessage] = useState('');
   return (
     <div className="flex items-center justify-center min-h-screen bg-mainBackground">
     <div className=" h- [100%] justify-center items-center w- [100% ] max-w-md w-full mx-auto p-6 bg-white rounded-lg shadow-md  ">
@@ -10,6 +18,7 @@ const ContactForm = () => {
             id="name" 
             placeholder="Your name" 
             className="w-full px-3 py-2 border rounded-lg bg-whiteReplacment focus:border-blue-500" 
+            value={name} onChange={(e) => setName(e.target.value)}
             required 
             type="text" 
           />
@@ -20,6 +29,7 @@ const ContactForm = () => {
             id="email" 
             placeholder="Your email" 
             className="w-full px-3 py-2 border rounded-lg bg-whiteReplacement  " 
+            value={email} onChange={(e) => setEmail(e.target.value)}
             required 
             type="email" 
           />
@@ -30,6 +40,7 @@ const ContactForm = () => {
             id="message" 
             placeholder="Your message" 
             className="w-full px-3 py-2 border rounded-lg bg-whiteReplacement  " 
+            value={message} onChange={(e) => setMessage(e.target.value)}
             required
           />
         </div>

@@ -2,6 +2,7 @@ import '../styles/sidebar.css'
 import { Form } from 'react-bootstrap';
 import ButtonComponent from './ButtonComponent';
 import calendarSvg from '../assets/media/calendar.svg'
+import SaveButton from './SaveButton';
 const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchSide, radioHandler }) => {
     return (
         <div className="sidebar">
@@ -25,8 +26,9 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchS
                         ref={searchInput}
                     />
                     <div className='h-16 mt-6 flex items-end justify-end'>
-
-                        <ButtonComponent />
+                        <ButtonComponent >
+                            <h1>Submit</h1>
+                        </ButtonComponent>
                     </div>
                 </Form>
             </div>
@@ -46,7 +48,6 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchS
             </div>
             <div className='filters'>
                 <div className='fullWidth'>
-
                     <p>Hatches</p>
                 </div>
                 <label>
@@ -90,6 +91,7 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchS
                         />
                         Right
                     </label>
+                    <SaveButton />
                 </div>
             </div>
         </div>

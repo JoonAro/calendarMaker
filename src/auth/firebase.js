@@ -59,11 +59,11 @@ export const loginWithEmailAndPassword = async (email, password) => {
 export const logout = () => {
     auth.signOut();
 };
-export const addDataToFirestore = async (uid, name) => {
+export const addDataToFirestore = async (uid, data) => {
     try {
-        await addDoc(collection(db, "users"), {
+        await addDoc(collection(db, `users/${uid}/calendar`), {
+            data: data,
             uid: uid,
-            name,
             timeStamp: serverTimestamp(),
         });
     } catch (error) {
