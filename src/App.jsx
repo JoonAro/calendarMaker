@@ -18,6 +18,8 @@ import EditorPageV2 from "./routes/EditorPageV2";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import ProtectedRoute from "./auth/ProtectedRoute";
+import Cookies from "./components/footercomponent/Cookies";
+
 
 function App() {
 
@@ -88,6 +90,13 @@ function App() {
                 <Privacy />
               }
             />
+            <Route
+              path="/cookies"
+              element={
+                <Cookies />
+              }
+            />
+            
             <Route
               path="/premium"
               element={
