@@ -10,7 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./routes/Dashboard";
 import Favourites from "./routes/Favourites";
 import About from "./components/footercomponent/About";
-import Contact from "./components/footercomponent/Contact";
+import Contact from "./components/Contact";
 import Licensing from "./components/footercomponent/Licensing";
 import Privacy from "./components/footercomponent/Privacy";
 import Premium from "./components/Premium";
