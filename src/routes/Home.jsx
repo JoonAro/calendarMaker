@@ -9,6 +9,7 @@ import ButtonComponent from '../components/ButtonComponent';
 import { Link } from 'react-router-dom';
 
 
+
 const Home = () => {
   return (
     <Container fluid style={{ maxWidth: "100vw", color: "whitesmoke", backgroundColor: "#67595E" }} className='font-sans'>
