@@ -6,12 +6,19 @@ import { funEmoji } from '@dicebear/collection';
 function Avatar({ avatarValue }) {
     const avatar = useMemo(() => {
         return createAvatar(funEmoji, {
-            size: 1,
+            size: 40,
             seed: avatarValue,
+
         }).toDataUriSync();
     }, [avatarValue]);
 
-    return <img src={avatar} alt={`Avatar ${avatarValue}`} />;
+    return (
+        <img
+            src={avatar}
+            alt={`Avatar ${avatarValue}`}
+            style={{ borderRadius: '50%' }}
+        />
+    );
 }
 
 export default Avatar;

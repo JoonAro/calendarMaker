@@ -1,5 +1,4 @@
-import { Button, Container, Nav, Navbar, Row } from 'react-bootstrap';
-import Face4Icon from '@mui/icons-material/Face4';
+import { Button, Container, Nav, Navbar, NavbarText, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import calendar from '../assets/media/calendar.svg';
 import { useState, useEffect } from 'react';
@@ -8,6 +7,7 @@ import { auth, db } from '../auth/firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { logout } from '../auth/firebase';
 import { useNavigate } from 'react-router-dom';
+import Avatar from './Avatar';
 
 
 
@@ -15,7 +15,8 @@ import { useNavigate } from 'react-router-dom';
 const Header = () => {
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
-    const [nameUser, setNameUser] = useState("");
+    const [nameUser, setName] = useState("");
+    const [avatar, setAvatar] = useState("");
 
     useEffect(() => {
         const getUserData = async () => {
@@ -24,8 +25,8 @@ const Header = () => {
             const querySnapshot = await getDocs(q);
             querySnapshot.forEach(
                 (doc) => {
-                    const name = doc.data().name;
-                    setNameUser(name);
+                    setName(doc.data().name);
+                    setAvatar(doc.data().avatar);
                 });
         };
         if (user) {
@@ -36,7 +37,6 @@ const Header = () => {
 
     return (
         <Container fluid>
-
             <Row>
                 <Navbar
                     className="bg-smallBackground"
@@ -51,13 +51,12 @@ const Header = () => {
 
                     <Container className="justify-content-end font-sans">
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                        <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
                         <Navbar.Collapse id="basic-navbar-nav">
-
                             <Nav className="ml-auto">
                                 <Link to="/">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Home</Button>
                                 </Link>
-
 
                                 <Link to="/calendar">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Calendar</Button>
@@ -91,10 +90,33 @@ const Header = () => {
 
                             </Nav>
                             {user && (
-                                <Button className='text-fontDark text-xl uppercase' variant='contained'>
-                                    {nameUser && (<span><Face4Icon />{nameUser}</span>)}
-                                </Button>
+                                <>
+                                    <NavbarText
+                                        className='text-fontDark text-xl uppercase'
+                                        variant="contained"
+                                        style={{ margin: "1rem" }}
+
+                                    >
+                                        {nameUser && (
+                                            <span>
+                                                {avatar ? (
+                                                    <Avatar avatarValue={avatar} />
+                                                ) : (
+                                                    <img src="placeholder-image.png" alt="Loading..." />
+                                                )}
+                                            </span>
+                                        )}
+                                    </NavbarText>
+                                    <NavbarText
+                                        className='text-fontDark text-xl uppercase'
+                                        variant="contained"
+                                    >
+                                        {nameUser && (<span>{`${nameUser}`}</span>)}
+                                    </NavbarText>
+
+                                </>
                             )}
+
 
                         </Navbar.Collapse>
                     </Container>
@@ -102,8 +124,6 @@ const Header = () => {
                 </Navbar>
             </Row>
         </Container >
-
-
     );
 };
 
