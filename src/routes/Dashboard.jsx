@@ -6,42 +6,67 @@ import { useEffect } from 'react';
 import { db } from "../auth/firebase";
 import { query, where, collection, getDocs } from 'firebase/firestore';
 import { useState } from 'react';
-import UserData from '../components/UserData';
+import UserData from '../components/dashboardComponents/UserData';
+import ContactForm from '../components/dashboardComponents/ContactFormData';
 
 const Dashboard = () => {
     const [amount, setAmount] = useState(null);
     const [difference, setDifference] = useState(null);
-    let data;
+    const [amountMessage, setAmountMessage] = useState(null);
+    const [differenceMessage, setDifferenceMessage] = useState(null);
+ 
 
     useEffect(()=>{
-        const fetchData = async () =>{
-            const today = new Date();
-            const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
-            const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
-            console.log(lastMonth)
-
-            const lastMonthQuery = query(collection(db,"users"), where("timeStamp", "<=", today), where("timeStamp", ">", lastMonth));
-
-            const prevMonthQuery = query(collection(db,"users"), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
-
-            const lastMonthData = await getDocs(lastMonthQuery);
-            const prevMonthData = await getDocs(prevMonthQuery);
-
-            setAmount(lastMonthData.docs.length);
-
-            if(prevMonthData.docs.length !== 0){
-                setDifference(
-                    ((lastMonthData.docs.length - prevMonthData.docs.length) / prevMonthData.docs.length) * 100);
-            }
-           else {
-            setDifference(100);
-           }
-        }
         fetchData();
-    }, []
+        fetchMessageData();
+        }, []
 )
 
+const fetchData = async () =>{
+    const today = new Date();
+    const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
+    const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
+    console.log(lastMonth)
 
+    const lastMonthQuery = query(collection(db,"users"), where("timeStamp", "<=", today), where("timeStamp", ">", lastMonth));
+
+    const prevMonthQuery = query(collection(db,"users"), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
+
+    const lastMonthData = await getDocs(lastMonthQuery);
+    const prevMonthData = await getDocs(prevMonthQuery);
+
+    setAmount(lastMonthData.docs.length);
+
+    if(prevMonthData.docs.length !== 0){
+        setDifference(
+            ((lastMonthData.docs.length - prevMonthData.docs.length) / prevMonthData.docs.length) * 100);
+    }
+   else {
+    setDifference(100);
+   }
+}
+
+const fetchMessageData = async() =>{
+    const today = new Date();
+    const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
+    const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
+    const lastMonthQueryMessage = query(collection(db,"contactForm"), where("timeStamp", "<=", today), where("timeStamp", ">", lastMonth));
+
+    const prevMonthQueryMessage = query(collection(db,"contactForm"), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
+
+    const lastMonthDataMessage = await getDocs(lastMonthQueryMessage);
+    const prevMonthDataMessage = await getDocs(prevMonthQueryMessage);
+
+    setAmountMessage(lastMonthDataMessage.docs.length);
+
+    if(prevMonthDataMessage.docs.length !==0){
+        setDifferenceMessage(
+            ((lastMonthDataMessage - prevMonthDataMessage) / prevMonthDataMessage) * 100);
+    }
+    else{
+        setDifferenceMessage(100);
+    }
+}
 
   return (
     <div className='p-4 font-sans'>
@@ -82,8 +107,8 @@ const Dashboard = () => {
     <div className="pl-4">
         <span className="text-sm text-gray-500 font-light">Messages</span>
         <div className="flex items-center">
-            <strong className="text-xl text-gray-700 font-semibold">20</strong>
-            <span className="text-sm text-green-500 pl-2">+23</span>
+            <strong className="text-xl text-gray-700 font-semibold">{amountMessage}</strong>
+            <span className="text-sm text-green-500 pl-2">{differenceMessage}%</span>
         </div>
     </div>
         </div>
@@ -91,10 +116,10 @@ const Dashboard = () => {
 
 
         <div className='flex flex-wrap flex-col gap-4 md:flex-row w-full mt-7'>
-           <div className='flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'>
+           <div className='flex flex-wrap w-full  pt-3 pb-4 rounded-sm border border-gray-200 flex-1 '>
             
            
-       <UserData/>
+       <UserData className=""/>
 
               </div>
             <div className="w-[20rem] px-4 pt-3 pb-4 rounded-sm border border-gray-200">
@@ -152,7 +177,12 @@ const Dashboard = () => {
                         
                 </div>
             </div>
+            <div className='flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'>
+            <ContactForm/>
+            </div>
+            
         </div>
+      
         </div>
         
       
