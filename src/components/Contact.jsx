@@ -1,7 +1,7 @@
 import { useState } from "react";
 import {db} from "../auth/firebase";
-import { addDoc, collection } from "firebase/firestore";
 import { doc, setDoc } from "firebase/firestore";
+import { serverTimestamp } from "firebase/firestore";
 
 
 const ContactForm = () => {
@@ -17,7 +17,8 @@ const handleSubmit = async(e)=>{
       {
         name: name,
         email: email,
-        message: message
+        message: message,
+        timeStamp: serverTimestamp(),
       }
     )
     setSent(true);
