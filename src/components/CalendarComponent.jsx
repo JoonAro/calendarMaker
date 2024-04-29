@@ -1,21 +1,16 @@
-import DoubleHatch from "./DoubleHatch";
-import Hatch from "./Hatch";
 import TextComponent from "./TextComponent";
-
+import CalendarCompFinal from "./CalendarCompFinal";
 
 const CalendarComponent = ({ calendar, calendarImage, accessKey, bool3, bool4, handleUserReply, guideH, guideText }) => {
     return (
         <div className="calendarHolder">
-            <div className="gridHolder" style={{
-                backgroundImage: `url(${calendarImage})`,
-            }}>
-                {!bool3 && <TextComponent guideH={guideH} guideText={guideText} yes={"Yes"} no={"No"} handleUserReply={handleUserReply} bool4={bool4} />}
-                {bool3 && calendar.hatches.map(hatch => {
-                    let hatchKey = hatch.hatchNr
-                    let hatchType = hatch.hatchType;
-                    return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} accessKey={accessKey} /> : <DoubleHatch key={hatchKey} hatch={hatch} accessKey={accessKey} />
-                })}
-            </div>
+            {!bool3 && <><TextComponent guideH={guideH} guideText={guideText} yes={"Yes"} no={"No"} handleUserReply={handleUserReply} bool4={bool4} />
+                <div className="backGroundHolder" style={{
+                    backgroundImage: `url(${calendarImage})`
+                }}>
+                </div>
+            </>}
+            {bool3 && <CalendarCompFinal calendar={calendar} calendarImage={calendarImage} accessKey={accessKey} />}
         </div>
     )
 }

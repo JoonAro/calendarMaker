@@ -1,5 +1,5 @@
 import { useState } from "react";
-import '../styles/editorStyles.css';
+import '../styles/editorV2Styles.css';
 
 const today = new Date();
 const todayISO = today.toISOString();
