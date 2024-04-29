@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useRef, useState } from "react";
-import '../styles/editorStyles.css';
+import '../styles/editorV2Styles.css';
 import Sidebar from "../components/Sidebar";
 import { CalendarClass, HatchClass } from "../../classes/classes";
 import ImageCatalogue from "../components/ImageCatalogue";
