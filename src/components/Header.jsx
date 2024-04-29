@@ -17,6 +17,7 @@ const Header = () => {
     const [user] = useAuthState(auth);
     const [nameUser, setName] = useState("");
     const [avatar, setAvatar] = useState("");
+    const superUser = ["Michel", "Joona", "Alona", "Samuel"];
 
     useEffect(() => {
         const getUserData = async () => {
@@ -68,9 +69,13 @@ const Header = () => {
                                 <Link to="/favourites">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Favourites</Button>
                                 </Link>
-                                <Link to="/dashboard">
-                                    <Button variant="contained" className="text-whiteReplacement text-xl">Dashboard</Button>
-                                </Link>
+                                {user && superUser.includes(nameUser) ? (
+                                    <Link to="/dashboard">
+                                        <Button variant="contained" className="text-whiteReplacement text-xl">
+                                            Dashboard
+                                        </Button>
+                                    </Link>
+                                ) : null}
 
                                 {!user && (<Link to="/register">
                                     <Button variant="contained" className="text-whiteReplacement text-xl" >Register</Button>
