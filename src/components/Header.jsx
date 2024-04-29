@@ -41,7 +41,7 @@ const Header = () => {
             <Row>
                 <Navbar
                     className="bg-smallBackground"
-                    expand="md"
+                    expand="lg"
                 >
                     <Link to="/" className="img-thumbnail mx-auto bg-smallBackground border-smallBackground"
                         style={{ width: "40%", maxWidth: "5rem", height: "5rem" }}
