@@ -30,7 +30,7 @@ const ContactFormData = () => {
             <strong className='font-medium text-fontDark'>Messages</strong>
             <div className="w-min md:w-full border-gray-200 rounded-sm mt-3">
                 <table className=' text-fontDark border-separate sm:text-sm border-spacing-1 md:border-spacing-5 border border-slate-400 '>
-                    <thead className=' border border-slate-300 text-transform: uppercase bg-accentColor'>
+                    <thead className=' border border-slate-300 text-transform: bg-accentColor'>
                         <tr>
                             <th className="text-xs md:text-base lg:text-lg">Name</th>
                             <th className="text-xs md:text-base lg:text-lg">Email address</th>
@@ -51,10 +51,10 @@ const ContactFormData = () => {
                                 <td >
                                     <div className='border border-slate-300 relative overflow-hidden'>
                                 <input type="checkbox" className="peer absolute top-0 inset-x-0 w-full h-10 cursor-pointer opacity-0 z-10"    />
-                                <div className="w-full h-10 pl-5 flex items-center justify-center">
+                                <div className="w-full h-10  flex items-center justify-center">
                                 <h1 className="text-xs md:text-base lg:text-lg">Show message</h1>
                                 </div>
-                                <div className="absolute top-3 right-3 transition-transform duration-500 rotate-0 peer-checked:rotate-180">
+                                <div className="absolute top-0 md:top-2 lg:top-3 right-0 md:right-2 lg:right-3 transition-transform duration-500 rotate-0 peer-checked:rotate-180">
            <KeyboardDoubleArrowDownIcon />
         </div>
 
