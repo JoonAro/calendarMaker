@@ -16,7 +16,7 @@ const IMAGES_PER_PAGE = 30;
 // Before friday: 
 //  -Change the alert
 //      -The one in countries will do for now
-//  -Optional Date Picker
+//  -Date Picker
 const EditorPageV2 = () => {
     const dispatch = useDispatch();
     const calendar = useSelector(state => state.calendar.calendar);
@@ -76,6 +76,7 @@ const EditorPageV2 = () => {
         try {
             const { data } = await axios.get(`${API_URL}?query=${searchInput.current.value}&page=${pageNr}&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
             console.log('result', data.results, 'length', data.results.length);
+            //TODO: Change the text component on screen if there are zero results: Nothing found with that theme. Are you sure it's written like that? Try again etc.
             const result = data.results;
             setImages(data.results);
             setTotalPages(data.total_pages);

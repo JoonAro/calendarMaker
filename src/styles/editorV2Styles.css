@@ -8,18 +8,21 @@
     display: grid;
     grid-template-columns: 250px 1fr;
     grid-template-rows: auto;
-    background-color: rgba(238, 214, 211, 1);
+    height: 100%;
+    /*  background-color: rgba(238, 214, 211, 1); */
+    background-color: rgba(103, 89, 94, 1);
 }
 
 .sideColumn {
-    width: fit-content;
-    height: fit-content;
+    width: 250px;
+    height: 100%;
     grid-column-start: 1;
     grid-row-start: 1;
+    background-color: rgba(238, 214, 211, 1);
 }
 
 .content {
-    width: calc(99vw - 250px);
+    width: 100%;
     grid-column-start: 2;
     grid-row-start: 1;
     background-color: red;
@@ -32,52 +35,61 @@
 }
 
 .gridHolder {
-    margin: 30px;
-    padding: 50px;
-    max-width: 1320px;
-    min-width: 1320px;
-    min-height: 1200px;
+    margin: 2vw 0;
+    padding: 4vw 3.8vw;
+    min-width: fit-content;
+    height: fit-content;
     position: relative;
     display: grid;
     background-color: rgba(103, 89, 94, 0);
     background-position: center;
     background-size: cover;
-    grid-template-columns: repeat(5, 180px);
-    grid-template-rows: repeat(6, 1fr);
-    grid-gap: 80px;
-    margin: 0 auto;
+    grid-template-columns: repeat(5, 16%);
+    grid-template-rows: repeat(6, 13%);
+    grid-gap: 3.5vw;
     border-radius: 30px;
 }
 
 .calendarHolder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: calc(99vw - 250px);
-    /* width: 84vw; */
     min-height: 90vh;
     background-color: rgba(103, 89, 94, 1);
-    padding: 40px 0;
 }
 
 .catalogueHolder {
-    width: calc(99vw - 250px);
-    /* width: 84vw; */
+    margin: 2vw 0;
+    width: 95%;
     min-height: 90vh;
     display: grid;
-    background-color: rgba(103, 89, 94, 1);
+    background-color: rgba(56, 28, 150, 0);
+    grid-template-columns: repeat(3, 33.33%);
+    grid-template-rows: repeat(10, 40vw);
+    grid-gap: 0px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
+.backGroundHolder {
+    min-height: 150vw;
+    width: 95%;
     background-position: center;
     background-size: cover;
-    grid-template-columns: repeat(3, 25vw);
-    grid-template-rows: repeat(6, 1fr);
-    grid-gap: 0px;
+    margin: 2vw 0;
+    overflow: hidden;
+    border-radius: 30px;
 }
 
 .catalogueImage {
     display: flex;
     position: relative;
     background-color: rgba(127, 255, 212, 0);
-    height: 40vw;
-    width: 25vw;
-    background-size: cover;
+    height: 100%;
+    width: 100%;
     background-position: center;
+    background-size: cover;
 }
 
 .calendarContent {
@@ -110,11 +122,10 @@
 }
 
 .welcomeText {
-
     background-color: rgba(0, 0, 0, 0.395);
     position: absolute;
     top: 20vw;
-    left: 20vw;
+    left: 34vw;
     width: 650px;
     font-size: xx-large;
     color: white;
@@ -141,8 +152,8 @@
     perspective: 900px;
     position: relative;
     background-color: rgba(127, 255, 212, 0);
-    height: 180px;
-    width: 180px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
     background-size: cover;
     background-position: center;
 }
@@ -159,8 +170,8 @@
 }
 
 .hatch {
-    height: 180px;
-    width: 180px;
+    height: 100%;
+    width: 100%;
     display: grid;
     background-color: rgba(127, 255, 212, 0);
     transform-origin: var(--i);
@@ -210,7 +221,7 @@
 
     100% {
         background-color: rgb(224, 199, 170);
-        transform: rotateY(calc(var(--y) * -100deg));
+        transform: rotateY(calc(var(--y) * -95deg));
 
     }
 }
@@ -229,7 +240,7 @@
 @keyframes closeIt {
     0% {
         background-color: rgb(224, 199, 170);
-        transform: rotateY(calc(var(--y) * -100deg))
+        transform: rotateY(calc(var(--y) * -95deg))
     }
 
     33% {
@@ -248,4 +259,61 @@
         background-color: unset;
         transform: rotateY(0deg);
     }
+}
+
+/* At some point when screen gets really small sidebar minimizes to the left with same thickness as the gap between calendar and sidebar. On hover it will come back */
+@media only screen and (max-width: 1300px) {
+    .gridHolder {
+        grid-template-columns: repeat(4, 20.9%);
+        grid-template-rows: repeat(8, 10%);
+    }
+
+    .catalogueHolder {
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: repeat(15, 55vw);
+        grid-gap: 0px;
+        border-radius: 30px;
+    }
+
+    .backGroundHolder {
+        min-height: 90vw;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .gridHolder {
+        grid-template-columns: repeat(4, 20.9%);
+        grid-template-rows: repeat(8, 10%);
+    }
+
+    .catalogueHolder {
+        grid-template-columns: repeat(2, 50%);
+        grid-template-rows: repeat(15, 55vw);
+        grid-gap: 0px;
+        border-radius: 30px;
+    }
+
+    .backGroundHolder {
+        min-height: 90vw;
+    }
+
+    .editorHolder {
+        grid-template-columns: 5px 1fr;
+        overflow: hidden;
+    }
+
+    .sideColumn {
+        width: 250px;
+        height: 100%;
+        grid-column-start: 1;
+        grid-row-start: 1;
+        background-color: rgba(238, 214, 211, 0);
+    }
+
+    .calendarHolder {
+        width: calc(99vw - 5px);
+        min-height: 90vh;
+        background-color: rgba(103, 89, 94, 1);
+    }
+
 }
