@@ -177,7 +177,7 @@ const fetchMessageData = async() =>{
                         
                 </div>
             </div>
-            <div className='flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200 flex-1'>
+            <div className='flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200'>
             <ContactForm/>
             </div>
             
