@@ -11,12 +11,12 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <Container fluid style={{ maxWidth: "100vw", color: "whitesmoke", backgroundColor: "#67595E" }} className='font-sans'>
+    <Container fluid className='w-screen  font-sans bg-mainBackground text-fontDark'>
       <Carousel />
 
       <div className='flex flex-col justify-center items-center mt-20'>
         <h2 className="text-3xl mb-4">Customize your calendar</h2>
-        <div className="w-full py-48 rounded-md mt-4 bg-smallBackground border relative">
+        <div className="w-screen py-48 mt-4 bg-smallBackground border relative">
           <div className=" w-16 md:w-32 lg:w-60 absolute top-0 left-0 mt-7 ml-14 md:ml-40 items-start flex flex-col sm:items-center">
             <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon1} alt="icon1" />
             <span className='text-sm md:text-2xl mt-3 text-fontDark text-center'>Choose a name of a calendar</span>
@@ -87,7 +87,7 @@ const Home = () => {
           </CarouselBS.Item>
         </CarouselBS>
 
-        <div className='flex flex-col justify-center items-center mt-20 w-full py-20 rounded-md bg-whiteReplacement mb-4'>
+        <div className='flex flex-col justify-center items-center mt-20 w-full py-20 rounded-md bg-smallBackground mb-4'>
           <div className='flex flex-col justify-center items-center'>
             <h1 className='text-fontDark text-sm md:text-2xl lg:text-3xl '>We appreciate your feedback❤️</h1>
             <p className='text-fontDark text-sm md:text-lg lg:text-xl opacity-75 mt-7'>Thank you for taking the time to share your feedback with us!</p>

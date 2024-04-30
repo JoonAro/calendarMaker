@@ -59,7 +59,7 @@ const ContactFormData = () => {
         </div>
 
                                 <div className="overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
-                                    <div className="p-3 text-xs md:text-base lg:text-lg"><p>{data.message}</p></div></div>
+                                <div className="p-3 "><p className="text-xs md:text-base lg:text-lg">{data.message}</p></div></div>
                               
                                 </div>
                                 </td>
