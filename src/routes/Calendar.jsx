@@ -4,7 +4,7 @@ import Hatch from "../components/Hatch";
 import DoubleHatch from "../components/DoubleHatch";
 import FakeSHatch from '../components/FakeSHatch';
 import FakeDblHatch from '../components/FakeDblHatch';
-import '../styles/editorStyles.css';
+import '../styles/editorV2Styles.css';
 import TextComponent from '../components/TextComponent';
 import { useSelector } from 'react-redux';
 import { Col, Container, Row, Spinner } from 'react-bootstrap';

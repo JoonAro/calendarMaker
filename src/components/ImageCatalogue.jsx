@@ -4,9 +4,7 @@ const ImageCatalogue = ({ bool, images, handleBgSelection, guideH, guideText, ca
     return (
         <div className="calendarHolder">
 
-            <div className="catalogueHolder" style={{
-                backgroundImage: bool ? `url(${""})` : `url(${calendarImage})`,
-            }}>
+            <div className="catalogueHolder" >
                 {bool && <TextComponent guideH={guideH} guideText={guideText} yes={""} no={""} />}
                 {!bool &&
                     <TextComponent guideH={guideH} guideText={guideText} yes={""} no={""} />

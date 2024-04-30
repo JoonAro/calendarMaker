@@ -3,21 +3,18 @@ import { Form } from 'react-bootstrap';
 import ButtonComponent from './ButtonComponent';
 import calendarSvg from '../assets/media/calendar.svg'
 import SaveButton from './SaveButton';
+import ShowSidebarButton from './ShowSidebarButton';
+// TODO: Create a responsive sidebar. It will disappear to the side unless hovered on.
+//       Try out sixth column when really wide screen and go down to 4 columns when the screen is small. Do this with mediaquerys
 const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchSide, radioHandler }) => {
     return (
         <div className="sidebar">
+            <ShowSidebarButton />
             <div className="filters">
                 <div className='fullWidth'>
                     <p>Choose a theme</p>
                 </div>
-                <Form style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    margin: '0, 8px, 30px, 8px',
-                    borderBottom: '1px solid #ccc'
-                }} onSubmit={handleSearch}>
+                <Form className='sideBarForm' onSubmit={handleSearch}>
                     <Form.Control
                         style={{ width: "200px", margin: "0", padding: "0" }}
                         type="search"
@@ -43,7 +40,7 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchS
                     <div className='themeSelection' onClick={() => handleSelection('easter')}>Easter</div>
                     <div className='themeSelection' onClick={() => handleSelection('santa')}>Santa</div>
                     <div className='themeSelection' onClick={() => handleSelection('butterfly')}>Butterfly</div>
-                    <div className='themeSelDouble' onClick={() => handleSelection('northern lights')}>Northern lights</div>
+                    <div className='themeSelection double' onClick={() => handleSelection('northern lights')}>Northern lights</div>
                 </div>
             </div>
             <div className='filters'>
