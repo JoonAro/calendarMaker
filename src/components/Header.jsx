@@ -17,6 +17,7 @@ const Header = () => {
     const [user] = useAuthState(auth);
     const [nameUser, setName] = useState("");
     const [avatar, setAvatar] = useState("");
+    const superUser = ["Michel", "Joona", "Alona", "Samuel"];
 
     useEffect(() => {
         const getUserData = async () => {
@@ -40,14 +41,15 @@ const Header = () => {
             <Row>
                 <Navbar
                     className="bg-smallBackground"
-                    expand="md"
+                    expand="lg"
                 >
-                    <img
-                        className="img-thumbnail mx-auto d-block mb-2 bg-smallBackground border-smallBackground"
+                    <Link to="/" className="img-thumbnail mx-auto bg-smallBackground border-smallBackground"
                         style={{ width: "40%", maxWidth: "5rem", height: "5rem" }}
-                        src={calendar}
-                        alt="calendar"
-                    />
+                    >   <img
+                            src={calendar}
+                            alt="calendar"
+                        />
+                    </Link>
 
                     <Container className="justify-content-end font-sans">
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -67,13 +69,14 @@ const Header = () => {
                                 <Link to="/favourites">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Favourites</Button>
                                 </Link>
-                                <Link to="/dashboard">
-                                    <Button variant="contained" className="text-whiteReplacement text-xl">Dashboard</Button>
-                                </Link>
-                                <Link to="/premium">
-                                    <Button variant="contained" className="text-whiteReplacement 
-                                    text-xl">Premium</Button>
-                                </Link>
+                                {user && superUser.includes(nameUser) ? (
+                                    <Link to="/dashboard">
+                                        <Button variant="contained" className="text-whiteReplacement text-xl">
+                                            Dashboard
+                                        </Button>
+                                    </Link>
+                                ) : null}
+
                                 {!user && (<Link to="/register">
                                     <Button variant="contained" className="text-whiteReplacement text-xl" >Register</Button>
                                 </Link>)
