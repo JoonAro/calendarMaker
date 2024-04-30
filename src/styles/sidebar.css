@@ -5,6 +5,10 @@
     font-size: large;
 }
 
+:root {
+    --hider: 1;
+}
+
 p {
     font-size: x-large;
 }
@@ -15,14 +19,28 @@ p {
     align-items: center;
     height: 100%;
     width: 250px;
+    /* background-color: rgb(218, 183, 178); */
     background-color: rgba(238, 214, 211, 1);
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    z-index: 9;
+}
+
+.sideBarForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 8px 30px 8px;
 }
 
 .filters {
-    padding: 20px;
+    padding: calc(20px * var(--hider));
     /*  margin: 0 0 20px 0; */
-    width: 220px;
+    width: calc(220px *var(--hider));
     border-bottom: 1px solid black;
+    overflow: inherit;
 }
 
 .themeHolder {
@@ -43,23 +61,11 @@ p {
 }
 
 .themeSelection:hover {
-
     color: whitesmoke;
 }
 
-.themeSelDouble {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.double {
     width: 135px;
-    margin: 5px;
-    padding: 5px;
-    border-radius: 10px;
-}
-
-.themeSelDouble:hover {
-
-    color: whitesmoke;
 }
 
 label {
@@ -72,4 +78,46 @@ label {
     width: 175px;
     justify-content: center;
     margin-bottom: 20px;
+}
+
+.sidebarArrow {
+    position: fixed;
+    width: 20px;
+    top: 50%;
+    left: 0;
+    font-size: xx-large;
+    /* rounded-lg bg-mainBackground  */
+    border-style: none;
+    cursor: default;
+    z-index: 10;
+    color: rgba(238, 214, 211, 1);
+}
+
+/* At some point when screen gets really small sidebar minimizes to the left with same thickness as the gap between calendar and sidebar. On hover it will come back */
+
+@media only screen and (max-width: 1100px) {
+    :root {
+        --hider: 0;
+        /* Change the value of the CSS variable inside the media query */
+    }
+
+    .sidebar {
+        width: 5px;
+        position: fixed;
+        left: 0;
+        z-index: 9;
+        background-color: rgba(103, 89, 94, 1);
+        /* background-color: rgb(238, 214, 211); */
+
+    }
+
+    .sidebar:hover {
+        --hider: 1;
+        width: 250px;
+        background-color: rgba(238, 214, 211, 1);
+    }
+
+    .sidebarArrow {
+        z-index: 2;
+    }
 }
