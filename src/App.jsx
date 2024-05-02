@@ -56,9 +56,7 @@ function App() {
             />
             <Route
               path="/favourites"
-              element={
-                <Favourites />
-              }
+              element={<ProtectedRoute component={Favourites} />}
             />
             <Route
               path="/dashboard"
