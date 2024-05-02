@@ -2,7 +2,6 @@ import axios from "axios";
 import { useRef, useState } from "react";
 import '../styles/editorV2Styles.css';
 import Sidebar from "../components/Sidebar";
-import { CalendarClass, HatchClass } from "../../classes/classes";
 import ImageCatalogue from "../components/ImageCatalogue";
 import CalendarComponent from "../components/CalendarComponent";
 import BackToTop from "../components/BackToTop";
@@ -129,14 +128,18 @@ const EditorPageV2 = () => {
     //unsplash api has blur hash where you can first have a blurred image loaded on the page before the real thing loads.
     const createObject = (result, bgImg, e) => {
         let startDate = new Date(2024, 3, 10);
+        let startRedux = startDate.toISOString();
+        console.log(startRedux);
         let hatches = [];
         let numbOfHatches = 0;
         let date;
+        let dateRedux;
         let hatchModifier = 1;
 
         for (let i = 0; i < result.length; i++) {
             date = new Date(startDate);
             date.setDate(startDate.getDate() + i);
+            dateRedux = date.toISOString();
             let hatchImg = result[i].urls.small;
             let status = false;
             let hatch;
@@ -163,13 +166,27 @@ const EditorPageV2 = () => {
                 hatchModifier--;
             }
             else {
-                hatch = new HatchClass(date, hatchNr, hatchImg, status, typeOfHatch, sideOfHatch);
+                hatch = {
+                    date: dateRedux,
+                    hatchNr: hatchNr,
+                    hatchImg: hatchImg,
+                    status: status,
+                    hatchType: typeOfHatch,
+                    hatchSide: sideOfHatch
+                };
                 // console.log("hatchNr", hatchNr)
                 hatches.push(hatch);
                 numbOfHatches++;
             }
         }
-        const calendar = new CalendarClass(startDate, date, bgImg.urls.full, hatches, numbOfHatches, false);
+        const calendar = {
+            start: startRedux,
+            end: dateRedux,
+            bgImage: bgImg.urls.full,
+            hatches: hatches,
+            numbOfHatches: numbOfHatches,
+            privateCalendar: false
+        };
         return calendar;
     }
 
