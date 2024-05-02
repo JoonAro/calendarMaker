@@ -8,6 +8,7 @@ import CalendarComponent from "../components/CalendarComponent";
 import BackToTop from "../components/BackToTop";
 import { useDispatch, useSelector } from 'react-redux';
 import { setCalendar } from "../store/calendarSlice";
+import ShowSidebarButton from "../components/ShowSidebarButton";
 
 const API_KEY = import.meta.env.VITE_UNSPLASH_API;
 const API_URL = "https://api.unsplash.com/search/photos";
@@ -177,7 +178,7 @@ const EditorPageV2 = () => {
             <BackToTop />
             <div className="editorHolder">
                 <div className="sideColumn">
-
+                    <ShowSidebarButton />
                     <Sidebar
                         handleSearch={handleSearch}
                         searchInput={searchInput}

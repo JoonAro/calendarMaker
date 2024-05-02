@@ -9,7 +9,6 @@ import ShowSidebarButton from './ShowSidebarButton';
 const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchSide, radioHandler }) => {
     return (
         <div className="sidebar">
-            <ShowSidebarButton />
             <div className="filters">
                 <div className='fullWidth'>
                     <p>Choose a theme</p>
