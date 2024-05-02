@@ -25,7 +25,7 @@ const Hatch = ({ hatch, accessKey }) => {
 
     const handleTime = (hatch) => {
         // console.log(hatch);
-        const hatchDate = hatch.date.toISOString();
+        const hatchDate = hatch.date;
         // console.log("todayISO", todayISO, "hatchDate", hatchDate);
         if (todayISO < hatchDate) {
             console.log('Access denied')
