@@ -182,7 +182,7 @@ const EditorPageV2 = () => {
         const calendar = {
             start: startRedux,
             end: dateRedux,
-            bfImage: bgImg.urls.full,
+            bgImage: bgImg.urls.full,
             hatches: hatches,
             numbOfHatches: numbOfHatches,
             privateCalendar: false
