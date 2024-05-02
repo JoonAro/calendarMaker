@@ -8,6 +8,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { logout } from '../auth/firebase';
 import { useNavigate } from 'react-router-dom';
 import Avatar from './Avatar';
+import icon2 from '../assets/icon2.svg';
 
 
 
@@ -43,11 +44,10 @@ const Header = () => {
                     className="bg-smallBackground"
                     expand="lg"
                 >
-                    <Link to="/" className="img-thumbnail mx-auto bg-smallBackground border-smallBackground"
-                        style={{ width: "40%", maxWidth: "5rem", height: "5rem" }}
-                    >   <img
-                            src={calendar}
-                            alt="calendar"
+                    <Link to="/" 
+                    >   <img className='h-16 ml-2.5 ml-hover:-translate-y-1 hover:scale-110'
+                            src={icon2}
+                            alt="logo"
                         />
                     </Link>
 
