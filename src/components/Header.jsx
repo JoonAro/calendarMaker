@@ -66,9 +66,10 @@ const Header = () => {
                                 <Link to="/editorPageV2">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Edit</Button>
                                 </Link>
-                                <Link to="/favourites">
+                                {user && 
+                                (<Link to="/favourites">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Favourites</Button>
-                                </Link>
+                                </Link>) }
                                 {user && superUser.includes(nameUser) ? (
                                     <Link to="/dashboard">
                                         <Button variant="contained" className="text-whiteReplacement text-xl">
