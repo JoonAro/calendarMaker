@@ -6,6 +6,8 @@ import icon2 from '../assets/icon2.svg';
 import icon3 from '../assets/icon3.svg';
 import icon4 from '../assets/icon4.svg';
 import { Link } from 'react-router-dom';
+import icon5 from '../assets/icon5.svg';
+
 
 
 
@@ -25,7 +27,7 @@ const Home = () => {
 
 
           <div className="w-16 md:w-32 lg:w-72 absolute top-24 left-1/2 transform -translate-x-1/2 mb-2 items-left-1/4 flex flex-col sm:items-center">
-            <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon2} alt="icon2" />
+            <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon5} alt="icon5" />
             <span className='text-sm md:text-2xl mt-3 text-fontDark text-center'>Change style, upload images</span>
             <span className='text-zinc-400 text-xs sm:text-sm md:text-base mt-1 text-center'>Choose images and style of the hatches, theme
             </span>

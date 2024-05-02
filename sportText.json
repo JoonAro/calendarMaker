@@ -1,0 +1,188 @@
+{
+    "exercises": [
+      {
+        "hatchNr": 1,
+        "name": "Jumping Jacks",
+        "description": "Stand with feet together, then jump while spreading arms and legs. Return to starting position and repeat."
+        
+      },
+      {
+        "hatchNr": 2,
+        "name": "Push-Ups",
+        "description": "Assume a plank position, then lower body until chest nearly touches the ground. Push back up to starting position."
+        
+      },
+      {
+        "hatchNr": 3,
+        "name": "Squats",
+        "description": "Stand with feet shoulder-width apart, then lower body as if sitting back into an invisible chair. Return to standing position."
+        
+      },
+      {
+        "hatchNr": 4,
+        "name": "Plank",
+        "description": "Assume a push-up position but with elbows bent and forearms resting on the ground. Hold this position."
+        
+      },
+      {
+        "hatchNr": 5,
+        "name": "High Knees",
+        "description": "Run in place, bringing knees up towards chest as high as possible with each step."
+        
+      },
+      {
+        "hatchNr": 6,
+        "name": "Mountain Climbers",
+        "description": "Assume a push-up position, then alternately drive knees towards chest in a running motion."
+        
+      },
+      {
+        "hatchNr": 7,
+        "name": "Burpees",
+        "description": "From standing position, squat down, kick feet back to plank, perform a push-up, return to squat, and jump up."
+        
+      },
+      {
+        "hatchNr": 8,
+        "name": "Russian Twists",
+        "description": "Sit on the floor with knees bent and feet lifted. Rotate torso to touch the ground on each side."
+        
+      },
+      {
+        "hatchNr": 9,
+        "name": "Bicycle Crunches",
+        "description": "Lie on back, lift legs, and alternately bring knees towards opposite elbows while pedaling in the air."
+        
+      },
+      {
+        "hatchNr": 10,
+        "name": "Reverse Lunges",
+        "description": "Step back with one leg and lower body until both knees form 90-degree angles. Return to standing position and switch legs."
+        
+      },
+      {
+        "hatchNr": 11,
+        "name": "Side Plank",
+        "description": "Lie on one side with legs stacked and prop body up with elbow and forearm. Hold this position."
+        
+      },
+      {
+        "hatchNr": 12,
+        "name": "Jump Squats",
+        "description": "Perform a regular squat, then jump explosively as high as possible before returning to squat position."
+        
+      },
+      {
+        "hatchNr": 13,
+        "name": "Tricep Dips",
+        "description": "Sit on the edge of a chair, grip the edge, and lift body off the chair. Bend elbows and lower body, then push back up."
+        
+      },
+      {
+        "hatchNr": 14,
+        "name": "Leg Raises",
+        "description": "Lie on back with legs straight and lift them towards the ceiling, then slowly lower them back down without touching the ground."
+      },
+      {
+        "hatchNr": 15,
+        "name": "Shoulder Taps",
+        "description": "Assume a push-up position, then alternately tap shoulders with opposite hands while keeping core stable."
+        
+      },
+      {
+        "hatchNr": 16,
+        "name": "Calf Raises",
+        "description": "Stand with feet hip-width apart and lift heels off the ground, then slowly lower them back down."
+        
+      },
+      {
+        "hatchNr": 17,
+        "name": "Superman",
+        "description": "Lie face down with arms extended in front. Lift arms, chest, and legs off the ground, then lower back down."
+        
+      },
+      {
+        "hatchNr": 18,
+        "name": "Jump Rope",
+        "description": "Grab a jump rope and perform continuous jumps, keeping feet together and swinging the rope with wrists."
+        
+      },
+      {
+        "hatchNr": 19,
+        "name": "Single-Leg Deadlifts",
+        "description": "Stand on one leg with knee slightly bent, then hinge at hips to lower torso towards the ground and extend opposite leg behind."
+        
+      },
+      {
+        "hatchNr": 20,
+        "name": "Wall Sit",
+        "description": "Lean back against a wall and slide down until thighs are parallel to the ground. Hold this position."
+        
+      },
+      {
+        "hatchNr": 21,
+        "name": "Bear Crawl",
+        "description": "Start on all fours with knees bent, then walk forward by moving opposite hand and foot simultaneously."
+        
+      },
+      {
+        "hatchNr": 22,
+        "name": "Flutter Kicks",
+        "description": "Lie on back with legs straight and lift heels off the ground. Flutter legs up and down in small, quick motions."
+        
+      },
+      {
+        "hatchNr": 23,
+        "name": "Lateral Lunges",
+        "description": "Step to the side with one leg and lower body until thigh is parallel to the ground. Return to standing position and switch legs."
+        
+      },
+      {
+        "hatchNr": 24,
+        "name": "Spiderman Plank",
+        "description": "Assume a plank position, then bring knee towards elbow on the same side. Alternate sides."
+        
+      },
+      {
+        "hatchNr": 25,
+        "name": "Jumping Lunges",
+        "description": "Start in a lunge position, then jump up and switch legs in mid-air before landing in a lunge on the other side."
+        
+      },
+      {
+        "hatchNr": 26,
+        "name": "Seated Leg Lifts",
+        "description": "Sit on the edge of a chair with legs extended. Lift one leg up as high as possible, then lower it back down."
+        
+      },
+      {
+        "hatchNr": 27,
+        "name": "Skater Hops",
+        "description": "Leap sideways from one foot to the other, swinging arms to maintain momentum."
+        
+      },
+      {
+        "hatchNr": 28,
+        "name": "Skater Hops",
+        "description": "Leap sideways from one foot to the other, swinging arms to maintain momentum."
+        
+      },
+      {
+        "hatchNr": 29,
+        "name": "Skater Hops",
+        "description": "Leap sideways from one foot to the other, swinging arms to maintain momentum."
+        
+      },
+      {
+        "hatchNr": 30,
+        "name": "Skater Hops",
+        "description": "Leap sideways from one foot to the other, swinging arms to maintain momentum."
+        
+      },
+      {
+        "hatchNr": 31,
+        "name": "Skater Hops",
+        "description": "Leap sideways from one foot to the other, swinging arms to maintain momentum."
+        
+      }
+    ]}
