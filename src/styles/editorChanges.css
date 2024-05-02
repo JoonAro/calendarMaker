@@ -4,28 +4,18 @@
     box-sizing: border-box;
 }
 
-:root {
-    --hider: 1;
-    --textPositioner: 0vw;
-}
-
 .editorHolder {
     display: grid;
-    grid-template-columns: calc(var(--hider)*250px) 1fr;
+    grid-template-columns: 250px 1fr;
     grid-template-rows: auto;
-    height: 100%;
-    background-color: rgba(103, 89, 94, 1);
-    overflow: hidden;
+    background-color: rgba(238, 214, 211, 1);
 }
 
 .sideColumn {
-    width: 250px;
-    height: 100%;
-    min-height: 100vh;
+    width: fit-content;
+    height: fit-content;
     grid-column-start: 1;
     grid-row-start: 1;
-    background-color: rgba(238, 214, 211, 1);
-    overflow: hidden;
 }
 
 .content {
@@ -42,61 +32,49 @@
 }
 
 .gridHolder {
-    margin: 2vw 0;
-    padding: 4vw 3.8vw;
-    min-width: fit-content;
-    height: fit-content;
+    width: 100%;
+    min-height: 1200px;
+    max-height: 2500px;
     position: relative;
     display: grid;
     background-color: rgba(103, 89, 94, 0);
     background-position: center;
     background-size: cover;
-    grid-template-columns: repeat(5, 16%);
-    grid-template-rows: repeat(6, 13%);
-    grid-gap: 3.5vw;
+    grid-template-columns: repeat(5, 9.068vw);
+    grid-template-rows: repeat(6, 9.068vw);
+    grid-gap: 4.03vw;
     border-radius: 30px;
 }
 
 .calendarHolder {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     width: calc(99vw - 250px);
+    /* width: 84vw; */
     min-height: 90vh;
     background-color: rgba(103, 89, 94, 1);
+    padding: 40px 0;
 }
 
 .catalogueHolder {
-    margin: 2vw 0;
-    width: 95%;
+    width: calc(99vw - 250px);
+    /* width: 84vw; */
     min-height: 90vh;
     display: grid;
-    background-color: rgba(56, 28, 150, 0);
-    grid-template-columns: repeat(3, 33.33%);
-    grid-template-rows: repeat(10, 40vw);
-    grid-gap: 0px;
-    border-radius: 30px;
-    overflow: hidden;
-}
-
-.backGroundHolder {
-    min-height: 100vw;
-    width: 95%;
+    background-color: rgba(103, 89, 94, 1);
     background-position: center;
     background-size: cover;
-    margin: 2vw 0;
-    overflow: hidden;
-    border-radius: 30px;
+    grid-template-columns: repeat(3, 25vw);
+    grid-template-rows: repeat(6, 1fr);
+    grid-gap: 0px;
 }
 
 .catalogueImage {
     display: flex;
     position: relative;
     background-color: rgba(127, 255, 212, 0);
-    height: 100%;
-    width: 100%;
-    background-position: center;
+    height: 40vw;
+    width: 25vw;
     background-size: cover;
+    background-position: center;
 }
 
 .calendarContent {
@@ -114,7 +92,7 @@
     background-color: rgba(103, 89, 94, 1);
     background-position: center;
     background-size: cover;
-    grid-template-columns: repeat(5, 180px);
+    grid-template-columns: repeat(5, 13.64%);
     grid-template-rows: repeat(6, 1fr);
     grid-gap: 80px;
     margin: 0 auto;
@@ -129,10 +107,11 @@
 }
 
 .welcomeText {
+
     background-color: rgba(0, 0, 0, 0.395);
     position: absolute;
     top: 20vw;
-    left: calc(34vw - var(--textPositioner));
+    left: 20vw;
     width: 650px;
     font-size: xx-large;
     color: white;
@@ -159,8 +138,8 @@
     perspective: 900px;
     position: relative;
     background-color: rgba(127, 255, 212, 0);
+    height: 100%;
     width: 100%;
-    aspect-ratio: 1 / 1;
     background-size: cover;
     background-position: center;
 }
@@ -228,7 +207,7 @@
 
     100% {
         background-color: rgb(224, 199, 170);
-        transform: rotateY(calc(var(--y) * -95deg));
+        transform: rotateY(calc(var(--y) * -100deg));
 
     }
 }
@@ -244,23 +223,10 @@
     transform-style: preserve-3d;
 }
 
-.sidebarArrow {
-    position: fixed;
-    width: 20px;
-    top: 50%;
-    left: 0;
-    font-size: xx-large;
-    /* rounded-lg bg-mainBackground  */
-    border-style: none;
-    cursor: default;
-    z-index: 10;
-    color: rgba(238, 214, 211, 1);
-}
-
 @keyframes closeIt {
     0% {
         background-color: rgb(224, 199, 170);
-        transform: rotateY(calc(var(--y) * -95deg))
+        transform: rotateY(calc(var(--y) * -100deg))
     }
 
     33% {
@@ -278,71 +244,5 @@
     100% {
         background-color: unset;
         transform: rotateY(0deg);
-    }
-}
-
-@media only screen and (max-width: 1300px) {
-    .gridHolder {
-        grid-template-columns: repeat(4, 20.9%);
-        grid-template-rows: repeat(8, 10%);
-    }
-
-    .catalogueHolder {
-        grid-template-columns: repeat(2, 50%);
-        grid-template-rows: repeat(15, 55vw);
-        grid-gap: 0px;
-        border-radius: 30px;
-    }
-
-    .backGroundHolder {
-        min-height: 90vw;
-    }
-}
-
-@media only screen and (max-width: 1100px) {
-    :root {
-        --hider: 0;
-        --textPositioner: 14vw;
-    }
-
-    .gridHolder {
-        grid-template-columns: repeat(4, 20.9%);
-        grid-template-rows: repeat(8, 10%);
-        grid-gap: 4.7vw;
-    }
-
-    .catalogueHolder {
-        grid-template-columns: repeat(2, 50%);
-        grid-template-rows: repeat(15, 55vw);
-        grid-gap: 0px;
-        border-radius: 30px;
-    }
-
-    .backGroundHolder {
-        min-height: 90vw;
-    }
-
-    /* editorHolder might need the css variable also */
-    /*     .editorHolder {
-        grid-template-columns: 5px 1fr;
-        overflow: hidden;
-    } */
-
-    .sideColumn {
-        background-color: rgba(103, 89, 94, 1);
-        width: 5px;
-    }
-
-    .sideColumn:hover {
-        --hider: 1;
-        width: 250px;
-        background-color: rgba(238, 214, 211, 1);
-        z-index: 10;
-    }
-
-    .calendarHolder {
-        width: calc(99vw - 5px);
-        min-height: 90vh;
-        background-color: rgba(103, 89, 94, 1);
     }
 }
