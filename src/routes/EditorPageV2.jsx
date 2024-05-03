@@ -127,7 +127,7 @@ const EditorPageV2 = () => {
 
     //unsplash api has blur hash where you can first have a blurred image loaded on the page before the real thing loads.
     const createObject = (result, bgImg, e) => {
-        let startDate = new Date(2024, 3, 10);
+        let startDate = new Date(2024, 3, 25);
         let startRedux = startDate.toISOString();
         console.log(startRedux);
         let hatches = [];
