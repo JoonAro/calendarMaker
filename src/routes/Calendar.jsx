@@ -18,7 +18,7 @@ const Calendar = () => {
     return (
         <>
             {!calendar ? (
-                <Container fluid style={{ minWidth: "100vw", minHeight: "100vh", color: "whitesmoke", backgroundColor: "#67595E" }} className='font-sans'>
+                <Container fluid style={{ minWidth: "calc(100vw - 15px)", minHeight: "100vh", color: "whitesmoke", backgroundColor: "#67595E" }} className='font-sans'>
                     <Row className="vh-100 justify-content-center align-items-center">
                         <Col xs={6} md={1} className="d-flex flex-column align-items-center">
                             <Spinner animation="border" role="status" style={{ width: "15rem", height: "15rem", margin: "2rem" }} />

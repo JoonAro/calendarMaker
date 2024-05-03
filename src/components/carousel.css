@@ -4,86 +4,102 @@
 
   flex-wrap: wrap;
 }
- .showCard {
-  margin-left: -13.5px;
-  width: 100vw;
+
+.showCard {
+  width: 100%;
   height: 80vh;
   overflow: hidden;
   position: relative;
 
 }
- .navigation {
+
+.navigation {
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
 }
- .bar {
+
+.bar {
   width: 50px;
   height: 10px;
   border: 2px solid white;
   margin: 6px;
   cursor: pointer;
 }
- .bar:hover {
+
+.bar:hover {
   background: white;
 }
- input[name="r"] {
+
+input[name="r"] {
   position: absolute;
   visibility: hidden;
 }
- .slides {
-  width: 500%;
+
+.slides {
+  width: calc((100vw - 15px) * 5);
   height: 100%;
   display: flex;
 }
- .slide {
+
+.slide {
   width: 20%;
   transition: 1.5s;
 }
- .slide img {
-  width: 100%;
+
+.slide img {
+  width: calc(100vw - 15px);
   height: 100%;
   object-fit: cover;
 }
- .showCard .slide .image-date {
+
+.showCard .slide .image-date {
   position: absolute;
   top: 0;
   padding: 15px 30px;
   background: rgba(0, 0, 0, 0.2);
 }
- .image-date h2 {
+
+.image-date h2 {
   font-size: 25px;
   color: white;
 }
+
 .radio-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 }
- #r1:checked ~ .s1 {
+
+#r1:checked~.s1 {
   margin-left: 0;
 }
- #r2:checked ~ .s1 {
+
+#r2:checked~.s1 {
   margin-left: -20%;
 }
- #r3:checked ~ .s1 {
+
+#r3:checked~.s1 {
   margin-left: -40%;
 }
- #r4:checked ~ .s1 {
+
+#r4:checked~.s1 {
   margin-left: -60%;
 }
- #r5:checked ~ .s1 {
+
+#r5:checked~.s1 {
   margin-left: -80%;
 }
+
 @media (max-width: 768px) {
-  .bar{
-    width:30px;
+  .bar {
+    width: 30px;
   }
+
   .navigation {
     justify-content: flex-start;
   }
 
 }
-
