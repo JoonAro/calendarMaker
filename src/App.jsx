@@ -19,6 +19,7 @@ import { Provider } from "react-redux";
 import store from "./store/store";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import Cookies from "./components/footercomponent/Cookies";
+import CalendarPreview from "./routes/CalendarPreview";
 
 
 function App() {
@@ -54,6 +55,12 @@ function App() {
                 <Calendar />
               }
             />
+            <Route
+                path="/calendar/:id"
+                element={
+                  <CalendarPreview />
+                }
+              />
             <Route
               path="/favourites"
               element={<ProtectedRoute component={Favourites} />}
