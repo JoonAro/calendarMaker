@@ -87,9 +87,9 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchS
                         />
                         Right
                     </label>
-                    <SaveButton />
                 </div>
             </div>
+            <SaveButton />
         </div>
     )
 }

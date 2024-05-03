@@ -19,14 +19,14 @@ const FakeSHatch = ({ hatch, accessKey }) => {
             setTimeout(() => setShowImage(!showImage), 1000);
         }
         else {
-            alert("Naughty!");
+            alert(`This hatch is locked until ${hatch.date}.`);
         }
     }
 
     const handleTime = (hatch) => {
         // console.log(hatch);
         const hatchDate = hatch.date
-        // console.log("todayISO", todayISO, "hatchDate", hatchDate);
+        console.log("todayISO", todayISO, "hatchDate", hatchDate);
         if (todayISO < hatchDate) {
             console.log('Access denied')
             return false;
