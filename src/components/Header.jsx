@@ -38,7 +38,7 @@ const Header = () => {
     );
 
     return (
-        <Container fluid>
+        <Container fluid className='w-screen'>
             <Row>
                 <Navbar
                     className="bg-smallBackground"
