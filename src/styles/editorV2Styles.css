@@ -185,9 +185,14 @@
 }
 
 .hatchNumber {
-    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.7rem;
     height: fit-content;
-    color: rgba(0, 0, 0, 0.609);
+    /* color: rgba(245, 245, 245, 0.8);
+    background-color: rgba(0, 0, 0, 0.4); */
+    color: rgba(0, 0, 0, 0.7);
     background-color: rgba(245, 245, 245, 0.341);
     border-bottom-right-radius: 5px;
 }
@@ -234,7 +239,7 @@
 }
 
 .closedStyle {
-    border: 1px dashed rgba(255, 255, 255, 0.377);
+    border: 1px dashed rgba(255, 255, 255, 0.601);
     animation-name: closeIt;
     animation-duration: 2s;
     animation-delay: 0;

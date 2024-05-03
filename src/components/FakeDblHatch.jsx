@@ -19,7 +19,7 @@ const FakeDblHatch = ({ hatch, accessKey }) => {
             setTimeout(() => setShowImage(!showImage), 1000);
         }
         else {
-            alert("Naughty!");
+            alert(`This hatch is locked until ${hatch.date}.`);
         }
     }
 
