@@ -21,8 +21,8 @@ p {
     width: 250px;
     background-color: rgba(103, 89, 94, 0);
     overflow: hidden;
-    position: fixed;
-    left: 0;
+    /* position: fixed;
+    left: 0; */
 }
 
 .sideBarForm {
@@ -36,7 +36,7 @@ p {
 .filters {
     padding: calc(20px * var(--hider));
     width: calc(220px *var(--hider));
-    border-bottom: 1px solid black;
+    border-top: 1px solid black;
     overflow: inherit;
 }
 
