@@ -13,12 +13,16 @@ import icon5 from '../assets/icon5.svg';
 
 const Home = () => {
   return (
-    <Container fluid className='w-screen  font-sans bg-mainBackground text-fontDark'>
+    <Container fluid className='font-sans bg-mainBackground text-fontDark' style={{
+      width: "calc(100vw - 15px)",
+      paddingLeft: "0",
+      paddingRight: "0"
+    }}>
       <Carousel />
 
       <div className='flex flex-col justify-center items-center mt-20'>
         <h2 className="text-3xl mb-4 text-white">Customize your calendar</h2>
-        <div className="w-screen py-48 mt-4 bg-smallBackground border relative">
+        <div className="py-48 mt-4 mr-0 ml-0 bg-smallBackground border relative" style={{ width: "100%" }}>
           <div className=" w-16 md:w-32 lg:w-60 absolute top-0 left-0 mt-7 ml-14 md:ml-40 items-start flex flex-col sm:items-center">
             <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon1} alt="icon1" />
             <span className='text-sm md:text-2xl mt-3 text-fontDark text-center'>Choose a name of a calendar</span>
@@ -42,7 +46,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Row className="mt-5" style={{ padding: "5rem" }}>
+      <Row className="mt-5 mr-0 mr-l0s" style={{ padding: "5rem" }}>
         <CarouselBS>
           <CarouselBS.Item>
             <Col className="d-flex justify-content-center">
