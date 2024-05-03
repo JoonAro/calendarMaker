@@ -38,16 +38,16 @@ const Header = () => {
     );
 
     return (
-        <Container fluid className='w-screen'>
+        <Container fluid className='w-[calc(100vw - 17px)]'>
             <Row>
                 <Navbar
                     className="bg-smallBackground"
                     expand="lg"
                 >
-                    <Link to="/" 
+                    <Link to="/"
                     >   <img className='h-16 ml-2.5 ml-hover:-translate-y-1 hover:scale-110'
-                            src={icon2}
-                            alt="logo"
+                        src={icon2}
+                        alt="logo"
                         />
                     </Link>
 
@@ -66,10 +66,10 @@ const Header = () => {
                                 <Link to="/editorPageV2">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Edit</Button>
                                 </Link>
-                                {user && 
-                                (<Link to="/favourites">
-                                    <Button variant="contained" className="text-whiteReplacement text-xl">Favourites</Button>
-                                </Link>) }
+                                {user &&
+                                    (<Link to="/favourites">
+                                        <Button variant="contained" className="text-whiteReplacement text-xl">Favourites</Button>
+                                    </Link>)}
                                 {user && superUser.includes(nameUser) ? (
                                     <Link to="/dashboard">
                                         <Button variant="contained" className="text-whiteReplacement text-xl">
