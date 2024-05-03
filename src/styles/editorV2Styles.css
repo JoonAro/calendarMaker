@@ -190,10 +190,10 @@
     justify-content: center;
     width: 1.7rem;
     height: fit-content;
-    color: rgba(245, 245, 245, 0.8);
-    background-color: rgba(0, 0, 0, 0.4);
-    /* color: rgba(0, 0, 0, 0.7);
-    background-color: rgba(245, 245, 245, 0.341); */
+    /* color: rgba(245, 245, 245, 0.8);
+    background-color: rgba(0, 0, 0, 0.4); */
+    color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(245, 245, 245, 0.341);
     border-bottom-right-radius: 5px;
 }
 
