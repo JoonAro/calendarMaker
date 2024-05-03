@@ -1,15 +1,16 @@
 .showContainer {
   display: flex;
   justify-content: start;
-  margin-left: 15px;
+
   flex-wrap: wrap;
 }
  .showCard {
-  margin-left: -20px;
+  margin-left: -13.5px;
   width: 100vw;
   height: 80vh;
   overflow: hidden;
   position: relative;
+
 }
  .navigation {
   position: absolute;
