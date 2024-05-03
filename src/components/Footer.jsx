@@ -2,8 +2,8 @@ import { Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
 const Footer = () =>
-  <div className="bg-accentColor ">
-    <ul className="flex flex-wrap items-center mb-6 text-sm text-gray-500 sm:mb-0 z-20">
+  <div className="bg-accentColor w-screen">
+    <ul className="flex flex-wrap items-center text-sm text-gray-500 z-20">
       <Link to="about">
         <Button variant="contained" className="text-whiteReplacement text-l">About</Button>
       </Link>
