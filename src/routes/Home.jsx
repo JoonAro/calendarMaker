@@ -46,7 +46,7 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Row className="mt-5 mr-0 mr-l0s" style={{ padding: "5rem" }}>
+      <Row className="mt-5 mr-0 mr-l0" style={{ padding: "5rem" }}>
         <CarouselBS>
           <CarouselBS.Item>
             <Col className="d-flex justify-content-center">

@@ -101,21 +101,29 @@ const EditorPageV2 = () => {
     const handleUserReply = (userReply) => {
         console.log(userReply)
         if (userReply === "yes") {
-            createCalendar(images, bgObject);
-            setGuideH("Great!");
-            setGuideText("Now you can start editing hatches. Have fun!")
-            setBool4(true);
+            hatchImagesHandler()
         }
         else if (userReply === "no") {
             setGuideH("Choose a background image by clicking the image.");
             setGuideText("");
             setBool2(false);
-            // Todo: FIX guidetext!
         }
         else {
             console.log("handleUserReply Error. Check your code!");
         }
     }
+
+    const hatchImagesHandler = () => {
+        //Todo: Show the images again with the text "Choose images for the hatches. Onclick save image to array
+        //Let user fetch new set of images to find the right images.
+        //Todo: move below to a new function that comes after user has chosen all the hatchImages
+        createCalendar(images, bgObject);
+        setGuideH("Great!");
+        setGuideText("Now you can start editing hatches. Have fun!")
+        setBool4(true);
+    }
+    //  Todo: Create hatchImageCatalogue or modify imageCatalogue
+    //  where the user fills the amount of images he needs
     const createCalendar = (result, bgImg, e) => {
         const calendarObj = createObject(result, bgImg, e);
         // console.log(calendarObj);
