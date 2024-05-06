@@ -38,7 +38,7 @@ const Header = () => {
     );
 
     return (
-        <Container fluid className='w-[calc(100vw - 17px)]'>
+        <Container fluid >
             <Row>
                 <Navbar
                     className="bg-smallBackground"
