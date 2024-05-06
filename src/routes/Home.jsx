@@ -14,7 +14,7 @@ import icon5 from '../assets/icon5.svg';
 const Home = () => {
   return (
     <Container fluid className='font-sans bg-mainBackground text-fontDark' style={{
-      width: "calc(100vw - 15px)",
+      width: "100%",
       paddingLeft: "0",
       paddingRight: "0"
     }}>
