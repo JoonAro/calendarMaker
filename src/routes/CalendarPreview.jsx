@@ -1,8 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getDoc, doc } from "firebase/firestore";
-import { Card } from 'react-bootstrap';
-import CloseIcon from '@mui/icons-material/Close';
 import { auth, db } from "../auth/firebase";
 import FakeSHatch from '../components/FakeSHatch';
 import FakeDblHatch from '../components/FakeDblHatch';
@@ -16,10 +14,8 @@ const CalendarPreview = () => {
     useEffect(() => {
         const fetchCalendar = async () => {
             try {
-                // Get the current user
                 const user = auth.currentUser;
                 if (user) {
-                    // Use user.uid directly here
                     const calendarDoc = await getDoc(doc(db, `users/${user.uid}/calendar/${id}`));
                     if (calendarDoc.exists()) {
                         setCalendar({ id: calendarDoc.id, ...calendarDoc.data() });
@@ -47,14 +43,10 @@ const CalendarPreview = () => {
             <div className="EditorHolder">
                 <div className="calendarContent">
                     <div className="spaceHolder">
-
-
                     </div>
                     <div className="calendarGridHolder" style={{
                         backgroundImage: `url(${calendar.data.bgImage})`,
                     }}>
-
-
                         {calendar.data?.hatches?.map(hatch => {
                             let hatchKey = hatch.hatchNr;
                             let hatchType = hatch.hatchType;
