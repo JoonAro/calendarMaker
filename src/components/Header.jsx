@@ -1,6 +1,5 @@
 import { Button, Container, Nav, Navbar, NavbarText, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import calendar from '../assets/media/calendar.svg';
 import { useState, useEffect } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../auth/firebase';
@@ -60,15 +59,15 @@ const Header = () => {
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Home</Button>
                                 </Link>
 
-                                <Link to="/calendar">
+                                {/*    <Link to="/calendar">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Calendar</Button>
-                                </Link>
+                                </Link> */}
                                 <Link to="/editorPageV2">
                                     <Button variant="contained" className="text-whiteReplacement text-xl">Edit</Button>
                                 </Link>
                                 {user &&
-                                    (<Link to="/favourites">
-                                        <Button variant="contained" className="text-whiteReplacement text-xl">Favourites</Button>
+                                    (<Link to="/collection">
+                                        <Button variant="contained" className="text-whiteReplacement text-xl">Calendar Collection</Button>
                                     </Link>)}
                                 {user && superUser.includes(nameUser) ? (
                                     <Link to="/dashboard">
