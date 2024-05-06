@@ -15,6 +15,7 @@ import {
 
 } from "firebase/firestore";
 
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
     apiKey: import.meta.env.VITE_FIREBASE_API,
@@ -28,6 +29,7 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+export const storage = getStorage(app);
 
 const registerWithEmailAndPassword = async (name, email, password, avatar) => {
     try {
