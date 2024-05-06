@@ -8,7 +8,6 @@ import EditorPage from "./routes/EditorPage";
 import Calendar from "./routes/Calendar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./routes/Dashboard";
-import Favourites from "./routes/Favourites";
 import About from "./components/footercomponent/About";
 import Contact from "./components/Contact";
 import Licensing from "./components/footercomponent/Licensing";
@@ -56,14 +55,14 @@ function App() {
               }
             />
             <Route
-                path="/calendar/:id"
-                element={
-                  <CalendarPreview />
-                }
-              />
+              path="/calendar/:id"
+              element={
+                <CalendarPreview />
+              }
+            />
             <Route
-              path="/favourites"
-              element={<ProtectedRoute component={Favourites} />}
+              path="/collection"
+              element={<ProtectedRoute component={Collection} />}
             />
             <Route
               path="/dashboard"
@@ -101,7 +100,7 @@ function App() {
                 <Cookies />
               }
             />
-            
+
             <Route
               path="/premium"
               element={
@@ -109,9 +108,9 @@ function App() {
               }
             />
             <Route
-              path="/favourites"
+              path="/collection"
               element={
-                <Favourites />
+                <Collection />
               }
             />
           </Route>
