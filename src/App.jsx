@@ -19,104 +19,108 @@ import store from "./store/store";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import Cookies from "./components/footercomponent/Cookies";
 import CalendarPreview from "./routes/CalendarPreview";
-
+import Footer from "./components/Footer";
+import { ThemeProvider } from "./components/theme/ThemeContext";
 
 function App() {
 
   return (
-    <Provider store={store}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<Root />}>
-            <Route index element={<Home />} />
-            <Route path="login" element={<Login />} />
-            <Route path="register" element={<Register />} />
+    <ThemeProvider initialTheme={'light'} >
+      <Provider store={store}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Root />}>
+              <Route index element={<Home />} />
+              <Route path="login" element={<Login />} />
+              <Route path="register" element={<Register />} />
 
-            <Route
-              path="/collection"
+              <Route
+                path="/collection"
 
-              element={<Collection />
-              }
-            />
-            <Route
-              path="/editorPage"
-              element={
-                <EditorPage />
-              }
-            />
-            <Route
-              path="/editorPageV2"
-              element={<ProtectedRoute component={EditorPageV2} />}
-            />
-            <Route
-              path="/calendar"
-              element={
-                <Calendar />
-              }
-            />
-            <Route
-              path="/calendar/:id"
-              element={
-                <CalendarPreview />
-              }
-            />
-            <Route
-              path="/collection"
-              element={<ProtectedRoute component={Collection} />}
-            />
-            <Route
-              path="/dashboard"
-              element={
-                <ProtectedRoute component={Dashboard} />
-              }
-            />
-            <Route
-              path="/about"
-              element={
-                <About />
-              }
-            />
-            <Route
-              path="/contact"
-              element={
-                <Contact />
-              }
-            />
-            <Route
-              path="/licensing"
-              element={
-                <Licensing />
-              }
-            />
-            <Route
-              path="/privacy"
-              element={
-                <Privacy />
-              }
-            />
-            <Route
-              path="/cookies"
-              element={
-                <Cookies />
-              }
-            />
+                element={<Collection />
+                }
+              />
+              <Route
+                path="/editorPage"
+                element={
+                  <EditorPage />
+                }
+              />
+              <Route
+                path="/editorPageV2"
+                element={<ProtectedRoute component={EditorPageV2} />}
+              />
+              <Route
+                path="/calendar"
+                element={
+                  <Calendar />
+                }
+              />
+              <Route
+                path="/calendar/:id"
+                element={
+                  <CalendarPreview />
+                }
+              />
+              <Route
+                path="/collection"
+                element={<ProtectedRoute component={Collection} />}
+              />
+              <Route
+                path="/dashboard"
+                element={
+                  <ProtectedRoute component={Dashboard} />
+                }
+              />
+              <Route
+                path="/about"
+                element={
+                  <About />
+                }
+              />
+              <Route
+                path="/contact"
+                element={
+                  <Contact />
+                }
+              />
+              <Route
+                path="/licensing"
+                element={
+                  <Licensing />
+                }
+              />
+              <Route
+                path="/privacy"
+                element={
+                  <Privacy />
+                }
+              />
+              <Route
+                path="/cookies"
+                element={
+                  <Cookies />
+                }
+              />
 
-            <Route
-              path="/premium"
-              element={
-                <Premium />
-              }
-            />
-            <Route
-              path="/collection"
-              element={
-                <Collection />
-              }
-            />
-          </Route>
-        </Routes>
-      </Router>
-    </Provider>
+              <Route
+                path="/premium"
+                element={
+                  <Premium />
+                }
+              />
+              <Route
+                path="/collection"
+                element={
+                  <Collection />
+                }
+              />
+            </Route>
+            <Route path="/" element={<Footer />} />
+          </Routes>
+        </Router>
+      </Provider>
+    </ThemeProvider>
   )
 }
 
