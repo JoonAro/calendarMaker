@@ -13,13 +13,11 @@ const API_KEY = import.meta.env.VITE_UNSPLASH_API;
 const API_URL = "https://api.unsplash.com/search/photos";
 const IMAGES_PER_PAGE = 30;
 
-// Before friday: 
-//  -Change the alert
-//      -The one in countries will do for now
-//  -Date Picker
 const EditorPageV2 = () => {
     const dispatch = useDispatch();
     const calendar = useSelector(state => state.calendar.calendar);
+    const [startDate, setStartDate] = useState(null);
+    const [endDate, setEndDate] = useState(null);
     const [images, setImages] = useState([]);
     const [bgObject, setBgObject] = useState({});
     const [calendarImage, setCalendarImage] = useState("https://images.unsplash.com/photo-1556888335-23631cd2801a?q=80&w=2053&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
@@ -29,15 +27,55 @@ const EditorPageV2 = () => {
     const [bool4, setBool4] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const [pageNr, setPageNr] = useState(1);
+    const [hatchAmount, setHatchAmount] = useState(null);
+    const [gridRows, setGridRows] = useState(true);
     const [hatchType, setHatchType] = useState('single');
     const [hatchSide, setHatchSide] = useState('left');
     const searchInput = useRef(null);
     const [guideH, setGuideH] = useState("Welcome to the calendar editor!")
-    const [guideText, setGuideText] = useState("Start creating your calendar by searching for a theme.");
+    const [guideText, setGuideText] = useState("Step 1: Start by searching for a theme");
+
     const handleSearch = (event) => {
         event.preventDefault();
         handleFetch();
         if (bool2 === true) setBool2(!bool2);
+    }
+
+    const handleStartDate = (date) => {
+        setStartDate(date);
+    };
+
+    const handleEndDate = (date) => {
+        setEndDate(date);
+    };
+
+    const getHatchAmount = (startDate, endDate) => {
+        /* console.log(startDate, "startDate");
+        console.log(endDate, "endDate"); */
+        const start = new Date(startDate).getTime();
+        const end = new Date(endDate).getTime();
+        const difference = end - start;
+        const hatchTotal = Math.ceil(difference / (1000 * 60 * 60 * 24)) + 1;
+        handleGridRows(hatchTotal);
+        console.log(hatchTotal, "hatchTotal")
+        setHatchAmount(hatchTotal);
+    }
+
+    const handleGridRows = (hatchTotal) => {
+        if (hatchTotal < 11) {
+            setGridRows("twoRows");
+            //TODO: finish twoRows if needed
+        }
+        else if (hatchTotal >= 11 && hatchTotal < 16) {
+            setGridRows("threeRows");
+        }
+        else if (hatchTotal >= 16 && hatchTotal < 21) {
+            setGridRows("fourRows");
+        }
+        else if (hatchTotal >= 21 && hatchTotal < 26) {
+            setGridRows("fiveRows");
+        }
+        else setGridRows("sixRows");
     }
     const handleSelection = (selection) => {
         searchInput.current.value = selection
@@ -68,9 +106,9 @@ const EditorPageV2 = () => {
         setBool2(false);
         setBool3(false);
         setBool4(false);
-        console.log(bool, "bool");
         setGuideH("Choose a background image by clicking the image.");
         setGuideText("");
+        getHatchAmount(startDate, endDate);
     }
     const fetchImages = async () => {
         try {
@@ -80,7 +118,6 @@ const EditorPageV2 = () => {
             const result = data.results;
             setImages(data.results);
             setTotalPages(data.total_pages);
-            //setCatalogue(result);
             return result
         }
         catch (error) {
@@ -93,10 +130,8 @@ const EditorPageV2 = () => {
         setCalendarImage(possibleBackground);
         setBgObject(hatchImg);
         setBool2(true);
-        console.log("bool2", bool2)
         setGuideH("Are you happy with the background?");
         setGuideText("");
-        // create calendar and pass to it also the hatchImg.id to get rid of the backgroundImg from the hatches
     }
     const handleUserReply = (userReply) => {
         console.log(userReply)
@@ -110,7 +145,6 @@ const EditorPageV2 = () => {
             setGuideH("Choose a background image by clicking the image.");
             setGuideText("");
             setBool2(false);
-            // Todo: FIX guidetext!
         }
         else {
             console.log("handleUserReply Error. Check your code!");
@@ -118,7 +152,7 @@ const EditorPageV2 = () => {
     }
     const createCalendar = (result, bgImg, e) => {
         const calendarObj = createObject(result, bgImg, e);
-        // console.log(calendarObj);
+        //console.log(calendarObj);
         dispatch(setCalendar(calendarObj));
         setTimeout(() => setBool3(true), 2500);
     }
@@ -127,16 +161,14 @@ const EditorPageV2 = () => {
 
     //unsplash api has blur hash where you can first have a blurred image loaded on the page before the real thing loads.
     const createObject = (result, bgImg, e) => {
-        let startDate = new Date(2024, 3, 25);
         let startRedux = startDate.toISOString();
-        console.log(startRedux);
         let hatches = [];
-        let numbOfHatches = 0;
+        let numbOfHatches = hatchAmount;
         let date;
         let dateRedux;
         let hatchModifier = 1;
 
-        for (let i = 0; i < result.length; i++) {
+        for (let i = 0; i < numbOfHatches; i++) {
             date = new Date(startDate);
             date.setDate(startDate.getDate() + i);
             dateRedux = date.toISOString();
@@ -174,14 +206,12 @@ const EditorPageV2 = () => {
                     hatchType: typeOfHatch,
                     hatchSide: sideOfHatch
                 };
-                // console.log("hatchNr", hatchNr)
                 hatches.push(hatch);
-                numbOfHatches++;
             }
         }
         const calendar = {
             start: startRedux,
-            end: dateRedux,
+            end: endDate.toISOString(),
             bgImage: bgImg.urls.full,
             hatches: hatches,
             numbOfHatches: numbOfHatches,
@@ -189,7 +219,7 @@ const EditorPageV2 = () => {
         };
         return calendar;
     }
-
+    // TODO: Create a function that saves the final calendar when user is finished.
     return (
         <>
             <BackToTop />
@@ -206,9 +236,9 @@ const EditorPageV2 = () => {
                     />
                 </div>
                 <div className="content">
-                    {!bool2 && <ImageCatalogue bool={bool} images={images} handleBgSelection={handleBgSelection} guideH={guideH} guideText={guideText} calendarImage={calendarImage} />
+                    {!bool2 && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} />
                     }
-                    {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} />}
+                    {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} gridRows={gridRows} />}
                 </div>
             </div>
         </>

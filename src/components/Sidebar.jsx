@@ -11,22 +11,23 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchS
         <div className="sidebar">
             <div className="filters">
                 <div className='fullWidth'>
-                    <p>Choose a theme</p>
+                    <p>Dates</p>
                 </div>
-                <Form className='sideBarForm' onSubmit={handleSearch}>
-                    <Form.Control
-                        style={{ width: "200px", margin: "0", padding: "0" }}
-                        type="search"
-                        placeholder="Search theme"
-                        aria-label="Search"
-                        ref={searchInput}
-                    />
-                    <div className='h-16 mt-6 flex items-end justify-end'>
-                        <ButtonComponent >
-                            <h1>Submit</h1>
-                        </ButtonComponent>
-                    </div>
-                </Form>
+            </div>
+            <div className="filters">
+                <div className='fullWidth'>
+                    <p>Theme</p>
+                </div>
+            </div>
+            <div className="filters">
+                <div className='fullWidth'>
+                    <p>Background</p>
+                </div>
+            </div>
+            <div className="filters">
+                <div className='fullWidth'>
+                    <p>Hatches</p>
+                </div>
             </div>
             <div className='filters'>
                 <div className='themeHolder'>

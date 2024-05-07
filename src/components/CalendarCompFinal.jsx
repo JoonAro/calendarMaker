@@ -1,10 +1,10 @@
 import DoubleHatch from "./DoubleHatch";
 import Hatch from "./Hatch";
 
+const CalendarCompFinal = ({ calendar, calendarImage, accessKey, gridRows }) => {
 
-const CalendarCompFinal = ({ calendar, calendarImage, accessKey }) => {
     return (
-        <div className="gridHolder" style={{
+        <div className={`gridHolder ${gridRows}`} style={{
             backgroundImage: `url(${calendarImage})`,
             backgroundSize: 'cover',
             width: "95%",
