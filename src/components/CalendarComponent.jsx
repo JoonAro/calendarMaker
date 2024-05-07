@@ -1,7 +1,7 @@
 import TextComponent from "./TextComponent";
 import CalendarCompFinal from "./CalendarCompFinal";
 
-const CalendarComponent = ({ calendar, calendarImage, accessKey, bool3, bool4, handleUserReply, guideH, guideText }) => {
+const CalendarComponent = ({ calendar, calendarImage, accessKey, bool3, bool4, handleUserReply, guideH, guideText, gridRows }) => {
     return (
         <div className="calendarHolder">
             {!bool3 && <><TextComponent guideH={guideH} guideText={guideText} yes={"Yes"} no={"No"} handleUserReply={handleUserReply} bool4={bool4} />
@@ -10,7 +10,7 @@ const CalendarComponent = ({ calendar, calendarImage, accessKey, bool3, bool4, h
                 }}>
                 </div>
             </>}
-            {bool3 && <CalendarCompFinal calendar={calendar} calendarImage={calendarImage} accessKey={accessKey} />}
+            {bool3 && <CalendarCompFinal calendar={calendar} calendarImage={calendarImage} accessKey={accessKey} gridRows={gridRows} />}
         </div>
     )
 }

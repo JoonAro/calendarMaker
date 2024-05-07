@@ -56,8 +56,25 @@
     border-radius: 30px;
 }
 
+.sixRows {
+    grid-template-rows: repeat(6, 13%);
+}
+
+.fiveRows {
+    grid-template-rows: repeat(5, 16%);
+}
+
+.fourRows {
+    grid-template-rows: repeat(4, 20.4%);
+}
+
+.threeRows {
+    grid-template-rows: repeat(3, 27.5%);
+}
+
 .calendarHolder {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: calc(100vw - 265px);
@@ -125,6 +142,21 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: 0 1vw;
+}
+
+.flexColumnCentered>p {
+    margin: 1vw 0;
+}
+
+
+.flexCentered {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .welcomeText {
@@ -136,6 +168,16 @@
     font-size: xx-large;
     color: white;
     z-index: 9;
+    border-radius: 20px;
+    padding: 20px 0;
+
+}
+
+.welcomeText2 {
+    background-color: rgba(0, 0, 0, 0.395);
+    width: 650px;
+    font-size: xx-large;
+    color: white;
     border-radius: 20px;
     padding: 20px 0;
 
@@ -291,6 +333,18 @@
         grid-template-rows: repeat(8, 10%);
     }
 
+    .fiveRows {
+        grid-template-rows: repeat(6, 13.7%);
+    }
+
+    .fourRows {
+        grid-template-rows: repeat(5, 16.4%);
+    }
+
+    .threeRows {
+        grid-template-rows: repeat(4, 21%);
+    }
+
     .catalogueHolder {
         grid-template-columns: repeat(2, 50%);
         grid-template-rows: repeat(15, 55vw);
@@ -315,6 +369,18 @@
         grid-gap: 4.7vw;
     }
 
+    .fiveRows {
+        grid-template-rows: repeat(6, 13.7%);
+    }
+
+    .fourRows {
+        grid-template-rows: repeat(5, 16.4%);
+    }
+
+    .threeRows {
+        grid-template-rows: repeat(4, 20.8%);
+    }
+
     .catalogueHolder {
         grid-template-columns: repeat(2, 50%);
         grid-template-rows: repeat(15, 55vw);
@@ -325,12 +391,6 @@
     .backGroundHolder {
         min-height: 90vw;
     }
-
-    /* editorHolder might need the css variable also */
-    /*     .editorHolder {
-        grid-template-columns: 5px 1fr;
-        overflow: hidden;
-    } */
 
     .sideColumn {
         background-color: rgba(103, 89, 94, 1);
