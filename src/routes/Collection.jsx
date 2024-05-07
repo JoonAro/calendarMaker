@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 
 const Favorites = () => {
     const [usersCalendar, setUsersCalendar] = useState([]);
-    
+
 
     useEffect(() => {
         const getUsersCalendar = async () => {
@@ -38,9 +38,9 @@ const Favorites = () => {
             <Container className='flex min-h-screen items-center justify-center m-5'>
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
                     {usersCalendar.map(calendar => (
-                       
-                            <Card className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-                                 < Link key={calendar.id} to={`/calendar/${calendar.id}`} 
+
+                        <Card key={calendar.id} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+                            < Link key={calendar.id} to={`/calendar/${calendar.id}`}
                             >
                                 <div className='h-96 w-72'>
                                     <Card.Img className='h-full w-full object-cover group-hover:rotate-3 group-hover:scale-125 transition-transform duration-500' src={calendar.data.bgImage} />
@@ -50,9 +50,9 @@ const Favorites = () => {
                                     <ButtonComponent className="p-1">Preview</ButtonComponent>
                                     <ButtonComponent>Edit</ButtonComponent>
                                 </div>
-                                </Link>
-                            </Card>
-                       
+                            </Link>
+                        </Card>
+
                     ))}
                 </div>
             </Container>

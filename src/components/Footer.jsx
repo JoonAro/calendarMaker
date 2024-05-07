@@ -1,25 +1,45 @@
-import { Button } from "react-bootstrap"
-import { Link } from "react-router-dom"
+import { Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { useTheme } from './theme/ThemeContext';
 
-const Footer = () =>
-  <div className="bg-accentColor w-[calc(100vw - 17px)]">
-    <ul className="flex flex-wrap items-center text-sm text-gray-500">
-      <Link to="about">
-        <Button variant="contained" className="text-whiteReplacement text-l">About</Button>
-      </Link>
-      <Link to="privacy">
-        <Button variant="contained" className="text-whiteReplacement text-l">Privacy Policy</Button>
-      </Link>
-      <Link to="licensing">
-        <Button variant="contained" className="text-whiteReplacement text-l">Licensing</Button>
-      </Link>
-      <Link to="cookies">
-        <Button variant="contained" className="text-whiteReplacement text-l">Cookies</Button>
-      </Link>
-      <Link to="/premium">
-        <Button variant="contained" className="text-whiteReplacement text-l">Premium</Button>
-      </Link>
-    </ul>
-  </div >
+const Footer = () => {
+  const { theme } = useTheme();
 
-export default Footer
+  const accentColor = theme === 'dark' ? 'bg-accentColor-dark' : 'bg-accentColor-light';
+  const whiteReplacement = theme === 'dark' ? 'text-whiteReplacement-dark' : 'text-whiteReplacement-light';
+
+  return (
+    <footer className={accentColor}>
+      <ul className="flex flex-wrap items-center text-sm text-gray-500">
+        <li>
+          <Link to="about">
+
+            <Button variant="contained" className={`${whiteReplacement}  text-l`}>About</Button>
+          </Link>
+        </li>
+        <li>
+          <Link to="privacy">
+            <Button variant="contained" className={`${whiteReplacement}  text-l`}>Privacy Policy</Button>
+          </Link>
+        </li>
+        <li>
+          <Link to="licensing">
+            <Button variant="contained" className={`${whiteReplacement}  text-l`}>Licensing</Button>
+          </Link>
+        </li>
+        <li>
+          <Link to="cookies">
+            <Button variant="contained" className={`${whiteReplacement}  text-l`}>Cookies</Button>
+          </Link>
+        </li>
+        <li>
+          <Link to="/premium">
+            <Button variant="contained" className={`${whiteReplacement}  text-l`}>Premium</Button>
+          </Link>
+        </li>
+      </ul>
+    </footer>
+  );
+};
+
+export default Footer;

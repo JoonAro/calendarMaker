@@ -21,7 +21,7 @@ export default function Carousel() {
           <div className="image-date">
             <h2>Beach Calendar</h2>
           </div>
-          <div className="absolute top-10 left-1/2 transform -translate-x-1/2 z-20 text-fontDark text-5xl text-center">
+          <div className="absolute top-10 left-1/2 transform -translate-x-1/2 z-20 text-fontDark-light text-5xl text-center">
             <h3>DREAM CALENDAR</h3>
           </div>
         </div>
