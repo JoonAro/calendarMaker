@@ -26,7 +26,7 @@ const Register = () => {
   }, [user, loading]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-mainBackground">
+    <div className="flex items-center justify-center min-h-screen bg-mainBackground-light">
       <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 ">
         <div className="flex flex-col justify-center p-8 md:p-14">
           <span className="mb-3 text-4xl font-bold text-center text-fontDark">Sign up</span>
@@ -79,7 +79,7 @@ const Register = () => {
               placeholder="Enter password" />
           </div>
 
-          <Button className="w-full border border-transparent bg-mainBackground text-white p-2 rounded-lg mb-6 hover:bg-smallBackground"
+          <Button className="w-full border border-transparent bg-mainBackground-light text-white p-2 rounded-lg mb-6 hover:bg-smallBackground-light"
             onClick={register}>Sign up</Button>
         </div>
 
