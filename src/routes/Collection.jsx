@@ -40,17 +40,20 @@ const Favorites = () => {
                     {usersCalendar.map(calendar => (
 
                         <Card key={calendar.id} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
-                            < Link key={calendar.id} to={`/calendar/${calendar.id}`}
-                            >
-                                <div className='h-96 w-72'>
-                                    <Card.Img className='h-full w-full object-cover group-hover:rotate-3 group-hover:scale-125 transition-transform duration-500' src={calendar.data.bgImage} />
-                                    <CloseIcon className="absolute text-muted top-0 right-0 bg-smallBackground opacity-75 p-1" onClick={() => handleDeleteCalendar(calendar.id)} />
-                                </div>
-                                <div className='absolute inset-0 flex flex-col items-center justify-center px-9 text-center translate-y-[60%] group-hover:translate-y-0 transition-all duration-500 bottom-0'>
-                                    <ButtonComponent className="p-1">Preview</ButtonComponent>
-                                    <ButtonComponent>Edit</ButtonComponent>
-                                </div>
-                            </Link>
+
+                            <div className='h-96 w-72'>
+                                <Card.Img className='h-full w-full object-cover group-hover:rotate-3 group-hover:scale-125 transition-transform duration-500' src={calendar.data.bgImage} />
+                                <CloseIcon className="absolute text-muted top-0 right-0 bg-smallBackground opacity-75 p-1" onClick={() => handleDeleteCalendar(calendar.id)} />
+                            </div>
+                            <div className='absolute inset-0 flex flex-col items-center justify-center px-9 text-center translate-y-[60%] group-hover:translate-y-0 transition-all duration-500 bottom-0'>
+                                <ButtonComponent className="p-1">
+                                    <Link to={`/calendar/${calendar.id}`}>
+                                        Preview
+                                    </Link>
+                                </ButtonComponent>
+                                <ButtonComponent>Edit</ButtonComponent>
+                            </div>
+
                         </Card>
 
                     ))}
