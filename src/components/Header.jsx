@@ -47,7 +47,7 @@ const Header = () => {
     return (
         <Container fluid >
             <Row>
-                <Navbar className={smallBackground}>
+                <Navbar className={smallBackground} expand="lg">
 
 
                     <Link to="/"
