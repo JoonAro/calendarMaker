@@ -1,7 +1,6 @@
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
 import PieChartIcon from '@mui/icons-material/PieChart';
-import coffee from "../assets/coffee.jpg";
 import { useEffect } from 'react';
 import { db } from "../auth/firebase";
 import { query, where, collection, getDocs } from 'firebase/firestore';
@@ -9,16 +8,23 @@ import { useState } from 'react';
 import UserData from '../components/dashboardComponents/UserData';
 import ContactForm from '../components/dashboardComponents/ContactFormData';
 
+
+
+
+
 const Dashboard = () => {
     const [amount, setAmount] = useState(null);
     const [difference, setDifference] = useState(null);
     const [amountMessage, setAmountMessage] = useState(null);
     const [differenceMessage, setDifferenceMessage] = useState(null);
+    const [amountCalendars, setAmountCalendars] = useState(null);
+    const [differenceCalendars, setDifferenceCalendars] = useState(null);
  
 
     useEffect(()=>{
         fetchData();
         fetchMessageData();
+        fetchCalendarsData();
         }, []
 )
 
@@ -68,6 +74,85 @@ const fetchMessageData = async() =>{
     }
 }
 
+
+
+// const fetchCalendarsData = async () => {
+//     try {
+//       const usersCollectionRef = collection(db, 'users');
+//       const querySnapshot = await getDocs(usersCollectionRef);
+     
+  
+//       querySnapshot.forEach(async (userDoc) => {
+//         const calendarCollectionRef = collection(userDoc.ref, 'calendar');
+//         const calendarsQuerySnapshot = await getDocs(calendarCollectionRef);
+//         totalCalendars += calendarsQuerySnapshot.size;
+//       });
+  
+//       setAmountCalendars(totalCalendars.docs.length);
+   
+//     } catch (error) {
+//       console.error('Error fetching calendars:', error);
+//     }
+//   };
+  
+const fetchCalendarsData = async () => {
+    try {
+      const usersCollectionRef = collection(db, 'users');
+      const querySnapshot = await getDocs(usersCollectionRef);
+  
+      let allCalendars = [];
+  
+      querySnapshot.forEach(async (userDoc) => {
+        const calendarCollectionRef = collection(userDoc.ref, 'calendar');
+        const calendarsQuerySnapshot = await getDocs(calendarCollectionRef);
+        allCalendars = [...allCalendars, ...calendarsQuerySnapshot.docs];
+      });
+  
+      setAmountCalendars(allCalendars.length);
+    } catch (error) {
+      console.error('Error fetching calendars:', error);
+    }
+  };
+  
+
+
+// const fetchCalendarsData = async() =>{
+//     const today = new Date();
+//     const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
+//     const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
+//     console.log(lastMonth)
+
+//     const usersQuerySnapshot = await getDocs(collection(db, 'users'));
+
+//     let totalCalendars = 0;
+
+//     // Iterate through each user document
+//     usersQuerySnapshot.forEach(userDoc => {
+//         // Get the 'calendars' subcollection of the current user document
+//         const calendarsQuerySnapshot = getDocs(collection(userDoc.ref, 'calendars'));
+        
+//         // Increment the total number of calendars by the number of documents in the 'calendars' subcollection
+//         totalCalendars += calendarsQuerySnapshot.size;
+//     });
+
+    // const lastMonthQueryCalendars = query(collection(db,`users/calendar`), where("timeStamp", "<=", today), where("timeStamp", ">", lastMonth));
+
+    // const prevMonthQueryCalendars = query(collection(db,`users/calendar`), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
+
+    // const lastMonthDataMessages = await getDocs(lastMonthQueryCalendars);
+    // const prevMonthDataMessages = await getDocs(prevMonthQueryCalendars);
+
+    // setAmountCalendars(totalCalendars);
+
+//     if(prevMonthDataMessages.docs.length !== 0){
+//         setDifference(
+//             ((lastMonthDataMessages.docs.length - prevMonthDataMessages.docs.length) / prevMonthDataMessages.docs.length) * 100);
+//     }
+//    else {
+//     setDifferenceCalendars(100);
+//    }
+
+
   return (
     <div className='p-4 font-sans'>
     <div className='flex gap-4 w-full flex-wrap'>
@@ -94,8 +179,8 @@ const fetchMessageData = async() =>{
     <div className="pl-4">
         <span className="text-sm text-gray-500 font-light">Saved calendars</span>
         <div className="flex items-center">
-            <strong className="text-xl text-gray-700 font-semibold">20</strong>
-            <span className="text-sm text-green-500 pl-2">+23</span>
+            <strong className="text-xl text-gray-700 font-semibold">{amountCalendars}</strong>
+            <span className="text-sm text-green-500 pl-2">{differenceCalendars}</span>
         </div>
     </div>
         </div>
@@ -115,68 +200,11 @@ const fetchMessageData = async() =>{
         </div>
 
 
-        <div className='flex flex-wrap flex-col gap-4 md:flex-row w-full mt-7'>
-           <div className='flex flex-wrap w-full  pt-3 pb-4 rounded-sm border border-gray-200 flex-1 '>
-            
-           
-       <UserData className=""/>
-
+        <div className='flex justify-center flex-wrap flex-col gap-4 md:flex-row w-full mt-7'>
+           <div className='flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200  '>
+       <UserData />
               </div>
-            <div className="w-[20rem] px-4 pt-3 pb-4 rounded-sm border border-gray-200">
-			<strong className="text-gray-700 font-medium">Saved Calendars</strong>
-			<div className="mt-4 flex justify-between gap-3">
-            <div className="flex items-start w-10 h-10 min-w-[2.5rem] bg-gray-200 rounded-sm">
-							<img
-								className="w-full h-full object-cover rounded-sm"
-								src={coffee}
-                                alt="calendar"
-							/>
-						</div>
-            <div className="ml-4 flex-1">
-							<p className="text-sm text-gray-800">Product name</p>
-						</div>
-                        
-                </div>
-                <div className="mt-4 flex justify-between gap-3">
-            <div className="flex items-start w-10 h-10 min-w-[2.5rem] bg-gray-200 rounded-sm">
-							<img
-								className="w-full h-full object-cover rounded-sm"
-								src={coffee}
-                                alt="calendar"
-							/>
-						</div>
-            <div className="ml-4 flex-1">
-							<p className="text-sm text-gray-800">Product name</p>
-						</div>
-                        
-                </div>
-                <div className="mt-4 flex justify-between gap-3">
-            <div className="flex items-start w-10 h-10 min-w-[2.5rem] bg-gray-200 rounded-sm">
-							<img
-								className="w-full h-full object-cover rounded-sm"
-								src={coffee}
-                                alt="calendar"
-							/>
-						</div>
-            <div className="ml-4 flex-1">
-							<p className="text-sm text-gray-800">Product name</p>
-						</div>
-                        
-                </div>
-                <div className="mt-4 flex justify-between gap-3">
-            <div className="flex items-start w-10 h-10 min-w-[2.5rem] bg-gray-200 rounded-sm">
-							<img
-								className="w-full h-full object-cover rounded-sm"
-								src={coffee}
-                                alt="calendar"
-							/>
-						</div>
-            <div className="ml-4 flex-1">
-							<p className="text-sm text-gray-800">Product name</p>
-						</div>
-                        
-                </div>
-            </div>
+            
             <div className='flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200'>
             <ContactForm/>
             </div>
