@@ -20,6 +20,7 @@ const Header = () => {
     const smallBackground = theme === 'dark' ? 'bg-smallBackground-dark' : 'bg-smallBackground-light';
     const whiteReplacement = theme === 'dark' ? 'text-whiteReplacement-dark' : 'text-whiteReplacement-light';
     const fontDark = theme === 'dark' ? 'text-fontDark-dark' : 'text-fontDark-light';
+    const accentColor = theme === 'dark' ? 'bg-accentColor-dark' : 'bg-accentColor-light';
 
     const navigate = useNavigate();
     const [user] = useAuthState(auth);
@@ -49,7 +50,6 @@ const Header = () => {
             <Row>
                 <Navbar className={smallBackground} expand="lg">
 
-
                     <Link to="/"
                     >   <img className='h-16 ml-2.5 ml-hover:-translate-y-1 hover:scale-110'
                         src={icon2}
@@ -60,40 +60,39 @@ const Header = () => {
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav"></Navbar.Collapse>
                         <Navbar.Collapse id="basic-navbar-nav">
-                            <Nav className="ml-auto">
+                            <Nav className="m-auto">
                                 <Link to="/">
-                                    <Button variant="contained" className={`${whiteReplacement} text-xl`}>Home</Button>
+                                    <Button className={`${whiteReplacement} text-xl mx-3 `} style={{ textDecoration: 'none', backgroundColor: 'transparent', border: 'none' }}
+                                    >Home</Button>
                                 </Link>
 
                                 <Link to="/editorPageV2">
-                                    <Button variant="contained" className={`${whiteReplacement} text-xl`}>Edit</Button>
+                                    <Button className={`${whiteReplacement} text-xl mx-3`} style={{ textDecoration: 'none', backgroundColor: 'transparent', border: 'none' }}>Edit</Button>
                                 </Link>
                                 {user &&
                                     (<Link to="/collection">
-                                        <Button variant="contained" className={`${whiteReplacement} text-xl`}>Calendar Collection</Button>
+                                        <Button className={`${whiteReplacement} text-xl mx-3`} style={{ textDecoration: 'none', backgroundColor: 'transparent', border: 'none' }}>Calendars</Button>
                                     </Link>)}
                                 {user && superUser.includes(nameUser) ? (
                                     <Link to="/dashboard">
-                                        <Button variant="contained" className={`${whiteReplacement} text-xl`}>
+                                        <Button className={`${whiteReplacement} text-xl mx-3`} style={{ textDecoration: 'none', backgroundColor: 'transparent', border: 'none' }}>
                                             Dashboard
                                         </Button>
                                     </Link>
                                 ) : null}
 
                                 {!user && (<Link to="/register">
-                                    <Button variant="contained" className={`${whiteReplacement} text-xl`} >Register</Button>
+                                    <Button className={`${whiteReplacement} text-xl mx-3`} style={{ textDecoration: 'none', backgroundColor: 'transparent', border: 'none' }}>Register</Button>
                                 </Link>)
                                 }
-                                <ThemeToggle />
                                 {!user && (<Link to="/login">
-                                    <Button variant="contained" className={`${whiteReplacement} text-xl bg-accentColor`}>Login</Button>
+                                    <Button variant="contained" className={`${accentColor} text-xl mx-3`} >Login</Button>
                                 </Link>)}
-                                {user && (<Button variant="contained" className={`${whiteReplacement} text-xl bg-accentColor`} onClick={() => {
+                                {user && (<Button variant="contained" className={`${accentColor} text-xl mx-3`} onClick={() => {
                                     logout();
                                     navigate("/login")
                                 }} >Logout
                                 </Button>)}
-
                             </Nav>
                             {user && (
                                 <>
@@ -114,7 +113,7 @@ const Header = () => {
                                         )}
                                     </NavbarText>
                                     <NavbarText
-                                        className={`${fontDark} text-xl uppercase`}
+                                        className={`${fontDark} text-xl uppercase mx-3`}
                                         variant="contained"
                                     >
                                         {nameUser && (<span>{`${nameUser}`}</span>)}
@@ -123,6 +122,7 @@ const Header = () => {
                                 </>
                             )}
 
+                            <ThemeToggle className={"mx-3"} />
 
                         </Navbar.Collapse>
                     </Container>
