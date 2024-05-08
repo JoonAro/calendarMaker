@@ -4,7 +4,7 @@ import '../styles/editorV2Styles.css';
 const today = new Date();
 const todayISO = today.toISOString();
 
-const Hatch = ({ hatch, accessKey }) => {
+const Hatch = ({ hatch, accessKey, hatchEditor }) => {
     const [clicked, setClicked] = useState(false);
     const [showImage, setShowImage] = useState(false);
 
@@ -36,13 +36,15 @@ const Hatch = ({ hatch, accessKey }) => {
             return true;
         }
     }
-
+    // Add edit that shows only when accessKey is true
+    // Edit will launch hatchImageCatalogue where you can make a new fetch and select new image for the hatch
     return (
         <div style={{
             backgroundImage: showImage ? `url("${hatch.hatchImg}")` : 'url("")'
         }} className={`calendarImage `}>
             <div onClick={() => openHatch(hatch, accessKey)} className={`hatch ${hatch.hatchSide} ${clicked ? 'openStyle' : 'closedStyle'}`}>
                 <p className="hatchNumber">{hatch.hatchNr}</p>
+                {accessKey && <p onClick={() => hatchEditor(hatch)}>Edit</p>}
             </div>
         </div>
     )

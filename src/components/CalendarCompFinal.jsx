@@ -1,7 +1,7 @@
 import DoubleHatch from "./DoubleHatch";
 import Hatch from "./Hatch";
 
-const CalendarCompFinal = ({ calendar, calendarImage, accessKey, gridRows }) => {
+const CalendarCompFinal = ({ calendar, calendarImage, accessKey, gridRows, hatchEditor }) => {
 
     return (
         <div className={`gridHolder ${gridRows}`} style={{
@@ -13,7 +13,7 @@ const CalendarCompFinal = ({ calendar, calendarImage, accessKey, gridRows }) => 
             {calendar.hatches.map(hatch => {
                 let hatchKey = hatch.hatchNr
                 let hatchType = hatch.hatchType;
-                return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} accessKey={accessKey} /> : <DoubleHatch key={hatchKey} hatch={hatch} accessKey={accessKey} />
+                return hatchType === 'single' ? <Hatch key={hatchKey} hatch={hatch} accessKey={accessKey} hatchEditor={hatchEditor} /> : <DoubleHatch key={hatchKey} hatch={hatch} accessKey={accessKey} />
             })}
         </div>
     )
