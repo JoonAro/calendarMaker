@@ -35,7 +35,7 @@ const Favorites = () => {
     };
     return (
         <>
-            <Container className='flex min-h-screen items-center justify-center m-5'>
+            <Container className='flex min-h-screen items-start justify-center mt-5'>
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
                     {usersCalendar.map(calendar => (
 
@@ -45,7 +45,7 @@ const Favorites = () => {
                                 <Card.Img className='h-full w-full object-cover group-hover:rotate-3 group-hover:scale-125 transition-transform duration-500' src={calendar.data.bgImage} />
                                 <CloseIcon className="absolute text-muted top-0 right-0 bg-smallBackground opacity-75 p-1" onClick={() => handleDeleteCalendar(calendar.id)} />
                             </div>
-                            <div className='absolute inset-0 flex flex-col items-center justify-center px-9 text-center translate-y-[60%] group-hover:translate-y-0 transition-all duration-500 bottom-0'>
+                            <div className='absolute inset-0 flex flex-col items-center justify-center px-9 text-center translate-y-[60%] hover:translate-y-0 transition-all duration-500 bottom-0'>
                                 <ButtonComponent className="p-1">
                                     <Link to={`/calendar/${calendar.id}`}>
                                         Preview
