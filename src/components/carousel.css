@@ -39,7 +39,7 @@ input[name="r"] {
 }
 
 .slides {
-  width: calc((100vw - 15px) * 5);
+  width: 500%;
   height: 100%;
   display: flex;
 }
@@ -50,7 +50,7 @@ input[name="r"] {
 }
 
 .slide img {
-  width: calc(100vw - 15px);
+  width: 100vw;
   height: 100%;
   object-fit: cover;
 }
