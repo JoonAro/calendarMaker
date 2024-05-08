@@ -72,6 +72,10 @@
     grid-template-rows: repeat(3, 27.5%);
 }
 
+.twoRows {
+    grid-template-rows: repeat(2, 40%);
+}
+
 .calendarHolder {
     display: flex;
     flex-direction: column;
@@ -349,6 +353,10 @@
         grid-template-rows: repeat(4, 21%);
     }
 
+    .twoRows {
+        grid-template-rows: repeat(2, 40%);
+    }
+
     .catalogueHolder {
         grid-template-columns: repeat(2, 50%);
         grid-template-rows: repeat(15, 55vw);
@@ -387,6 +395,10 @@
 
     .threeRows {
         grid-template-rows: repeat(4, 20.8%);
+    }
+
+    .twoRows {
+        grid-template-rows: repeat(2, 40%);
     }
 
     .catalogueHolder {
