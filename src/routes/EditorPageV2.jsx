@@ -227,6 +227,13 @@ const EditorPageV2 = () => {
         };
         return calendar;
     }
+
+    const hatchEditor = (hatch) => {
+        console.log(hatch);
+    }
+    // Make a new type of hatch for editorPage that will have the edit on hover when clicked
+    // Pass 
+    // Add title to hatch and description
     // TODO: Create a function that saves the final calendar when user is finished.
     return (
         <>
@@ -246,7 +253,7 @@ const EditorPageV2 = () => {
                 <div className="content">
                     {!bool2 && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} />
                     }
-                    {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} gridRows={gridRows} />}
+                    {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} gridRows={gridRows} hatchEditor={hatchEditor} />}
                 </div>
             </div>
         </>
