@@ -12,12 +12,13 @@ import ShowSidebarButton from "../components/ShowSidebarButton";
 const API_KEY = import.meta.env.VITE_UNSPLASH_API;
 const API_URL = "https://api.unsplash.com/search/photos";
 const IMAGES_PER_PAGE = 30;
-
+const today = new Date();
+const oneWeekFromNow = new Date(new Date(today).getTime() + (86400000 * 6));
 const EditorPageV2 = () => {
     const dispatch = useDispatch();
     const calendar = useSelector(state => state.calendar.calendar);
-    const [startDate, setStartDate] = useState(null);
-    const [endDate, setEndDate] = useState(null);
+    const [startDate, setStartDate] = useState(today);
+    const [endDate, setEndDate] = useState(oneWeekFromNow);
     const [images, setImages] = useState([]);
     const [bgObject, setBgObject] = useState({});
     const [calendarImage, setCalendarImage] = useState("https://images.unsplash.com/photo-1556888335-23631cd2801a?q=80&w=2053&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
@@ -37,6 +38,16 @@ const EditorPageV2 = () => {
 
     const handleSearch = (event) => {
         event.preventDefault();
+        const calendarEnd = new Date(endDate).getTime() - (86400000 * 6)
+        const calendarStart = new Date(startDate).getTime();
+        if (searchInput.current.value === "") {
+            setGuideText("Please write a theme in the search bar!");
+            return
+        };
+        if (calendarEnd < calendarStart) {
+            setGuideText("Calendar has to be atleast 7 days long.");
+            return
+        }
         handleFetch();
         if (bool2 === true) setBool2(!bool2);
     }
@@ -64,7 +75,7 @@ const EditorPageV2 = () => {
     const handleGridRows = (hatchTotal) => {
         if (hatchTotal < 11) {
             setGridRows("twoRows");
-            //TODO: finish twoRows if needed
+            //TODO: twoRows works with 7 hatches for now. Make it work with 10 hatches.
         }
         else if (hatchTotal >= 11 && hatchTotal < 16) {
             setGridRows("threeRows");
@@ -97,7 +108,6 @@ const EditorPageV2 = () => {
                 createCalendar(images, bgObject, e);
             }
         }
-
     }
 
     const handleFetch = () => {
@@ -194,20 +204,18 @@ const EditorPageV2 = () => {
                 }
             }
             if (result[i].id === bgImg.id) {
-                //  console.log('found match with bg id & stopped creating the hatch');
-                hatchModifier--;
+                console.log('found match with bg id & took the first unused image instead');
+                hatchImg = result[numbOfHatches].urls.small;
             }
-            else {
-                hatch = {
-                    date: dateRedux,
-                    hatchNr: hatchNr,
-                    hatchImg: hatchImg,
-                    status: status,
-                    hatchType: typeOfHatch,
-                    hatchSide: sideOfHatch
-                };
-                hatches.push(hatch);
-            }
+            hatch = {
+                date: dateRedux,
+                hatchNr: hatchNr,
+                hatchImg: hatchImg,
+                status: status,
+                hatchType: typeOfHatch,
+                hatchSide: sideOfHatch
+            };
+            hatches.push(hatch);
         }
         const calendar = {
             start: startRedux,

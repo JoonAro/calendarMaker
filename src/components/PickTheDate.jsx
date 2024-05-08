@@ -6,7 +6,8 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFnsV3';
 import { fi } from 'date-fns/locale/fi';
 
 const PickTheDate = ({ searchInput, handleSearch, handleStartDate, handleEndDate, startDate, endDate, guideH, guideText, yes, no }) => {
-
+    const today = new Date();
+    const minEndDate = new Date(new Date(startDate).getTime() + (86400000 * 6));
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={fi}>
             <div className="spread3">
@@ -29,7 +30,8 @@ const PickTheDate = ({ searchInput, handleSearch, handleStartDate, handleEndDate
                                     label="Start date"
                                     value={startDate}
                                     onChange={handleStartDate}
-                                    renderInput={(params) => <input {...params} />}
+                                    minDate={today}
+                                    textField={(params) => <input {...params} />}
                                 />
                             </div>
                             <div className='flexColumnCentered'>
@@ -38,7 +40,8 @@ const PickTheDate = ({ searchInput, handleSearch, handleStartDate, handleEndDate
                                     label="End date"
                                     value={endDate}
                                     onChange={handleEndDate}
-                                    renderInput={(params) => <input {...params} />}
+                                    minDate={minEndDate}
+                                    textField={(params) => <input {...params} />}
                                 />
                             </div>
                         </div>
