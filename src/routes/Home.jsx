@@ -57,9 +57,9 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Row className="mt-5 mr-0 mr-l0s" style={{ padding: "5rem" }}>
+      <Row className="mt-5 mr-0 mr-l0s" style={{ padding: "2rem" }}>
         <Col className="d-flex justify-content-center">
-          <Card style={{ padding: "1rem", width: '20rem', height: "20rem" }}>
+          <Card style={{ margin: "1rem", padding: "1rem", minWidth: '18rem', height: "20rem" }}>
             <Card.Body>
               <Card.Title>Free Plan</Card.Title>
               <Card.Text style={{ fontSize: '2rem' }}>
@@ -79,7 +79,7 @@ const Home = () => {
 
 
         <Col className="d-flex justify-content-center" style={{ padding: "0 1rem" }}>
-          <Card style={{ padding: "1rem", width: '20rem', height: "20rem" }}>
+          <Card style={{ margin: "1rem", padding: "1rem", minWidth: '18rem', height: "20rem" }}>
             <Card.Body>
               <Card.Title>Premium Plan</Card.Title>
               <Card.Text style={{ fontSize: '2rem' }}>
