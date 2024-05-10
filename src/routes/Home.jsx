@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom';
 import icon5 from '../assets/icon5.svg';
 import { useTheme } from '../components/theme/ThemeContext';
 import icon2 from '../assets/icon2.svg';
+import cookies from '../components/footercomponent/Cookies';
+import Cookies from '../components/footercomponent/Cookies';
 
 
 const Home = () => {
@@ -110,7 +112,7 @@ const Home = () => {
           <img className='h-16 hover:-translate-y-1 hover:scale-125' src={icon4} alt="icon4" />
         </div>
       </Row >
-
+<Cookies/>
     </Container >
   );
 };
