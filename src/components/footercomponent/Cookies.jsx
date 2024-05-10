@@ -41,10 +41,13 @@ const Cookies = () => {
   const acceptFn = () => {
     saveToStorage();
     setShowPopup(false);
+    setAccepted(true);
   }
 
   const rejectFn = () => {
-    window.location.href = 'about:blank'; // Leaves the page
+    // Prevent saving cookies to local storage
+    setShowPopup(false);
+    setAccepted(true);
   }
 
   useEffect(() => {
