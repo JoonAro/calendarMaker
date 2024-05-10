@@ -1,9 +1,9 @@
 import "../components/carousel.css";
-import image1 from "../assets/beach.jpg";
-import image2 from "../assets/coffee.jpg";
-import image3 from "../assets/coffee1.png";
-import image4 from "../assets/girl.jpg";
-import image5 from "../assets/globe.jpg";
+import image1 from "../assets/elk2.jpg";
+import image2 from "../assets/chocko.jpg";
+import image3 from "../assets/fox.jpg";
+import image4 from "../assets/stars.jpg";
+import image5 from "../assets/bird.jpg";
 
 
 
@@ -18,36 +18,23 @@ export default function Carousel() {
         <input type="radio" name="r" id="r5" />
         <div className="slide one s1">
           <img src={image1} className="imageSlide" />
-          <div className="image-date">
-            <h2>Beach Calendar</h2>
-          </div>
-          <div className="absolute top-10 left-1/2 transform -translate-x-1/2 z-20 text-fontDark-light text-5xl text-center">
+          <div className="title">
             <h3>DREAM CALENDAR</h3>
+            <p className="mt-8 text-2xl">Add a splash of joy to each day by creating the calendar of your dreams</p>
+            <p className="mt-3 text-2xl">Immerse yourself in the atmosphere of beauty</p>
           </div>
         </div>
         <div className="slide two">
           <img src={image2} alt="Coffee" className="imageSlide" />
-          <div className="image-date">
-            <h2>Coffee Calendar</h2>
-          </div>
         </div>
         <div className="slide three">
-          <img src={image3} className="imageSlide" />
-          <div className="image-date">
-            <h2>Coffee1 Calendar</h2>
-          </div>
+          <img src={image3} className="imageSlide h-auto" />
         </div>
         <div className="slide four">
           <img src={image4} className="imageSlide" />
-          <div className="image-date">
-            <h2>Girl Calendar</h2>
-          </div>
         </div>
         <div className="slide five">
-          <img src={image5} className="imageSlide" />
-          <div className="image-date">
-            <h2>Globe calendar</h2>
-          </div>
+          <img src={image5} className="imageSlide h-auto" />
         </div>
       </div>
       <div className="navigation">
