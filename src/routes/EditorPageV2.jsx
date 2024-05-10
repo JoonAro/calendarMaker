@@ -227,6 +227,51 @@ const EditorPageV2 = () => {
         };
         return calendar;
     }
+
+    const hatchEditor = (hatch, editType) => {
+        let updatedHatch;
+        const { hatches } = calendar;
+        //console.log("hatches", hatches)
+        const { date, hatchNr, hatchImg, status, hatchType, hatchSide } = hatch;
+        //console.log("hatchNr", hatchNr, "hatchImg", hatchImg, "status", status, "hatchType", hatchType, "hatchSide", hatchSide);
+        if (editType === "hatchType") {
+            updatedHatch = updateHatchType(hatch);
+        }
+        else if (editType === "hatchSide") {
+            updatedHatch = updateHatchSide(hatch);
+        }
+        console.log("updatedHatch", updatedHatch);
+        const updatedHatches = hatches.map(h => h.hatchNr === updatedHatch.hatchNr ? updatedHatch : h);
+        const calendarUpdate = { ...calendar, hatches: updatedHatches };
+        dispatch(setCalendar(calendarUpdate));
+
+    }
+    //TODO: Make a new component that will be a hatch editor. It will have a hatch image, hatch number, hatch type, hatch side and a save button. When user clicks save button it will save the new hatch to the calendar. There you can click the image and it will open the image catalogue. And it will change the image right there.
+
+    const updateHatchType = (hatch) => {
+        let updatedHatch;
+        let hatchType = hatch.hatchType;
+        if (hatchType === 'single') {
+            updatedHatch = { ...hatch, hatchType: 'double' };
+        }
+        else {
+            updatedHatch = { ...hatch, hatchType: 'single' };
+        }
+        return updatedHatch;
+    }
+    const updateHatchSide = (hatch) => {
+        let updatedHatch;
+        let hatchSide = hatch.hatchSide;
+        if (hatchSide === 'left') {
+            updatedHatch = { ...hatch, hatchSide: 'right' };
+        }
+        else {
+            updatedHatch = { ...hatch, hatchSide: 'left' }
+        };
+        return updatedHatch;
+    }
+
+    // Add title to hatch and description
     // TODO: Create a function that saves the final calendar when user is finished.
     return (
         <>
@@ -246,7 +291,7 @@ const EditorPageV2 = () => {
                 <div className="content">
                     {!bool2 && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} />
                     }
-                    {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} gridRows={gridRows} />}
+                    {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} gridRows={gridRows} hatchEditor={hatchEditor} />}
                 </div>
             </div>
         </>
