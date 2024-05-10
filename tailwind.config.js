@@ -18,7 +18,7 @@ export default {
         },
         accentColor: {
           light: '#E8B4B8',
-          dark: '#272144',
+          dark: '#FDFBFA',
         },
         whiteReplacement: {
           light: '#272144',
