@@ -102,6 +102,7 @@ const Header = () => {
                                         style={{ margin: "1rem" }}
 
                                     >
+
                                         {nameUser && (
                                             <span>
                                                 {avatar ? (
