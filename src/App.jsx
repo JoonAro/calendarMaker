@@ -21,6 +21,7 @@ import CalendarPreview from "./routes/CalendarPreview";
 import Footer from "./components/Footer";
 import { ThemeProvider } from "./components/theme/ThemeContext";
 
+
 function App() {
 
   return (
@@ -109,6 +110,7 @@ function App() {
                   <Collection />
                 }
               />
+              
             </Route>
             <Route path="/" element={<Footer />} />
           </Routes>

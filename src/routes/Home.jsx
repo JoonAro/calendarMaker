@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import icon5 from '../assets/icon5.svg';
 import { useTheme } from '../components/theme/ThemeContext';
 import icon2 from '../assets/icon2.svg';
-import cookies from '../components/footercomponent/Cookies';
+
 import Cookies from '../components/footercomponent/Cookies';
 
 
