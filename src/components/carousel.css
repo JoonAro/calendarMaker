@@ -55,16 +55,29 @@ input[name="r"] {
   object-fit: cover;
 }
 
-.showCard .slide .image-date {
+.showCard .slide .image-data {
   position: absolute;
   top: 0;
   padding: 15px 30px;
   background: rgba(0, 0, 0, 0.2);
 }
 
-.image-date h2 {
+.image-data h2 {
   font-size: 25px;
   color: white;
+}
+.title {
+
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 20;
+    color: #ffffff; 
+    font-size: 3rem; 
+    text-align: center;
+    padding: 1rem; 
+    background-color: rgba(0, 0, 0, 0.2);
 }
 
 .radio-container {

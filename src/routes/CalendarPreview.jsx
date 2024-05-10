@@ -48,6 +48,9 @@ const CalendarPreview = () => {
             
         }
     };
+
+    
+
     // const httpsReference = ref(storage, 'https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg');
 
     if (!calendar) {
