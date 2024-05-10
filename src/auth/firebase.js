@@ -49,6 +49,7 @@ const registerWithEmailAndPassword = async (name, email, password, avatar) => {
     }
 };
 
+
 export const loginWithEmailAndPassword = async (email, password) => {
     try {
         await signInWithEmailAndPassword(auth, email, password);
@@ -72,6 +73,18 @@ export const addDataToFirestore = async (uid, data) => {
         console.log(error);
     }
 };
+
+// export const createShareableCollectionCalendarId = async (uid, data) => {
+//     try {
+//         await addDoc(collection(db, "shareable"), {
+//             data: data,
+//             uid: uid,
+//             timeStamp: serverTimestamp(),
+//         })
+//     } catch (error) {
+//         console.log(error);
+//     }
+// }
 
 console.log(initializeApp(firebaseConfig));
 // Initialize Firebase
