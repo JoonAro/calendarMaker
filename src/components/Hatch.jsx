@@ -43,7 +43,11 @@ const Hatch = ({ hatch, accessKey, hatchEditor }) => {
             <div style={{
                 backgroundImage: showImage ? `url("${hatch.hatchImg}")` : 'url("")'
             }} className={`calendarImage `}>
-                {accessKey && <div className="editorHatch" onClick={() => hatchEditor(hatch)}>Edit</div>}
+                {accessKey && <div className="editorHatch" >
+                    <div className="editorHatchType" onClick={() => hatchEditor(hatch, "hatchType")}>HatchType</div>
+                    <div className="editorHatchSide" onClick={() => hatchEditor(hatch, "hatchSide")}>HatchSide</div>
+                    <div className="editorHatchImg" onClick={() => hatchEditor(hatch, "hatchImage")}>HatchImage</div>
+                </div>}
                 <div onClick={() => openHatch(hatch, accessKey)} className={`hatch ${hatch.hatchSide} ${clicked ? 'openStyle' : 'closedStyle'}`}>
                     <p className="hatchNumber">{hatch.hatchNr}</p>
                 </div>
