@@ -2,7 +2,7 @@ import { useState } from "react";
 import '../styles/editorV2Styles.css';
 
 const today = new Date();
-const todayISO = today.toISOString();
+const todayISO = today.toISOString().split('T')[0];
 
 const FakeSHatch = ({ hatch, accessKey }) => {
     const [clicked, setClicked] = useState(false);
@@ -26,8 +26,9 @@ const FakeSHatch = ({ hatch, accessKey }) => {
     const handleTime = (hatch) => {
         // console.log(hatch);
         const hatchDate = hatch.date
-        console.log("todayISO", todayISO, "hatchDate", hatchDate);
-        if (todayISO < hatchDate) {
+        const hatchDateOnly = new Date(hatchDate).toISOString().split('T')[0];
+        console.log("todayISO", todayISO, "hatchDate", hatchDateOnly);
+        if (todayISO < hatchDateOnly) {
             console.log('Access denied')
             return false;
         }
