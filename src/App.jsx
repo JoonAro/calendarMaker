@@ -10,14 +10,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./routes/Dashboard";
 import About from "./components/footercomponent/About";
 import Contact from "./components/Contact";
-import Licensing from "./components/footercomponent/Licensing";
+import Terms from "./components/footercomponent/Terms";
 import Privacy from "./components/footercomponent/Privacy";
 import Premium from "./components/Premium";
 import EditorPageV2 from "./routes/EditorPageV2";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import ProtectedRoute from "./auth/ProtectedRoute";
-import Cookies from "./components/footercomponent/Cookies";
 import CalendarPreview from "./routes/CalendarPreview";
 import Footer from "./components/Footer";
 import { ThemeProvider } from "./components/theme/ThemeContext";
@@ -85,9 +84,9 @@ function App() {
                 }
               />
               <Route
-                path="/licensing"
+                path="/terms"
                 element={
-                  <Licensing />
+                  <Terms />
                 }
               />
               <Route
@@ -96,12 +95,7 @@ function App() {
                   <Privacy />
                 }
               />
-              <Route
-                path="/cookies"
-                element={
-                  <Cookies />
-                }
-              />
+             
 
               <Route
                 path="/premium"
