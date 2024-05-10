@@ -5,23 +5,24 @@ import { auth, db } from "../auth/firebase";
 import FakeSHatch from '../components/FakeSHatch';
 import FakeDblHatch from '../components/FakeDblHatch';
 import ButtonComponent from '../components/ButtonComponent';
-import { getDownloadURL, ref } from 'firebase/storage';
-import { storage } from '../auth/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { setDoc } from 'firebase/firestore';
 
 
-const CalendarPreview = () => {
+
+const Shareable = () => {
     const { id } = useParams();
     const [calendar, setCalendar] = useState(null);
     const [shareableLink, setShareableLink] = useState('');
     const [user] = useAuthState(auth);
 
+   
+
     useEffect(() => {
         const fetchCalendar = async () => {
             try {
                 if (user) {
-                    const calendarDoc = await getDoc(doc(db, `users/${user.uid}/calendar/${id}`));
+                    const calendarDoc = await getDoc(doc(db, `/shareable/${id}`));
                     if (calendarDoc.exists()) {
                         setCalendar({ id: calendarDoc.id, ...calendarDoc.data() });
                     } else {
@@ -38,6 +39,7 @@ const CalendarPreview = () => {
         fetchCalendar();
     }, [id]); // Add user.uid to the dependency array
 
+    
     const generateShareableLink = async () => {
         const shareableLink = `shareable/${id}`;
         setShareableLink(shareableLink);
@@ -46,9 +48,8 @@ const CalendarPreview = () => {
         try {
             if (user) {
                 await setDoc(doc(db, `shareable/${id}`), {
-                    data: calendar,  //data? calendar.data?
+                    data: data,
                     shareableLink: shareableLink,
-
                     timeStamp: new Date()
                 });
             }
@@ -59,11 +60,10 @@ const CalendarPreview = () => {
 
     
 
-    // const httpsReference = ref(storage, 'https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg');
-
     if (!calendar) {
         return <p>Loading...</p>;
     }
+ 
 
     return (
         <div>
@@ -81,11 +81,12 @@ const CalendarPreview = () => {
                 </div>
             </div>
             <div>
-                <p>{shareableLink} Link here</p>
+            <p>{shareableLink} Link here</p>
                 <ButtonComponent onClick={generateShareableLink}>Generate Shareable Link</ButtonComponent>
             </div>
         </div>
     );
 }
 
-export default CalendarPreview;
+export default Shareable;
+

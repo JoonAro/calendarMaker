@@ -47,7 +47,7 @@ const [currentPage, setCurrentPage] = useState(1);
     return (
         <>
         <div>
-            <strong className='font-medium text-fontDark'>Customers</strong>
+            <strong className='font-medium text-fontDark'>Users</strong>
             <div className="w-min md:w-full border-gray-200 rounded-sm mt-3">
 
                 <table className='text-fontDark border-separate border-spacing-1 md:border-spacing-5 border border-slate-400 '>
