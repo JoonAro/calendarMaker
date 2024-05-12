@@ -13,7 +13,7 @@ const DiscussionPage = () => {
     author: 'YourUsername', // Default username
   });
   // State to manage form visibility
-  const [showNewQuestionForm, setShowNewQuestionForm] = useState(false);
+  const [showNewQuestionForm, setShowNewQuestionForm] = useState(true);
 
   // Function to fetch questions from Firebase
   useEffect(() => {
