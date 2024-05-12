@@ -1,4 +1,4 @@
-import '../styles/datePicker.css';
+import '../styles/editorV2Styles.css';
 import { Form } from 'react-bootstrap';
 import ButtonComponent from './ButtonComponent';
 import { LocalizationProvider, DatePicker } from '@mui/x-date-pickers';
@@ -23,11 +23,11 @@ const PickTheDate = ({ searchInput, handleSearch, handleStartDate, handleEndDate
                             ref={searchInput}
                         />
                         <p>Step 2: Choose the start and end dates</p>
-                        <div className='flexCentered'>
+                        <div className='datePickers'>
                             <div className='flexColumnCentered'>
                                 <p>Starts</p>
                                 <DatePicker
-                                    label="Start date"
+                                    /* label="Start date" */
                                     value={startDate}
                                     onChange={handleStartDate}
                                     minDate={today}
@@ -37,7 +37,7 @@ const PickTheDate = ({ searchInput, handleSearch, handleStartDate, handleEndDate
                             <div className='flexColumnCentered'>
                                 <p>Ends</p>
                                 <DatePicker
-                                    label="End date"
+                                    /* label="End date" */
                                     value={endDate}
                                     onChange={handleEndDate}
                                     minDate={minEndDate}
