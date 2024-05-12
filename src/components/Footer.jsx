@@ -1,6 +1,9 @@
 import cale from '../assets/media/cale.jpg';
 import ca from '../assets/media/sa.jpg';
 import { Link } from 'react-router-dom';
+import mastercard from '../assets/media/money/mastercard.png';
+import paypal from '../assets/media/money/paypal.png';
+import visa from '../assets/media/money/visa.png';  
 
 const Footer = () => {
   return (
@@ -26,12 +29,22 @@ const Footer = () => {
             <Link to='/discussion' className='block mb-2'>Discussion boards</Link>
           </div>
         </div>
-        <div className='flex justify-between items-center mt-12'>
+        <div className='row'>
+          <div className='col-md-6 flex items-center mt-12 '>
+      
           <h3>© Copyright 2024 Dream Calendar, Inc. All rights reserved</h3>
-          <img src={cale} alt='payimg' className='w-24' />
+            
+          </div>
+      
+       <div className='col-md-6 flex items-center justify-end mt-12'>
+          <img src={mastercard} alt='payimg' className=' w-16 h-10' />
+          <img src={paypal} alt='payimg' className=' w-16 h-10' />
+          <img src={visa} alt='payimg' className=' w-16 h-10' />
+          </div>  
+          </div>
         </div>
       </div>
-    </div>
+    
   );
 }
 
