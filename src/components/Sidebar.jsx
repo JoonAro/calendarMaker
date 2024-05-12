@@ -10,7 +10,7 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchS
     return (
         <div className="sidebar">
             <div className="filters">
-                <div className='fullWidth'>
+                <div onClick={() => goBackInEditor("Dates")} className='fullWidth'>
                     <p>Dates</p>
                 </div>
             </div>

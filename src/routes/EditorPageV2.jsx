@@ -26,6 +26,7 @@ const EditorPageV2 = () => {
     const [bool2, setBool2] = useState(false);
     const [bool3, setBool3] = useState(false);
     const [bool4, setBool4] = useState(false);
+    const [time, setTime] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const [pageNr, setPageNr] = useState(1);
     const [hatchAmount, setHatchAmount] = useState(null);
@@ -38,18 +39,24 @@ const EditorPageV2 = () => {
 
     const handleSearch = (event) => {
         event.preventDefault();
-        const calendarEnd = new Date(endDate).getTime() - (86400000 * 6)
-        const calendarStart = new Date(startDate).getTime();
         if (searchInput.current.value === "") {
             setGuideText("Please write a theme in the search bar!");
             return
         };
+        handleFetch();
+    }
+
+    const handleDatePick = (event) => {
+        console.log("handleDatePick")
+        event.preventDefault();
+        const calendarEnd = new Date(endDate).getTime() - (86400000 * 6)
+        const calendarStart = new Date(startDate).getTime();
         if (calendarEnd < calendarStart) {
             setGuideText("Calendar has to be atleast 7 days long.");
             return
         }
-        handleFetch();
-        /* if (bool2 === true) setBool2(!bool2); */
+        setTime(true);
+
     }
 
     const handleStartDate = (date) => {
@@ -136,8 +143,12 @@ const EditorPageV2 = () => {
         setBool3(false);
         setBool4(false);
         if (origin === "Search") {
+            setTime(true);
             setGuideH("Welcome to the calendar editor!");
-            setGuideText("Step 1: Start by searching for a theme");
+        }
+        else if (origin === "Dates") {
+            setTime(false);
+            setGuideH("Welcome to the calendar editor!");
         }
         else { console.log("resetEditor from background or handleFetch") }
 
@@ -146,7 +157,6 @@ const EditorPageV2 = () => {
         try {
             const { data } = await axios.get(`${API_URL}?query=${searchInput.current.value}&page=${pageNr}&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
             console.log('result', data.results, 'length', data.results.length);
-            //TODO: Change the text component on screen if there are zero results: Nothing found with that theme. Are you sure it's written like that? Try again etc.
             const result = data.results;
             if (result.length === 0) {
                 setGuideH("Nothing found with that theme.");
@@ -257,25 +267,16 @@ const EditorPageV2 = () => {
         };
         return calendar;
     }
-    /*     const resetEditor = (origin) => {
-            if (origin === "handleFetch") {
-                setBool(true);
-            }
-            else {
-                setBool(false);
-            }
-            setBool2(false);
-            setBool3(false);
-            setBool4(false);
-            setGuideH("Choose a background image by clicking the image.");
-            setGuideText("");
-        } */
+
     const goBackInEditor = (identifier) => {
         /* if (bool === false) return; */
         if (identifier === "Background") {
             resetEditor(identifier);
         }
         else if (identifier === "Search") {
+            resetEditor(identifier);
+        }
+        else if (identifier === "Dates") {
             resetEditor(identifier);
         }
         else if (identifier === "Hatches") {
@@ -349,7 +350,7 @@ const EditorPageV2 = () => {
                     />
                 </div>
                 <div className="content">
-                    {!bool2 && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} />
+                    {!bool2 && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} time={time} handleDatePick={handleDatePick} />
                     }
                     {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} gridRows={gridRows} hatchEditor={hatchEditor} />}
                 </div>
