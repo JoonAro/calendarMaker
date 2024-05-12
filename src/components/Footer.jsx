@@ -16,13 +16,13 @@ const Footer = () => {
             </div>
             <p className='text-base mb-4 ml-0'>Dream calendar works to make your dreams come true by planning your day. You shape your life, you style your calendar the way you want. We are here to help you reach your goals.</p>
           </div>
-          <div className=' py-8'> {/* Add padding here */}
+          <div className=' py-8 '> {/* Add padding here */}
             <h3 className='text-lg font-semibold mb-4'>Our Information</h3>
             <Link to='/contact' className='block mb-2'>Contact Us</Link>
-            <Link to='/privacypolicy' className='block mb-2'>Privacy policy</Link>
-            <Link to='/termsandconditions' className='block mb-2'>Terms & conditions</Link>
+            <Link to='/privacy' className='block mb-2'>Privacy policy</Link>
+            <Link to='/terms' className='block mb-2'>Terms & conditions</Link>
           </div>
-          <div className='footer-item py-8'> {/* Add padding here */}
+          <div className='footer-item py-8 '> {/* Add padding here */}
             <h3 className='text-lg font-semibold mb-4'>Community</h3>
             <p className='mb-2 text-base'>Announcements</p>
             <p className='mb-2 text-base'>Answer center</p>
@@ -36,11 +36,12 @@ const Footer = () => {
             
           </div>
       
-       <div className='col-md-6 flex items-center justify-end mt-12'>
-          <img src={mastercard} alt='payimg' className=' w-16 h-10' />
-          <img src={paypal} alt='payimg' className=' w-16 h-10' />
-          <img src={visa} alt='payimg' className=' w-16 h-10' />
-          </div>  
+          <div className='col-md-6 flex items-center justify-end mt-12'>
+  <img src={mastercard} alt='payimg' className='w-16 h-10 mr-4' />
+  <img src={paypal} alt='payimg' className='w-16 h-10 mr-4' />
+  <img src={visa} alt='payimg' className='w-16 h-10' />
+</div>
+
           </div>
         </div>
       </div>
