@@ -20,6 +20,7 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 import CalendarPreview from "./routes/CalendarPreview";
 import Footer from "./components/Footer";
 import { ThemeProvider } from "./components/theme/ThemeContext";
+import Discussion from "./components/footercomponent/Discussion";
 
 function App() {
 
@@ -95,7 +96,12 @@ function App() {
                   <Privacy />
                 }
               />
-             
+              <Route
+                path="/discussion"
+                element={
+                  <Discussion />
+                }
+             />
 
               <Route
                 path="/premium"

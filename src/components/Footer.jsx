@@ -4,6 +4,7 @@ import ca from '../assets/media/sa.jpg'
 import { Link } from 'react-router-dom';
 
 
+
 const Footer2 = () => {
   return (
     <div className='footer bg-gray-800 text-white'>
@@ -44,7 +45,7 @@ const Footer2 = () => {
             <h3 className='text-lg font-semibold mb-4'>Community</h3>
             <p className='mb-2  text-base'>Announcements</p>
             <p className='mb-2 text-base'>Answer center</p>
-            <p className='mb-2 text-base'>Discussion boards</p>
+           <Link to='/discussion' className='block mb-2'>Discussion</Link>
            
           </div>
           <div className='footer-item'>
