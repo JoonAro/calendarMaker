@@ -6,7 +6,7 @@ import SaveButton from './SaveButton';
 import ShowSidebarButton from './ShowSidebarButton';
 // TODO: Create a responsive sidebar. It will disappear to the side unless hovered on.
 //       Try out sixth column when really wide screen and go down to 4 columns when the screen is small. Do this with mediaquerys
-const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchSide, radioHandler }) => {
+const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchSide, radioHandler, goBackInEditor }) => {
     return (
         <div className="sidebar">
             <div className="filters">
@@ -15,17 +15,17 @@ const Sidebar = ({ handleSearch, searchInput, handleSelection, hatchType, hatchS
                 </div>
             </div>
             <div className="filters">
-                <div className='fullWidth'>
-                    <p>Theme</p>
+                <div onClick={() => goBackInEditor("Search")} className='fullWidth'>
+                    <p>Search</p>
                 </div>
             </div>
             <div className="filters">
-                <div className='fullWidth'>
+                <div onClick={() => goBackInEditor("Background")} className='fullWidth'>
                     <p>Background</p>
                 </div>
             </div>
             <div className="filters">
-                <div className='fullWidth'>
+                <div onClick={() => goBackInEditor("Hatches")} className='fullWidth'>
                     <p>Hatches</p>
                 </div>
             </div>
