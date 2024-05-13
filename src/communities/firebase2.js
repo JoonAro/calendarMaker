@@ -10,6 +10,7 @@ const firebaseConfig = {
     appId: "1:324906793846:web:8e9dfb58e053c44b179857"
   };
 
+// Initialize Firebase app
 const app = initializeApp(firebaseConfig);
 const firestore = getFirestore(app);
 
@@ -62,3 +63,5 @@ export const getComments = async (postId) => {
     return [];
   }
 };
+
+export default firestore; 
