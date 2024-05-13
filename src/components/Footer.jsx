@@ -10,8 +10,8 @@ const Footer = () => {
   return (
     <div className=' row bg-accentColor-light text-dark'>
       <div className='container mx-auto py-12  '>
-        <div className='grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 gap-4 md:gap-16'>
-          <div className='py-8 '> {/* Add padding here */}
+        <div className='grid grid-cols-3 md:grid-cols-3 lg:grid-cols-3 ' style={{gap :'2vw',gridTemplateColumns: 'repeat(3, 32%)'}}>
+          <div className='py-8  '> {/* Add padding here */}
             <div className='header flex  '>
               <h1 className='text-xl font-bold mb-4'>Dream Calendar</h1>
             </div>
