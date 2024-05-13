@@ -6,6 +6,10 @@ import { Link } from 'react-router-dom';
 import icon5 from '../assets/icon5.svg';
 import { useTheme } from '../components/theme/ThemeContext';
 import icon2 from '../assets/icon2.svg';
+import photo1 from "../assets/Michel.jpeg";
+import photo2 from "../assets/Samuel.jpeg";
+import photo3 from "../assets/chocko.jpg";
+import photo4 from "../assets/AlonaC.jpeg";
 
 
 const Home = () => {
@@ -103,13 +107,37 @@ const Home = () => {
             <h1 className={`${fontDark} text-sm md:text-2xl lg:text-3xl underline decoration-accentColor-light`}>Behind the Project</h1>
             <p className={`${fontDark} text-sm md:text-lg lg:text-lg opacity-75 mt-7`}>This project was created by a team of enthusiastic full-stack web developer students </p>
             <p className={`${fontDark} text-sm md:text-lg lg:text-lg opacity-75`}>at Business College in Helsinki.</p>
-            <p className={`${fontDark} text-sm md:text-sm lg:text-lg opacity-75`}>The goal of the project was to create an advent-style personalized calendar.</p>
-            <p className={`${fontDark} text-sm md:text-sm lg:text-lg opacity-75`}>If you have anything to share, we would love to hear from you!</p>
+
+            <div className="grid grid-cols-4 gap-4 mt-8">
+            <div className="relative">
+    <img className='h-28 w-28 object-contain rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo1} alt="Michel" />
+    <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5 rounded-lg">Michel</p>
+</div>
+
+<div className="relative">
+    <img className='h-28 w-28 object-contain rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo2} alt="Samuel" />
+    <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5">Samuel</p>
+    </div>
+
+    <div className="relative">
+    <img className='h-28 w-28 object-cover rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo3} alt="Joona" />
+    <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5">Joona</p>
+    </div>
+
+    <div className="relative">
+    <img className='h-28 w-28 object-cover rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo4} alt="Alona" />
+    <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5 rounded-xl">Alona</p>
+    </div>
+            </div>
+
+
+        
+            <p className={`${fontDark} text-xs lg:text-sm opacity-75 mt-7`}>If you have anything to share, we would love to hear from you!</p>
           </div>
           <Link to='/contact'>
             <Button className='button mt-7'>Contact us</Button>
           </Link>
-          <img className='h-16 hover:-translate-y-1 hover:scale-125' src={icon4} alt="icon4" />
+         
         </div>
       </Row >
 
