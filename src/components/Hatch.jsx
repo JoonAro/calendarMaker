@@ -45,7 +45,6 @@ const Hatch = ({ hatch, accessKey, hatchEditor }) => {
             }} className={`calendarImage `}>
                 {accessKey && <div className="editorHatch" >
                     <div className="editorHatchType" onClick={() => hatchEditor(hatch, "hatchType")}>HatchType</div>
-                    <div className="editorHatchSide" onClick={() => hatchEditor(hatch, "hatchSide")}>HatchSide</div>
                     <div className="editorHatchImg" onClick={() => hatchEditor(hatch, "hatchImage")}>HatchImage</div>
                 </div>}
                 <div onClick={() => openHatch(hatch, accessKey)} className={`hatch ${hatch.hatchSide} ${clicked ? 'openStyle' : 'closedStyle'}`}>
