@@ -303,6 +303,7 @@ const EditorPageV2 = () => {
         }
         else if (editType === "hatchImage") {
             setGuideH("Choose a new image for the hatch.");
+            setGuideText("");
             setEditedHatch(hatch);
             setHatchEdit(true);
             setBool2(false);
