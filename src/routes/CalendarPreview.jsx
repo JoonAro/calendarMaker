@@ -5,8 +5,6 @@ import { auth, db } from "../auth/firebase";
 import FakeSHatch from '../components/FakeSHatch';
 import FakeDblHatch from '../components/FakeDblHatch';
 import ButtonComponent from '../components/ButtonComponent';
-import { getDownloadURL, ref } from 'firebase/storage';
-import { storage } from '../auth/firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { setDoc } from 'firebase/firestore';
 
@@ -36,7 +34,7 @@ const CalendarPreview = () => {
             }
         };
         fetchCalendar();
-    }, [id]); // Add user.uid to the dependency array
+    }, [id, user]); 
 
     const generateShareableLink = async () => {
         const shareableLink = `shareable/${id}`;
@@ -45,7 +43,7 @@ const CalendarPreview = () => {
 
         try {
             if (user) {
-                await setDoc(doc(db, `shareable/${id}`), {
+                await setDoc(doc(db, 'shareable', id), {
                     data: calendar,  //data? calendar.data?
                     shareableLink: shareableLink,
 
@@ -82,7 +80,7 @@ const CalendarPreview = () => {
             </div>
             <div>
                 <p>{shareableLink} Link here</p>
-                <ButtonComponent onClick={generateShareableLink}>Generate Shareable Link</ButtonComponent>
+                <div onClick={generateShareableLink}>Generate Shareable Link</div>
             </div>
         </div>
     );
