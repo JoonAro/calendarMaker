@@ -33,6 +33,8 @@ const EditorPageV2 = () => {
     const [gridRows, setGridRows] = useState(true);
     const [hatchType, setHatchType] = useState('single');
     const [hatchSide, setHatchSide] = useState('left');
+    const [hatchEdit, setHatchEdit] = useState(false);
+    const [editedHatch, setEditedHatch] = useState(null);
     const searchInput = useRef(null);
     const [guideH, setGuideH] = useState("Welcome to the calendar editor!")
     const [guideText, setGuideText] = useState("Step 1: Start by searching for a theme");
@@ -233,6 +235,7 @@ const EditorPageV2 = () => {
                 typeOfHatch = hatchType;
                 sideOfHatch = hatchSide;
             }
+            // Create if statement if i is larger than imagesLength then take a placeholder image to the array.
             else {
                 console.log(e.target.name)
                 if (e.target.name === "hatchType") {
@@ -298,14 +301,27 @@ const EditorPageV2 = () => {
         if (editType === "hatchType") {
             updatedHatch = updateHatchType(hatch);
         }
-        else if (editType === "hatchSide") {
-            updatedHatch = updateHatchSide(hatch);
+        else if (editType === "hatchImage") {
+            setGuideH("Choose a new image for the hatch.");
+            setEditedHatch(hatch);
+            setHatchEdit(true);
+            setBool2(false);
+            return;
         }
         console.log("updatedHatch", updatedHatch);
         const updatedHatches = hatches.map(h => h.hatchNr === updatedHatch.hatchNr ? updatedHatch : h);
         const calendarUpdate = { ...calendar, hatches: updatedHatches };
         dispatch(setCalendar(calendarUpdate));
+    }
 
+    const handleHatchImgSelect = (hatchImg) => {
+        let updatedHatch = { ...editedHatch, hatchImg: hatchImg.urls.small };
+        const { hatches } = calendar;
+        const updatedHatches = hatches.map(h => h.hatchNr === updatedHatch.hatchNr ? updatedHatch : h);
+        const calendarUpdate = { ...calendar, hatches: updatedHatches };
+        dispatch(setCalendar(calendarUpdate));
+        setHatchEdit(false);
+        setBool2(true);
     }
     //TODO: Make a new component that will be a hatch editor. It will have a hatch image, hatch number, hatch type, hatch side and a save button. When user clicks save button it will save the new hatch to the calendar. There you can click the image and it will open the image catalogue. And it will change the image right there.
 
@@ -318,17 +334,6 @@ const EditorPageV2 = () => {
         else {
             updatedHatch = { ...hatch, hatchType: 'single' };
         }
-        return updatedHatch;
-    }
-    const updateHatchSide = (hatch) => {
-        let updatedHatch;
-        let hatchSide = hatch.hatchSide;
-        if (hatchSide === 'left') {
-            updatedHatch = { ...hatch, hatchSide: 'right' };
-        }
-        else {
-            updatedHatch = { ...hatch, hatchSide: 'left' }
-        };
         return updatedHatch;
     }
 
@@ -351,7 +356,7 @@ const EditorPageV2 = () => {
                     />
                 </div>
                 <div className="content">
-                    {!bool2 && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} time={time} handleDatePick={handleDatePick} />
+                    {!bool2 && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} time={time} handleDatePick={handleDatePick} hatchEdit={hatchEdit} handleHatchImgSelect={handleHatchImgSelect} />
                     }
                     {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} gridRows={gridRows} hatchEditor={hatchEditor} />}
                 </div>
