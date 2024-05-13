@@ -8,6 +8,7 @@ import BackToTop from "../components/BackToTop";
 import { useDispatch, useSelector } from 'react-redux';
 import { setCalendar } from "../store/calendarSlice";
 import ShowSidebarButton from "../components/ShowSidebarButton";
+import HatchImageCatalogue from "../components/HatchImageCatalogue";
 
 const API_KEY = import.meta.env.VITE_UNSPLASH_API;
 const API_URL = "https://api.unsplash.com/search/photos";
@@ -20,6 +21,7 @@ const EditorPageV2 = () => {
     const [startDate, setStartDate] = useState(today);
     const [endDate, setEndDate] = useState(oneWeekFromNow);
     const [images, setImages] = useState([]);
+    const [hatchImages, setHatchImages] = useState([]);
     const [bgObject, setBgObject] = useState({});
     const [calendarImage, setCalendarImage] = useState("https://images.unsplash.com/photo-1556888335-23631cd2801a?q=80&w=2053&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
     const [bool, setBool] = useState(false);
@@ -33,7 +35,11 @@ const EditorPageV2 = () => {
     const [gridRows, setGridRows] = useState(true);
     const [hatchType, setHatchType] = useState('single');
     const [hatchSide, setHatchSide] = useState('left');
+    const [hatchEdit, setHatchEdit] = useState(false);
+    const [editedHatch, setEditedHatch] = useState(null);
     const searchInput = useRef(null);
+    const hatchSearchInput = useRef(null);
+    const [hatchSearch, setHatchSearch] = useState(false);
     const [guideH, setGuideH] = useState("Welcome to the calendar editor!")
     const [guideText, setGuideText] = useState("Step 1: Start by searching for a theme");
 
@@ -44,6 +50,11 @@ const EditorPageV2 = () => {
             return
         };
         handleFetch();
+    }
+    const handleHatchImgSearch = (event) => {
+        event.preventDefault();
+        setHatchSearch(true);
+        fetchHatchImages();
     }
 
     const handleDatePick = (event) => {
@@ -118,7 +129,7 @@ const EditorPageV2 = () => {
     }
 
     const handleFetch = () => {
-        const result = fetchImages();
+        fetchImages();
         resetEditor("handleFetch");
         getHatchAmount(startDate, endDate);
     }
@@ -164,8 +175,26 @@ const EditorPageV2 = () => {
                 setTimeout(() => resetEditor("Search"), 3000);
             }
             else {
-
                 setImages(data.results);
+                setTotalPages(data.total_pages);
+                return result
+            }
+        }
+        catch (error) {
+            console.log(error)
+        }
+    };
+    const fetchHatchImages = async () => {
+        try {
+            const { data } = await axios.get(`${API_URL}?query=${hatchSearchInput.current.value}&page=${pageNr}&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
+            console.log('result', data.results, 'length', data.results.length);
+            const result = data.results;
+            if (result.length === 0) {
+                setGuideH("Nothing found with that theme.");
+                setGuideText("Check for typos and try again.");
+            }
+            else {
+                setHatchImages(data.results);
                 setTotalPages(data.total_pages);
                 return result
             }
@@ -233,6 +262,7 @@ const EditorPageV2 = () => {
                 typeOfHatch = hatchType;
                 sideOfHatch = hatchSide;
             }
+            // Create if statement if i is larger than imagesLength then take a placeholder image to the array.
             else {
                 console.log(e.target.name)
                 if (e.target.name === "hatchType") {
@@ -298,14 +328,28 @@ const EditorPageV2 = () => {
         if (editType === "hatchType") {
             updatedHatch = updateHatchType(hatch);
         }
-        else if (editType === "hatchSide") {
-            updatedHatch = updateHatchSide(hatch);
+        else if (editType === "hatchImage") {
+            setGuideH("Choose a new image for the hatch.");
+            setGuideText("");
+            setEditedHatch(hatch);
+            setHatchEdit(true);
+            setBool2(false);
+            return;
         }
         console.log("updatedHatch", updatedHatch);
         const updatedHatches = hatches.map(h => h.hatchNr === updatedHatch.hatchNr ? updatedHatch : h);
         const calendarUpdate = { ...calendar, hatches: updatedHatches };
         dispatch(setCalendar(calendarUpdate));
+    }
 
+    const handleHatchImgSelect = (hatchImg) => {
+        let updatedHatch = { ...editedHatch, hatchImg: hatchImg.urls.small };
+        const { hatches } = calendar;
+        const updatedHatches = hatches.map(h => h.hatchNr === updatedHatch.hatchNr ? updatedHatch : h);
+        const calendarUpdate = { ...calendar, hatches: updatedHatches };
+        dispatch(setCalendar(calendarUpdate));
+        setHatchEdit(false);
+        setBool2(true);
     }
     //TODO: Make a new component that will be a hatch editor. It will have a hatch image, hatch number, hatch type, hatch side and a save button. When user clicks save button it will save the new hatch to the calendar. There you can click the image and it will open the image catalogue. And it will change the image right there.
 
@@ -318,17 +362,6 @@ const EditorPageV2 = () => {
         else {
             updatedHatch = { ...hatch, hatchType: 'single' };
         }
-        return updatedHatch;
-    }
-    const updateHatchSide = (hatch) => {
-        let updatedHatch;
-        let hatchSide = hatch.hatchSide;
-        if (hatchSide === 'left') {
-            updatedHatch = { ...hatch, hatchSide: 'right' };
-        }
-        else {
-            updatedHatch = { ...hatch, hatchSide: 'left' }
-        };
         return updatedHatch;
     }
 
@@ -351,9 +384,10 @@ const EditorPageV2 = () => {
                     />
                 </div>
                 <div className="content">
-                    {!bool2 && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} time={time} handleDatePick={handleDatePick} />
+                    {!bool2 && !hatchEdit && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} time={time} handleDatePick={handleDatePick} hatchEdit={hatchEdit} handleHatchImgSelect={handleHatchImgSelect} />
                     }
-                    {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} gridRows={gridRows} hatchEditor={hatchEditor} />}
+                    {bool2 && !hatchEdit && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} gridRows={gridRows} hatchEditor={hatchEditor} hatchAmount={hatchAmount} />}
+                    {hatchEdit && <HatchImageCatalogue images={images} hatchImages={hatchImages} hatchSearchInput={hatchSearchInput} handleHatchImgSelect={handleHatchImgSelect} handleHatchImgSearch={handleHatchImgSearch} hatchSearch={hatchSearch} />}
                 </div>
             </div>
         </>
