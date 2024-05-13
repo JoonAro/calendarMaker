@@ -64,7 +64,7 @@ const [currentPage, setCurrentPage] = useState(1);
 
                          {currentItems.map((user) => (
                             <tr className='border border-slate-300' key={user.id} style={{ textAlign: 'center' }}>
-                                <td className='items-center border border-slate-300 text-xs md:text-base lg:text-lg'>{user.id}</td>
+                                <td className='border border-slate-300 text-xs md:text-base lg:text-lg'>{user.id}</td>
                                 <td className='border border-slate-300 text-xs md:text-base lg:text-lg'>{user.name}</td>
                                 <td className='border border-slate-300 text-xs md:text-base lg:text-lg'>{user.email}</td>
                                 <td className='border border-slate-300 text-xs md:text-base lg:text-lg w-16 md:w-28'>{user.timeStamp?.toDate().toLocaleDateString()}</td>

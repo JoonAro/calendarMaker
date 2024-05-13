@@ -16,7 +16,7 @@ const Home = () => {
 
 
   return (
-    <Container fluid className={mainBackground} style={{
+    <Container fluid className={`${mainBackground} font-sans`} style={{
       width: "100%",
       paddingLeft: "0",
       paddingRight: "0"
@@ -24,7 +24,7 @@ const Home = () => {
 
       <Carousel />
 
-      <div className='flex flex-col justify-center items-center mt-20'>
+      <div className='flex flex-col justify-center items-center mt-20 font-sans'>
 
         <div className={`${smallBackground} py-11 mt-5 mr-0 ml-0 border relative`} style={{ width: "100%" }}>
 
@@ -100,9 +100,11 @@ const Home = () => {
 
         <div className={`${smallBackground} flex flex-col justify-center items-center mt-20 w-full py-20 rounded-md mb-4`}>
           <div className='flex flex-col justify-center items-center'>
-            <h1 className={`${fontDark} text-sm md:text-2xl lg:text-3xl `}>We appreciate your feedback❤️</h1>
-            <p className={`${fontDark} text-sm md:text-lg lg:text-xl opacity-75 mt-7`}>Thank you for taking the time to share your feedback with us!</p>
-            <p className={`${fontDark} text-xs md:text-sm lg:text-lg opacity-75`}>Your input helps us improve our service.</p>
+            <h1 className={`${fontDark} text-sm md:text-2xl lg:text-3xl underline decoration-accentColor-light`}>Behind the Project</h1>
+            <p className={`${fontDark} text-sm md:text-lg lg:text-lg opacity-75 mt-7`}>This project was created by a team of enthusiastic full-stack web developer students </p>
+            <p className={`${fontDark} text-sm md:text-lg lg:text-lg opacity-75`}>at Business College in Helsinki.</p>
+            <p className={`${fontDark} text-sm md:text-sm lg:text-lg opacity-75`}>The goal of the project was to create an advent-style personalized calendar.</p>
+            <p className={`${fontDark} text-sm md:text-sm lg:text-lg opacity-75`}>If you have anything to share, we would love to hear from you!</p>
           </div>
           <Link to='/contact'>
             <Button className='button mt-7'>Contact us</Button>
