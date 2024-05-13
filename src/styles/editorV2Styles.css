@@ -421,8 +421,12 @@
     }
 
     .sixRows {
-        grid-template-rows: repeat(7, 11.7%);
+        grid-template-rows: repeat(8, 10%);
     }
+
+    /*  .sixRows {
+        grid-template-rows: repeat(7, 11.7%);
+    } */
 
     .fiveRows {
         grid-template-rows: repeat(6, 13.7%);
@@ -465,7 +469,7 @@
     }
 
     .sixRows {
-        grid-template-rows: repeat(7, 11.7%);
+        grid-template-rows: repeat(8, 10%);
     }
 
     .fiveRows {

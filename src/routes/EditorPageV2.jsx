@@ -200,8 +200,8 @@ const EditorPageV2 = () => {
             console.log("handleUserReply Error. Check your code!");
         }
     }
-    const createCalendar = (result, bgImg, e) => {
-        const calendarObj = createObject(result, bgImg, e);
+    const createCalendar = (images, bgImg, e) => {
+        const calendarObj = createObject(images, bgImg, e);
         //console.log(calendarObj);
         dispatch(setCalendar(calendarObj));
         setTimeout(() => setBool3(true), 2500);
@@ -210,10 +210,11 @@ const EditorPageV2 = () => {
     // Idea for createObject. Add array of numbers etc. When user edits te calendar and chooses a hatch give him option to choose double hatch. If he chooses it then handleClick to add the hatch number to array and in createcalendar if number is this then hatchtype is that.
 
     //unsplash api has blur hash where you can first have a blurred image loaded on the page before the real thing loads.
-    const createObject = (result, bgImg, e) => {
+    const createObject = (images, bgImg, e) => {
         let startRedux = startDate.toISOString();
         let hatches = [];
         let numbOfHatches = hatchAmount;
+        let imagesLength = images.length;
         let date;
         let dateRedux;
         let hatchModifier = 1;
@@ -222,7 +223,7 @@ const EditorPageV2 = () => {
             date = new Date(startDate);
             date.setDate(startDate.getDate() + i);
             dateRedux = date.toISOString();
-            let hatchImg = result[i].urls.small;
+            let hatchImg = images[i].urls.small;
             let status = false;
             let hatch;
             let hatchNr = i + hatchModifier;
@@ -243,9 +244,9 @@ const EditorPageV2 = () => {
                     typeOfHatch = hatchType;
                 }
             }
-            if (result[i].id === bgImg.id) {
+            if (images[i].id === bgImg.id) {
                 console.log('found match with bg id & took the first unused image instead');
-                hatchImg = result[numbOfHatches].urls.small;
+                hatchImg = images[imagesLength - 1].urls.small;
             }
             hatch = {
                 date: dateRedux,
