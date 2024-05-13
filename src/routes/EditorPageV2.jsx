@@ -26,6 +26,7 @@ const EditorPageV2 = () => {
     const [bool2, setBool2] = useState(false);
     const [bool3, setBool3] = useState(false);
     const [bool4, setBool4] = useState(false);
+    const [time, setTime] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const [pageNr, setPageNr] = useState(1);
     const [hatchAmount, setHatchAmount] = useState(null);
@@ -38,18 +39,24 @@ const EditorPageV2 = () => {
 
     const handleSearch = (event) => {
         event.preventDefault();
-        const calendarEnd = new Date(endDate).getTime() - (86400000 * 6)
-        const calendarStart = new Date(startDate).getTime();
         if (searchInput.current.value === "") {
             setGuideText("Please write a theme in the search bar!");
             return
         };
+        handleFetch();
+    }
+
+    const handleDatePick = (event) => {
+        console.log("handleDatePick")
+        event.preventDefault();
+        const calendarEnd = new Date(endDate).getTime() - (86400000 * 6)
+        const calendarStart = new Date(startDate).getTime();
         if (calendarEnd < calendarStart) {
             setGuideText("Calendar has to be atleast 7 days long.");
             return
         }
-        handleFetch();
-        if (bool2 === true) setBool2(!bool2);
+        setTime(true);
+
     }
 
     const handleStartDate = (date) => {
@@ -112,23 +119,56 @@ const EditorPageV2 = () => {
 
     const handleFetch = () => {
         const result = fetchImages();
-        setBool(true);
+        resetEditor("handleFetch");
+        getHatchAmount(startDate, endDate);
+    }
+
+    const resetEditor = (origin) => {
+        // background can be clicked before the search is done.
+        if (origin === "handleFetch" || origin === "Background") {
+            setBool(true);
+            setGuideH("Choose a background image by clicking the image.");
+            setGuideText("");
+        }
+        else if (origin === "Hatches") {
+            setBool2(true);
+            setBool3(true);
+            setBool4(true);
+            return;
+        }
+        else {
+            setBool(false);
+        }
         setBool2(false);
         setBool3(false);
         setBool4(false);
-        setGuideH("Choose a background image by clicking the image.");
-        setGuideText("");
-        getHatchAmount(startDate, endDate);
+        if (origin === "Search") {
+            setTime(true);
+            setGuideH("Welcome to the calendar editor!");
+        }
+        else if (origin === "Dates") {
+            setTime(false);
+            setGuideH("Welcome to the calendar editor!");
+        }
+        else { console.log("resetEditor from background or handleFetch") }
+
     }
     const fetchImages = async () => {
         try {
             const { data } = await axios.get(`${API_URL}?query=${searchInput.current.value}&page=${pageNr}&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
             console.log('result', data.results, 'length', data.results.length);
-            //TODO: Change the text component on screen if there are zero results: Nothing found with that theme. Are you sure it's written like that? Try again etc.
             const result = data.results;
-            setImages(data.results);
-            setTotalPages(data.total_pages);
-            return result
+            if (result.length === 0) {
+                setGuideH("Nothing found with that theme.");
+                setGuideText("Check for typos and try again.");
+                setTimeout(() => resetEditor("Search"), 3000);
+            }
+            else {
+
+                setImages(data.results);
+                setTotalPages(data.total_pages);
+                return result
+            }
         }
         catch (error) {
             console.log(error)
@@ -160,8 +200,8 @@ const EditorPageV2 = () => {
             console.log("handleUserReply Error. Check your code!");
         }
     }
-    const createCalendar = (result, bgImg, e) => {
-        const calendarObj = createObject(result, bgImg, e);
+    const createCalendar = (images, bgImg, e) => {
+        const calendarObj = createObject(images, bgImg, e);
         //console.log(calendarObj);
         dispatch(setCalendar(calendarObj));
         setTimeout(() => setBool3(true), 2500);
@@ -170,10 +210,11 @@ const EditorPageV2 = () => {
     // Idea for createObject. Add array of numbers etc. When user edits te calendar and chooses a hatch give him option to choose double hatch. If he chooses it then handleClick to add the hatch number to array and in createcalendar if number is this then hatchtype is that.
 
     //unsplash api has blur hash where you can first have a blurred image loaded on the page before the real thing loads.
-    const createObject = (result, bgImg, e) => {
+    const createObject = (images, bgImg, e) => {
         let startRedux = startDate.toISOString();
         let hatches = [];
         let numbOfHatches = hatchAmount;
+        let imagesLength = images.length;
         let date;
         let dateRedux;
         let hatchModifier = 1;
@@ -182,7 +223,7 @@ const EditorPageV2 = () => {
             date = new Date(startDate);
             date.setDate(startDate.getDate() + i);
             dateRedux = date.toISOString();
-            let hatchImg = result[i].urls.small;
+            let hatchImg = images[i].urls.small;
             let status = false;
             let hatch;
             let hatchNr = i + hatchModifier;
@@ -203,9 +244,9 @@ const EditorPageV2 = () => {
                     typeOfHatch = hatchType;
                 }
             }
-            if (result[i].id === bgImg.id) {
+            if (images[i].id === bgImg.id) {
                 console.log('found match with bg id & took the first unused image instead');
-                hatchImg = result[numbOfHatches].urls.small;
+                hatchImg = images[imagesLength - 1].urls.small;
             }
             hatch = {
                 date: dateRedux,
@@ -226,6 +267,26 @@ const EditorPageV2 = () => {
             privateCalendar: false
         };
         return calendar;
+    }
+
+    const goBackInEditor = (identifier) => {
+        /* if (bool === false) return; */
+        if (identifier === "Background") {
+            resetEditor(identifier);
+        }
+        else if (identifier === "Search") {
+            resetEditor(identifier);
+        }
+        else if (identifier === "Dates") {
+            resetEditor(identifier);
+        }
+        else if (identifier === "Hatches") {
+            console.log("Hatches clicked");
+            resetEditor(identifier);
+        }
+        else {
+            console.log("goBackInEditor Error. Check your code!")
+        }
     }
 
     const hatchEditor = (hatch, editType) => {
@@ -286,10 +347,11 @@ const EditorPageV2 = () => {
                         hatchType={hatchType}
                         hatchSide={hatchSide}
                         radioHandler={radioHandler}
+                        goBackInEditor={goBackInEditor}
                     />
                 </div>
                 <div className="content">
-                    {!bool2 && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} />
+                    {!bool2 && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} time={time} handleDatePick={handleDatePick} />
                     }
                     {bool2 && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} gridRows={gridRows} hatchEditor={hatchEditor} />}
                 </div>

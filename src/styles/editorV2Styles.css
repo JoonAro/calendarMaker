@@ -163,6 +163,15 @@
     width: 100%;
 }
 
+.datePickers {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
 .welcomeText {
     background-color: rgba(0, 0, 0, 0.395);
     position: absolute;
@@ -349,6 +358,62 @@
     }
 }
 
+.spread3 {
+    grid-column-start: 1;
+    grid-column-end: span 3;
+    grid-row-start: 1;
+    grid-row-end: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    /* background-color: #c2c0c0; */
+    background-color: rgb(234, 228, 227);
+    height: fit-content;
+    width: 100%;
+    padding: 0 30px;
+    border-radius: 30px;
+}
+
+.spread3 input {
+    background-color: aliceblue;
+    width: 200px;
+}
+
+.spread3>h1 {
+    font-size: 2em;
+    margin: 40px 0 10px 0;
+}
+
+.spread3 p {
+    font-size: 1.4em;
+    margin: 20px 0 10px 0;
+}
+
+.spread3>button {
+    margin-bottom: 40px;
+}
+
+.MuiPickersStaticWrapper-root {
+    background-color: white;
+}
+
+/* Target the individual DatePicker popover */
+.MuiPopover-paper {
+    background-color: white;
+}
+
+/* Target the input field of the DatePicker */
+.MuiInputBase-input {
+    background-color: white;
+}
+
+/* Target the button/icon of the DatePicker */
+.MuiIconButton-root {
+    color: black;
+    /* Assuming you want the button/icon color to be black */
+}
+
 @media only screen and (max-width: 1300px) {
     .gridHolder {
         grid-template-columns: repeat(4, 20.9%);
@@ -356,8 +421,12 @@
     }
 
     .sixRows {
-        grid-template-rows: repeat(7, 11.7%);
+        grid-template-rows: repeat(8, 10%);
     }
+
+    /*  .sixRows {
+        grid-template-rows: repeat(7, 11.7%);
+    } */
 
     .fiveRows {
         grid-template-rows: repeat(6, 13.7%);
@@ -400,7 +469,7 @@
     }
 
     .sixRows {
-        grid-template-rows: repeat(7, 11.7%);
+        grid-template-rows: repeat(8, 10%);
     }
 
     .fiveRows {
@@ -446,5 +515,20 @@
         width: calc(99vw - 5px);
         min-height: 90vh;
         background-color: rgba(103, 89, 94, 1);
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .spread3 {
+        grid-column-start: 1;
+        grid-column-end: span 2;
+        grid-row-start: 1;
+        grid-row-end: span 2;
+        padding: 0 30px;
+        border-radius: 30px;
+    }
+
+    .datePickers {
+        justify-content: center;
     }
 }
