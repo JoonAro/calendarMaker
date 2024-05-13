@@ -20,17 +20,16 @@ const Shareable = () => {
 
     useEffect(() => {
         const fetchCalendar = async () => {
+            
             try {
-                if (user) {
-                    const calendarDoc = await getDoc(doc(db, `/shareable/${id}`));
-                    if (calendarDoc.exists()) {
-                        setCalendar({ id: calendarDoc.id, ...calendarDoc.data() });
-                    } else {
-                        console.log('Calendar not found');
-                        setCalendar(null); // Clear the calendar state if not found
-                    }
+                const calendarDoc = await getDoc(doc(db, `shareable/${id}`));
+                if (calendarDoc.exists()) {
+                    const calendarData = { id: calendarDoc.id, ...calendarDoc.data() };
+                    setCalendar(calendarData);
+                    console.log('Fetched calendar:', calendarData);
                 } else {
-                    console.log('No user signed in');
+                    console.log('Calendar not found');
+                    setCalendar(null); // Clear the calendar state if not found
                 }
             } catch (error) {
                 console.error('Error fetching calendar:', error);
