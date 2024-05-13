@@ -115,6 +115,12 @@ function App() {
                   <Collection />
                 }
               />
+                <Route
+                path="/shareable/:id" component={Shareable}
+                element={
+                  <Shareable />
+                }
+              />
             </Route>
             <Route path="/" element={<Footer />} />
           </Routes>
