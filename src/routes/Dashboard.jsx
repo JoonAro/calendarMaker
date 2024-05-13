@@ -8,7 +8,9 @@ import { useState } from 'react';
 import UserData from '../components/dashboardComponents/UserData';
 import ContactForm from '../components/dashboardComponents/ContactFormData';
 
-
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { auth } from '../auth/firebase';
+import {ref} from 'firebase/database';
 
 
 
@@ -19,6 +21,7 @@ const Dashboard = () => {
     const [differenceMessage, setDifferenceMessage] = useState(null);
     const [amountCalendars, setAmountCalendars] = useState(null);
     const [differenceCalendars, setDifferenceCalendars] = useState(null);
+    const [user] = useAuthState(auth);
  
 
     useEffect(()=>{
@@ -29,49 +32,42 @@ const Dashboard = () => {
 )
 
 const fetchData = async () =>{
-    const today = new Date();
-    const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
-    const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
-    console.log(lastMonth)
+    // const today = new Date();
+    // const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
+    // const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
+    // console.log(lastMonth)
 
-    const lastMonthQuery = query(collection(db,"users"), where("timeStamp", "<=", today), where("timeStamp", ">", lastMonth));
+    const lastMonthQuery = query(collection(db,"users"))
+    // , where("timeStamp", "<=", today), where("timeStamp", ">", lastMonth));
 
-    const prevMonthQuery = query(collection(db,"users"), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
+    // const prevMonthQuery = query(collection(db,"users"), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
 
     const lastMonthData = await getDocs(lastMonthQuery);
-    const prevMonthData = await getDocs(prevMonthQuery);
+    // const prevMonthData = await getDocs(prevMonthQuery);
 
     setAmount(lastMonthData.docs.length);
 
-    if(prevMonthData.docs.length !== 0){
-        setDifference(
-            ((lastMonthData.docs.length - prevMonthData.docs.length) / prevMonthData.docs.length) * 100);
-    }
-   else {
-    setDifference(100);
-   }
-}
+//     if(prevMonthData.docs.length !== 0){
+//         setDifference(
+//             ((lastMonthData.docs.length - prevMonthData.docs.length) / prevMonthData.docs.length) * 100);
+//     }
+//    else {
+//     setDifference(100);
+//    }
+ }
 
 const fetchMessageData = async() =>{
-    const today = new Date();
-    const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
-    const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
-    const lastMonthQueryMessage = query(collection(db,"contactForm"), where("timeStamp", "<=", today), where("timeStamp", ">", lastMonth));
+    // const today = new Date();
+    // const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
+    // const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
+    const lastMonthQueryMessage = query(collection(db,"contactForm"));
 
-    const prevMonthQueryMessage = query(collection(db,"contactForm"), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
+    // const prevMonthQueryMessage = query(collection(db,"contactForm"), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
 
     const lastMonthDataMessage = await getDocs(lastMonthQueryMessage);
-    const prevMonthDataMessage = await getDocs(prevMonthQueryMessage);
+    // const prevMonthDataMessage = await getDocs(prevMonthQueryMessage);
 
     setAmountMessage(lastMonthDataMessage.docs.length);
-
-    if(prevMonthDataMessage.docs.length !==0){
-        setDifferenceMessage(
-            ((lastMonthDataMessage - prevMonthDataMessage) / prevMonthDataMessage) * 100);
-    }
-    else{
-        setDifferenceMessage(100);
-    }
 }
 
 
@@ -95,32 +91,47 @@ const fetchMessageData = async() =>{
 //     }
 //   };
   
+// const fetchCalendarsData = async () => {
+//     try {
+//       const usersCollectionRef = query(collection(db, "users", "calendar"));
+//       const querySnapshot = await getDocs(usersCollectionRef);
+//       console.log(querySnapshot)
+//       const calendarData = querySnapshot.docs.map((doc)=>({
+//         id: doc.id,
+//         ...doc.data()
+//       }
+
+//       ))
+  
+//       setAmountCalendars(calendarData.length);
+//     } catch (error) {
+//       console.error('Error fetching calendars:', error);
+//     }
+//   };
+  
 const fetchCalendarsData = async () => {
     try {
-      const usersCollectionRef = collection(db, 'users');
-      const querySnapshot = await getDocs(usersCollectionRef);
-  
-      let allCalendars = [];
-  
-      querySnapshot.forEach(async (userDoc) => {
-        const calendarCollectionRef = collection(userDoc.ref, 'calendar');
-        const calendarsQuerySnapshot = await getDocs(calendarCollectionRef);
-        allCalendars = [...allCalendars, ...calendarsQuerySnapshot.docs];
-      });
-  
-      setAmountCalendars(allCalendars.length);
+        const usersCollectionRef = collection(db, 'users');
+        const querySnapshot = await getDocs(usersCollectionRef);
+        let totalCalendars = 0;
+
+        // Convert the forEach loop into a for...of loop
+        for (const userDoc of querySnapshot.docs) {
+            const calendarCollectionRef = collection(userDoc.ref, 'calendar');
+            const calendarsQuerySnapshot = await getDocs(calendarCollectionRef);
+            totalCalendars += calendarsQuerySnapshot.docs.length;
+        }
+
+        setAmountCalendars(totalCalendars);
     } catch (error) {
-      console.error('Error fetching calendars:', error);
+        console.error('Error fetching calendars:', error);
     }
-  };
-  
+};
+
 
 
 // const fetchCalendarsData = async() =>{
-//     const today = new Date();
-//     const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
-//     const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
-//     console.log(lastMonth)
+
 
 //     const usersQuerySnapshot = await getDocs(collection(db, 'users'));
 
@@ -163,10 +174,10 @@ const fetchCalendarsData = async () => {
             </div>
         
     <div className="pl-4">
-        <span className="text-sm text-gray-500 font-light">Users</span>
+        <span className="text-lg text-gray-500 font-light">Users</span>
         <div className="flex items-center">
             <strong className="text-xl text-gray-700 font-semibold">{amount}</strong>
-            <span className="text-sm text-green-500 pl-2">{difference}%</span>
+          
         </div>
     </div>
         </div>
@@ -180,7 +191,6 @@ const fetchCalendarsData = async () => {
         <span className="text-sm text-gray-500 font-light">Saved calendars</span>
         <div className="flex items-center">
             <strong className="text-xl text-gray-700 font-semibold">{amountCalendars}</strong>
-            <span className="text-sm text-green-500 pl-2">{differenceCalendars}</span>
         </div>
     </div>
         </div>
@@ -190,10 +200,9 @@ const fetchCalendarsData = async () => {
             <PieChartIcon style={{ fontSize: '3rem'}} />
             </div>
     <div className="pl-4">
-        <span className="text-sm text-gray-500 font-light">Messages</span>
+        <span className="text-lg text-gray-500 font-light">Messages</span>
         <div className="flex items-center">
             <strong className="text-xl text-gray-700 font-semibold">{amountMessage}</strong>
-            <span className="text-sm text-green-500 pl-2">{differenceMessage}%</span>
         </div>
     </div>
         </div>

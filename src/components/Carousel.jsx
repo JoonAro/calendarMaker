@@ -9,7 +9,7 @@ import image5 from "../assets/bird.jpg";
 
 export default function Carousel() {
   return (
-    <div className="showCard middle">
+    <div className="showCard middle font-sans">
       <div className="slides">
         <input type="radio" name="r" id="r1" />
         <input type="radio" name="r" id="r2" />
