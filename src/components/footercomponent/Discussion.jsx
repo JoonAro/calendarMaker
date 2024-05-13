@@ -1,6 +1,5 @@
-import { addPost, getPosts, addComment } from '../../communities/firebase'; 
 import { useState, useEffect } from 'react';
-import { firestore } from './firebase'; // Import firestore instance
+import firestore, { addPost, getPosts, addComment } from '../../communities/firebase2'; 
 
 const DiscussionPage = () => {
   // State for questions
@@ -17,18 +16,18 @@ const DiscussionPage = () => {
   // Function to fetch questions from Firebase
   useEffect(() => {
     const fetchQuestions = async () => {
-      const posts = await getPosts(firestore); // Pass firestore instance to getPosts function
+      const posts = await getPosts(); // No need to pass firestore instance here
       setQuestions(posts);
     };
     fetchQuestions();
-  }, [firestore]); // Add firestore as a dependency
+  }, []);
 
   // Function to handle form submission for new question
   const handleNewQuestionSubmit = async (e) => {
     e.preventDefault();
     if (newQuestion.title && newQuestion.content) {
       const newQuestionWithId = { ...newQuestion, date: new Date().toLocaleDateString(), answers: [] };
-      await addPost(firestore, newQuestionWithId); // Pass firestore instance to addPost function
+      await addPost(newQuestionWithId); // No need to pass firestore instance here
       setNewQuestion({ title: '', content: '', author: 'YourUsername' });
       setShowNewQuestionForm(false); // Hide the form after submission
     } else {
@@ -49,7 +48,7 @@ const DiscussionPage = () => {
       const questionToUpdate = questions.find(q => q.id === questionId);
       if (questionToUpdate) {
         const updatedAnswers = [...(questionToUpdate.answers || []), newAnswer];
-        await addComment(firestore, questionId, newAnswer); // Pass firestore instance to addComment function
+        await addComment(questionId, newAnswer); // No need to pass firestore instance here
         const updatedQuestions = questions.map(q =>
           q.id === questionId ? { ...q, answers: updatedAnswers } : q
         );
