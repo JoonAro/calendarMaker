@@ -1,7 +1,6 @@
+import { addPost, getPosts, addComment } from '../../communities/firebase'; 
 import { useState, useEffect } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/firestore';
-
+import { firestore } from './firebase'; // Import firestore instance
 
 const DiscussionPage = () => {
   // State for questions
@@ -18,18 +17,18 @@ const DiscussionPage = () => {
   // Function to fetch questions from Firebase
   useEffect(() => {
     const fetchQuestions = async () => {
-      const posts = await getPosts(); // Fetch posts from Firestore
+      const posts = await getPosts(firestore); // Pass firestore instance to getPosts function
       setQuestions(posts);
     };
     fetchQuestions();
-  }, []);
+  }, [firestore]); // Add firestore as a dependency
 
   // Function to handle form submission for new question
   const handleNewQuestionSubmit = async (e) => {
     e.preventDefault();
     if (newQuestion.title && newQuestion.content) {
       const newQuestionWithId = { ...newQuestion, date: new Date().toLocaleDateString(), answers: [] };
-      await addPost(newQuestionWithId); // Add new question to Firestore
+      await addPost(firestore, newQuestionWithId); // Pass firestore instance to addPost function
       setNewQuestion({ title: '', content: '', author: 'YourUsername' });
       setShowNewQuestionForm(false); // Hide the form after submission
     } else {
@@ -50,7 +49,7 @@ const DiscussionPage = () => {
       const questionToUpdate = questions.find(q => q.id === questionId);
       if (questionToUpdate) {
         const updatedAnswers = [...(questionToUpdate.answers || []), newAnswer];
-        await addComment(questionId, newAnswer); // Add new comment to Firestore
+        await addComment(firestore, questionId, newAnswer); // Pass firestore instance to addComment function
         const updatedQuestions = questions.map(q =>
           q.id === questionId ? { ...q, answers: updatedAnswers } : q
         );
@@ -95,6 +94,7 @@ const DiscussionPage = () => {
               ></textarea>
             </div>
             <button
+              type="submit" // Add type submit
               className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
             >
               Post Question
@@ -146,5 +146,3 @@ const DiscussionPage = () => {
 }
 
 export default DiscussionPage;
-
-
