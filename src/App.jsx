@@ -22,6 +22,7 @@ import CalendarPreview from "./routes/CalendarPreview";
 import Footer from "./components/Footer";
 import { ThemeProvider } from "./components/theme/ThemeContext";
 import Shareable from "./routes/Shareable"
+import Terms from "./components/footercomponent/Terms";
 
 function App() {
 
@@ -102,6 +103,12 @@ function App() {
                 element={
                   <Cookies />
                 }
+              />
+              <Route
+                path="/terms"
+                element={
+                  <Terms />
+                } 
               />
 
               <Route

@@ -7,6 +7,8 @@ import { Link } from "react-router-dom";
 import { logInWithGoogle } from "../auth/firebase";
 
 
+import Cookies from "../components/footercomponent/Cookies";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -79,6 +81,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Cookies  />
     </div>
 
   );
