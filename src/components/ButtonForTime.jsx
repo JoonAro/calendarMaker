@@ -6,7 +6,7 @@ const ButtonForTime = ({ children, handleDatePick }) => {
     <button onClick={handleDatePick}
       type="submit"
       className="w-36 border border-transparent bg-mainBackground-light p-2 rounded-lg hover:bg-accentColor-light text-fontDark hover:text-white"
-      style={{ marginBottom: "0" }}>
+    >
       {children}
     </button>
   );
