@@ -10,6 +10,7 @@ import photo1 from "../assets/Michel.jpeg";
 import photo2 from "../assets/Samuel.jpeg";
 import photo3 from "../assets/chocko.jpg";
 import photo4 from "../assets/AlonaC.jpeg";
+import Cookies from '../components/footercomponent/Cookies';
 
 
 const Home = () => {
@@ -140,7 +141,7 @@ const Home = () => {
          
         </div>
       </Row >
-
+  <Cookies />
     </Container >
   );
 };

@@ -9,9 +9,9 @@ const Footer = () => {
   const whiteReplacement = theme === 'dark' ? 'text-whiteReplacement-dark' : 'text-whiteReplacement-light';
 
   return (
-    <footer className={accentColor}>
+    <footer className={`${accentColor} py-4`}>
       <ul className="flex flex-wrap items-center text-sm text-gray-500">
-        <li>
+        <li className='ml-16'>
           <Link to="about">
 
             <Button variant="contained" className={`${whiteReplacement}  text-l`}>About</Button>
@@ -30,6 +30,11 @@ const Footer = () => {
         <li>
           <Link to="cookies">
             <Button variant="contained" className={`${whiteReplacement}  text-l`}>Cookies</Button>
+          </Link>
+        </li>
+        <li>
+          <Link to="terms">
+            <Button variant="contained" className={`${whiteReplacement}  text-l`}>Terms</Button>
           </Link>
         </li>
         <li>
