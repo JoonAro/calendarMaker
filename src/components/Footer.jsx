@@ -22,15 +22,9 @@ const Footer = () => {
             <Button variant="contained" className={`${whiteReplacement}  text-l`}>Privacy Policy</Button>
           </Link>
         </li>
+       
         <li>
-          <Link to="licensing">
-            <Button variant="contained" className={`${whiteReplacement}  text-l`}>Licensing</Button>
-          </Link>
-        </li>
-        <li>
-          <Link to="cookies">
-            <Button variant="contained" className={`${whiteReplacement}  text-l`}>Cookies</Button>
-          </Link>
+          
         </li>
         <li>
           <Link to="terms">
