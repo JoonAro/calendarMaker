@@ -7,6 +7,8 @@ import {
     createUserWithEmailAndPassword,
     getAuth,
     signInWithEmailAndPassword,
+    signInWithPopup,
+    GoogleAuthProvider
 } from "firebase/auth";
 import {
     addDoc,
@@ -30,6 +32,7 @@ export const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 export const storage = getStorage(app);
+export const googleProvider = new GoogleAuthProvider();
 
 const registerWithEmailAndPassword = async (name, email, password, avatar) => {
     try {
@@ -49,6 +52,36 @@ const registerWithEmailAndPassword = async (name, email, password, avatar) => {
     }
 };
 
+export const signInWithGoogle = async () => {
+    try {
+        const provider = new GoogleAuthProvider();
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+
+        // Add user information to the 'users' collection
+        await addDoc(collection(db, "users"), {
+            uid: user.uid,
+            name: user.displayName,
+            authProvider: "google",
+            email: user.email,
+            timeStamp: serverTimestamp(),
+            avatar: user.photoURL, //avatar: avatar
+        });
+    } catch (error) {
+        console.error(error);
+        alert(error.message);
+    }
+};
+
+export const logInWithGoogle = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+        await signInWithPopup(auth, provider);
+    } catch (error) {
+        console.log(error);
+        alert(error.message);
+    }
+};
 
 export const loginWithEmailAndPassword = async (email, password) => {
     try {
@@ -58,6 +91,7 @@ export const loginWithEmailAndPassword = async (email, password) => {
         alert(error.message);
     }
 };
+
 
 export const logout = () => {
     auth.signOut();
@@ -74,17 +108,6 @@ export const addDataToFirestore = async (uid, data) => {
     }
 };
 
-// export const createShareableCollectionCalendarId = async (uid, data) => {
-//     try {
-//         await addDoc(collection(db, "shareable"), {
-//             data: data,
-//             uid: uid,
-//             timeStamp: serverTimestamp(),
-//         })
-//     } catch (error) {
-//         console.log(error);
-//     }
-// }
 
 console.log(initializeApp(firebaseConfig));
 // Initialize Firebase
