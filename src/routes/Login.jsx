@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { auth, loginWithEmailAndPassword } from "../auth/firebase";
 import { Link } from "react-router-dom";
 
+import Cookies from "../components/footercomponent/Cookies";
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -59,6 +61,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <Cookies  />
     </div>
 
   );

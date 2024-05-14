@@ -1,66 +1,69 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types'; // Import PropTypes
-import { useNavigate } from 'react-router-dom';
+import  { useEffect, useState } from 'react';
 
-const CookieConsent = ({ type }) => {
-    const [accepted, setAccepted] = useState(false);
-    const navigate = useNavigate();
+const cookieStorage = {
+  getItem: (item) => {
+    const cookies = document.cookie
+      .split(';')
+      .map(cookie => cookie.split('='))
+      .reduce((acc, [key, value]) => ({ ...acc, [key.trim()]: value }), {});
+    return cookies[item];
+  },
+  setItem: (item, value) => {
+    document.cookie = `${item}=${value};`;
+  }
+}
 
-    const acceptCookies = () => {
-        // Set the accepted state to true
-        setAccepted(true);
-        // Store the acceptance in local storage or cookies
-        localStorage.setItem('cookieConsent', 'accepted');
-    };
+const ConsentPopup = ({ onAccept, onReject }) => {
+  const handleReject = () => {
+    onReject();
+  }
 
-    const declineCookies = () => {
-        // Store the decline in local storage or cookies
-        localStorage.setItem('cookieConsent', 'declined');
-        // You can also take additional actions here if needed
-    };
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-
-        // Check if the user is registering or logging in
-        if (type === 'register') {
-            console.log('Registering...');
-            // Perform your registration logic here
-        } else if (type === 'login') {
-            console.log('Logging in...');
-            // Perform your login logic here
-        }
-
-        // Navigate to the home page or any other appropriate page
-        navigate('/');
-    };
-
-    // Check if the user has previously accepted cookies
-    const storedConsent = localStorage.getItem('cookieConsent');
-
-    // If the user has already accepted, hide the consent form
-    if (storedConsent === 'accepted' || accepted) {
-        return null;
-    }
-
-    return (
-        <div className="fixed bottom-0 left-0 w-full bg-gray-800 text-white p-4 flex justify-between">
-            <p>This website uses cookies to enhance your experience.</p>
-            <div>
-                <button onClick={acceptCookies} className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2">Accept</button>
-                <button onClick={declineCookies} className="bg-red-500 text-white px-4 py-2 rounded-md">Decline</button>
-            </div>
-            {/* Prompt for user data */}
-            <form onSubmit={handleSubmit} className="flex flex-col mt-4">
-                <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded-md">Submit</button>
-            </form>
+  return (
+    <div id="consent-popup" className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
+      <div className="bg-green-500 p-8 rounded-lg">
+        <p className="text-lg">This website uses cookies to ensure you get the best experience on our website.</p>
+        <div className="flex justify-between mt-4">
+          <button id="accept" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600" onClick={onAccept}>Accept</button>
+          <button id="reject" className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600" onClick={handleReject}>Reject</button>
         </div>
-    );
-};
+      </div>
+    </div>
+  );
+}
 
-// Define PropTypes
-CookieConsent.propTypes = {
-    type: PropTypes.oneOf(['register', 'login']).isRequired // type prop is required and should be either 'register' or 'login'
-};
+const Cookies = () => {
+  const [showPopup, setShowPopup] = useState(false);
+  const [accepted, setAccepted] = useState(false);
 
-export default CookieConsent;
+  const shouldShowPopup = () => !cookieStorage.getItem('jdc_consent');
+  const saveToStorage = () => cookieStorage.setItem('jdc_consent', true);
+
+  const acceptFn = () => {
+    saveToStorage();
+    setShowPopup(false);
+    setAccepted(true);
+  }
+
+  const rejectFn = () => {
+    // Prevent saving cookies to local storage
+    setShowPopup(false);
+    setAccepted(true);
+  }
+
+  useEffect(() => {
+    if (shouldShowPopup() && !accepted) {
+      setTimeout(() => {
+        setShowPopup(true);
+      }, 2000);
+    }
+  }, [accepted]);
+
+  return (
+    <div className="relative">
+      {showPopup && <ConsentPopup onAccept={acceptFn} onReject={rejectFn} />}
+      {/* Your calendar page content goes here */}
+    </div>
+  );
+}
+
+export default Cookies;
