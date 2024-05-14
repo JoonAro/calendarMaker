@@ -58,14 +58,13 @@ export const signInWithGoogle = async () => {
         const result = await signInWithPopup(auth, provider);
         const user = result.user;
 
-        // Add user information to the 'users' collection
         await addDoc(collection(db, "users"), {
             uid: user.uid,
             name: user.displayName,
             authProvider: "google",
             email: user.email,
             timeStamp: serverTimestamp(),
-            avatar: user.photoURL, //avatar: avatar
+            avatar: user.photoURL,
         });
     } catch (error) {
         console.error(error);
@@ -109,8 +108,6 @@ export const addDataToFirestore = async (uid, data) => {
 };
 
 
-console.log(initializeApp(firebaseConfig));
-// Initialize Firebase
 export const analytics = getAnalytics(app);
 
 export { auth, db, registerWithEmailAndPassword };

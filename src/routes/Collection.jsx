@@ -27,7 +27,7 @@ const Favorites = () => {
                 setUsersCalendar([]);
             }
         });
-    
+
         return () => unsubscribe();
     }, []);
 
@@ -43,7 +43,7 @@ const Favorites = () => {
     return (
         <>
             <Container fluid className='flex min-h-screen items-start justify-center bg-mainBackground-light'>
-                <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-5">
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-5 mb-5">
                     {usersCalendar.map(calendar => (
 
                         <Card key={calendar.id} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
@@ -58,7 +58,7 @@ const Favorites = () => {
                                         Preview
                                     </Link>
                                 </ButtonComponent>
-                               
+
                             </div>
 
                         </Card>
