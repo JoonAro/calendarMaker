@@ -30,20 +30,26 @@ const Header = () => {
 
     useEffect(() => {
         const getUserData = async () => {
-            const q = query(collection(db, "users"),
-                where("uid", "==", user?.uid));
-            const querySnapshot = await getDocs(q);
-            querySnapshot.forEach(
-                (doc) => {
-                    setName(doc.data().name);
-                    setAvatar(doc.data().avatar);
-                });
+            if (user) {
+                if (user.providerData && user.providerData[0]?.providerId === "google.com") {
+                    // User logged in with Google, get name from provider data
+                    setName(user.providerData[0]?.displayName);
+                    setAvatar(user.providerData[0]?.photoURL);
+                } else {
+                    // User logged in with email/password or another provider, fetch name from Firestore
+                    const q = query(collection(db, "users"), where("uid", "==", user?.uid));
+                    const querySnapshot = await getDocs(q);
+                    querySnapshot.forEach((doc) => {
+                        setName(doc.data().name);
+                        setAvatar(doc.data().avatar);
+                    });
+                }
+            }
         };
-        if (user) {
-            getUserData();
-        }
-    }, [user]
-    );
+    
+        getUserData();
+    }, [user]);
+    
 
     return (
         <Container fluid >
