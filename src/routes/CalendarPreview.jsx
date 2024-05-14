@@ -76,7 +76,7 @@ const CalendarPreview = () => {
                                 className={`w-36 border border-transparent ${linkGenerated ? 'bg-accentColor-light' : 'bg-accentColor-light'} p-2 rounded-lg hover:bg-accentColor-light text-fontDark hover:text-white cursor-pointer`}
                                 disabled={linkGenerated}
                             >
-                                {linkGenerated ? "Copy link below" : "Generate Shareable Link"}
+                                {linkGenerated ? "Copy link ⇨" : "Generate Shareable Link"}
                             </button>
                             {linkGenerated && (
                                 <>
