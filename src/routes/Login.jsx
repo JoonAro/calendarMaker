@@ -4,6 +4,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, loginWithEmailAndPassword } from "../auth/firebase";
 import { Link } from "react-router-dom";
+import { logInWithGoogle } from "../auth/firebase";
+
 
 import Cookies from "../components/footercomponent/Cookies";
 
@@ -26,6 +28,17 @@ const Login = () => {
       });
   }
 
+  const loginGoogle = () => {
+    logInWithGoogle()
+      .then(() => {
+        navigate('/');
+      })
+      .catch((error) => {
+        console.error("Google login failed:", error);
+        alert("Google login failed. Please try again.");
+      });
+  }
+
   return (
     <div className="flex items-center justify-center min-h-screen bg-mainBackground-light">
       <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
@@ -33,7 +46,7 @@ const Login = () => {
           <span className="mb-3 text-4xl font-bold text-center text-fontDark">Log in</span>
           <div className="py-3">
             <input
-              className="w-full p-2 md:w-64 bg-whiteReplacement border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              className="w-full p-2 bg-whiteReplacement border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               type="email"
               value={email}
               placeholder="Enter your email"
@@ -42,18 +55,25 @@ const Login = () => {
           </div>
           <div className="py-3">
             <input
-              className="w-full p-2 md:w-64 bg-whiteReplacement border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              className="w-full p-2 bg-whiteReplacement border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               type="password"
               placeholder="Enter password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
+        
           <Button
             onClick={login}
+            className="w-full border border-transparent bg-mainBackground-light text-white p-2 rounded-lg mb-2 hover:bg-smallBackground-light"
+          >
+            Log in
+          </Button>
+          <Button
+            onClick={loginGoogle}
             className="w-full border border-transparent bg-mainBackground-light text-white p-2 rounded-lg mb-6 hover:bg-smallBackground-light"
           >
-            Login
+            Log in with Google
           </Button>
           <div className="text-center text-gray-400">
             Don't have an account?

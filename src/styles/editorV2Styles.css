@@ -56,6 +56,22 @@
     border-radius: 30px;
 }
 
+.gridHolderPreview {
+    margin: 2vw 8vw;
+    padding: 4vw 3.8vw;
+    min-width: fit-content;
+    height: fit-content;
+    position: relative;
+    display: grid;
+    background-color: rgba(103, 89, 94, 0);
+    background-position: center;
+    background-size: cover;
+    grid-template-columns: repeat(5, 16.2%);
+    grid-template-rows: repeat(6, 13.5%);
+    grid-gap: 3.5vw;
+    border-radius: 30px;
+}
+
 .sixRows {
     grid-template-rows: repeat(6, 13%);
 }
@@ -99,7 +115,21 @@
     overflow: hidden;
 }
 
+.hatchCatalogueHolder {
+    margin: 2vw 0;
+    width: 95%;
+    min-height: 90vh;
+    display: grid;
+    background-color: rgba(56, 28, 150, 0);
+    grid-template-columns: repeat(3, 33.33%);
+    grid-template-rows: repeat(10, 27vw);
+    grid-gap: 0px;
+    border-radius: 30px;
+    overflow: hidden;
+}
+
 .backGroundHolder {
+    margin: 2vw 0;
     min-height: 50vh;
     width: 95%;
     background-position: center;
@@ -120,6 +150,7 @@
 
 .catalogueImage:hover {
     color: rgb(240, 248, 255);
+    background-color: rgba(0, 0, 0, 0.508);
 }
 
 .calendarContent {
@@ -186,7 +217,6 @@
     z-index: 9;
     border-radius: 20px;
     padding: 20px 0;
-
 }
 
 .welcomeText2 {
@@ -265,6 +295,7 @@
     justify-content: center;
     width: 1.7rem;
     height: fit-content;
+    font-size: 1.4em;
     /* color: rgba(245, 245, 245, 0.8);
     background-color: rgba(0, 0, 0, 0.4); */
     color: rgba(0, 0, 0, 0.7);
@@ -397,30 +428,17 @@
     margin-bottom: 40px;
 }
 
-.MuiPickersStaticWrapper-root {
-    background-color: white;
-}
-
-/* Target the individual DatePicker popover */
-.MuiPopover-paper {
-    background-color: white;
-}
-
-/* Target the input field of the DatePicker */
-.MuiInputBase-input {
-    background-color: white;
-}
-
-/* Target the button/icon of the DatePicker */
-.MuiIconButton-root {
-    color: black;
-    /* Assuming you want the button/icon color to be black */
-}
 
 @media only screen and (max-width: 1300px) {
     .gridHolder {
         grid-template-columns: repeat(4, 20.9%);
         grid-template-rows: repeat(8, 10%);
+    }
+
+    .gridHolderPreview {
+        grid-template-columns: repeat(4, 21.5%);
+        grid-template-rows: repeat(8, 10.6%);
+        margin: 2vw 6vw;
     }
 
     .sixRows {
@@ -453,10 +471,6 @@
         grid-gap: 0px;
         border-radius: 30px;
     }
-
-    /* .backGroundHolder {
-        min-height: 90vw;
-    } */
 }
 
 @media only screen and (max-width: 1100px) {
@@ -467,6 +481,12 @@
 
     .gridHolder {
         grid-template-columns: repeat(4, 20.9%);
+        grid-template-rows: repeat(8, 10%);
+        grid-gap: 4.7vw;
+    }
+
+    .gridHolderPreview {
+        grid-template-columns: repeat(4, 20.5%);
         grid-template-rows: repeat(8, 10%);
         grid-gap: 4.7vw;
     }
@@ -515,9 +535,14 @@
     }
 
     .calendarHolder {
-        width: calc(99vw - 5px);
+        width: calc(100vw - 17px);
         min-height: 90vh;
         background-color: rgba(103, 89, 94, 1);
+    }
+
+    .hatchNumber {
+        font-size: 1.2em;
+        width: 1.5rem;
     }
 }
 
