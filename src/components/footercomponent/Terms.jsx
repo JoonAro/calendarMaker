@@ -36,7 +36,7 @@ const Terms = () => {
             />
             <div className="flex items-right mt-1">
                         
-                        <p className="terms2">Do you accept the terms aconditions</p>
+                        <p className="terms2">Do you accept the terms and conditions ?</p>
                     </div>
           </div>
 
