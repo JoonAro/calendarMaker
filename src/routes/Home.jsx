@@ -33,7 +33,7 @@ const Home = () => {
         <div className={`${smallBackground} py-11 mt-5 mr-0 ml-0 border relative`} style={{ width: "100%" }}>
 
           <div className='flex flex-col justify-center items-center text-3xl mb-4 text-fontDark-light'>
-            <h2 className="text-4xl mb-11 text-fontDark-light">Customize your calendar</h2>
+            <h2 className="text-lg md:text-4xl mb-11 text-fontDark-light">Customize your calendar</h2>
           </div>
 
           <div className='flex justify-between mb-9'>
@@ -104,28 +104,28 @@ const Home = () => {
 
         <div className={`${smallBackground} flex flex-col justify-center items-center mt-20 w-full py-20 rounded-md mb-4`}>
           <div className='flex flex-col justify-center items-center'>
-            <h1 className={`${fontDark} text-sm md:text-2xl lg:text-3xl underline decoration-accentColor-light`}>Behind the Project</h1>
-            <p className={`${fontDark} text-sm md:text-lg lg:text-lg opacity-75 mt-7`}>This project was created by a team of enthusiastic full-stack web developer students </p>
-            <p className={`${fontDark} text-sm md:text-lg lg:text-lg opacity-75`}>at Business College in Helsinki.</p>
+            <h1 className={`${fontDark} text-lg md:text-4xl`}>Behind the Project</h1>
+            <p className={`${fontDark} text-xs md:text-lg lg:text-lg opacity-75 mt-7`}>This project was created by a team of enthusiastic full-stack web developer students </p>
+            <p className={`${fontDark} text-xs md:text-lg lg:text-lg opacity-75`}>at Business College in Helsinki.</p>
 
-            <div className="grid grid-cols-4 gap-4 mt-8">
-            <div className="relative">
-    <img className='h-28 w-28 object-contain rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo1} alt="Michel" />
+            <div className="grid grid-cols-4 gap-x-3 md:gap-x-6 mt-8">
+            <div className="relative ">
+    <img className='h-36 w-28 object-cover rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo1} alt="Michel" />
     <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5 rounded-lg">Michel</p>
 </div>
 
-<div className="relative">
-    <img className='h-28 w-28 object-contain rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo2} alt="Samuel" />
-    <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5">Samuel</p>
+<div className="relative ">
+    <img className='h-36 w-28 object-cover rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo2} alt="Samuel" />
+    <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5 rounded-xl">Samuel</p>
+    </div>
+
+    <div className="relative ">
+    <img className='h-36 w-28 object-cover rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo3} alt="Joona" />
+    <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5 rounded-xl">Joona</p>
     </div>
 
     <div className="relative">
-    <img className='h-28 w-28 object-cover rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo3} alt="Joona" />
-    <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5">Joona</p>
-    </div>
-
-    <div className="relative">
-    <img className='h-28 w-28 object-cover rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo4} alt="Alona" />
+    <img className='h-36 w-28 object-cover rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo4} alt="Alona" />
     <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5 rounded-xl">Alona</p>
     </div>
             </div>
