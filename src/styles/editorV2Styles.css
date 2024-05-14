@@ -157,7 +157,7 @@
     background-color: rgba(103, 89, 94, 1);
 }
 
-/* .calendarGridHolder {
+.calendarGridHolder {
     margin: 30px;
     padding: 50px;
     max-width: 1320px;
@@ -173,7 +173,7 @@
     grid-gap: 80px;
     margin: 0 auto;
     border-radius: 30px;
-} */
+}
 
 .flexColumnCentered {
     display: flex;
