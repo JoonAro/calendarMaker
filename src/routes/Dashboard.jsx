@@ -10,7 +10,6 @@ import ContactForm from '../components/dashboardComponents/ContactFormData';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../auth/firebase';
-import {ref} from 'firebase/database';
 
 
 
@@ -110,22 +109,10 @@ const fetchMessageData = async() =>{
 //   };
   
 const fetchCalendarsData = async () => {
-    try {
-        const usersCollectionRef = collection(db, 'users');
-        const querySnapshot = await getDocs(usersCollectionRef);
-        let totalCalendars = 0;
-
-        // Convert the forEach loop into a for...of loop
-        for (const userDoc of querySnapshot.docs) {
-            const calendarCollectionRef = collection(userDoc.ref, 'calendar');
-            const calendarsQuerySnapshot = await getDocs(calendarCollectionRef);
-            totalCalendars += calendarsQuerySnapshot.docs.length;
-        }
-
-        setAmountCalendars(totalCalendars);
-    } catch (error) {
-        console.error('Error fetching calendars:', error);
-    }
+    const lastMonthQueryShareable = query(collection(db,"shareable"));
+    const lastMonthDataShareable = await getDocs(lastMonthQueryShareable);
+        setAmountCalendars(lastMonthDataShareable.docs.length);
+   console.log("Shareable", lastMonthDataShareable.docs.length)
 };
 
 
@@ -188,7 +175,7 @@ const fetchCalendarsData = async () => {
             <AccessTimeFilledIcon style={{ fontSize: '3rem'}} />
             </div>
     <div className="pl-4">
-        <span className="text-sm text-gray-500 font-light">Saved calendars</span>
+        <span className="text-sm text-gray-500 font-light">Shared calendars</span>
         <div className="flex items-center">
             <strong className="text-xl text-gray-700 font-semibold">{amountCalendars}</strong>
         </div>
