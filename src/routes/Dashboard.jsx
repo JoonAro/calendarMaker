@@ -15,12 +15,8 @@ import { auth } from '../auth/firebase';
 
 const Dashboard = () => {
     const [amount, setAmount] = useState(null);
-    const [difference, setDifference] = useState(null);
     const [amountMessage, setAmountMessage] = useState(null);
-    const [differenceMessage, setDifferenceMessage] = useState(null);
     const [amountCalendars, setAmountCalendars] = useState(null);
-    const [differenceCalendars, setDifferenceCalendars] = useState(null);
-    const [user] = useAuthState(auth);
  
 
     useEffect(()=>{
@@ -31,124 +27,23 @@ const Dashboard = () => {
 )
 
 const fetchData = async () =>{
-    // const today = new Date();
-    // const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
-    // const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
-    // console.log(lastMonth)
-
     const lastMonthQuery = query(collection(db,"users"))
-    // , where("timeStamp", "<=", today), where("timeStamp", ">", lastMonth));
-
-    // const prevMonthQuery = query(collection(db,"users"), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
-
     const lastMonthData = await getDocs(lastMonthQuery);
-    // const prevMonthData = await getDocs(prevMonthQuery);
-
     setAmount(lastMonthData.docs.length);
-
-//     if(prevMonthData.docs.length !== 0){
-//         setDifference(
-//             ((lastMonthData.docs.length - prevMonthData.docs.length) / prevMonthData.docs.length) * 100);
-//     }
-//    else {
-//     setDifference(100);
-//    }
  }
 
 const fetchMessageData = async() =>{
-    // const today = new Date();
-    // const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
-    // const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
     const lastMonthQueryMessage = query(collection(db,"contactForm"));
-
-    // const prevMonthQueryMessage = query(collection(db,"contactForm"), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
-
     const lastMonthDataMessage = await getDocs(lastMonthQueryMessage);
-    // const prevMonthDataMessage = await getDocs(prevMonthQueryMessage);
-
     setAmountMessage(lastMonthDataMessage.docs.length);
 }
 
-
-
-// const fetchCalendarsData = async () => {
-//     try {
-//       const usersCollectionRef = collection(db, 'users');
-//       const querySnapshot = await getDocs(usersCollectionRef);
-     
-  
-//       querySnapshot.forEach(async (userDoc) => {
-//         const calendarCollectionRef = collection(userDoc.ref, 'calendar');
-//         const calendarsQuerySnapshot = await getDocs(calendarCollectionRef);
-//         totalCalendars += calendarsQuerySnapshot.size;
-//       });
-  
-//       setAmountCalendars(totalCalendars.docs.length);
-   
-//     } catch (error) {
-//       console.error('Error fetching calendars:', error);
-//     }
-//   };
-  
-// const fetchCalendarsData = async () => {
-//     try {
-//       const usersCollectionRef = query(collection(db, "users", "calendar"));
-//       const querySnapshot = await getDocs(usersCollectionRef);
-//       console.log(querySnapshot)
-//       const calendarData = querySnapshot.docs.map((doc)=>({
-//         id: doc.id,
-//         ...doc.data()
-//       }
-
-//       ))
-  
-//       setAmountCalendars(calendarData.length);
-//     } catch (error) {
-//       console.error('Error fetching calendars:', error);
-//     }
-//   };
-  
 const fetchCalendarsData = async () => {
     const lastMonthQueryShareable = query(collection(db,"shareable"));
     const lastMonthDataShareable = await getDocs(lastMonthQueryShareable);
         setAmountCalendars(lastMonthDataShareable.docs.length);
-   console.log("Shareable", lastMonthDataShareable.docs.length)
 };
 
-
-
-// const fetchCalendarsData = async() =>{
-
-
-//     const usersQuerySnapshot = await getDocs(collection(db, 'users'));
-
-//     let totalCalendars = 0;
-
-//     // Iterate through each user document
-//     usersQuerySnapshot.forEach(userDoc => {
-//         // Get the 'calendars' subcollection of the current user document
-//         const calendarsQuerySnapshot = getDocs(collection(userDoc.ref, 'calendars'));
-        
-//         // Increment the total number of calendars by the number of documents in the 'calendars' subcollection
-//         totalCalendars += calendarsQuerySnapshot.size;
-//     });
-
-    // const lastMonthQueryCalendars = query(collection(db,`users/calendar`), where("timeStamp", "<=", today), where("timeStamp", ">", lastMonth));
-
-    // const prevMonthQueryCalendars = query(collection(db,`users/calendar`), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
-
-    // const lastMonthDataMessages = await getDocs(lastMonthQueryCalendars);
-    // const prevMonthDataMessages = await getDocs(prevMonthQueryCalendars);
-
-    // setAmountCalendars(totalCalendars);
-
-//     if(prevMonthDataMessages.docs.length !== 0){
-//         setDifference(
-//             ((lastMonthDataMessages.docs.length - prevMonthDataMessages.docs.length) / prevMonthDataMessages.docs.length) * 100);
-//     }
-//    else {
-//     setDifferenceCalendars(100);
-//    }
 
 
   return (
@@ -207,9 +102,7 @@ const fetchCalendarsData = async () => {
             
         </div>
       
-        </div>
-        
-      
+        </div>  
   )
 }
 
