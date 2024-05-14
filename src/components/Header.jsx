@@ -16,7 +16,6 @@ import ThemeToggle from './theme/ThemeToggle';
 
 const Header = () => {
     const { theme } = useTheme();
-    console.log('Received theme in Header:', theme);
     const smallBackground = theme === 'dark' ? 'bg-smallBackground-dark' : 'bg-smallBackground-light';
     const whiteReplacement = theme === 'dark' ? 'text-whiteReplacement-dark' : 'text-whiteReplacement-light';
     const fontDark = theme === 'dark' ? 'text-fontDark-dark' : 'text-fontDark-light';
@@ -32,11 +31,9 @@ const Header = () => {
         const getUserData = async () => {
             if (user) {
                 if (user.providerData && user.providerData[0]?.providerId === "google.com") {
-                    // User logged in with Google, get name from provider data
                     setName(user.providerData[0]?.displayName);
                     setAvatar(user.providerData[0]?.photoURL);
                 } else {
-                    // User logged in with email/password or another provider, fetch name from Firestore
                     const q = query(collection(db, "users"), where("uid", "==", user?.uid));
                     const querySnapshot = await getDocs(q);
                     querySnapshot.forEach((doc) => {
@@ -46,10 +43,10 @@ const Header = () => {
                 }
             }
         };
-    
+
         getUserData();
     }, [user]);
-    
+
 
     return (
         <Container fluid >
