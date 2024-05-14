@@ -21,6 +21,7 @@ import Cookies from "./components/footercomponent/Cookies";
 import CalendarPreview from "./routes/CalendarPreview";
 import Footer from "./components/Footer";
 import { ThemeProvider } from "./components/theme/ThemeContext";
+import Shareable from "./routes/Shareable"
 
 function App() {
 
@@ -113,6 +114,12 @@ function App() {
                 path="/collection"
                 element={
                   <Collection />
+                }
+              />
+              <Route
+                path="/shareable/:id" component={Shareable}
+                element={
+                  <Shareable />
                 }
               />
             </Route>

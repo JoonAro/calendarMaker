@@ -14,7 +14,7 @@ export default {
         },
         smallBackground: {
           light: '#EED6D3',
-          dark: '#272144',
+          dark: '#363636',
         },
         accentColor: {
           light: '#E8B4B8',
