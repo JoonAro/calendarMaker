@@ -17,25 +17,30 @@ const HatchImageCatalogue = ({ images, hatchImages, hatchSearchInput, handleHatc
                         color: "white"
                     }}>Search:</h1>
                 </div>
-                <Form className='flexCentered' onSubmit={handleHatchImgSearch}>
+                <Form style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center"
+                }}
+                    onSubmit={handleHatchImgSearch}>
                     <Form.Control
                         style={{ width: "300px" }}
-                        type="search"
+                        type="search2"
                         placeholder="Search for a new image"
                         aria-label="hatchSearch"
                         ref={hatchSearchInput}
                     />
                     <ButtonForTime handleDatePick={() => console.log("Search new images")}>
-                        <h1>Submit</h1>
+                        <h1>Search</h1>
                     </ButtonForTime>
                 </Form>
             </div>
-            <div className="catalogueHolder" >
+            <div className="hatchCatalogueHolder" >
                 {!hatchSearch &&
                     images.map(hatchImg => {
                         return <div className="catalogueImage" key={hatchImg.id} onClick={() => handleHatchImgSelect(hatchImg)} style={{
                             backgroundImage: `url(${hatchImg.urls.regular})`
-                        }}></div>
+                        }}>Click to save as new hatch image</div>
                     })}
                 {hatchSearch &&
                     hatchImages.map(hatchImg => {
