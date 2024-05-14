@@ -4,6 +4,7 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
 import { auth, registerWithEmailAndPassword } from "../auth/firebase";
 import Avatar from "../components/Avatar";
+import { signInWithGoogle } from "../auth/firebase";
 import Cookies from "../components/footercomponent/Cookies";
 
 const Register = () => {
@@ -12,12 +13,28 @@ const Register = () => {
   const [name, setName] = useState("");
   const [user, loading] = useAuthState(auth);
   const [selectedAvatar, setSelectedAvatar] = useState("");
-
   const navigate = useNavigate();
 
   const register = () => {
-    if (!name) alert("Please enter your name");
-    registerWithEmailAndPassword(name, email, password, selectedAvatar);
+    if (!name || !email || !password) {
+      alert("Please enter your name, email, and password");
+      return;
+    }
+    registerWithEmailAndPassword(name, email, password, selectedAvatar)
+      .then(() => navigate("/"))
+      .catch((error) => {
+        console.error("Registration failed:", error);
+        alert("Registration failed. Please try again.");
+      });
+  };
+
+  const registerGoogle = () => {
+    signInWithGoogle(auth)
+      .then(() => navigate("/"))
+      .catch((error) => {
+        console.error("Google sign-in failed:", error);
+        alert("Google sign-in failed. Please try again.");
+      });
   };
 
   useEffect(() => {
@@ -79,10 +96,16 @@ const Register = () => {
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter password" />
           </div>
+          
+         
 
           <Button className="w-full border border-transparent bg-mainBackground-light text-white p-2 rounded-lg mb-6 hover:bg-smallBackground-light"
             onClick={register}>Sign up</Button>
+
+<Button className="w-full border border-transparent bg-mainBackground-light text-white p-2 rounded-lg mb-6 hover:bg-smallBackground-light" onClick={registerGoogle}>Sign in with Google</Button>
         </div>
+
+       
 
         <div className="relative">
 

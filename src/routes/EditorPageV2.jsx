@@ -145,6 +145,7 @@ const EditorPageV2 = () => {
             setBool2(true);
             setBool3(true);
             setBool4(true);
+            setHatchEdit(false);
             return;
         }
         else {
@@ -153,6 +154,7 @@ const EditorPageV2 = () => {
         setBool2(false);
         setBool3(false);
         setBool4(false);
+        setHatchEdit(false);
         if (origin === "Search") {
             setTime(true);
             setGuideH("Welcome to the calendar editor!");
@@ -161,13 +163,14 @@ const EditorPageV2 = () => {
             setTime(false);
             setGuideH("Welcome to the calendar editor!");
         }
+
         else { console.log("resetEditor from background or handleFetch") }
 
     }
     const fetchImages = async () => {
         try {
-            const { data } = await axios.get(`${API_URL}?query=${searchInput.current.value}&page=${pageNr}&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
-            console.log('result', data.results, 'length', data.results.length);
+            const { data } = await axios.get(`${API_URL}?query=${searchInput.current.value}&page=1&per_page=${IMAGES_PER_PAGE}&client_id=${API_KEY}`);
+            console.log('result', data.results, 'length', data.results.length, data, "data");
             const result = data.results;
             if (result.length === 0) {
                 setGuideH("Nothing found with that theme.");
@@ -176,7 +179,8 @@ const EditorPageV2 = () => {
             }
             else {
                 setImages(data.results);
-                setTotalPages(data.total_pages);
+                /* setTotalPages(data.total_pages);
+                console.log(data.total_pages, "totalpages") */
                 return result
             }
         }
@@ -196,6 +200,7 @@ const EditorPageV2 = () => {
             else {
                 setHatchImages(data.results);
                 setTotalPages(data.total_pages);
+                console.log(data.total_pages, "totalpages")
                 return result
             }
         }
