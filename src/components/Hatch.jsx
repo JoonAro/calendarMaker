@@ -48,7 +48,7 @@ const Hatch = ({ hatch, accessKey, hatchEditor }) => {
                     <div className="editorHatchImg" onClick={() => hatchEditor(hatch, "hatchImage")}>HatchImage</div>
                 </div>}
                 <div onClick={() => openHatch(hatch, accessKey)} className={`hatch ${hatch.hatchSide} ${clicked ? 'openStyle' : 'closedStyle'}`}>
-                    <p className="hatchNumber">{hatch.hatchNr.toString()}</p>
+                    <p className="hatchNumber">{hatch.hatchNr}</p>
                 </div>
             </div>
         </>

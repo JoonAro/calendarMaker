@@ -55,13 +55,13 @@ const CalendarPreview = () => {
         }
     };
 
-
-
-    // const httpsReference = ref(storage, 'https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg');
-
-    if (!calendar) {
-        return <p>Loading...</p>;
-    }
+    const copyToClipboard = () => {
+        navigator.clipboard.writeText(shareableLink).then(() => {
+            setLinkCopied(true);
+        }).catch(error => {
+            console.error('Error copying to clipboard:', error);
+        });
+    };
 
     return (
         <div>
