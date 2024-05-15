@@ -3,214 +3,103 @@ import SupervisedUserCircleIcon from '@mui/icons-material/SupervisedUserCircle';
 import PieChartIcon from '@mui/icons-material/PieChart';
 import { useEffect } from 'react';
 import { db } from "../auth/firebase";
-import { query, where, collection, getDocs } from 'firebase/firestore';
+import { query, collection, getDocs } from 'firebase/firestore';
 import { useState } from 'react';
 import UserData from '../components/dashboardComponents/UserData';
 import ContactForm from '../components/dashboardComponents/ContactFormData';
 
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../auth/firebase';
-
-
 
 const Dashboard = () => {
     const [amount, setAmount] = useState(null);
-    const [difference, setDifference] = useState(null);
     const [amountMessage, setAmountMessage] = useState(null);
-    const [differenceMessage, setDifferenceMessage] = useState(null);
     const [amountCalendars, setAmountCalendars] = useState(null);
-    const [differenceCalendars, setDifferenceCalendars] = useState(null);
-    const [user] = useAuthState(auth);
- 
 
-    useEffect(()=>{
+
+    useEffect(() => {
         fetchData();
         fetchMessageData();
         fetchCalendarsData();
-        }, []
-)
+    }, []
+    )
 
-const fetchData = async () =>{
-    // const today = new Date();
-    // const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
-    // const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
-    // console.log(lastMonth)
+    const fetchData = async () => {
+        const lastMonthQuery = query(collection(db, "users"))
+        const lastMonthData = await getDocs(lastMonthQuery);
+        setAmount(lastMonthData.docs.length);
+    }
 
-    const lastMonthQuery = query(collection(db,"users"))
-    // , where("timeStamp", "<=", today), where("timeStamp", ">", lastMonth));
+    const fetchMessageData = async () => {
+        const lastMonthQueryMessage = query(collection(db, "contactForm"));
+        const lastMonthDataMessage = await getDocs(lastMonthQueryMessage);
+        setAmountMessage(lastMonthDataMessage.docs.length);
+    }
 
-    // const prevMonthQuery = query(collection(db,"users"), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
-
-    const lastMonthData = await getDocs(lastMonthQuery);
-    // const prevMonthData = await getDocs(prevMonthQuery);
-
-    setAmount(lastMonthData.docs.length);
-
-//     if(prevMonthData.docs.length !== 0){
-//         setDifference(
-//             ((lastMonthData.docs.length - prevMonthData.docs.length) / prevMonthData.docs.length) * 100);
-//     }
-//    else {
-//     setDifference(100);
-//    }
- }
-
-const fetchMessageData = async() =>{
-    // const today = new Date();
-    // const lastMonth = new Date(new Date().setMonth(today.getMonth() - 1));
-    // const prevMonth = new Date(new Date().setMonth(today.getMonth() - 2));
-    const lastMonthQueryMessage = query(collection(db,"contactForm"));
-
-    // const prevMonthQueryMessage = query(collection(db,"contactForm"), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
-
-    const lastMonthDataMessage = await getDocs(lastMonthQueryMessage);
-    // const prevMonthDataMessage = await getDocs(prevMonthQueryMessage);
-
-    setAmountMessage(lastMonthDataMessage.docs.length);
-}
-
-
-
-// const fetchCalendarsData = async () => {
-//     try {
-//       const usersCollectionRef = collection(db, 'users');
-//       const querySnapshot = await getDocs(usersCollectionRef);
-     
-  
-//       querySnapshot.forEach(async (userDoc) => {
-//         const calendarCollectionRef = collection(userDoc.ref, 'calendar');
-//         const calendarsQuerySnapshot = await getDocs(calendarCollectionRef);
-//         totalCalendars += calendarsQuerySnapshot.size;
-//       });
-  
-//       setAmountCalendars(totalCalendars.docs.length);
-   
-//     } catch (error) {
-//       console.error('Error fetching calendars:', error);
-//     }
-//   };
-  
-// const fetchCalendarsData = async () => {
-//     try {
-//       const usersCollectionRef = query(collection(db, "users", "calendar"));
-//       const querySnapshot = await getDocs(usersCollectionRef);
-//       console.log(querySnapshot)
-//       const calendarData = querySnapshot.docs.map((doc)=>({
-//         id: doc.id,
-//         ...doc.data()
-//       }
-
-//       ))
-  
-//       setAmountCalendars(calendarData.length);
-//     } catch (error) {
-//       console.error('Error fetching calendars:', error);
-//     }
-//   };
-  
-const fetchCalendarsData = async () => {
-    const lastMonthQueryShareable = query(collection(db,"shareable"));
-    const lastMonthDataShareable = await getDocs(lastMonthQueryShareable);
+    const fetchCalendarsData = async () => {
+        const lastMonthQueryShareable = query(collection(db, "shareable"));
+        const lastMonthDataShareable = await getDocs(lastMonthQueryShareable);
         setAmountCalendars(lastMonthDataShareable.docs.length);
-   console.log("Shareable", lastMonthDataShareable.docs.length)
-};
+    };
 
 
 
-// const fetchCalendarsData = async() =>{
+    return (
+        <div className='p-4 font-sans'>
+            <div className='flex gap-4 w-full flex-wrap'>
+                <div className=' rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
+
+                    <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
+                        <SupervisedUserCircleIcon style={{ fontSize: '3rem' }} />
+                    </div>
+
+                    <div className="pl-4">
+                        <span className="text-lg text-gray-500 font-light">Users</span>
+                        <div className="flex items-center">
+                            <strong className="text-xl text-gray-700 font-semibold">{amount}</strong>
+
+                        </div>
+                    </div>
+                </div>
 
 
-//     const usersQuerySnapshot = await getDocs(collection(db, 'users'));
+                <div className='rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
+                    <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
+                        <AccessTimeFilledIcon style={{ fontSize: '3rem' }} />
+                    </div>
+                    <div className="pl-4">
+                        <span className="text-sm text-gray-500 font-light">Shared calendars</span>
+                        <div className="flex items-center">
+                            <strong className="text-xl text-gray-700 font-semibold">{amountCalendars}</strong>
+                        </div>
+                    </div>
+                </div>
 
-//     let totalCalendars = 0;
-
-//     // Iterate through each user document
-//     usersQuerySnapshot.forEach(userDoc => {
-//         // Get the 'calendars' subcollection of the current user document
-//         const calendarsQuerySnapshot = getDocs(collection(userDoc.ref, 'calendars'));
-        
-//         // Increment the total number of calendars by the number of documents in the 'calendars' subcollection
-//         totalCalendars += calendarsQuerySnapshot.size;
-//     });
-
-    // const lastMonthQueryCalendars = query(collection(db,`users/calendar`), where("timeStamp", "<=", today), where("timeStamp", ">", lastMonth));
-
-    // const prevMonthQueryCalendars = query(collection(db,`users/calendar`), where("timeStamp", "<=", lastMonth), where("timeStamp", ">", prevMonth));
-
-    // const lastMonthDataMessages = await getDocs(lastMonthQueryCalendars);
-    // const prevMonthDataMessages = await getDocs(prevMonthQueryCalendars);
-
-    // setAmountCalendars(totalCalendars);
-
-//     if(prevMonthDataMessages.docs.length !== 0){
-//         setDifference(
-//             ((lastMonthDataMessages.docs.length - prevMonthDataMessages.docs.length) / prevMonthDataMessages.docs.length) * 100);
-//     }
-//    else {
-//     setDifferenceCalendars(100);
-//    }
-
-
-  return (
-    <div className='p-4 font-sans'>
-    <div className='flex gap-4 w-full flex-wrap'>
-        <div className=' rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
-
-        <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
-            <SupervisedUserCircleIcon style={{ fontSize: '3rem'}} />
+                <div className='rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
+                    <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
+                        <PieChartIcon style={{ fontSize: '3rem' }} />
+                    </div>
+                    <div className="pl-4">
+                        <span className="text-lg text-gray-500 font-light">Messages</span>
+                        <div className="flex items-center">
+                            <strong className="text-xl text-gray-700 font-semibold">{amountMessage}</strong>
+                        </div>
+                    </div>
+                </div>
             </div>
-        
-    <div className="pl-4">
-        <span className="text-lg text-gray-500 font-light">Users</span>
-        <div className="flex items-center">
-            <strong className="text-xl text-gray-700 font-semibold">{amount}</strong>
-          
-        </div>
-    </div>
-        </div>
 
 
-        <div className='rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
-        <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
-            <AccessTimeFilledIcon style={{ fontSize: '3rem'}} />
+            <div className='flex justify-center flex-wrap flex-col gap-4 md:flex-row w-full mt-7'>
+                <div className='flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200  '>
+                    <UserData />
+                </div>
+
+                <div className='flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200'>
+                    <ContactForm />
+                </div>
+
             </div>
-    <div className="pl-4">
-        <span className="text-sm text-gray-500 font-light">Shared calendars</span>
-        <div className="flex items-center">
-            <strong className="text-xl text-gray-700 font-semibold">{amountCalendars}</strong>
-        </div>
-    </div>
-        </div>
 
-        <div className='rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
-        <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
-            <PieChartIcon style={{ fontSize: '3rem'}} />
-            </div>
-    <div className="pl-4">
-        <span className="text-lg text-gray-500 font-light">Messages</span>
-        <div className="flex items-center">
-            <strong className="text-xl text-gray-700 font-semibold">{amountMessage}</strong>
         </div>
-    </div>
-        </div>
-        </div>
-
-
-        <div className='flex justify-center flex-wrap flex-col gap-4 md:flex-row w-full mt-7'>
-           <div className='flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200  '>
-       <UserData />
-              </div>
-            
-            <div className='flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200'>
-            <ContactForm/>
-            </div>
-            
-        </div>
-      
-        </div>
-        
-      
-  )
+    )
 }
 
 export default Dashboard

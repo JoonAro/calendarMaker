@@ -4,13 +4,13 @@ import '../styles/editorV2Styles.css';
 const today = new Date();
 const todayISO = today.toISOString();
 
-const DoubleHatch = ({ hatch, accessKey, hatchEditor }) => {
+const DoubleHatch = ({ hatch, accessHatch, hatchEditor }) => {
     const [clicked, setClicked] = useState(false);
     const [showImage, setShowImage] = useState(false);
 
     const openHatch = (hatch) => {
         const dateCheck = handleTime(hatch);
-        if (dateCheck === true || accessKey) {
+        if (dateCheck === true || accessHatch) {
             setClicked(!clicked);
             if (!clicked) {
                 setShowImage(!showImage);
@@ -19,7 +19,7 @@ const DoubleHatch = ({ hatch, accessKey, hatchEditor }) => {
             setTimeout(() => setShowImage(!showImage), 1000);
         }
         else {
-            alert("Naughty!");
+            alert(`This hatch is locked until ${hatch.date}.`);
         }
     }
 
@@ -41,12 +41,14 @@ const DoubleHatch = ({ hatch, accessKey, hatchEditor }) => {
         <div style={{
             backgroundImage: showImage ? `url("${hatch.hatchImg}")` : 'url("")'
         }} className={`calendarImage `}>
-            {accessKey && <div className="editorHatch" >
+            {accessHatch && <div className="editorHatch" >
                 <div className="editorHatchType" onClick={() => hatchEditor(hatch, "hatchType")}>HatchType</div>
                 <div className="editorHatchImg" onClick={() => hatchEditor(hatch, "hatchImage")}>HatchImage</div>
             </div>}
             <div onClick={() => openHatch(hatch)} className={`hatch left ${clicked ? 'openStyle' : 'closedStyle'}`}>
-                <p className="hatchNumber">{hatch.hatchNr}</p>
+                <div className="hatchDate">
+                    <p className="hatchNumber">{hatch.nrOrDate}</p>
+                </div>
             </div>
             <div onClick={() => openHatch(hatch)} className={`hatch right ${clicked ? 'openStyle' : 'closedStyle'}`}>
             </div>

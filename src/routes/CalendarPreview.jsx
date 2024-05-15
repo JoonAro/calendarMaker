@@ -76,7 +76,7 @@ const CalendarPreview = () => {
                                 className={`w-36 border border-transparent ${linkGenerated ? 'bg-accentColor-light' : 'bg-accentColor-light'} p-2 rounded-lg hover:bg-accentColor-light text-fontDark hover:text-white cursor-pointer`}
                                 disabled={linkGenerated}
                             >
-                                {linkGenerated ? "Copy link below" : "Generate Shareable Link"}
+                                {linkGenerated ? "Copy link ⇨" : "Generate Shareable Link"}
                             </button>
                             {linkGenerated && (
                                 <>
@@ -102,7 +102,7 @@ const CalendarPreview = () => {
                     {calendar?.data?.hatches?.map(hatch => {
                         let hatchKey = hatch.hatchNr;
                         let hatchType = hatch.hatchType;
-                        return hatchType === 'single' ? <FakeSHatch key={hatchKey} hatch={hatch} accessKey={false} /> : <FakeDblHatch key={hatchKey} hatch={hatch} accessKey={false} />;
+                        return hatchType === 'single' ? <FakeSHatch key={hatchKey} hatch={hatch} accessHatch={false} /> : <FakeDblHatch key={hatchKey} hatch={hatch} accessHatch={false} />;
                     })}
                 </div>
                 <div className='spaceHolder'></div>

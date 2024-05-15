@@ -44,9 +44,11 @@ const HatchImageCatalogue = ({ images, hatchImages, hatchSearchInput, handleHatc
                     })}
                 {hatchSearch &&
                     hatchImages.map(hatchImg => {
-                        return <div className="catalogueImage" key={hatchImg.id} onClick={() => handleHatchImgSelect(hatchImg)} style={{
-                            backgroundImage: `url(${hatchImg.urls.regular})`
-                        }}>Click to save as new hatch image.</div>
+                        return <div className="catalogueImageHolder" key={hatchImg.id}>Click to save as new hatch image.
+                            <div className="catalogueImage" onClick={() => handleHatchImgSelect(hatchImg)} style={{
+                                backgroundImage: `url(${hatchImg.urls.regular})`
+                            }}></div>
+                        </div>
                     })}
             </div>
         </div>
