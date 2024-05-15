@@ -1,4 +1,4 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const cookieStorage = {
   getItem: (item) => {
@@ -9,7 +9,7 @@ const cookieStorage = {
     return cookies[item];
   },
   setItem: (item, value) => {
-    document.cookie = `${item}=${value};`;
+    document.cookie = `${item}=${value};path=/;`;
   }
 }
 
@@ -23,8 +23,8 @@ const ConsentPopup = ({ onAccept, onReject }) => {
       <div className="bg-smallBackground-light p-4 rounded-lg">
         <p className="text-lg">This website uses cookies to ensure you get the best experience on our website.</p>
         <div className="flex  mt-4">
-          <button id="accept" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mr-8" onClick={onAccept}>Accept</button>
-          <button id="reject" className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600" onClick={handleReject}>Reject</button>
+          <button id="accept" className="bg-mainBackground-light text-white py-2 px-4 rounded hover:bg-blue-600 mr-8" onClick={onAccept}>Accept</button>
+          <button id="reject" className="bg-mainBackground-light text-white py-2 px-4 rounded hover:bg-red-600" onClick={handleReject}>Reject</button>
         </div>
       </div>
     </div>
@@ -33,30 +33,30 @@ const ConsentPopup = ({ onAccept, onReject }) => {
 
 const Cookies = () => {
   const [showPopup, setShowPopup] = useState(false);
-  const [accepted, setAccepted] = useState(false);
+  const [consentGiven, setConsentGiven] = useState(false);
 
   const shouldShowPopup = () => !cookieStorage.getItem('jdc_consent');
-  const saveToStorage = () => cookieStorage.setItem('jdc_consent', true);
+  const saveToStorage = (value) => cookieStorage.setItem('jdc_consent', value);
 
   const acceptFn = () => {
-    saveToStorage();
+    saveToStorage('accepted');
     setShowPopup(false);
-    setAccepted(true);
+    setConsentGiven(true);
   }
 
   const rejectFn = () => {
-    // Prevent saving cookies to local storage
+    saveToStorage('rejected');
     setShowPopup(false);
-    setAccepted(true);
+    setConsentGiven(true);
   }
 
   useEffect(() => {
-    if (shouldShowPopup() && !accepted) {
+    if (shouldShowPopup() && !consentGiven) {
       setTimeout(() => {
         setShowPopup(true);
       }, 2000);
     }
-  }, [accepted]);
+  }, [consentGiven]);
 
   return (
     <div className="relative">

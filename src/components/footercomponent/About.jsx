@@ -1,10 +1,10 @@
-import  { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const SingleBanner = ({ bannerimage, heading }) => {
   return (
-    <div className='relative w-full h-96 overflow-hidden'>
+    <div className='relative w-full h-[70vh] overflow-hidden'>
       <div className='absolute top-0 left-0 w-full h-full bg-mainBackground-light opacity-50'></div>
-      <img className='object-cover w-full h-full' src={bannerimage} alt='noimg' />
+      <img className='w-100 h-100' src={bannerimage} alt='noimg' />
       <div className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center'>
         <h1 className='text-white text-6xl md:text-3xl'>{heading}</h1>
       </div>
@@ -22,7 +22,7 @@ const FAQ = () => {
   const faq = [
     {
       id: 1,
-      question: 'What is Dream calender?',
+      question: 'What is Dream calendar?',
       answer: 'We are a team of full-stack web developers who created a calendar web application as part of our studies at Helsinki Business School College. Our goal was to design and develop a user-friendly and efficient calendar tool to help users organize their schedules effectively.<br><br>Our calendar web application allows users to easily manage their events, appointments, and tasks. With intuitive features and a clean interface, users can add, edit, and delete events, set reminders, and view their schedule in various formats.'
     },
     {
@@ -44,7 +44,7 @@ const FAQ = () => {
     },
     {
       id: 4,
-      question: 'Where is the purpose of the Dream calender ?',
+      question: 'What is the purpose of the Dream calendar?',
       answer: 'The purpose of the Dream Calendar is to provide a user-friendly and customizable calendar solution for everyone it is designed by group of four student of Helsinki Business College. The project was assigned to our team for a duration of 9 weeks, and the completion deadline is set for May 17, 2024. Our goal with the Dream Calendar project is to create a comprehensive calendar platform that meets the needs of buyer, allowing them to organize their schedules effectively and efficiently.<br><br>By offering features such as customizable styling, event creation, and sharing capabilities, we aim to enhance the scheduling experience for users.'
     },
     {
@@ -57,7 +57,7 @@ const FAQ = () => {
   return (
     <div className='extrapage'>
       <SingleBanner
-        bannerimage='https://images.unsplash.com/photo-1584433144859-1fc3ab64a957?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1630&q=80'
+        bannerimage='https://images.unsplash.com/photo-1606857521015-7f9fcf423740?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
         heading="About Us"
       />
 
@@ -90,4 +90,4 @@ const FAQ = () => {
   )
 }
 
-export default FAQ
+export default FAQ;
