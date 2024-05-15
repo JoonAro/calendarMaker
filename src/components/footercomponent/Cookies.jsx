@@ -20,7 +20,7 @@ const ConsentPopup = ({ onAccept, onReject }) => {
 
   return (
     <div id="consent-popup" className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-75">
-      <div className="bg-smallBackground-light p-8 rounded-lg">
+      <div className="bg-smallBackground-light p-4 rounded-lg">
         <p className="text-lg">This website uses cookies to ensure you get the best experience on our website.</p>
         <div className="flex  mt-4">
           <button id="accept" className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 mr-8" onClick={onAccept}>Accept</button>
