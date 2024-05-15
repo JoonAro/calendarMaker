@@ -47,11 +47,11 @@ const [currentPage, setCurrentPage] = useState(1);
     return (
         <>
         <div>
-            <strong className='font-medium text-fontDark'>Users</strong>
+            <strong className='text-lg font-medium text-fontDark-light'>Users</strong>
             <div className="w-min md:w-full border-gray-200 rounded-sm mt-3">
 
                 <table className='text-fontDark border-separate border-spacing-1 md:border-spacing-5 border border-slate-400 '>
-                    <thead className=' border border-slate-300 text-transform:  bg-accentColor'>
+                    <thead className=' border border-slate-300 text-transform:  bg-accentColor-light'>
                         <tr >
                             <th className="text-xs md:text-base lg:text-lg">ID</th>
                             <th className="text-xs md:text-base lg:text-lg">Name</th>
