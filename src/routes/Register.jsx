@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { auth, registerWithEmailAndPassword } from "../auth/firebase";
 import Avatar from "../components/Avatar";
 import { signInWithGoogle } from "../auth/firebase";
-import Cookies from "../components/footercomponent/Cookies";
+
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -111,7 +111,7 @@ const Register = () => {
 
         </div>
       </div>
-      <Cookies />
+      
     </div>
   )
 };

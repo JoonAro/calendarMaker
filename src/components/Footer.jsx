@@ -24,9 +24,6 @@ const Footer = () => {
         </li>
 
         <li>
-
-        </li>
-        <li>
           <Link to="terms">
             <Button variant="contained" className={`${whiteReplacement}  text-l`}>Terms</Button>
           </Link>
