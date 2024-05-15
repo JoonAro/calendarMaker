@@ -110,8 +110,8 @@ const Terms = () => {
 
           {/* Accept and Cancel buttons */}
           <div className="flex justify-center">
-            <Link to="/" className="bg-accentColor-light text-white px-4 py-2 rounded-md hover:bg-green-600 mr-4">Continue</Link>
-            <Link to="/" className="bg-accentColor-light text-white px-4 py-2 rounded-md hover:bg-red-600 ml-4">Cancel</Link>
+            <Link to="/" className="bg-mainBackground-light text-white px-4 py-2 rounded-md hover:bg-green-600 mr-4">Continue</Link>
+            <Link to="/" className="bg-mainBackground-light text-white px-4 py-2 rounded-md hover:bg-red-600 ml-4">Cancel</Link>
           </div>
         </div>
       </div>
