@@ -23,6 +23,8 @@ import Footer from "./components/Footer";
 import { ThemeProvider } from "./components/theme/ThemeContext";
 import Shareable from "./routes/Shareable"
 import Terms from "./components/footercomponent/Terms";
+import Feedback from "./components/footercomponent/Feedback";
+
 
 function App() {
 
@@ -97,6 +99,12 @@ function App() {
                 element={
                   <Privacy />
                 }
+              />
+              <Route
+              path="/feedback"
+              element={
+                <Feedback />
+              }
               />
               <Route
                 path="/cookies"
