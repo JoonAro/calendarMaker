@@ -7,7 +7,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { logout } from '../auth/firebase';
 import { useNavigate } from 'react-router-dom';
 import Avatar from './Avatar';
-import icon2 from '../assets/icon2.svg';
+import logo from '/public/logo.png';
 import { useTheme } from './theme/ThemeContext';
 import ThemeToggle from './theme/ThemeToggle';
 
@@ -16,7 +16,6 @@ import ThemeToggle from './theme/ThemeToggle';
 
 const Header = () => {
     const { theme } = useTheme();
-    console.log('Received theme in Header:', theme);
     const smallBackground = theme === 'dark' ? 'bg-smallBackground-dark' : 'bg-smallBackground-light';
     const whiteReplacement = theme === 'dark' ? 'text-whiteReplacement-dark' : 'text-whiteReplacement-light';
     const fontDark = theme === 'dark' ? 'text-fontDark-dark' : 'text-fontDark-light';
@@ -32,11 +31,9 @@ const Header = () => {
         const getUserData = async () => {
             if (user) {
                 if (user.providerData && user.providerData[0]?.providerId === "google.com") {
-                    // User logged in with Google, get name from provider data
                     setName(user.providerData[0]?.displayName);
                     setAvatar(user.providerData[0]?.photoURL);
                 } else {
-                    // User logged in with email/password or another provider, fetch name from Firestore
                     const q = query(collection(db, "users"), where("uid", "==", user?.uid));
                     const querySnapshot = await getDocs(q);
                     querySnapshot.forEach((doc) => {
@@ -46,10 +43,10 @@ const Header = () => {
                 }
             }
         };
-    
+
         getUserData();
     }, [user]);
-    
+
 
     return (
         <Container fluid >
@@ -58,7 +55,7 @@ const Header = () => {
 
                     <Link to="/"
                     >   <img className='h-16 ml-2.5 ml-hover:-translate-y-1 hover:scale-110'
-                        src={icon2}
+                        src={logo}
                         alt="logo"
                         />
                     </Link>

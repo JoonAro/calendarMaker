@@ -9,6 +9,16 @@
     --hider: 1;
 }
 
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    outline: none;
+    cursor: pointer;
+}
+
 p {
     font-size: x-large;
 }
@@ -16,9 +26,9 @@ p {
 .sidebar {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: left;
     height: 100%;
-    width: 250px;
+    width: 220px;
     background-color: rgba(103, 89, 94, 0);
     overflow: hidden;
     /* position: fixed;
@@ -36,8 +46,21 @@ p {
 .filters {
     padding: calc(20px * var(--hider));
     width: calc(220px *var(--hider));
-    border-top: 1px solid black;
     overflow: inherit;
+}
+
+.sidebarButton {
+    width: 180px;
+    /* width: calc(200px *var(--hider)); */
+    overflow: inherit;
+}
+
+.sidebarButton:hover {
+    width: 180px;
+    /* width: calc(200px *var(--hider)); */
+    overflow: inherit;
+    color: whitesmoke;
+    cursor: pointer;
 }
 
 .themeHolder {

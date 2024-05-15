@@ -1,0 +1,33 @@
+name: Node CI
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+
+        uses: actions/checkout@v3
+
+        with:
+          persist-credentials: false
+
+      - name: Install 🔧
+
+        run: npm install
+
+      - name: Lint 🧐
+
+        run: npm run lint
+
+      - name: Build 🏗️
+
+        run: npm run build
+
+      - name: Test 🚨
+
+        run: npm test

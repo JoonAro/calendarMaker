@@ -1,7 +1,6 @@
 import Carousel from '../components/Carousel';
 import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import icon3 from '../assets/icon3.svg';
-import icon4 from '../assets/icon4.svg';
 import { Link } from 'react-router-dom';
 import icon5 from '../assets/icon5.svg';
 import { useTheme } from '../components/theme/ThemeContext';
@@ -33,8 +32,8 @@ const Home = () => {
 
         <div className={`${smallBackground} py-11 mt-5 mr-0 ml-0 border relative`} style={{ width: "100%" }}>
 
-          <div className='flex flex-col justify-center items-center text-3xl mb-4 text-fontDark-light'>
-            <h2 className="text-4xl mb-11 text-fontDark-light">Customize your calendar</h2>
+          <div className={`flex flex-col justify-center items-center text-3xl mb-4 ${fontDark}`}>
+            <h2 className={`text-lg md:text-4xl mb-11 `}>Customize your calendar</h2>
           </div>
 
           <div className='flex justify-between mb-9'>
@@ -62,8 +61,8 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Row className="mt-5 mr-0 mr-l0s" style={{ padding: "2rem" }}>
-        <Col className="d-flex justify-content-center">
+      <Row className="mt-5 mr-l0s" style={{ padding: "2rem" }}>
+        <Col className="d-flex justify-content-center" style={{ marginLeft: "5rem" }}>
           <Card style={{ margin: "1rem", padding: "1rem", minWidth: '18rem', height: "20rem" }}>
             <Card.Body>
               <Card.Title>Free Plan</Card.Title>
@@ -83,7 +82,7 @@ const Home = () => {
         </Col>
 
 
-        <Col className="d-flex justify-content-center" style={{ padding: "0 1rem" }}>
+        <Col className="d-flex justify" style={{ padding: "0 1rem" }}>
           <Card style={{ margin: "1rem", padding: "1rem", minWidth: '18rem', height: "20rem" }}>
             <Card.Body>
               <Card.Title>Premium Plan</Card.Title>
@@ -105,43 +104,43 @@ const Home = () => {
 
         <div className={`${smallBackground} flex flex-col justify-center items-center mt-20 w-full py-20 rounded-md mb-4`}>
           <div className='flex flex-col justify-center items-center'>
-            <h1 className={`${fontDark} text-sm md:text-2xl lg:text-3xl underline decoration-accentColor-light`}>Behind the Project</h1>
-            <p className={`${fontDark} text-sm md:text-lg lg:text-lg opacity-75 mt-7`}>This project was created by a team of enthusiastic full-stack web developer students </p>
-            <p className={`${fontDark} text-sm md:text-lg lg:text-lg opacity-75`}>at Business College in Helsinki.</p>
+            <h1 className={`${fontDark} text-lg md:text-4xl`}>Behind the Project</h1>
+            <p className={`${fontDark} text-xs md:text-lg lg:text-lg opacity-75 mt-7`}>This project was created by a team of enthusiastic full-stack web developer students </p>
+            <p className={`${fontDark} text-xs md:text-lg lg:text-lg opacity-75`}>at Business College in Helsinki.</p>
 
-            <div className="grid grid-cols-4 gap-4 mt-8">
-            <div className="relative">
-    <img className='h-28 w-28 object-contain rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo1} alt="Michel" />
-    <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5 rounded-lg">Michel</p>
-</div>
+            <div className="grid grid-cols-4 gap-x-3 md:gap-x-6 mt-8">
+              <div className="relative ">
+                <img className='h-36 w-28 object-cover rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo1} alt="Michel" />
+                <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5 rounded-lg">Michel</p>
+              </div>
 
-<div className="relative">
-    <img className='h-28 w-28 object-contain rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo2} alt="Samuel" />
-    <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5">Samuel</p>
-    </div>
+              <div className="relative ">
+                <img className='h-36 w-28 object-cover rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo2} alt="Samuel" />
+                <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5 rounded-xl">Samuel</p>
+              </div>
 
-    <div className="relative">
-    <img className='h-28 w-28 object-cover rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo3} alt="Joona" />
-    <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5">Joona</p>
-    </div>
+              <div className="relative ">
+                <img className='h-36 w-28 object-cover rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo3} alt="Joona" />
+                <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5 rounded-xl">Joona</p>
+              </div>
 
-    <div className="relative">
-    <img className='h-28 w-28 object-cover rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo4} alt="Alona" />
-    <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5 rounded-xl">Alona</p>
-    </div>
+              <div className="relative">
+                <img className='h-36 w-28 object-cover rounded-xl drop-shadow-lg hover:-translate-y-0.5 hover:scale-125' src={photo4} alt="Alona" />
+                <p className="absolute bottom-0 left-0 right-0 text-sm text-center bg-black bg-opacity-50 text-white py-0.5 rounded-xl">Alona</p>
+              </div>
             </div>
 
 
-        
+
             <p className={`${fontDark} text-xs lg:text-sm opacity-75 mt-7`}>If you have anything to share, we would love to hear from you!</p>
           </div>
           <Link to='/contact'>
-            <Button className='button mt-7'>Contact us</Button>
+            <Button style={{ backgroundColor: "#67595E", borderColor: "#67595E" }} className=' mt-7'>Contact us</Button>
           </Link>
-         
+
         </div>
       </Row >
-  <Cookies />
+      <Cookies />
     </Container >
   );
 };
