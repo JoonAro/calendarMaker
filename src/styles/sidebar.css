@@ -29,7 +29,6 @@ p {
     align-items: left;
     height: 100%;
     width: 220px;
-    background-color: rgba(103, 89, 94, 0);
     overflow: hidden;
     /* position: fixed;
     left: 0; */
@@ -53,6 +52,7 @@ p {
     width: 180px;
     /* width: calc(200px *var(--hider)); */
     overflow: inherit;
+    
 }
 
 .sidebarButton:hover {
