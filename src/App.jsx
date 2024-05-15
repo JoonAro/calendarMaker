@@ -23,7 +23,7 @@ import Footer from "./components/Footer";
 import { ThemeProvider } from "./components/theme/ThemeContext";
 import Shareable from "./routes/Shareable"
 import Terms from "./components/footercomponent/Terms";
-
+import Faq from "./components/footercomponent/Faq";
 function App() {
 
   return (
@@ -84,6 +84,12 @@ function App() {
                 path="/contact"
                 element={
                   <Contact />
+                }
+              />
+              <Route 
+                path="/faq"
+                element={
+                  <Faq />
                 }
               />
               <Route
