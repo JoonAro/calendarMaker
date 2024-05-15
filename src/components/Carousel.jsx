@@ -28,13 +28,13 @@ export default function Carousel() {
           <img src={image2} alt="Coffee" className="imageSlide" />
         </div>
         <div className="slide three">
-          <img src={image3} className="imageSlide h-auto" />
+          <img src={image3} className="imageSlide" />
         </div>
         <div className="slide four">
           <img src={image4} className="imageSlide" />
         </div>
         <div className="slide five">
-          <img src={image5} className="imageSlide h-auto" />
+          <img src={image5} className="imageSlide" />
         </div>
       </div>
       <div className="navigation">

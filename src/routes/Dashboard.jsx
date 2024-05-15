@@ -47,14 +47,14 @@ const Dashboard = () => {
             <div className='flex gap-4 w-full flex-wrap'>
                 <div className=' rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
 
-                    <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
+                    <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor-light">
                         <SupervisedUserCircleIcon style={{ fontSize: '3rem' }} />
                     </div>
 
                     <div className="pl-4">
                         <span className="text-lg text-gray-500 font-light">Users</span>
                         <div className="flex items-center">
-                            <strong className="text-xl text-gray-700 font-semibold">{amount}</strong>
+                            <strong className="text-xl text-fontDark-light font-semibold">{amount}</strong>
 
                         </div>
                     </div>
@@ -62,25 +62,25 @@ const Dashboard = () => {
 
 
                 <div className='rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
-                    <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
+                    <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor-light">
                         <AccessTimeFilledIcon style={{ fontSize: '3rem' }} />
                     </div>
                     <div className="pl-4">
-                        <span className="text-sm text-gray-500 font-light">Shared calendars</span>
+                        <span className="text-lg text-gray-500 font-light">Shared calendars</span>
                         <div className="flex items-center">
-                            <strong className="text-xl text-gray-700 font-semibold">{amountCalendars}</strong>
+                            <strong className="text-xl text-fontDark-light font-semibold">{amountCalendars}</strong>
                         </div>
                     </div>
                 </div>
 
                 <div className='rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
-                    <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor">
+                    <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor-light">
                         <PieChartIcon style={{ fontSize: '3rem' }} />
                     </div>
                     <div className="pl-4">
                         <span className="text-lg text-gray-500 font-light">Messages</span>
                         <div className="flex items-center">
-                            <strong className="text-xl text-gray-700 font-semibold">{amountMessage}</strong>
+                            <strong className="text-xl text-fontDark-light font-semibold">{amountMessage}</strong>
                         </div>
                     </div>
                 </div>
