@@ -33,6 +33,12 @@ const Footer = () => {
           </Link>
         </li>
         <li>
+          <Link to="faq">
+            <Button variant="contained" className={`${whiteReplacement}  text-l`}>
+              FAQ</Button>
+          </Link>
+          </li>
+        <li>
           <Link to="terms">
             <Button variant="contained" className={`${whiteReplacement}  text-l`}>Terms</Button>
           </Link>
