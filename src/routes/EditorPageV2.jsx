@@ -426,7 +426,6 @@ const EditorPageV2 = () => {
             <BackToTop />
             <div className="editorHolder">
                 <div className="sideColumn">
-                    <ShowSidebarButton />
                     <Sidebar
                         handleSearch={handleSearch}
                         searchInput={searchInput}
@@ -436,7 +435,9 @@ const EditorPageV2 = () => {
                         hatchNumber={hatchNumber}
                         radioHandler={radioHandler}
                         goBackInEditor={goBackInEditor}
+
                     />
+
                 </div>
                 <div className="content">
                     {!bool2 && !hatchEdit && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} time={time} handleDatePick={handleDatePick} hatchEdit={hatchEdit} handleHatchImgSelect={handleHatchImgSelect} handleSelection={handleSelection} />

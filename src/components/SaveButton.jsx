@@ -2,6 +2,7 @@ import 'firebase/firestore';
 import { useDispatch, useSelector } from 'react-redux';
 import { addDataToFirestore, auth } from '../auth/firebase';
 import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 
 const SaveButton = () => {
@@ -21,13 +22,11 @@ const SaveButton = () => {
 
     return (
         <Link to="/collection">
-            <button
-                type="submit"
-                className="w-36 border border-transparent bg-mainBackground p-2 rounded-lg mb-6 hover:bg-accentColor text-fontDark hover:text-white"
+            <Button className="w-36 border border-transparent bg-mainBackground-light p-2 rounded-lg hover:bg-accentColor-light text-fontDark hover:text-white mt-6"
                 onClick={() => { dispatch(saveCalendarFirestore) }}
             >
                 Next
-            </button>
+            </Button>
         </Link>
     )
 };

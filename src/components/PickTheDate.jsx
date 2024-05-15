@@ -44,7 +44,7 @@ const PickTheDate = ({ searchInput, handleSearch, handleStartDate, handleEndDate
                                 />
                             </div>
                         </div>
-                        <div className='h-16 mt-6 flex items-end justify-end'>
+                        <div className='h-16 mb-2 flex items-end justify-end'>
                             <ButtonComponent handleDatePick={handleDatePick}>
                                 <h1>Submit</h1>
                             </ButtonComponent>
