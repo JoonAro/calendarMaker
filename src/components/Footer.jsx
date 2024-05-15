@@ -42,6 +42,11 @@ const Footer = () => {
             <Button variant="contained" className={`${whiteReplacement}  text-l`}>Premium</Button>
           </Link>
         </li>
+        <li>
+          <Link to="/feedback">
+            <Button variant="contained" className={`${whiteReplacement}  text-l`}>feed back</Button>
+          </Link>
+        </li>
       </ul>
     </footer>
   );
