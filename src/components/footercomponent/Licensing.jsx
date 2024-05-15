@@ -1,14 +1,28 @@
-const Licensing = () => {
-    return (
-        <div className="flex items-center justify-center min-h-screen bg-mainBackground">
-            <div className="relative flex flex-col m-6 space-y-8 md:flex-row md:space-y-0 items-start">
-                <div className="flex flex-col justify-center p-8 md:p-14">
-                    <h1 className="text-4xl font-bold text-up text-black mt-5">About</h1>
-                    <p className="mt-2">This is a calendar maker app. Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe rem necessitatibus sint explicabo eius quaerat earum, autem sit temporibus. Ratione, quasi earum quis quas minus nostrum ipsa dolorum veritatis deserunt. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloribus in iure qui ab laboriosam enim repellendus voluptatem iusto consectetur earum aliquid, modi distinctio ipsam recusandae ea? Voluptates sed ea neque!l Lorem ipsum dolor sit amet consectetur adipisicing elit. Quidem fugiat tenetur accusantium consectetur debitis quae dolores neque cum facere et, dolor non amet tempora id? Vel laboriosam ut inventore reprehenderit.</p>
-                </div>
-            </div>
-        </div>
-    );
-}
+import React from 'react';
 
-export default Licensing;
+const License = () => {
+  return (
+    <div className=" min-h-screen py-12 px-4">
+      <div className="ml-16 max-w-8xl ">
+        <h1 className="text-3xl font-bold mb-8 text-center"></h1>
+    
+            <p className="mb-6 text-xl uppercase">MIT License</p>
+            <p className="mb-6 text-base">
+              THE LICENSING FOR DREAM CALENDAR WEBSITE IS DESIGNED TO SUPPORT ITS PURPOSE AS A CUSTOMIZABLE CALENDAR PLATFORM. DREAM CALENDAR ALLOWS USERS TO PERSONALIZE THEIR CALENDARS BY EDITING THE BACKGROUND IMAGE, ADJUSTING THE NUMBER OF DATES DISPLAYED, AND ADDING HATCHES FOR IMPORTANT EVENTS. ADDITIONALLY, USERS CAN EASILY SHARE THEIR CUSTOMIZED CALENDARS WITH LOVED ONES, FOSTERING CONNECTION AND COLLABORATION.
+            </p>
+            <p className="mb-6 text-base">
+              UNDER OUR LICENSING TERMS, WE PROVIDE USERS WITH THE FREEDOM TO USE AND MODIFY THE CALENDAR SOFTWARE FOR THEIR PERSONAL AND PROFESSIONAL NEEDS. HOWEVER, ANY MISUSE OF OUR CODE, NAME, OR BRANDING IS STRICTLY PROHIBITED. THIS INCLUDES COPYING OUR CODE OR NAME FOR UNAUTHORIZED USE, AS WELL AS ATTEMPTING TO COPYRIGHT OUR BRAND.
+            </p>
+            <p className="mb-6 text-base">
+              FURTHERMORE, ATTEMPTS TO CRACK THE WEBSITE TO GAIN UNLIMITED CALENDAR EDITING WITHOUT A PREMIUM PLAN ARE ALSO PROHIBITED. PREMIUM FEATURES, SUCH AS UNLIMITED CALENDAR EDITING AND SHARING OPTIONS, ARE RESERVED FOR USERS WITH PREMIUM SUBSCRIPTIONS. SHARING THE WEBSITE LINK FOR PREMIUM USERS IS ALLOWED AS PER OUR LICENSING TERMS.
+            </p>
+            <p className="mb-6 text-base">
+              VIOLATION OF THESE RULES WILL RESULT IN CONSEQUENCES, AS THOSE RESPONSIBLE FOR SUCH ACTIONS WILL BE HELD ACCOUNTABLE FOR THEIR MISCONDUCT. WE ARE COMMITTED TO PROTECTING OUR PLATFORM AND ENSURING FAIR AND RESPECTFUL USE BY ALL USERS.
+            </p>
+          </div>
+        </div>
+      
+  );
+};
+
+export default License;
