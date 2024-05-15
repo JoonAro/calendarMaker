@@ -42,7 +42,7 @@ const Shareable = () => {
             <div className="EditorHolder">
                 <div className="calendarContent">
                     <div className="spaceHolder"></div>
-                    <div className="calendarGridHolder" style={{ backgroundImage: `url(${calendar.data.data.bgImage})` }}>
+                    <div className="gridHolderPreview" style={{ backgroundImage: `url(${calendar.data.data.bgImage})` }}>
                         {calendar.data.data?.hatches?.map(hatch => {
                             let hatchKey = hatch.hatchNr;
                             let hatchType = hatch.hatchType;
