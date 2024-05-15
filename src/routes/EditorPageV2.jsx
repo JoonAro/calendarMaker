@@ -28,6 +28,7 @@ const EditorPageV2 = () => {
     const [bool2, setBool2] = useState(false);
     const [bool3, setBool3] = useState(false);
     const [bool4, setBool4] = useState(false);
+    const [calendarCreated, setCalendarCreated] = useState(false);
     const [time, setTime] = useState(false);
     const [totalPages, setTotalPages] = useState(0);
     const [pageNr, setPageNr] = useState(1);
@@ -35,6 +36,7 @@ const EditorPageV2 = () => {
     const [gridRows, setGridRows] = useState(true);
     const [hatchType, setHatchType] = useState('single');
     const [hatchSide, setHatchSide] = useState('left');
+    const [hatchNumber, setHatchNumber] = useState('dateOfHatch');
     const [hatchEdit, setHatchEdit] = useState(false);
     const [editedHatch, setEditedHatch] = useState(null);
     const searchInput = useRef(null);
@@ -111,8 +113,6 @@ const EditorPageV2 = () => {
     }
 
     const radioHandler = (e) => {
-        console.log(e.target.name);
-        console.log(e.target.value);
         const nameOfInput = e.target.name
         if (nameOfInput === 'hatchType') {
             setHatchType(e.target.value);
@@ -120,9 +120,15 @@ const EditorPageV2 = () => {
                 createCalendar(images, bgObject, e);
             }
         }
-        if (nameOfInput === 'hatchSide') {
+        else if (nameOfInput === 'hatchSide') {
             setHatchSide(e.target.value);
             if (bool4) {
+                createCalendar(images, bgObject, e);
+            }
+        }
+        else if (nameOfInput === 'nrOfHatch') {
+            if (bool4) {
+                setHatchNumber(e.target.value);
                 createCalendar(images, bgObject, e);
             }
         }
@@ -239,11 +245,30 @@ const EditorPageV2 = () => {
         //console.log(calendarObj);
         dispatch(setCalendar(calendarObj));
         setTimeout(() => setBool3(true), 2500);
+        setCalendarCreated(true);
     }
 
     // Idea for createObject. Add array of numbers etc. When user edits te calendar and chooses a hatch give him option to choose double hatch. If he chooses it then handleClick to add the hatch number to array and in createcalendar if number is this then hatchtype is that.
 
     //unsplash api has blur hash where you can first have a blurred image loaded on the page before the real thing loads.
+    const createDateString = (date) => {
+        const day = new Date(date).getDate()
+        const month = new Date(date).getMonth()
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        const dateString = months[parseInt(month)] + " " + day;
+        return dateString;
+    }
+    const numberOrDateHandler = (e, dateString, hatchNr) => {
+        let result;
+        if (e.target.value === "dateOfHatch") {
+            result = dateString;
+        }
+        else {
+            result = hatchNr;
+        }
+        return result;
+    }
+
     const createObject = (images, bgImg, e) => {
         let startRedux = startDate.toISOString();
         let hatches = [];
@@ -252,6 +277,7 @@ const EditorPageV2 = () => {
         let date;
         let dateRedux;
         let hatchModifier = 1;
+        let nrOrDate;
 
         for (let i = 0; i < numbOfHatches; i++) {
             date = new Date(startDate);
@@ -260,23 +286,41 @@ const EditorPageV2 = () => {
             let hatchImg = images[i].urls.small;
             let status = false;
             let hatch;
+            let dateString = createDateString(date);
             let hatchNr = i + hatchModifier;
             let typeOfHatch;
             let sideOfHatch;
             if (!e) {
                 typeOfHatch = hatchType;
                 sideOfHatch = hatchSide;
+                nrOrDate = dateString;
             }
             // Create if statement if i is larger than imagesLength then take a placeholder image to the array.
             else {
-                console.log(e.target.name)
                 if (e.target.name === "hatchType") {
                     typeOfHatch = e.target.value;
                     sideOfHatch = hatchSide;
+                    if (hatchNumber === "dateOfHatch") {
+                        nrOrDate = dateString;
+                    }
+                    else {
+                        nrOrDate = hatchNr;
+                    }
                 }
                 else if (e.target.name === "hatchSide") {
                     sideOfHatch = e.target.value;
                     typeOfHatch = hatchType;
+                    if (hatchNumber === "dateOfHatch") {
+                        nrOrDate = dateString;
+                    }
+                    else {
+                        nrOrDate = hatchNr;
+                    }
+                }
+                else if (e.target.name === "nrOfHatch") {
+                    nrOrDate = numberOrDateHandler(e, dateString, hatchNr);
+                    typeOfHatch = hatchType;
+                    sideOfHatch = hatchSide;
                 }
             }
             if (images[i].id === bgImg.id) {
@@ -289,7 +333,9 @@ const EditorPageV2 = () => {
                 hatchImg: hatchImg,
                 status: status,
                 hatchType: typeOfHatch,
-                hatchSide: sideOfHatch
+                hatchSide: sideOfHatch,
+                dateString: dateString,
+                nrOrDate: nrOrDate
             };
             hatches.push(hatch);
         }
@@ -317,7 +363,10 @@ const EditorPageV2 = () => {
         }
         else if (identifier === "Hatches") {
             console.log("Hatches clicked");
-            resetEditor(identifier);
+            if (calendarCreated) {
+                resetEditor(identifier);
+            }
+            else { console.log("Create calendar first!") }
         }
         else {
             console.log("goBackInEditor Error. Check your code!")
@@ -384,14 +433,15 @@ const EditorPageV2 = () => {
                         handleSelection={handleSelection}
                         hatchType={hatchType}
                         hatchSide={hatchSide}
+                        hatchNumber={hatchNumber}
                         radioHandler={radioHandler}
                         goBackInEditor={goBackInEditor}
                     />
                 </div>
                 <div className="content">
-                    {!bool2 && !hatchEdit && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} time={time} handleDatePick={handleDatePick} hatchEdit={hatchEdit} handleHatchImgSelect={handleHatchImgSelect} />
+                    {!bool2 && !hatchEdit && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} time={time} handleDatePick={handleDatePick} hatchEdit={hatchEdit} handleHatchImgSelect={handleHatchImgSelect} handleSelection={handleSelection} />
                     }
-                    {bool2 && !hatchEdit && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessKey={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} gridRows={gridRows} hatchEditor={hatchEditor} hatchAmount={hatchAmount} />}
+                    {bool2 && !hatchEdit && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessHatch={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} gridRows={gridRows} hatchEditor={hatchEditor} hatchAmount={hatchAmount} />}
                     {hatchEdit && <HatchImageCatalogue images={images} hatchImages={hatchImages} hatchSearchInput={hatchSearchInput} handleHatchImgSelect={handleHatchImgSelect} handleHatchImgSearch={handleHatchImgSearch} hatchSearch={hatchSearch} />}
                 </div>
             </div>
