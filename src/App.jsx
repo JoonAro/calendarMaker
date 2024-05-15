@@ -4,7 +4,6 @@ import Home from "./routes/Home";
 import Root from "./routes/Root";
 import Login from "./routes/Login";
 import Register from "./routes/Register";
-import EditorPage from "./routes/EditorPage";
 import Calendar from "./routes/Calendar";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./routes/Dashboard";
@@ -38,12 +37,6 @@ function App() {
                 path="/collection"
 
                 element={<Collection />
-                }
-              />
-              <Route
-                path="/editorPage"
-                element={
-                  <EditorPage />
                 }
               />
               <Route
@@ -84,19 +77,19 @@ function App() {
                   <Contact />
                 }
               />
-             
+
               <Route
                 path="/privacy"
                 element={
                   <Privacy />
                 }
               />
-              
+
               <Route
                 path="/terms"
                 element={
                   <Terms />
-                } 
+                }
               />
 
               <Route

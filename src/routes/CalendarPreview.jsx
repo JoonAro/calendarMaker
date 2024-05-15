@@ -102,7 +102,7 @@ const CalendarPreview = () => {
                     {calendar?.data?.hatches?.map(hatch => {
                         let hatchKey = hatch.hatchNr;
                         let hatchType = hatch.hatchType;
-                        return hatchType === 'single' ? <FakeSHatch key={hatchKey} hatch={hatch} accessKey={false} /> : <FakeDblHatch key={hatchKey} hatch={hatch} accessKey={false} />;
+                        return hatchType === 'single' ? <FakeSHatch key={hatchKey} hatch={hatch} accessHatch={false} /> : <FakeDblHatch key={hatchKey} hatch={hatch} accessHatch={false} />;
                     })}
                 </div>
                 <div className='spaceHolder'></div>

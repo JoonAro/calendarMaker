@@ -4,13 +4,13 @@ import '../styles/editorV2Styles.css';
 const today = new Date();
 const todayISO = today.toISOString();
 
-const Hatch = ({ hatch, accessKey, hatchEditor }) => {
+const Hatch = ({ hatch, accessHatch, hatchEditor }) => {
     const [clicked, setClicked] = useState(false);
     const [showImage, setShowImage] = useState(false);
 
-    const openHatch = (hatch, accessKey) => {
+    const openHatch = (hatch, accessHatch) => {
         const dateCheck = handleTime(hatch);
-        if (dateCheck === true || accessKey) {
+        if (dateCheck === true || accessHatch) {
             setClicked(!clicked);
             if (!clicked) {
                 setShowImage(!showImage);
@@ -19,7 +19,7 @@ const Hatch = ({ hatch, accessKey, hatchEditor }) => {
             setTimeout(() => setShowImage(!showImage), 1000);
         }
         else {
-            alert("Naughty!");
+            alert(`This hatch is locked until ${hatch.date}.`);
         }
     }
 
@@ -43,12 +43,14 @@ const Hatch = ({ hatch, accessKey, hatchEditor }) => {
             <div style={{
                 backgroundImage: showImage ? `url("${hatch.hatchImg}")` : 'url("")'
             }} className={`calendarImage `}>
-                {accessKey && <div className="editorHatch" >
-                    <div className="editorHatchType" onClick={() => hatchEditor(hatch, "hatchType")}>HatchType</div>
-                    <div className="editorHatchImg" onClick={() => hatchEditor(hatch, "hatchImage")}>HatchImage</div>
+                {accessHatch && <div className="editorHatch" >
+                    <div className="editorHatchType" onClick={() => hatchEditor(hatch, "hatchType")}>Change Hatch</div>
+                    <div className="editorHatchImg" onClick={() => hatchEditor(hatch, "hatchImage")}>Choose Image</div>
                 </div>}
-                <div onClick={() => openHatch(hatch, accessKey)} className={`hatch ${hatch.hatchSide} ${clicked ? 'openStyle' : 'closedStyle'}`}>
-                    <p className="hatchNumber">{hatch.hatchNr}</p>
+                <div onClick={() => openHatch(hatch, accessHatch)} className={`hatch ${hatch.hatchSide} ${clicked ? 'openStyle' : 'closedStyle'}`}>
+                    <div className="hatchDate">
+                        <p className="hatchNumber">{hatch.nrOrDate}</p>
+                    </div>
                 </div>
             </div>
         </>
