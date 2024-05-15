@@ -15,23 +15,28 @@ const HatchImageCatalogue = ({ images, hatchImages, hatchSearchInput, handleHatc
                     <h1 style={{
                         fontSize: "2em",
                         color: "white"
-                    }}>Search:</h1>
+                    }}>Search: </h1>
                 </div>
-                <Form style={{
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center"
-                }}
-                    onSubmit={handleHatchImgSearch}>
+                <Form
+                    style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center"
+                    }}
+                    onSubmit={handleHatchImgSearch}
+                >
                     <Form.Control
-                        style={{ width: "300px" }}
+                        style={{
+                            width: "300px",
+                            margin: "30px" // add some space between the input and button
+                        }}
                         type="search2"
                         placeholder="Search for a new image"
                         aria-label="hatchSearch"
                         ref={hatchSearchInput}
                     />
-                    <ButtonForTime handleDatePick={() => console.log("Search new images")}>
-                        <h1>Search</h1>
+                    <ButtonForTime className="w-36 border border-transparent bg-mainBackground-light p-2 rounded-lg  hover:bg-accentColor-light text-fontDark hover:text-white" handleDatePick={() => console.log("Search new images")}>
+                        <h1 >Search</h1>
                     </ButtonForTime>
                 </Form>
             </div>
