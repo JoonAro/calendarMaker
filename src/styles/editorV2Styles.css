@@ -11,14 +11,14 @@
 
 .editorHolder {
     display: grid;
-    grid-template-columns: calc(var(--hider)*250px) 1fr;
+    grid-template-columns: calc(var(--hider)*220px) 1fr;
     grid-template-rows: auto;
     height: 100%;
     background-color: rgba(103, 89, 94, 1);
 }
 
 .sideColumn {
-    width: 250px;
+    width: 220px;
     height: 100%;
     min-height: 100vh;
     grid-column-start: 1;
@@ -97,7 +97,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: calc(100vw - 265px);
+    width: calc(100vw - 235px);
     min-height: 90vh;
     background-color: rgba(103, 89, 94, 1);
 }
@@ -148,9 +148,20 @@
     color: rgba(240, 248, 255, 0);
 }
 
+.catalogueImageHolder {
+    display: flex;
+    position: relative;
+    background-color: rgba(127, 255, 212, 0);
+    height: fit-content;
+    width: fit-content;
+    color: rgba(240, 248, 255, 0);
+    z-index: 2;
+}
+
 .catalogueImage:hover {
     color: rgb(240, 248, 255);
     background-color: rgba(0, 0, 0, 0.508);
+    cursor: pointer;
 }
 
 .calendarContent {
@@ -269,7 +280,9 @@
     display: grid;
     background-color: rgba(127, 255, 212, 0);
     transform-origin: var(--i);
+    cursor: pointer;
 }
+
 
 .editorHatch {
     display: flex;
@@ -293,14 +306,34 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1.7rem;
+    /* width: 1.7rem; */
     height: fit-content;
-    font-size: 1.4em;
+    font-size: 1em;
+    padding: 0 0.5rem;
     /* color: rgba(245, 245, 245, 0.8);
     background-color: rgba(0, 0, 0, 0.4); */
     color: rgba(0, 0, 0, 0.7);
     background-color: rgba(245, 245, 245, 0.341);
     border-bottom-right-radius: 5px;
+}
+
+.hatchDate {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: fit-content;
+    font-size: 1em;
+    /* color: rgba(245, 245, 245, 0.8);
+    background-color: rgba(0, 0, 0, 0.4); */
+    /*     color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(245, 245, 245, 0.341); */
+    border-bottom-right-radius: 5px;
+}
+
+.hatchDate p {
+    color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(245, 245, 245, 0.341);
 }
 
 .right {
@@ -540,10 +573,10 @@
         background-color: rgba(103, 89, 94, 1);
     }
 
-    .hatchNumber {
+    /*  .hatchNumber {
         font-size: 1.2em;
         width: 1.5rem;
-    }
+    } */
 }
 
 @media only screen and (max-width: 800px) {

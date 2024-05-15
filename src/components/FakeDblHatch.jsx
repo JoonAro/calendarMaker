@@ -4,13 +4,13 @@ import '../styles/editorV2Styles.css';
 const today = new Date();
 const todayISO = today.toISOString();
 
-const FakeDblHatch = ({ hatch, accessKey }) => {
+const FakeDblHatch = ({ hatch, accessHatch, hatchEditor }) => {
     const [clicked, setClicked] = useState(false);
     const [showImage, setShowImage] = useState(false);
 
-    const openHatch = (hatch, accessKey) => {
+    const openHatch = (hatch) => {
         const dateCheck = handleTime(hatch);
-        if (dateCheck === true || accessKey) {
+        if (dateCheck === true || accessHatch) {
             setClicked(!clicked);
             if (!clicked) {
                 setShowImage(!showImage);
@@ -41,8 +41,14 @@ const FakeDblHatch = ({ hatch, accessKey }) => {
         <div style={{
             backgroundImage: showImage ? `url("${hatch.hatchImg}")` : 'url("")'
         }} className={`calendarImage `}>
-            <div onClick={() => openHatch(hatch, accessKey)} className={`hatch left ${clicked ? 'openStyle' : 'closedStyle'}`}>
-                <p className="hatchNumber">{hatch.hatchNr}</p>
+            {accessHatch && <div className="editorHatch" >
+                <div className="editorHatchType" onClick={() => hatchEditor(hatch, "hatchType")}>HatchType</div>
+                <div className="editorHatchImg" onClick={() => hatchEditor(hatch, "hatchImage")}>HatchImage</div>
+            </div>}
+            <div onClick={() => openHatch(hatch)} className={`hatch left ${clicked ? 'openStyle' : 'closedStyle'}`}>
+                <div className="hatchDate">
+                    <p className="hatchNumber">{hatch.nrOrDate}</p>
+                </div>
             </div>
             <div onClick={() => openHatch(hatch)} className={`hatch right ${clicked ? 'openStyle' : 'closedStyle'}`}>
             </div>
