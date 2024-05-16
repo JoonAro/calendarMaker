@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { auth, loginWithEmailAndPassword } from "../auth/firebase";
 import { Link } from "react-router-dom";
 import { logInWithGoogle } from "../auth/firebase";
+import login1 from '../assets/login1.svg';
 
 
 const Login = () => {
@@ -38,7 +39,7 @@ const Login = () => {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-mainBackground-light">
+    <div className="flex items-center justify-center min-h-screen bg-mainBackground-light font-sans">
       <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
         <div className="flex flex-col justify-center p-8 md:p-14">
           <span className="mb-3 text-4xl font-bold text-center text-fontDark">Log in</span>
@@ -77,6 +78,7 @@ const Login = () => {
             Don't have an account?
             <span className="cursor-pointer font-bold text-black"><Link to={"/register"}> Sign up here</Link></span>
           </div>
+          <img className='mt-10 h-24 hover:-translate-y-1 hover:scale-125' src={login1} alt="icon1" />
         </div>
       </div>
     

@@ -15,6 +15,7 @@ In this app you can design your own online advent calendar. Users can choose a c
 
 ### Check the App on Firebase hosting
 
+- https://calendar-6ecfb.web.app/
 
 ### To run this app on your computer you need
 

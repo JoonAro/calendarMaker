@@ -79,11 +79,11 @@ const [currentPage, setCurrentPage] = useState(1);
 
               
                 <div className="flex justify-center items-center mt-3">
-                {/* Pagination controls */}
+               
                 <button className="bg-accentColor hover:bg-smallBackground text-fontDark py-1 px-1 rounded mr-2" onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}><KeyboardDoubleArrowLeftIcon/></button>
                 {
     pages.map((pg,i)=>(
-        <button key={i} onClick={()=>setCurrentPage(pg.page)} className={ `h-6 md:h-8 lg:h-9 border-1 border-r-0 border-slate-300 w-6 md:w-8 lg:w-9 mr-2 ${currentPage === pg.page && 'bg-smallBackground'}`}>{pg.page}</button>
+        <button key={i} onClick={()=>setCurrentPage(pg.page)} className={ `h-6 md:h-8 lg:h-9 border-1 border-r-0 border-slate-300 w-6 md:w-8 lg:w-9 mr-2 ${currentPage === pg.page && 'bg-smallBackground-light'}`}>{pg.page}</button>
     
     ))
 }
