@@ -1,15 +1,13 @@
 import DoubleHatch from "./DoubleHatch";
 import Hatch from "./Hatch";
 
-const CalendarCompFinal = ({ calendar, calendarImage, accessHatch, gridRows, hatchEditor }) => {
+const CalendarCompFinal = ({ calendar, calendarImage, accessHatch, gridRows, hatchEditor, hatchAmount }) => {
 
 
     return (
-        <div className={`gridHolder ${gridRows}`} style={{
+        <div className={`gridHolder ${gridRows[0]} ${gridRows[1]} hatchAmount${hatchAmount}`} style={{
             backgroundImage: `url(${calendarImage})`,
-            backgroundSize: 'cover',
-            width: "95%",
-            height: "100%"
+            backgroundSize: 'cover'
         }}>
             {calendar.hatches.map(hatch => {
                 let hatchKey = hatch.hatchNr
