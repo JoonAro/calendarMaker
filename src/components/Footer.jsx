@@ -48,7 +48,7 @@ const Footer = () => {
         </div>
         <div className="flex justify-between items-center mt-16">
           <h3 className={fontDark}>
-            © Copyright 2024 Team of BCH. All rights reserved
+            © Copyright 2024 Team 3 of BCH. All rights reserved
           </h3>
         </div>
       </div>

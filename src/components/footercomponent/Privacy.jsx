@@ -30,14 +30,14 @@ const Privacy = () => {
         <div className="container  p-8">
           <h1 className="text-3xl font-bold mb-6 text-center">Privacy Policy</h1>
           <div className="">
-            <p className="mb-4 text-base"> Calender web app, we work under Helsinki bussines colleage and the project will be ready on may 17 2023,and in this website we grantie your saftey is our main proprity  take your privacy seriously. This Privacy Policy outlines the types of information we collect, how we use it, and the steps we take to keep your information secure. down below you can see in detail about our privay policy and we awill take full responsbility for any kind of cyberatack adsfasfd asdfa sdfas dfas dfa sdfa sfas dfas dfa sdfasd fas dfas df asdfasd fasdf</p>
+            <p className="mb-4 text-base"> Calender web app, we are student of  Helsinki bussines colleage. This Privacy Policy outlines the types of information we collect, how we use it, and the steps we take to keep your information secure. down below you can see in detail about our privay policy and we awill take full responsbility for any kind of cyberatack.</p>
 
             <h2 className="text-xl font-semibold mb-2">1. Information We Collect</h2>
             <p className="mb-4 text-base">We collect the following types of information:</p>
             <ul className="list-disc pl-6 mb-4">
               <li>Personal Information: When you register for our calendar service, we may collect your name, email address, and other contact details.</li>
-              <li>Usage Information: We collect information about how you use our calendar service, such as the events you create, the frequency of your usage, and the settings you choose.</li>
-              <li>Device Information: We may collect information about the device you use to access our service, including your IP address, browser type, and operating system.</li>
+              <li>Usage Information: We collect information about how you use our calendar service, such as, the frequency of your usage, and the settings you choose.</li>
+             
             </ul>
 
             <h2 className="text-xl font-semibold mb-2">2. How We Use Your Information</h2>
@@ -50,7 +50,7 @@ const Privacy = () => {
             </ul>
 
             <h2 className="text-xl font-semibold mb-2">3. Information Sharing and Disclosure</h2>
-            <p className="mb-4 text-base pt-4">We do not sell, trade, or otherwise transfer your personal information to outside parties. However, we may share your information with trusted third parties who assist us in operating our website, conducting our business, or servicing you If you feel your data is being licked in any kind of our compnay will take full responsbility for any kind of cyberattack.</p>
+            <p className="mb-4 text-base pt-4">We do not give or otherwise transfer your personal information to outside parties. However, we may share your information with trusted third parties who assist us in operating our website, conducting our business, or servicing you If you feel your data is being licked in any kind of our compnay will take full responsbility for any kind of cyberattack.</p>
 
             <h2 className="text-xl font-semibold mb-2">4. Data Retention</h2>
             <p className="mb-4 text-base pt-4">We retain your personal information for as long as necessary to fulfill the purposes outlined in this Privacy Policy, unless a longer retention period is required or permitted by law if you have any question regarding this matter please contact us in the page we ill we will explain the stuation .</p>

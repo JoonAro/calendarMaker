@@ -23,12 +23,12 @@ const FAQ = () => {
     {
       id: 1,
       question: 'What is Dream calendar?',
-      answer: 'We are a team of full-stack web developers who created a calendar web application as part of our studies at Helsinki Business School College. Our goal was to design and develop a user-friendly and efficient calendar tool to help users organize their schedules effectively.<br><br>Our calendar web application allows users to easily manage their events, appointments, and tasks. With intuitive features and a clean interface, users can add, edit, and delete events, set reminders, and view their schedule in various formats.'
+      answer: 'Dream Calendar is a web calendar application designed for creating graphical and visually appealing calendars. With Dream Calendar, you can customize every aspect of your calendar to suit your preferences. You have the freedom to choose your background, select dates, and style the hatches in any way you like. Whether you prefer a minimalist design or a vibrant and colorful layout, Dream Calendar offers the flexibility to design your calendar exactly the way you envision it. Say goodbye to standard, cookie-cutter calendars and hello to personalized, beautifully crafted schedules with Dream Calendar.'
     },
     {
       id: 2,
       question: 'Why do we use it?',
-      answer: 'We chose to design our calendar the way we did to offer users a unique and visually appealing experience. By customizing the background and incorporating graphical elements, we aimed to make the calendar more engaging and enjoyable to is usee.<br><br>One of the key reasons for our design choice was to allow users to personalize their calendar according to their preferences. By enabling users to sselect is their preferred background images or patterns, we empower them to create a calendar environment that reflects their style and personality.<br><br>Additionally, our design approach allows users to easily distinguish between different days and events at a glance. The use of graphical elements, such as hatching or shading, helps to visually separate days and highlight important events or appointments. This makes it easier for users to navigate their schedule and quickly identify key information.<br><br>Furthermore, our graphical calendar design offers a refreshing departure from the standard calendar interfaces commonly seen. Instead of the traditional grid-based layout, our calendar provides a more artistic and aesthetically pleasing presentation of time. This not only adds visual interest but also makes the calendar experience more enjoyable for users.'
+      answer: 'To choose to design our calendar the way we did to offer users a unique and visually appealing experience. By customizing the background and incorporating graphical elements, we aimed to make the calendar more engaging and enjoyable to is usee.<br><br>One of the key reasons for our design choice was to allow users to personalize their calendar according to their preferences. By enabling users to sselect is their preferred background images or patterns, we empower them to create a calendar environment that reflects their style and personality.<br><br>Additionally, our design approach allows users to easily distinguish between different days. The use of graphical elements, such as hatching, helps to visually separate days. <br><br>Furthermore, our graphical calendar design offers a refreshing departure from the standard calendar interfaces commonly seen. Instead of the traditional grid-based layout, our calendar provides a more artistic and aesthetically pleasing presentation of time. This not only adds visual interest but also makes the calendar experience more enjoyable for users.'
     },
     {
       id: 3,
@@ -50,7 +50,7 @@ const FAQ = () => {
     {
       id: 5,
       question: 'Where is the office located?',
-      answer: 'The office for the team 3 Dream Calendar company is currently located within Helsinki Business College. However, once the investors see our project and accept our project, we will have our own offices where we can work independently.'
+      answer: 'The office for the team 3 Dream Calendar company is temporarly located within Helsinki Business College. The team is working remotely and collaboratively to develop the Dream Calendar web application. The team members are based in different locations, but they are connected through online communication tools and platforms to ensure effective collaboration and project management.<br><br>While the physical office location may change in the future, the team is committed to delivering the Dream Calendar project on time and meeting all project requirements.'
     }
   ]
 
