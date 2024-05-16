@@ -5,10 +5,14 @@ import { useNavigate } from "react-router-dom";
 import { auth, registerWithEmailAndPassword } from "../auth/firebase";
 import Avatar from "../components/Avatar";
 import { signInWithGoogle } from "../auth/firebase";
-import login1 from '../assets/login1.svg';
+import { useTheme } from "../components/theme/ThemeContext";
+
 
 
 const Register = () => {
+  const { theme } = useTheme();
+  const mainBackground = theme === 'dark' ? 'bg-mainBackground-dark' : 'bg-mainBackground-light';
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -45,14 +49,14 @@ const Register = () => {
   }, [user, loading]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-mainBackground-light font-sans">
+    <div className={`${mainBackground} flex items-center justify-center min-h-screen font-sans`}>
       <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 ">
         <div className="flex flex-col justify-center p-12 md:p-14">
           <span className="mb-3 text-4xl font-bold text-center text-fontDark">Sign up</span>
           <Avatar avatarValue={selectedAvatar}/>
           <Form.Group className="py-3" >
             <Form.Select
-              className="w-full md:w-64 p-2 bg-whiteReplacement border border-gray-300 rounded-md text-formText"
+              className="w-full md:w-64 p-2 bg-whiteReplacement-dark border border-gray-300 rounded-md text-formText"
               value={selectedAvatar}
               onChange={(e) => setSelectedAvatar(e.target.value)}
 
@@ -72,7 +76,7 @@ const Register = () => {
           </Form.Group>
           <div className="py-3">
             <input
-              className="w-full md:w-64 p-2 bg-whiteReplacement border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              className="w-full md:w-64 p-2 bg-whiteReplacement-dark border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               type="text"
               placeholder="Enter full name"
               value={name}
@@ -81,7 +85,7 @@ const Register = () => {
           </div>
           <div className="py-3">
             <input
-              className=" w-full p-2 md:w-64 bg-whiteReplacement border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              className=" w-full p-2 md:w-64 bg-whiteReplacement-dark border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               type="text"
               placeholder="Enter email"
               value={email}
@@ -90,7 +94,7 @@ const Register = () => {
           </div>
           <div className="py-3">
             <input
-              className="w-full p-2 md:w-64 bg-whiteReplacement border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              className="w-full p-2 md:w-64 bg-whiteReplacement-dark border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               type="password"
               id="password"
               value={password}
@@ -105,7 +109,6 @@ const Register = () => {
 
 <Button className="w-full border border-transparent bg-mainBackground-light text-white p-2 rounded-lg mb-6 hover:bg-smallBackground-light" onClick={registerGoogle}>Sign in with Google</Button>
 
-<img className='mt-10 h-24 hover:-translate-y-1 hover:scale-125' src={login1} alt="icon1" />
         </div>
         
       </div>

@@ -25,7 +25,7 @@ const Header = () => {
     const [user] = useAuthState(auth);
     const [nameUser, setName] = useState("");
     const [avatar, setAvatar] = useState("");
-    const superUser = ["Michel", "Joona", "Alona", "Samuel"];
+    const superUser = ["Michel", "Joona", "Alona", "Samuel", "Margit"];
 
     useEffect(() => {
         const getUserData = async () => {
