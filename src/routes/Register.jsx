@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { auth, registerWithEmailAndPassword } from "../auth/firebase";
 import Avatar from "../components/Avatar";
 import { signInWithGoogle } from "../auth/firebase";
+import login1 from '../assets/login1.svg';
 
 
 const Register = () => {
@@ -44,11 +45,11 @@ const Register = () => {
   }, [user, loading]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-mainBackground-light">
+    <div className="flex items-center justify-center min-h-screen bg-mainBackground-light font-sans">
       <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 ">
-        <div className="flex flex-col justify-center p-8 md:p-14">
+        <div className="flex flex-col justify-center p-12 md:p-14">
           <span className="mb-3 text-4xl font-bold text-center text-fontDark">Sign up</span>
-          <Avatar avatarValue={selectedAvatar} />
+          <Avatar avatarValue={selectedAvatar}/>
           <Form.Group className="py-3" >
             <Form.Select
               className="w-full md:w-64 p-2 bg-whiteReplacement border border-gray-300 rounded-md text-formText"
@@ -57,7 +58,7 @@ const Register = () => {
 
             >
               <option value="">Select an avatar</option>
-              <option value="avatar1">Avatar 1</option>
+              <option value="avatar1" >Avatar 1</option>
               <option value="avatar2">Avatar 2</option>
               <option value="avatar3">Avatar 3</option>
               <option value="avatar4">Avatar 4</option>
@@ -103,13 +104,10 @@ const Register = () => {
             onClick={register}>Sign up</Button>
 
 <Button className="w-full border border-transparent bg-mainBackground-light text-white p-2 rounded-lg mb-6 hover:bg-smallBackground-light" onClick={registerGoogle}>Sign in with Google</Button>
+
+<img className='mt-10 h-24 hover:-translate-y-1 hover:scale-125' src={login1} alt="icon1" />
         </div>
-
-       
-
-        <div className="relative">
-
-        </div>
+        
       </div>
       
     </div>

@@ -55,7 +55,7 @@ const Home = () => {
             <div className="w-16 md:w-32 lg:w-72 mr-14 md:mr-40 flex flex-col sm:items-center">
               <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon3} alt="icon3" />
               <span className={`${fontDark} text-sm md:text-2xl mt-3 text-center`}>Share your calendar</span>
-              <span className='text-zinc-400 text-xs sm:text-sm md:text-base mt-1 text-center'>Whould you like to share your calendar? Sure, do it!
+              <span className='text-zinc-400 text-xs sm:text-sm md:text-base mt-1 text-center'>Would you like to share your calendar? Sure, do it!
               </span>
             </div>
           </div>
@@ -135,7 +135,7 @@ const Home = () => {
             <p className={`${fontDark} text-xs lg:text-sm opacity-75 mt-7`}>If you have anything to share, we would love to hear from you!</p>
           </div>
           <Link to='/contact'>
-            <Button style={{ backgroundColor: "#67595E", borderColor: "#67595E" }} className=' mt-7'>Contact us</Button>
+            <Button className='button mt-7'>Contact us</Button>
           </Link>
 
         </div>
