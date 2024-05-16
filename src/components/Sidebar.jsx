@@ -5,14 +5,14 @@ import { useTheme } from './theme/ThemeContext';
 import edit from '../assets/edit.svg';
 // TODO: Create a responsive sidebar. It will disappear to the side unless hovered on.
 //       Try out sixth column when really wide screen and go down to 4 columns when the screen is small. Do this with mediaquerys
-const Sidebar = ({ handleSelection, hatchType, hatchSide, hatchNumber, radioHandler, goBackInEditor }) => {
+const Sidebar = ({ handleSelection, hatchType, hatchSide, hatchNumber, radioHandler, goBackInEditor, handleLeave, hide, handleClick }) => {
 
     const { theme } = useTheme();
     const smallBackground = theme === 'dark' ? 'bg-smallBackground-dark' : 'bg-smallBackground-light';
     const fontDark = theme === 'dark' ? 'text-fontDark-dark' : 'text-fontDark-light';
 
     return (
-        <div className={`${smallBackground} ${fontDark} sidebar font-sans`}>
+        <div className={`${smallBackground} ${fontDark} sidebar font-sans ${hide}`} onClick={handleClick} onMouseLeave={handleLeave}>
             <div className="filters mt-5">
                 <div onClick={() => goBackInEditor("Dates")} className='flex items-center sidebarButton'>
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" className="bi bi-calendar" viewBox="0 0 16 16">
@@ -129,7 +129,7 @@ const Sidebar = ({ handleSelection, hatchType, hatchSide, hatchNumber, radioHand
                 </div>
                 <SaveButton />
                 <div className='flex items-center justify-center'>
-                <img className='mt-10 h-20 hover:-translate-y-1 hover:scale-125' src={edit} alt="editIcon" />
+                    <img className='mt-10 h-20 hover:-translate-y-1 hover:scale-125' src={edit} alt="editIcon" />
                 </div>
             </div>
 

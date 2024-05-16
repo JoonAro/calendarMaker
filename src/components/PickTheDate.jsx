@@ -13,17 +13,23 @@ const PickTheDate = ({ searchInput, handleSearch, handleStartDate, handleEndDate
     return (
         <LocalizationProvider dateAdapter={AdapterDateFns} adapterLocale={enUS}>
             <div className="spread3">
-                <h1>{guideH}</h1>
-                {time && <Search searchInput={searchInput} handleSearch={handleSearch} handleSelection={handleSelection} />}
 
+
+                {time && <Search searchInput={searchInput} handleSearch={handleSearch} handleSelection={handleSelection} guideH={guideH} guideText={guideText} />}
 
                 {!time && <Form onSubmit={handleDatePick}>
-                    <div className='flexColumnCentered'>
-                        <p>Choose the start and end dates</p>
+                    <div className='flexColumnCentered startBox'>
+                        <h1 style={{
+                            margin: "30px 0 10px 0",
+                            fontSize: '2em'
+                        }}>{guideH}</h1>
+                        <p style={{
+                            margin: "10px 0 0 0",
+                            fontSize: '1.5em'
+                        }}>{guideText}</p>
                         <div className='datePickers'>
-
-                            <div className='flexColumnCentered'>
-                                <p>Starts</p>
+                            <div className='flexColumnCentered' style={{ alignItems: "start" }}>
+                                <p style={{ marginBottom: "0" }}>Starts</p>
                                 <DatePicker
                                     /* label="Start date" */
                                     value={startDate}
@@ -32,8 +38,8 @@ const PickTheDate = ({ searchInput, handleSearch, handleStartDate, handleEndDate
                                     textField={(params) => <input {...params} />}
                                 />
                             </div>
-                            <div className='flexColumnCentered'>
-                                <p>Ends</p>
+                            <div className='flexColumnCentered' style={{ alignItems: "start" }}>
+                                <p style={{ marginBottom: "0" }}>Ends</p>
                                 <DatePicker
                                     /* label="End date" */
                                     value={endDate}
@@ -44,7 +50,7 @@ const PickTheDate = ({ searchInput, handleSearch, handleStartDate, handleEndDate
                                 />
                             </div>
                         </div>
-                        <div className='h-16 mb-2 flex items-end justify-end'>
+                        <div className='h-16 mb-10 flex items-end justify-end'>
                             <ButtonComponent handleDatePick={handleDatePick}>
                                 <h1>Submit</h1>
                             </ButtonComponent>
@@ -52,6 +58,7 @@ const PickTheDate = ({ searchInput, handleSearch, handleStartDate, handleEndDate
                     </div>
                 </Form>
                 }
+
             </div>
         </LocalizationProvider>
     );
