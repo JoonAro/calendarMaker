@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCalendar } from "../store/calendarSlice";
 import ShowSidebarButton from "../components/ShowSidebarButton";
 import HatchImageCatalogue from "../components/HatchImageCatalogue";
+import { set } from "date-fns";
 
 const API_KEY = import.meta.env.VITE_UNSPLASH_API;
 const API_URL = "https://api.unsplash.com/search/photos";
@@ -33,7 +34,8 @@ const EditorPageV2 = () => {
     const [totalPages, setTotalPages] = useState(0);
     const [pageNr, setPageNr] = useState(1);
     const [hatchAmount, setHatchAmount] = useState(null);
-    const [gridRows, setGridRows] = useState(true);
+    const [gridRows, setGridRows] = useState(["fiveColumns", "sixRows"]);
+    const [grid, setGrid] = useState(["fiveColumns", "sixRows"]);
     const [hatchType, setHatchType] = useState('single');
     const [hatchSide, setHatchSide] = useState('left');
     const [hatchNumber, setHatchNumber] = useState('dateOfHatch');
@@ -43,7 +45,12 @@ const EditorPageV2 = () => {
     const hatchSearchInput = useRef(null);
     const [hatchSearch, setHatchSearch] = useState(false);
     const [guideH, setGuideH] = useState("Welcome to the calendar editor!")
-    const [guideText, setGuideText] = useState("Step 1: Start by searching for a theme");
+    const [guideText, setGuideText] = useState("Choose the start and end dates");
+    const [hide, setHide] = useState("hide");
+    const [sideColumnWidth, setSideColumnWidth] = useState("0px");
+    const [gridColumnWidth, setGridColumnWidth] = useState("0px 1fr");
+    const [sidebarMod, setSidebarMod] = useState("calc(100vw - 17px)");
+    const [contentWidth, setContentWidth] = useState("calc(100vw - 17px)");
 
     const handleSearch = (event) => {
         event.preventDefault();
@@ -69,6 +76,8 @@ const EditorPageV2 = () => {
             return
         }
         setTime(true);
+        setGuideH("Search for a theme for the calendar");
+        setGuideText("Or choose one of our examples below");
 
     }
 
@@ -81,8 +90,6 @@ const EditorPageV2 = () => {
     };
 
     const getHatchAmount = (startDate, endDate) => {
-        /* console.log(startDate, "startDate");
-        console.log(endDate, "endDate"); */
         const start = new Date(startDate).getTime();
         const end = new Date(endDate).getTime();
         const difference = end - start;
@@ -93,20 +100,27 @@ const EditorPageV2 = () => {
     }
 
     const handleGridRows = (hatchTotal) => {
-        if (hatchTotal < 11) {
-            setGridRows("twoRows");
-            //TODO: twoRows works with 7 hatches for now. Make it work with 10 hatches.
+        const numberOfRows = hatchTotal / 5;
+        console.log(hatchTotal, "hatchTotal")
+        console.log(numberOfRows, "numberOfRows")
+        if (hatchTotal < 10) {
+            setGridRows(["threeColumns", "threeRows"]);
         }
-        else if (hatchTotal >= 11 && hatchTotal < 16) {
-            setGridRows("threeRows");
+        else if (hatchTotal >= 10 && hatchTotal < 13) {
+            setGridRows(["threeColumns", "fourRows"]);
+        }
+        else if (hatchTotal >= 13 && hatchTotal < 17) {
+            setGridRows(["fourColumns", "fourRows"]);
         }
         else if (hatchTotal >= 16 && hatchTotal < 21) {
-            setGridRows("fourRows");
+            setGridRows(["fourColumns", "fiveRows"]);
         }
         else if (hatchTotal >= 21 && hatchTotal < 26) {
-            setGridRows("fiveRows");
+            setGridRows(["fiveColumns", "fiveRows"]);
         }
-        else setGridRows("sixRows");
+        else {
+            setGridRows(["sixColumns", "fiveRows"]);
+        }
     }
     const handleSelection = (selection) => {
         searchInput.current.value = selection
@@ -141,7 +155,6 @@ const EditorPageV2 = () => {
     }
 
     const resetEditor = (origin) => {
-        // background can be clicked before the search is done.
         if (origin === "handleFetch" || origin === "Background") {
             setBool(true);
             setGuideH("Choose a background image by clicking the image.");
@@ -242,15 +255,11 @@ const EditorPageV2 = () => {
     }
     const createCalendar = (images, bgImg, e) => {
         const calendarObj = createObject(images, bgImg, e);
-        //console.log(calendarObj);
         dispatch(setCalendar(calendarObj));
         setTimeout(() => setBool3(true), 2500);
         setCalendarCreated(true);
     }
 
-    // Idea for createObject. Add array of numbers etc. When user edits te calendar and chooses a hatch give him option to choose double hatch. If he chooses it then handleClick to add the hatch number to array and in createcalendar if number is this then hatchtype is that.
-
-    //unsplash api has blur hash where you can first have a blurred image loaded on the page before the real thing loads.
     const createDateString = (date) => {
         const day = new Date(date).getDate()
         const month = new Date(date).getMonth()
@@ -376,9 +385,7 @@ const EditorPageV2 = () => {
     const hatchEditor = (hatch, editType) => {
         let updatedHatch;
         const { hatches } = calendar;
-        //console.log("hatches", hatches)
         const { date, hatchNr, hatchImg, status, hatchType, hatchSide } = hatch;
-        //console.log("hatchNr", hatchNr, "hatchImg", hatchImg, "status", status, "hatchType", hatchType, "hatchSide", hatchSide);
         if (editType === "hatchType") {
             updatedHatch = updateHatchType(hatch);
         }
@@ -405,7 +412,6 @@ const EditorPageV2 = () => {
         setHatchEdit(false);
         setBool2(true);
     }
-    //TODO: Make a new component that will be a hatch editor. It will have a hatch image, hatch number, hatch type, hatch side and a save button. When user clicks save button it will save the new hatch to the calendar. There you can click the image and it will open the image catalogue. And it will change the image right there.
 
     const updateHatchType = (hatch) => {
         let updatedHatch;
@@ -419,13 +425,29 @@ const EditorPageV2 = () => {
         return updatedHatch;
     }
 
-    // Add title to hatch and description
-    // TODO: Create a function that saves the final calendar when user is finished.
+    const handleLeave = () => {
+        console.log("click")
+        setTimeout(() => setHide("hide"), 1000);
+        setSideColumnWidth("0px");
+        setGridColumnWidth("0px 1fr");
+        setSidebarMod("calc(100vw - 17px)");
+        /* document.documentElement.style.setProperty('--hider', "0"); */
+    }
+    const handleClick = () => {
+        console.log("click")
+        setHide("show");
+        setSideColumnWidth("220px");
+        setGridColumnWidth("220px 1fr");
+        setSidebarMod("calc(100vw - 235px)");
+        /* document.documentElement.style.setProperty('--hider', "1"); */
+    }
+
     return (
         <>
             <BackToTop />
-            <div className="editorHolder">
-                <div className="sideColumn">
+            <div className="editorHolder" style={{ gridTemplateColumns: gridColumnWidth }}>
+                <div className="sideColumn" style={{ width: sideColumnWidth }} >
+                    <ShowSidebarButton handleClick={handleClick} />
                     <Sidebar
                         handleSearch={handleSearch}
                         searchInput={searchInput}
@@ -435,15 +457,18 @@ const EditorPageV2 = () => {
                         hatchNumber={hatchNumber}
                         radioHandler={radioHandler}
                         goBackInEditor={goBackInEditor}
+                        handleLeave={handleLeave}
+                        hide={hide}
+                        handleClick={handleClick}
 
                     />
 
                 </div>
-                <div className="content">
-                    {!bool2 && !hatchEdit && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} time={time} handleDatePick={handleDatePick} hatchEdit={hatchEdit} handleHatchImgSelect={handleHatchImgSelect} handleSelection={handleSelection} />
+                <div className="content" style={{ width: sidebarMod }}>
+                    {!bool2 && !hatchEdit && <ImageCatalogue bool={bool} images={images} searchInput={searchInput} handleSearch={handleSearch} handleBgSelection={handleBgSelection} handleStartDate={handleStartDate} handleEndDate={handleEndDate} guideH={guideH} guideText={guideText} calendarImage={calendarImage} startDate={startDate} endDate={endDate} time={time} handleDatePick={handleDatePick} hatchEdit={hatchEdit} handleHatchImgSelect={handleHatchImgSelect} handleSelection={handleSelection} sidebarMod={sidebarMod} />
                     }
-                    {bool2 && !hatchEdit && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessHatch={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} gridRows={gridRows} hatchEditor={hatchEditor} hatchAmount={hatchAmount} />}
-                    {hatchEdit && <HatchImageCatalogue images={images} hatchImages={hatchImages} hatchSearchInput={hatchSearchInput} handleHatchImgSelect={handleHatchImgSelect} handleHatchImgSearch={handleHatchImgSearch} hatchSearch={hatchSearch} />}
+                    {bool2 && !hatchEdit && <CalendarComponent calendar={calendar} calendarImage={calendarImage} accessHatch={true} bool3={bool3} bool4={bool4} handleUserReply={handleUserReply} guideH={guideH} guideText={guideText} gridRows={gridRows} hatchEditor={hatchEditor} hatchAmount={hatchAmount} sidebarMod={sidebarMod} />}
+                    {hatchEdit && <HatchImageCatalogue images={images} hatchImages={hatchImages} hatchSearchInput={hatchSearchInput} handleHatchImgSelect={handleHatchImgSelect} handleHatchImgSearch={handleHatchImgSearch} hatchSearch={hatchSearch} sidebarMod={sidebarMod} />}
                 </div>
             </div>
         </>

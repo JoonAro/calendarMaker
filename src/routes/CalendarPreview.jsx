@@ -14,6 +14,33 @@ const CalendarPreview = () => {
     const [linkCopied, setLinkCopied] = useState(false);
     const [user] = useAuthState(auth);
     const [linkGenerated, setLinkGenerated] = useState(false);
+    const [gridRows, setGridRows] = useState([]);
+    const [hatchAmount, setHatchAmount] = useState("hatchAMount7");
+
+    const handleGridRows = (hatchTotal) => {
+        const numberOfRows = hatchTotal / 5;
+        setHatchAmount(`hatchAmount${hatchTotal}`);
+        console.log(hatchTotal, "hatchTotal")
+        console.log(numberOfRows, "numberOfRows")
+        if (hatchTotal < 10) {
+            setGridRows(["threeColumns", "threeRows"]);
+        }
+        else if (hatchTotal >= 10 && hatchTotal < 13) {
+            setGridRows(["threeColumns", "fourRows"]);
+        }
+        else if (hatchTotal >= 13 && hatchTotal < 17) {
+            setGridRows(["fourColumns", "fourRows"]);
+        }
+        else if (hatchTotal >= 16 && hatchTotal < 21) {
+            setGridRows(["fourColumns", "fiveRows"]);
+        }
+        else if (hatchTotal >= 21 && hatchTotal < 26) {
+            setGridRows(["fiveColumns", "fiveRows"]);
+        }
+        else {
+            setGridRows(["sixColumns", "fiveRows"]);
+        }
+    }
 
     useEffect(() => {
         const fetchCalendar = async () => {
@@ -21,7 +48,10 @@ const CalendarPreview = () => {
                 if (user) {
                     const calendarDoc = await getDoc(doc(db, `users/${user.uid}/calendar/${id}`));
                     if (calendarDoc.exists()) {
-                        setCalendar({ id: calendarDoc.id, ...calendarDoc.data() });
+                        let calendarData = { id: calendarDoc.id, ...calendarDoc.data() };
+                        let hatchAmount = calendarData.data.numbOfHatches;
+                        setCalendar(calendarData);
+                        handleGridRows(hatchAmount);
                     } else {
                         console.log('Calendar not found');
                         setCalendar(null);
@@ -68,7 +98,7 @@ const CalendarPreview = () => {
             <div className="calendarContent">
 
                 {calendar ? (
-                    <div className="p-10 flex items-center justify-center">
+                    <div className="p-4 flex items-center justify-center">
                         <div className="flex items-center p-2">
                             <button
                                 onClick={generateShareableLink}
@@ -97,13 +127,14 @@ const CalendarPreview = () => {
                         </div>
                     </div>
                 ) : null}
-
-                <div className="gridHolderPreview" style={{ backgroundImage: `url(${calendar?.data?.bgImage})` }}>
-                    {calendar?.data?.hatches?.map(hatch => {
-                        let hatchKey = hatch.hatchNr;
-                        let hatchType = hatch.hatchType;
-                        return hatchType === 'single' ? <FakeSHatch key={hatchKey} hatch={hatch} accessHatch={false} /> : <FakeDblHatch key={hatchKey} hatch={hatch} accessHatch={false} />;
-                    })}
+                <div className='calendarHolder'>
+                    <div className={`gridHolder ${gridRows[0]} ${gridRows[1]} ${hatchAmount}`} style={{ backgroundImage: `url(${calendar?.data?.bgImage})` }}>
+                        {calendar?.data?.hatches?.map(hatch => {
+                            let hatchKey = hatch.hatchNr;
+                            let hatchType = hatch.hatchType;
+                            return hatchType === 'single' ? <FakeSHatch key={hatchKey} hatch={hatch} accessHatch={false} /> : <FakeDblHatch key={hatchKey} hatch={hatch} accessHatch={false} />;
+                        })}
+                    </div>
                 </div>
                 <div className='spaceHolder'></div>
             </div>
