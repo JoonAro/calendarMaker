@@ -3,6 +3,7 @@ import { db } from "../auth/firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { serverTimestamp } from "firebase/firestore";
 import { useTheme } from "./theme/ThemeContext";
+import icon4 from '../assets/icon4.svg';
 
 
 const ContactForm = () => {
@@ -58,7 +59,7 @@ const ContactForm = () => {
             <input
               id="email"
               placeholder="Your email"
-              className={`${whiteReplacement}w-full px-3 py-2 border rounded-lg`}
+              className={`${whiteReplacement} w-full px-3 py-2 border rounded-lg`}
               value={email} onChange={(e) => setEmail(e.target.value)}
               required
               type="email"
@@ -81,7 +82,11 @@ const ContactForm = () => {
           {sent && <p className="flex flex-col justfy-center items-center text-fontDark">Thank you for your message❤️</p>}
 
         </form>
+        <div className="flex flex-col items-center justify-center ">
+        <img className='mt-5 h-24 hover:-translate-y-1 hover:scale-125' src={icon4} alt="icon4" />
+        </div>
       </div>
+     
     </div>
   );
 }

@@ -7,7 +7,7 @@ import { useTheme } from '../components/theme/ThemeContext';
 import icon2 from '../assets/icon2.svg';
 import photo1 from "../assets/Michel.jpeg";
 import photo2 from "../assets/Samuel.jpeg";
-import photo3 from "../assets/chocko.jpg";
+import photo3 from "../assets/Joona.jpeg";
 import photo4 from "../assets/AlonaC.jpeg";
 import Cookies from '../components/footercomponent/Cookies';
 
