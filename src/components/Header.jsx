@@ -7,7 +7,7 @@ import { collection, getDocs, query, where } from 'firebase/firestore';
 import { logout } from '../auth/firebase';
 import { useNavigate } from 'react-router-dom';
 import Avatar from './Avatar';
-import logo from '/public/logo.png';
+import logo from '../assets/logo.png';
 import { useTheme } from './theme/ThemeContext';
 import ThemeToggle from './theme/ThemeToggle';
 
