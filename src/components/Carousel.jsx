@@ -17,7 +17,7 @@ export default function Carousel() {
         <input type="radio" name="r" id="r4" />
         <input type="radio" name="r" id="r5" />
         <div className="slide one s1">
-          <img src={image1} className="imageSlide" />
+          <img src={image1} className="imageSlide" alt="elk" />
           <div className="title">
             <h3>DREAM CALENDAR</h3>
             <p className="mt-8 text-2xl">Add a splash of joy to each day by creating the calendar of your dreams</p>
@@ -28,13 +28,13 @@ export default function Carousel() {
           <img src={image2} alt="Coffee" className="imageSlide" />
         </div>
         <div className="slide three">
-          <img src={image3} className="imageSlide" />
+          <img src={image3} className="imageSlide" alt="fox" />
         </div>
         <div className="slide four">
-          <img src={image4} className="imageSlide" />
+          <img src={image4} className="imageSlide" alt="sky" />
         </div>
         <div className="slide five">
-          <img src={image5} className="imageSlide" />
+          <img src={image5} className="imageSlide" alt="tucan" />
         </div>
       </div>
       <div className="navigation">

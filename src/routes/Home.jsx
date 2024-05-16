@@ -9,7 +9,6 @@ import photo1 from "../assets/Michel.jpeg";
 import photo2 from "../assets/Samuel.jpeg";
 import photo3 from "../assets/Joona.jpeg";
 import photo4 from "../assets/AlonaC.jpeg";
-import Cookies from '../components/footercomponent/Cookies';
 
 
 const Home = () => {
@@ -40,14 +39,14 @@ const Home = () => {
             <div className=" w-16 md:w-32 lg:w-60  ml-14 md:ml-40 flex flex-col sm:items-center">
               <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon2} alt="icon1" />
               <span className={`${fontDark} text-sm md:text-2xl mt-3 text-center`}>Choose a style of your calendar</span>
-              <span className={`${fontDark} text-zinc-400 text-sm md:text-lg mt-1 text-center`}>Choose images, theme and style of the hatches</span>
+              <span className={`${fontDark} text-sm md:text-lg mt-1 text-center`}>Choose images, theme and style of the hatches</span>
             </div>
 
 
             <div className="w-16 md:w-32 lg:w-72 flex flex-col sm:items-center">
               <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon5} alt="icon5" />
               <span className={`${fontDark} text-sm md:text-2xl mt-3 text-center`}>Create a collection of calendars</span>
-              <span className='text-zinc-400 text-sm md:text-lg mt-1 text-center'>Save your favourite calendars
+              <span className={`${fontDark} text-sm md:text-lg mt-1 text-center`}>Save your favourite calendars
               </span>
             </div>
 
@@ -55,7 +54,7 @@ const Home = () => {
             <div className="w-16 md:w-32 lg:w-72 mr-14 md:mr-40 flex flex-col sm:items-center">
               <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon3} alt="icon3" />
               <span className={`${fontDark} text-sm md:text-2xl mt-3 text-center`}>Share your calendar</span>
-              <span className='text-zinc-400 text-sm md:text-lg mt-1 text-center'>You can show your calendar to anyone
+              <span className={`${fontDark} text-sm md:text-lg mt-1 text-center`}>You can show your calendar to anyone
               </span>
             </div>
           </div>
@@ -140,7 +139,6 @@ const Home = () => {
 
         </div>
       </Row >
-      <Cookies />
     </Container >
   );
 };
