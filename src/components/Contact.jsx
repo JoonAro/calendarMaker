@@ -9,7 +9,6 @@ import icon4 from '../assets/icon4.svg';
 const ContactForm = () => {
   const { theme } = useTheme();
   const mainBackground = theme === 'dark' ? 'bg-mainBackground-dark' : 'bg-mainBackground-light';
-  const whiteReplacement = theme === 'dark' ? 'bg-whiteReplacement-dark' : 'bg-whiteReplacement-light';
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -48,7 +47,7 @@ const ContactForm = () => {
             <input
               id="name"
               placeholder="Your name"
-              className={`${whiteReplacement} w-full px-3 py-2 border rounded-lg `}
+              className="bg-whiteReplacement-dark w-full px-3 py-2 border rounded-lg"
               value={name} onChange={(e) => setName(e.target.value)}
               required
               type="text"
@@ -59,7 +58,7 @@ const ContactForm = () => {
             <input
               id="email"
               placeholder="Your email"
-              className={`${whiteReplacement} w-full px-3 py-2 border rounded-lg`}
+              className="bg-whiteReplacement-dark w-full px-3 py-2 border rounded-lg"
               value={email} onChange={(e) => setEmail(e.target.value)}
               required
               type="email"
@@ -70,7 +69,7 @@ const ContactForm = () => {
             <textarea
               id="message"
               placeholder="Your message"
-              className={`${whiteReplacement} w-full px-3 py-2 border rounded-lg `}
+              className="bg-whiteReplacement-dark w-full px-3 py-2 border rounded-lg"
               value={message} onChange={(e) => setMessage(e.target.value)}
               required
             />

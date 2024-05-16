@@ -6,9 +6,13 @@ import { auth, loginWithEmailAndPassword } from "../auth/firebase";
 import { Link } from "react-router-dom";
 import { logInWithGoogle } from "../auth/firebase";
 import login1 from '../assets/login1.svg';
+import { useTheme } from "../components/theme/ThemeContext";
 
 
 const Login = () => {
+  const { theme } = useTheme();
+  const mainBackground = theme === 'dark' ? 'bg-mainBackground-dark' : 'bg-mainBackground-light';
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [user, loading, error] = useAuthState(auth);
@@ -39,13 +43,13 @@ const Login = () => {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-mainBackground-light font-sans">
+    <div className={`${mainBackground} flex items-center justify-center min-h-screen font-sans`}>
       <div className="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
         <div className="flex flex-col justify-center p-8 md:p-14">
           <span className="mb-3 text-4xl font-bold text-center text-fontDark">Log in</span>
           <div className="py-3">
             <input
-              className="w-full p-2 bg-whiteReplacement border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              className="w-full p-2 bg-whiteReplacement-dark border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               type="email"
               value={email}
               placeholder="Enter your email"
@@ -54,7 +58,7 @@ const Login = () => {
           </div>
           <div className="py-3">
             <input
-              className="w-full p-2 bg-whiteReplacement border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+              className="w-full p-2 bg-whiteReplacement-dark border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               type="password"
               placeholder="Enter password"
               value={password}
