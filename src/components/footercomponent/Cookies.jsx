@@ -23,8 +23,8 @@ const ConsentPopup = ({ onAccept, onReject }) => {
       <div className="bg-smallBackground-light p-4 rounded-lg">
         <p className="text-lg">This website uses cookies to ensure you get the best experience on our website.</p>
         <div className="flex  mt-4">
-          <button id="accept" className="bg-mainBackground-light text-white py-2 px-4 rounded hover:bg-blue-600 mr-8" onClick={onAccept}>Accept</button>
-          <button id="reject" className="bg-mainBackground-light text-white py-2 px-4 rounded hover:bg-red-600" onClick={handleReject}>Reject</button>
+          <button id="accept" className="bg-mainBackground-light text-white py-2 px-4 rounded hover:bg-accentColor-light mr-8" onClick={onAccept}>Accept</button>
+          <button id="reject" className="bg-mainBackground-light text-white py-2 px-4 rounded hover:bg-accentColor-light" onClick={handleReject}>Reject</button>
         </div>
       </div>
     </div>
