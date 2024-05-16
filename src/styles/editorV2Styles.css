@@ -504,6 +504,10 @@ If number is fex 4.2 You need five rows */
         width: 80%;
     }
 
+    .fiveRows {
+        grid-template-rows: repeat(6, 14%);
+    }
+
 }
 
 @media only screen and (max-width: 1500px) {
@@ -520,6 +524,7 @@ If number is fex 4.2 You need five rows */
         gap: 3.5vw;
         grid-template-columns: repeat(3, 29%);
     }
+
 }
 
 @media only screen and (max-width: 1300px) {
