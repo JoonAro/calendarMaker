@@ -39,15 +39,15 @@ const Home = () => {
           <div className='flex justify-between mb-9'>
             <div className=" w-16 md:w-32 lg:w-60  ml-14 md:ml-40 flex flex-col sm:items-center">
               <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon2} alt="icon1" />
-              <span className={`${fontDark} text-sm md:text-2xl mt-3 text-center`}>Choose a name of a calendar</span>
-              <span className={`${fontDark} text-zinc-400 text-xs sm:text-sm md:text-base mt-1 text-center`}>What is the main idea of your calendar?</span>
+              <span className={`${fontDark} text-sm md:text-2xl mt-3 text-center`}>Choose a style of your calendar</span>
+              <span className={`${fontDark} text-zinc-400 text-sm md:text-lg mt-1 text-center`}>Choose images, theme and style of the hatches</span>
             </div>
 
 
             <div className="w-16 md:w-32 lg:w-72 flex flex-col sm:items-center">
               <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon5} alt="icon5" />
-              <span className={`${fontDark} text-sm md:text-2xl mt-3 text-center`}>Be the designer of your own calendar</span>
-              <span className='text-zinc-400 text-xs sm:text-sm md:text-base mt-1 text-center'>Choose images, theme and style of the hatches
+              <span className={`${fontDark} text-sm md:text-2xl mt-3 text-center`}>Create a collection of calendars</span>
+              <span className='text-zinc-400 text-sm md:text-lg mt-1 text-center'>Save your favourite calendars
               </span>
             </div>
 
@@ -55,7 +55,7 @@ const Home = () => {
             <div className="w-16 md:w-32 lg:w-72 mr-14 md:mr-40 flex flex-col sm:items-center">
               <img className='h-24 hover:-translate-y-1 hover:scale-125' src={icon3} alt="icon3" />
               <span className={`${fontDark} text-sm md:text-2xl mt-3 text-center`}>Share your calendar</span>
-              <span className='text-zinc-400 text-xs sm:text-sm md:text-base mt-1 text-center'>Would you like to share your calendar? Sure, do it!
+              <span className='text-zinc-400 text-sm md:text-lg mt-1 text-center'>You can show your calendar to anyone
               </span>
             </div>
           </div>
