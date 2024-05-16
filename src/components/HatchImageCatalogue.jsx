@@ -2,9 +2,9 @@ import TextComponent from "./TextComponent"
 import { Form } from 'react-bootstrap';
 import ButtonForTime from './ButtonComponent';
 
-const HatchImageCatalogue = ({ images, hatchImages, hatchSearchInput, handleHatchImgSelect, handleHatchImgSearch, hatchSearch }) => {
+const HatchImageCatalogue = ({ images, hatchImages, hatchSearchInput, handleHatchImgSelect, handleHatchImgSearch, hatchSearch, sidebarMod }) => {
     return (
-        <div className="calendarHolder">
+        <div className="calendarHolder" style={{ width: sidebarMod }}>
             <div style={{
                 display: "flex",
                 alignItems: "center",

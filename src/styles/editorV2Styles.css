@@ -7,11 +7,15 @@
 :root {
     --hider: 1;
     --textPositioner: 0vw;
+    --columns: 5, 20%;
+    --rows: 6, 13%;
 }
 
 .editorHolder {
     display: grid;
-    grid-template-columns: calc(var(--hider)*220px) 1fr;
+    grid-template-columns: 220px 1fr;
+    /* grid-template-columns: calc(var(--hider)*220px) 1fr; */
+    transition: grid-template-columns 0.5s;
     grid-template-rows: auto;
     height: 100%;
     background-color: rgba(103, 89, 94, 1);
@@ -31,7 +35,6 @@
     width: 100%;
     grid-column-start: 2;
     grid-row-start: 1;
-    background-color: red;
     width: fit-content;
     height: fit-content;
 }
@@ -40,19 +43,23 @@
     padding: 1.5vw;
 }
 
+/* Create two css variables for the amount of columns and hatchesAmount. Hatches divided by columns will give us a number of rows.
+If number is fex 4.2 You need five rows */
 .gridHolder {
     margin: 2vw 0;
     padding: 4vw 3.8vw;
     min-width: fit-content;
     height: fit-content;
+    width: 60%;
+    height: 100%;
     position: relative;
     display: grid;
     background-color: rgba(103, 89, 94, 0);
     background-position: center;
     background-size: cover;
-    grid-template-columns: repeat(5, 16%);
-    grid-template-rows: repeat(6, 13%);
-    grid-gap: 3.5vw;
+    grid-template-columns: repeat(5, 15%);
+    grid-template-rows: repeat(6, 13.5%);
+    grid-gap: 3.5rem;
     border-radius: 30px;
 }
 
@@ -68,12 +75,12 @@
     background-size: cover;
     grid-template-columns: repeat(5, 16.2%);
     grid-template-rows: repeat(6, 13.5%);
-    grid-gap: 3.5vw;
+    grid-gap: 3.5%;
     border-radius: 30px;
 }
 
 .sixRows {
-    grid-template-rows: repeat(6, 13%);
+    grid-template-rows: repeat(6, 14%);
 }
 
 .fiveRows {
@@ -82,6 +89,7 @@
 
 .fourRows {
     grid-template-rows: repeat(4, 20.4%);
+
 }
 
 .threeRows {
@@ -92,26 +100,49 @@
     grid-template-rows: repeat(2, 40%);
 }
 
+.threeColumns {
+    grid-template-columns: repeat(3, 28%);
+    width: 1000px;
+}
+
+.fourColumns {
+    grid-template-columns: repeat(4, 20.3%);
+}
+
+.fiveColumns {
+    grid-template-columns: repeat(5, 16.6%);
+    gap: 3vw;
+    width: 80%;
+}
+
+.sixColumns {
+    grid-template-columns: repeat(6, 13%);
+    gap: 3vw;
+    width: 80%;
+}
+
 .calendarHolder {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: calc(100vw - 235px);
-    min-height: 90vh;
+    /* width: calc(100vw - 235px); */
+    width: 100vw;
+    transition: width 0.5s;
+    min-height: 80vh;
     background-color: rgba(103, 89, 94, 1);
 }
 
 .catalogueHolder {
     margin: 2vw 0;
-    width: 95%;
+    width: 90%;
     min-height: 90vh;
     display: grid;
     background-color: rgba(56, 28, 150, 0);
-    grid-template-columns: repeat(3, 33.33%);
-    grid-template-rows: repeat(10, 40vw);
-    grid-gap: 0px;
-    border-radius: 30px;
+    grid-template-columns: repeat(3, 30%);
+    grid-template-rows: repeat(10, 34vw);
+    grid-gap: 40px;
+    /* border-radius: 30px; */
     overflow: hidden;
 }
 
@@ -146,6 +177,7 @@
     background-position: center;
     background-size: cover;
     color: rgba(240, 248, 255, 0);
+    border-radius: 25px;
 }
 
 .catalogueImageHolder {
@@ -210,7 +242,7 @@
 
 .datePickers {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -254,7 +286,7 @@
 
 .calendarImage {
     display: flex;
-    perspective: 900px;
+    perspective: 2000px;
     position: relative;
     background-color: rgba(127, 255, 212, 0);
     width: 100%;
@@ -435,11 +467,14 @@
     align-items: center;
     justify-content: flex-start;
     /* background-color: #c2c0c0; */
+    width: 100%;
+}
+
+.startBox {
     background-color: rgb(234, 228, 227);
     height: fit-content;
-    width: 100%;
-    padding: 0 30px;
     border-radius: 30px;
+    padding: 0 50px;
 }
 
 .spread3 input {
@@ -462,11 +497,125 @@
 }
 
 
-@media only screen and (max-width: 1300px) {
+@media only screen and (max-width: 1600px) {
+    .sixColumns {
+        grid-template-columns: repeat(5, 16.5%);
+        gap: 3vw;
+        width: 80%;
+    }
+
+}
+
+@media only screen and (max-width: 1500px) {
     .gridHolder {
+        width: 80%
+    }
+
+    .fourColumns {
+        gap: 4vw;
+    }
+
+    .threeColumns {
+        width: 60%;
+        gap: 3.5vw;
+        grid-template-columns: repeat(3, 29%);
+    }
+}
+
+@media only screen and (max-width: 1300px) {
+    :root {
+        --textPositioner: 14vw;
+    }
+
+    .editorHolder {
+        grid-template-columns: 0 1fr;
+    }
+
+    /* .sideColumn {
+        background-color: rgba(103, 89, 94, 1);
+        width: 0;
+        transition: width 0.5s;
+    } */
+
+    .gridHolder {
+        width: 85%
+    }
+
+    .threeColumns {
+        width: 65%;
+        grid-template-columns: repeat(3, 29%);
+    }
+
+
+    .sideColumn.hide {
+        width: 0px;
+        transition: width 0.5s;
+
+    }
+
+    .sideColumn.show {
+        position: fixed;
+        left: 0;
+        width: 220px;
+        transition: width 0.5s;
+    }
+
+    .calendarHolder {
+        width: calc(100vw - 17px);
+        min-height: 90vh;
+        background-color: rgba(103, 89, 94, 1);
+    }
+
+    .fiveColumns {
+        grid-template-columns: repeat(4, 22%);
+    }
+
+    .fourColumns {
+        grid-template-columns: 3, 31%;
+    }
+
+    .fourRows {
+        grid-template-rows: repeat(5, 16.4%);
+    }
+
+    .hatchAmount16 {
+        grid-template-rows: repeat(4, 20.4%);
+    }
+
+    .fiveRows {
+        grid-template-rows: repeat(6, 14%);
+    }
+
+    .hatchAmount25 {
+        grid-template-rows: repeat(7, 12.2%);
+    }
+
+    .threeRows {
+        grid-template-rows: repeat(3, 30%);
+    }
+
+    .sixRows {
+        grid-template-rows: repeat(7, 10.7%);
+    }
+
+    .hatchAmount10 {
+        /* grid-template-columns: repeat(3, 31%); */
+        grid-template-rows: repeat(4, 20.4%);
+    }
+
+    .hatchAmount11 {
+        grid-template-rows: repeat(4, 20.4%);
+    }
+
+    .hatchAmount12 {
+        grid-template-rows: repeat(4, 20.4%);
+    }
+
+    /* .gridHolder {
         grid-template-columns: repeat(4, 20.9%);
         grid-template-rows: repeat(8, 10%);
     }
+    
 
     .gridHolderPreview {
         grid-template-columns: repeat(4, 21.5%);
@@ -476,11 +625,11 @@
 
     .sixRows {
         grid-template-rows: repeat(8, 10%);
+        grid-template-rows: repeat(7, 11.7%);
     }
 
-    /*  .sixRows {
-        grid-template-rows: repeat(7, 11.7%);
-    } */
+
+
 
     .fiveRows {
         grid-template-rows: repeat(6, 13.7%);
@@ -503,16 +652,13 @@
         grid-template-rows: repeat(15, 55vw);
         grid-gap: 0px;
         border-radius: 30px;
-    }
+    } */
 }
 
 @media only screen and (max-width: 1100px) {
-    :root {
-        --hider: 0;
-        --textPositioner: 14vw;
-    }
 
-    .gridHolder {
+
+    /*     .gridHolder {
         grid-template-columns: repeat(4, 20.9%);
         grid-template-rows: repeat(8, 10%);
         grid-gap: 4.7vw;
@@ -542,12 +688,27 @@
 
     .twoRows {
         grid-template-rows: repeat(2, 40%);
+    } */
+
+    .hatchAmount13 {
+        grid-template-columns: repeat(3, 29%);
+        grid-template-rows: repeat(5, 16.5%);
+    }
+
+    .hatchAmount14 {
+        grid-template-columns: repeat(3, 29%);
+        grid-template-rows: repeat(5, 16.5%);
+    }
+
+    .hatchAmount15 {
+        grid-template-columns: repeat(3, 29%);
+        grid-template-rows: repeat(5, 16.5%);
     }
 
     .catalogueHolder {
-        grid-template-columns: repeat(2, 50%);
+        grid-template-columns: repeat(2, 48%);
         grid-template-rows: repeat(15, 55vw);
-        grid-gap: 0px;
+        grid-gap: 30px;
         border-radius: 30px;
     }
 
@@ -555,17 +716,13 @@
         min-height: 90vw;
     }
 
-    .sideColumn {
-        background-color: rgba(103, 89, 94, 1);
-        width: 5px;
-    }
 
-    .sideColumn:hover {
+    /* .sideColumn:hover {
         --hider: 1;
         width: 250px;
         background-color: rgba(238, 214, 211, 1);
         z-index: 10;
-    }
+    } */
 
     .calendarHolder {
         width: calc(100vw - 17px);

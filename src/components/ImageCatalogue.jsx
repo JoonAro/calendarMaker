@@ -1,9 +1,10 @@
 import PickTheDate from "./PickTheDate"
 import TextComponent from "./TextComponent"
 
-const ImageCatalogue = ({ bool, images, searchInput, handleSearch, handleBgSelection, handleStartDate, handleEndDate, guideH, guideText, calendarImage, startDate, endDate, time, handleDatePick, handleSelection }) => {
+const ImageCatalogue = ({ bool, images, searchInput, handleSearch, handleBgSelection, handleStartDate, handleEndDate, guideH, guideText, calendarImage, startDate, endDate, time, handleDatePick, handleSelection, sidebarMod }) => {
     return (
-        <div className="calendarHolder">
+        <div className={`calendarHolder`} style={{ width: sidebarMod }}
+        >
             <div className="catalogueHolder" >
                 {!bool && <PickTheDate searchInput={searchInput} handleSearch={handleSearch} handleStartDate={handleStartDate} handleEndDate={handleEndDate} startDate={startDate} endDate={endDate} guideH={guideH} guideText={guideText} yes={""} no={""} time={time} handleDatePick={handleDatePick} handleSelection={handleSelection} />}
                 {bool && <TextComponent guideH={guideH} guideText={guideText} yes={""} no={""} />}

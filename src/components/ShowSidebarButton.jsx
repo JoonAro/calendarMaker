@@ -1,7 +1,6 @@
-
-function ShowSidebarButton() {
+function ShowSidebarButton({ handleClick }) {
     return (
-        <div className="sidebarArrow">
+        <div className="sidebarArrow" onClick={handleClick}>
             ⇦
         </div >
     );
