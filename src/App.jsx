@@ -9,7 +9,6 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Dashboard from "./routes/Dashboard";
 import About from "./components/footercomponent/About";
 import Contact from "./components/Contact";
-import Privacy from "./components/footercomponent/Privacy";
 import Premium from "./components/Premium";
 import EditorPageV2 from "./routes/EditorPageV2";
 import { Provider } from "react-redux";
@@ -87,12 +86,6 @@ function App() {
                 }
               />
               
-              <Route
-                path="/privacy"
-                element={
-                  <Privacy />
-                }
-              />
 
               <Route
                 path="/terms"
