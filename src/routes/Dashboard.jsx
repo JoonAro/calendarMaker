@@ -48,7 +48,7 @@ const Dashboard = () => {
 
     return (
         <div className={`${mainBackground} p-4 font-sans`}>
-            <div className='flex gap-4 w-full flex-wrap'>
+            <div className='flex gap-4 flex-wrap w-full'>
                 <div className='bg-whiteReplacement-dark rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
 
                     <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor-light">
@@ -92,14 +92,16 @@ const Dashboard = () => {
 
 
             <div className='flex justify-center flex-wrap flex-col gap-4 2xl:flex-row w-full mt-7'>
-                <div className='bg-whiteReplacement-dark flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200  '>
+                <div className='bg-whiteReplacement-dark flex md:px-4 pt-3 pb-4 rounded-sm border border-gray-200  '>
                     <UserData />
                 </div>
-
-                <div className='bg-whiteReplacement-dark flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200'>
-                    <ContactForm />
                 </div>
 
+                <div className='flex justify-center flex-wrap  2xl:flex-row w-full mt-7'>
+                <div className='bg-whiteReplacement-dark flex md:px-4 pt-3 pb-4 rounded-sm border border-gray-200'>
+                    <ContactForm />
+                </div>
+<div/>
             </div>
 
         </div>
