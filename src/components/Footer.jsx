@@ -10,45 +10,24 @@ const Footer = () => {
 
   return (
 
-    <div className={`footer ${theme === 'dark' ? 'bg-smallBackground-dark' : 'bg-accentColor-light'} `}>
-      <div className="container mx-auto py-12 px-4 md:px-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-          <div>
-            <div className="header flex items-center">
-              <h3 className={`text-xl font-semibold mb-4 ${fontDark}`}>
-                Dream Calendar
-              </h3>
+    <div className={`footer ${theme === 'dark' ? 'bg-smallBackground-dark' : 'bg-accentColor-light'} font-sans`}>
+      <div className="flex flex-col justify-center items-center container mx-auto py-6 px-4 md:px-0">
+        
+      <div className='flex flex-row'>
+    <Link to="/licence" className={`mb-2 ${whiteReplacement} ${fontDark} border-r border-slate-700 pr-2 mr-2`}>License</Link>
+    <Link to="/terms" className={`mb-2 ${whiteReplacement} ${fontDark} border-r border-slate-700 pr-2 mr-2`}>Terms & conditions</Link>
+    <Link to="/premium" className={`mb-2 ${whiteReplacement} ${fontDark}`}>Premium</Link>
+</div>
+
+<div className='flex flex-row'>
+            <Link to="/contact" className={`block mb-2 ${whiteReplacement} ${fontDark} border-r border-slate-700 pr-2 mr-2`}>Feedback</Link>
+            <Link to="/faq" className={`block mb-2 ${whiteReplacement} ${fontDark} border-r border-slate-700 pr-2 mr-2`}>FAQ</Link>
+            <Link to="/about" className={`block mb-2 ${whiteReplacement} ${fontDark} border-r border-slate-700 pr-2 mr-2`}>About us</Link>
             </div>
-
-            <Link to="/licence" className={`block mb-2 ${whiteReplacement} ${fontDark}`}>License</Link>
-            <Link to="/terms" className={`block mb-2 ${whiteReplacement} ${fontDark}`}>Terms & conditions</Link>
-          </div>
-          <div className="footer-item">
-            <h3 className={`text-lg font-semibold mb-4 ${fontDark}`}>
-              Community
-            </h3>
-            <Link to="/contact" className={`block mb-2 ${whiteReplacement} ${fontDark}`}>Feedback</Link>
-            <Link to="/faq" className={`block mb-2 ${whiteReplacement} ${fontDark}`}>FAQ</Link>
-          </div>
-
-          <div className="footer-item">
-            <h3 className={`text-lg font-semibold mb-4 ${fontDark}`}>
-              Our Information
-            </h3>
-            <Link to="/about" className={`block mb-2 ${whiteReplacement} ${fontDark}`}>About us</Link>
-            <Link to="/premium" className={`block mb-2 ${whiteReplacement} ${fontDark}`}>Premium</Link>
-          </div>
-          <div className="footer-item">
-
-
-            <Link to="/premium" className={`text-lg font-semibold mb-4f ${whiteReplacement} ${fontDark}`}> </Link>
-          </div>
-
-
-        </div>
-        <div className="flex justify-center items-center mt-16">
+       
+        <div className="flex justify-center items-center mt-7">
           <h3 className={fontDark}>
-            © Copyright 2024 Team of BCH
+            © 2024 Team of BCH
           </h3>
         </div>
       </div>
