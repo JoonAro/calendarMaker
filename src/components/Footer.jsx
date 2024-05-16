@@ -9,17 +9,17 @@ const Footer = () => {
   const smallBackground = theme === 'dark' ? 'bg-smallBackground-dark' : 'bg-smallBackground-light';
 
   return (
-    <div className={`footer ${theme === 'dark' ? 'bg-smallBackground-dark' : 'bg-accentColor-light'}`}>
+
+    <div className={`footer ${theme === 'dark' ? 'bg-smallBackground-dark' : 'bg-accentColor-light'} `}>
       <div className="container mx-auto py-12 px-4 md:px-0">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="header flex items-center">
-              <h1 className={`text-xl font-bold mb-4 ${fontDark}`}>
+              <h3 className={`text-xl font-semibold mb-4 ${fontDark}`}>
                 Dream Calendar
-              </h1>
+              </h3>
             </div>
 
-            <Link to="/privacy" className={`block mb-2 ${whiteReplacement} ${fontDark}`}>Privacy policy</Link>
             <Link to="/licence" className={`block mb-2 ${whiteReplacement} ${fontDark}`}>License</Link>
             <Link to="/terms" className={`block mb-2 ${whiteReplacement} ${fontDark}`}>Terms & conditions</Link>
           </div>
@@ -36,7 +36,7 @@ const Footer = () => {
               Our Information
             </h3>
             <Link to="/about" className={`block mb-2 ${whiteReplacement} ${fontDark}`}>About us</Link>
-            <Link to="/premium" className={`block mb-2 ${whiteReplacement} ${fontDark}`}>premium</Link>
+            <Link to="/premium" className={`block mb-2 ${whiteReplacement} ${fontDark}`}>Premium</Link>
           </div>
           <div className="footer-item">
 
@@ -46,13 +46,14 @@ const Footer = () => {
 
 
         </div>
-        <div className="flex justify-between items-center mt-16">
+        <div className="flex justify-center items-center mt-16">
           <h3 className={fontDark}>
-            © Copyright 2024 Team of BCH. All rights reserved
+            © Copyright 2024 Team of BCH
           </h3>
         </div>
       </div>
     </div>
+    
   );
 }
 

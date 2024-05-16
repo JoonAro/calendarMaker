@@ -23,34 +23,22 @@ const FAQ = () => {
     {
       id: 1,
       question: 'What is Dream calendar?',
-      answer: 'We are a team of full-stack web developers who created a calendar web application as part of our studies at Helsinki Business School College. Our goal was to design and develop a user-friendly and efficient calendar tool to help users organize their schedules effectively.<br><br>Our calendar web application allows users to easily manage their events, appointments, and tasks. With intuitive features and a clean interface, users can add, edit, and delete events, set reminders, and view their schedule in various formats.'
+      answer: 'We are a team of full-stack web developers who created a calendar web application as part of our studies at Helsinki Business College. Our goal was to design and develop a user-friendly and attractive calendar tool to help users organize their days and holidays in the own style..'
     },
     {
       id: 2,
       question: 'Why do we use it?',
-      answer: 'We chose to design our calendar the way we did to offer users a unique and visually appealing experience. By customizing the background and incorporating graphical elements, we aimed to make the calendar more engaging and enjoyable to is usee.<br><br>One of the key reasons for our design choice was to allow users to personalize their calendar according to their preferences. By enabling users to sselect is their preferred background images or patterns, we empower them to create a calendar environment that reflects their style and personality.<br><br>Additionally, our design approach allows users to easily distinguish between different days and events at a glance. The use of graphical elements, such as hatching or shading, helps to visually separate days and highlight important events or appointments. This makes it easier for users to navigate their schedule and quickly identify key information.<br><br>Furthermore, our graphical calendar design offers a refreshing departure from the standard calendar interfaces commonly seen. Instead of the traditional grid-based layout, our calendar provides a more artistic and aesthetically pleasing presentation of time. This not only adds visual interest but also makes the calendar experience more enjoyable for users.'
+      answer: 'We chose to design our calendar the way we did to offer users a unique and visually appealing experience. By customizing the background and incorporating graphical elements, we aimed to make the calendar more engaging and enjoyable to is usee.<br><br>One of the key reasons for our design choice was to allow users to personalize their calendar according to their preferences. By enabling users to select their preferred background images or patterns, we empower them to create a calendar environment that reflects their style and personality.'
     },
     {
       id: 3,
       question: 'How does it work?',
-      answer: `Registration:<br><br>
-      To get started, users need to register for an account on our platform. They can do this by providing basic information such as their email address, name, and creating a password.<br><br>
-      Limited Edition Styling:<br><br>
-      Upon account verification, users can access the limited edition of styling. With this edition, users can style up to 5 calendars according to their preferences. They can choose background images or patterns, select fonts, and customize colors to personalize their calendars.<br><br>
-      Upgrade to Premium:<br><br>
-      For users who need more calendars and advanced features, they can upgrade to the premium subscription. The premium subscription offers unlimited calendar creation and additional features like sharable links. Users can upgrade to premium directly from their account settings.<br><br>
-      Payment:<br><br>
-      When users decide to upgrade to the premium subscription, they will be prompted to choose a payment plan. Payment can be made securely through various methods such as credit/debit cards, PayPal, or other payment gateways. We ensure that all payment transactions are secure and encrypted to protect users' financial information.`
+      answer: ` To get started, users need to register for an account on our platform. They can do this by providing basic information such as their email address, name, and creating a password. In this app you can design your own online advent calendar. Users can choose a calendar theme, start and end dates, style the hatches. Users can also have their own collection of calendars and share their favourite ones with others. To be able to edit and save calendars, users have to be registered. It is also possible to choose the dark mode of the app.`
     },
     {
       id: 4,
-      question: 'What is the purpose of the Dream calendar?',
-      answer: 'The purpose of the Dream Calendar is to provide a user-friendly and customizable calendar solution for everyone it is designed by group of four student of Helsinki Business College. The project was assigned to our team for a duration of 9 weeks, and the completion deadline is set for May 17, 2024. Our goal with the Dream Calendar project is to create a comprehensive calendar platform that meets the needs of buyer, allowing them to organize their schedules effectively and efficiently.<br><br>By offering features such as customizable styling, event creation, and sharing capabilities, we aim to enhance the scheduling experience for users.'
-    },
-    {
-      id: 5,
-      question: 'Where is the office located?',
-      answer: 'The office for the team 3 Dream Calendar company is currently located within Helsinki Business College. However, once the investors see our project and accept our project, we will have our own offices where we can work independently.'
+      question: 'Who are the developers of this app?',
+      answer: 'It is a software development project that was created by a team of four enthusiastic full-stack web developer students at Business College in Helsinki.'
     }
   ]
 
