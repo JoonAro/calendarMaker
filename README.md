@@ -12,6 +12,7 @@ In this app you can design your own online advent calendar. Users can choose a c
 - Unsplash api to choose the theme and hatches of calendars 
 - Tailwind CSS
 - Bootstrap
+- Sonarcloud
 
 ### Check the App on Firebase hosting
 
