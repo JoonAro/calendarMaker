@@ -18,8 +18,11 @@ import ProtectedRoute from "./auth/ProtectedRoute";
 import CalendarPreview from "./routes/CalendarPreview";
 import Footer from "./components/Footer";
 import { ThemeProvider } from "./components/theme/ThemeContext";
-import Shareable from "./routes/Shareable"
+import Shareable from "./routes/Shareable";
 import Terms from "./components/footercomponent/Terms";
+
+import Faq from "./components/footercomponent/Faq";
+import Licence from "./components/footercomponent/Licence"; 
 
 function App() {
 
@@ -72,12 +75,18 @@ function App() {
                 }
               />
               <Route
+                path="/licence"
+                element={
+                  <Licence />
+                }
+              />
+              <Route
                 path="/contact"
                 element={
                   <Contact />
                 }
               />
-
+              
               <Route
                 path="/privacy"
                 element={
@@ -96,6 +105,12 @@ function App() {
                 path="/premium"
                 element={
                   <Premium />
+                }
+              />
+              <Route
+                path="/faq"
+                element={
+                  <Faq />
                 }
               />
               <Route
