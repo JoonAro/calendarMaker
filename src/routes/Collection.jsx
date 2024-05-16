@@ -6,6 +6,7 @@ import ButtonComponent from '../components/ButtonComponent';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom';
 import { onAuthStateChanged } from 'firebase/auth';
+import {Button} from 'react-bootstrap';
 
 const Favorites = () => {
     const [usersCalendar, setUsersCalendar] = useState([]);
@@ -42,22 +43,24 @@ const Favorites = () => {
     };
     return (
         <>
-            <Container fluid className='flex min-h-screen items-start justify-center bg-mainBackground-light'>
+            <Container fluid className='flex min-h-screen items-start justify-center bg-mainBackground-light font-sans'>
                 <div className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 mt-5 mb-5">
                     {usersCalendar.map(calendar => (
 
-                        <Card key={calendar.id} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/30">
+                        <Card key={calendar.id} className="group relative cursor-pointer items-center justify-center overflow-hidden transition-shadow hover:shadow-xl hover:shadow-black/100">
 
                             <div className='h-96 w-72'>
                                 <Card.Img className='h-full w-full object-cover group-hover:rotate-3 group-hover:scale-125 transition-transform duration-500' src={calendar.data.bgImage} />
                                 <CloseIcon className="absolute text-muted top-0 right-0 bg-white opacity-75 p-1" onClick={() => handleDeleteCalendar(calendar.id)} />
                             </div>
-                            <div className='absolute inset-0 flex flex-col items-center justify-center px-9 text-center translate-y-[40%] transition-all duration-500 bottom-0'>
-                                <ButtonComponent className="p-1">
+                            <div className='absolute inset-0 flex flex-col items-center justify-center px-9 text-center translate-y-[45%] transition-all duration-500 bottom-0'>
+                             
                                     <Link to={`/calendar/${calendar.id}`}>
+                                    <Button className="button p-1">
                                         Preview
+                                        </Button>
                                     </Link>
-                                </ButtonComponent>
+                             
 
                             </div>
 

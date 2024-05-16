@@ -11,7 +11,7 @@
 
   @layer components {
     .button {
-        @apply w-36 border bg-mainBackground-light p-2 rounded-lg mb-6 border-none hover:bg-accentColor-light text-fontDark-light hover:text-white;
+        @apply w-36 border bg-mainBackground-light p-2 rounded-lg mb-6 border-none hover:bg-accentColor-light text-white
     }
    
 } 
