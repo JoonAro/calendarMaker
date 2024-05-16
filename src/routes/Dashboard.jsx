@@ -7,9 +7,13 @@ import { query, collection, getDocs } from 'firebase/firestore';
 import { useState } from 'react';
 import UserData from '../components/dashboardComponents/UserData';
 import ContactForm from '../components/dashboardComponents/ContactFormData';
+import { useTheme } from '../components/theme/ThemeContext';
 
 
 const Dashboard = () => {
+    const { theme } = useTheme();
+  const mainBackground = theme === 'dark' ? 'bg-mainBackground-dark' : 'bg-mainBackground-light';
+
     const [amount, setAmount] = useState(null);
     const [amountMessage, setAmountMessage] = useState(null);
     const [amountCalendars, setAmountCalendars] = useState(null);
@@ -43,15 +47,15 @@ const Dashboard = () => {
 
 
     return (
-        <div className='p-4 font-sans'>
+        <div className={`${mainBackground} p-4 font-sans`}>
             <div className='flex gap-4 w-full flex-wrap'>
-                <div className=' rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
+                <div className='bg-whiteReplacement-dark rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
 
                     <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor-light">
                         <SupervisedUserCircleIcon style={{ fontSize: '3rem' }} />
                     </div>
 
-                    <div className="pl-4">
+                    <div className="pl-6">
                         <span className="text-lg text-gray-500 font-light">Users</span>
                         <div className="flex items-center">
                             <strong className="text-xl text-fontDark-light font-semibold">{amount}</strong>
@@ -61,11 +65,11 @@ const Dashboard = () => {
                 </div>
 
 
-                <div className='rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
+                <div className='bg-whiteReplacement-dark rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
                     <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor-light">
                         <AccessTimeFilledIcon style={{ fontSize: '3rem' }} />
                     </div>
-                    <div className="pl-4">
+                    <div className="pl-6">
                         <span className="text-lg text-gray-500 font-light">Shared calendars</span>
                         <div className="flex items-center">
                             <strong className="text-xl text-fontDark-light font-semibold">{amountCalendars}</strong>
@@ -73,11 +77,11 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className='rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
+                <div className='bg-whiteReplacement-dark rounded-sm p-4 flex-1 border border-gray-200 flex items-center w-full'>
                     <div className="rounded-full h-20 w-12 flex items-center justify-center text-accentColor-light">
                         <PieChartIcon style={{ fontSize: '3rem' }} />
                     </div>
-                    <div className="pl-4">
+                    <div className="pl-6">
                         <span className="text-lg text-gray-500 font-light">Messages</span>
                         <div className="flex items-center">
                             <strong className="text-xl text-fontDark-light font-semibold">{amountMessage}</strong>
@@ -87,12 +91,12 @@ const Dashboard = () => {
             </div>
 
 
-            <div className='flex justify-center flex-wrap flex-col gap-4 md:flex-row w-full mt-7'>
-                <div className='flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200  '>
+            <div className='flex justify-center flex-wrap flex-col gap-4 2xl:flex-row w-full mt-7'>
+                <div className='bg-whiteReplacement-dark flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200  '>
                     <UserData />
                 </div>
 
-                <div className='flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200'>
+                <div className='bg-whiteReplacement-dark flex flex-wrap p-px md:px-4 pt-3 pb-4 rounded-sm border border-gray-200'>
                     <ContactForm />
                 </div>
 
