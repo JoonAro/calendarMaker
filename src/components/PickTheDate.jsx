@@ -26,7 +26,7 @@ const PickTheDate = ({ searchInput, handleSearch, handleStartDate, handleEndDate
                         <p style={{
                             margin: "10px 0 0 0",
                             fontSize: '1.5em'
-                        }}>{guideText}</p>
+                        }}>Choose the start and end dates</p>
                         <div className='datePickers'>
                             <div className='flexColumnCentered' style={{ alignItems: "start" }}>
                                 <p style={{ marginBottom: "0" }}>Starts</p>
