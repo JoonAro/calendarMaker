@@ -26,7 +26,7 @@ const PickTheDate = ({ searchInput, handleSearch, handleStartDate, handleEndDate
                         <p style={{
                             margin: "10px 0 0 0",
                             fontSize: '1.5em'
-                        }}>{guideText}</p>
+                        }}>Choose the start and end dates</p>
                         <div className='datePickers'>
                             <div className='flexColumnCentered' style={{ alignItems: "start" }}>
                                 <p style={{ marginBottom: "0" }}>Starts</p>
@@ -50,7 +50,7 @@ const PickTheDate = ({ searchInput, handleSearch, handleStartDate, handleEndDate
                                 />
                             </div>
                         </div>
-                        <div className='h-16 mb-10 flex items-end justify-end'>
+                        <div className='h-16 mb-10 flex items-end justify-end' style={{ color: "white" }}>
                             <ButtonComponent handleDatePick={handleDatePick}>
                                 <h1>Submit</h1>
                             </ButtonComponent>

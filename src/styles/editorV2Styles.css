@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Nunito Sans', sans-serif;
+
 }
 
 :root {
@@ -23,6 +25,7 @@
 
 .sideColumn {
     width: 220px;
+    transition: width 0.5s;
     height: 100%;
     min-height: 100vh;
     grid-column-start: 1;
@@ -59,7 +62,7 @@ If number is fex 4.2 You need five rows */
     background-size: cover;
     grid-template-columns: repeat(5, 15%);
     grid-template-rows: repeat(6, 13.5%);
-    grid-gap: 3.5rem;
+    grid-gap: 3.5vw;
     border-radius: 30px;
 }
 
@@ -106,7 +109,7 @@ If number is fex 4.2 You need five rows */
 }
 
 .fourColumns {
-    grid-template-columns: repeat(4, 20.3%);
+    grid-template-columns: repeat(4, 20%);
 }
 
 .fiveColumns {
@@ -134,8 +137,8 @@ If number is fex 4.2 You need five rows */
 }
 
 .catalogueHolder {
-    margin: 2vw 0;
-    width: 90%;
+    margin: 6vw 0;
+    width: 85%;
     min-height: 90vh;
     display: grid;
     background-color: rgba(56, 28, 150, 0);
@@ -147,22 +150,22 @@ If number is fex 4.2 You need five rows */
 }
 
 .hatchCatalogueHolder {
-    margin: 2vw 0;
-    width: 95%;
+    margin: 20px 0 100px;
+    width: 85%;
     min-height: 90vh;
     display: grid;
     background-color: rgba(56, 28, 150, 0);
-    grid-template-columns: repeat(3, 33.33%);
+    grid-template-columns: repeat(3, 30.5%);
     grid-template-rows: repeat(10, 27vw);
-    grid-gap: 0px;
+    grid-gap: 40px;
     border-radius: 30px;
     overflow: hidden;
 }
 
 .backGroundHolder {
-    margin: 2vw 0;
-    min-height: 50vh;
-    width: 95%;
+    margin: 200px 0;
+    min-height: 90vh;
+    width: 80%;
     background-position: center;
     background-size: cover;
     border-radius: 30px;
@@ -252,7 +255,7 @@ If number is fex 4.2 You need five rows */
 .welcomeText {
     background-color: rgba(0, 0, 0, 0.395);
     position: absolute;
-    top: 20vw;
+    top: 500px;
     left: calc(34vw - var(--textPositioner));
     width: 650px;
     font-size: xx-large;
@@ -286,7 +289,7 @@ If number is fex 4.2 You need five rows */
 
 .calendarImage {
     display: flex;
-    perspective: 2000px;
+    perspective: 2500px;
     position: relative;
     background-color: rgba(127, 255, 212, 0);
     width: 100%;
@@ -498,15 +501,50 @@ If number is fex 4.2 You need five rows */
 
 
 @media only screen and (max-width: 1600px) {
-    .sixColumns {
+
+    /*    .sixColumns {
         grid-template-columns: repeat(5, 16.5%);
+        gap: 3vw;
+        width: 80%;
+    }*/
+    .hatchAmount26 {
+        grid-template-columns: repeat(5, 16.5%);
+        grid-template-rows: repeat(6, 14%);
         gap: 3vw;
         width: 80%;
     }
 
-    .fiveRows {
+    .hatchAmount27 {
+        grid-template-columns: repeat(5, 16.5%);
         grid-template-rows: repeat(6, 14%);
+        gap: 3vw;
+        width: 80%;
     }
+
+    .hatchAmount28 {
+        grid-template-columns: repeat(5, 16.5%);
+        grid-template-rows: repeat(6, 14%);
+        gap: 3vw;
+        width: 80%;
+    }
+
+    .hatchAmount29 {
+        grid-template-columns: repeat(5, 16.5%);
+        grid-template-rows: repeat(6, 14%);
+        gap: 3vw;
+        width: 80%;
+    }
+
+    .hatchAmount30 {
+        grid-template-columns: repeat(5, 16.5%);
+        grid-template-rows: repeat(6, 14%);
+        gap: 3vw;
+        width: 80%;
+    }
+
+    /*  .fiveRows {
+        grid-template-rows: repeat(6, 14%);
+    } */
 
 }
 
@@ -516,7 +554,8 @@ If number is fex 4.2 You need five rows */
     }
 
     .fourColumns {
-        gap: 4vw;
+        gap: 3.5vw;
+        grid-template-columns: repeat(4, 20.9%);
     }
 
     .threeColumns {
@@ -567,7 +606,7 @@ If number is fex 4.2 You need five rows */
 
     .calendarHolder {
         width: calc(100vw - 17px);
-        min-height: 90vh;
+        min-height: 100vh;
         background-color: rgba(103, 89, 94, 1);
     }
 
@@ -615,6 +654,34 @@ If number is fex 4.2 You need five rows */
     .hatchAmount12 {
         grid-template-rows: repeat(4, 20.4%);
     }
+
+    .hatchAmount13 {
+        grid-template-rows: repeat(4, 22%);
+    }
+
+    .hatchAmount15 {
+        grid-template-columns: repeat(3, 29%);
+        grid-template-rows: repeat(5, 17%);
+        gap: 5vw;
+    }
+
+    .hatchAmount20 {
+        grid-template-rows: repeat(5, 17%);
+    }
+
+    .hatchAmount19 {
+        grid-template-rows: repeat(5, 17%);
+    }
+
+    .hatchAmount18 {
+        grid-template-rows: repeat(5, 17%);
+    }
+
+    .hatchAmount17 {
+        grid-template-rows: repeat(5, 17%);
+    }
+
+
 
     /* .gridHolder {
         grid-template-columns: repeat(4, 20.9%);
@@ -696,8 +763,8 @@ If number is fex 4.2 You need five rows */
     } */
 
     .hatchAmount13 {
-        grid-template-columns: repeat(3, 29%);
-        grid-template-rows: repeat(5, 16.5%);
+        grid-template-columns: repeat(3, 30%);
+        grid-template-rows: repeat(5, 17.5%);
     }
 
     .hatchAmount14 {

@@ -7,8 +7,8 @@ const Search = ({ searchInput, handleSearch, handleSelection, guideH, guideText 
                 <h1 style={{
                     margin: "30px 0 10px 0",
                     fontSize: '2em'
-                }}>{guideH}</h1>
-                <p>{guideText}</p>
+                }}>Search for a theme for the calendar</h1>
+                <p>Or choose one of our examples below</p>
 
 
                 <div style={{
@@ -23,7 +23,10 @@ const Search = ({ searchInput, handleSearch, handleSelection, guideH, guideText 
                         aria-label="Search"
                         ref={searchInput}
                     />
-                    <button className="w-36 border border-transparent bg-mainBackground-light p-2 rounded-lg mb-2 hover:bg-accentColor-light text-fontDark hover:text-white mt-2" >
+                    <button className="w-36 border border-transparent bg-mainBackground-light p-2 rounded-lg mb-2 hover:bg-accentColor-light text-fontDark hover:text-white mt-2" style={{
+                        color: "white",
+                        marginLeft: "20px"
+                    }}>
                         <h1>Submit</h1>
                     </button>
                 </div>
