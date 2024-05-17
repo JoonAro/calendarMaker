@@ -50,7 +50,7 @@ const PickTheDate = ({ searchInput, handleSearch, handleStartDate, handleEndDate
                                 />
                             </div>
                         </div>
-                        <div className='h-16 mb-10 flex items-end justify-end'>
+                        <div className='h-16 mb-10 flex items-end justify-end' style={{ color: "white" }}>
                             <ButtonComponent handleDatePick={handleDatePick}>
                                 <h1>Submit</h1>
                             </ButtonComponent>
