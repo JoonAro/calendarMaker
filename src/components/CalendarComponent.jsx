@@ -6,8 +6,7 @@ const CalendarComponent = ({ calendar, calendarImage, accessHatch, bool3, bool4,
         <div className="calendarHolder" style={{ width: sidebarMod }}>
             {!bool3 && <><TextComponent guideH={guideH} guideText={guideText} yes={"Yes"} no={"No"} handleUserReply={handleUserReply} bool4={bool4} />
                 <div className={`backGroundHolder ${gridRows}`} style={{
-                    backgroundImage: `url(${calendarImage})`,
-                    height: `calc((${hatchAmount}/4)*12vw)`,
+                    backgroundImage: `url(${calendarImage})`
                 }}>
                 </div>
             </>}

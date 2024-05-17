@@ -112,7 +112,7 @@ const EditorPageV2 = () => {
         else if (hatchTotal >= 13 && hatchTotal < 17) {
             setGridRows(["fourColumns", "fourRows"]);
         }
-        else if (hatchTotal >= 16 && hatchTotal < 21) {
+        else if (hatchTotal >= 17 && hatchTotal < 21) {
             setGridRows(["fourColumns", "fiveRows"]);
         }
         else if (hatchTotal >= 21 && hatchTotal < 26) {

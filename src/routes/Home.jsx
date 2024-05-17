@@ -60,7 +60,10 @@ const Home = () => {
           </div>
         </div>
       </div>
-      <Row className="mt-5 mr-l0s" style={{ padding: "2rem" }}>
+      <Row className="mt-5 mr-l0s" style={{
+        padding: "2rem",
+        marginRight: "0"
+      }}>
         <Col className="d-flex justify-content-center" style={{ marginLeft: "5rem" }}>
           <Card style={{ margin: "1rem", padding: "1rem", minWidth: '18rem', height: "20rem" }}>
             <Card.Body>
